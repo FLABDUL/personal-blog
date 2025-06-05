@@ -11,7 +11,7 @@ const Footer = () => (
     backgroundColor: "#111",
   }}>
     <div style={{ marginBottom: "0.3rem" }}>
-      © Abdul Hakim Nor Azman {new Date().getFullYear()}
+      © Abdul Hakim Norazman {new Date().getFullYear()}
     </div>
     <div style={{ fontSize: "1.2rem" }}>
       <a

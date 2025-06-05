@@ -1,7 +1,10 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/
- */
+export const onClientEntry = () => {
+  const unwantedPaths = ["/en-GB", "/en-GB/account", "/account/login"]
 
-// You can delete this file if you're not using it
+  const { pathname } = window.location
+
+  if (unwantedPaths.some(p => pathname.startsWith(p))) {
+    console.warn("🚫 Redirect blocked:", pathname)
+    window.location.replace("/")
+  }
+}

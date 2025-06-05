@@ -43,7 +43,9 @@ const Navbar = () => {
     <nav style={navStyle}>
       <Link to="/" style={linkStyle}>About</Link>
       <Link to="/blog" style={linkStyle}>Blog</Link>
-      <Link to="/tools" style={linkStyle}>Tools</Link>
+      <Link to="/projects" style={linkStyle}>Projects</Link>
+      <Link to="/bookshelf" style={linkStyle}>Bookshelf</Link>
+      <Link to="/studio" style={linkStyle}>Studio</Link>
     </nav>
   )
 }
