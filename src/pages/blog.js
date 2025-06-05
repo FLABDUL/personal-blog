@@ -1,18 +1,40 @@
 import React from "react"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
-import { Link } from "gatsby"
 
-export default function BlogPage() {
+export const query = graphql`
+  query {
+    allMdx(sort: {fields: frontmatter___date, order: DESC}) {
+      nodes {
+        frontmatter {
+          title
+          date(formatString: "MMMM D, YYYY")
+          slug
+        }
+        excerpt
+        id
+      }
+    }
+  }
+`
+
+export default function BlogPage({ data }) {
+  const posts = data.allMdx.nodes
+
   return (
     <Layout>
       <h1>Blog</h1>
-      <p>Here’s where I post ideas, walkthroughs, and thoughts on performance engineering, dev workflows, and more.</p>
-
-      <div style={{ border: "1px solid #444", padding: "1rem", marginTop: "2rem" }}>
-        <h2>How I built this blog with React & Gatsby</h2>
-        <p>A step-by-step guide to creating this site, with code snippets and deploy tips.</p>
-        <Link to="/blog/post" style={{ color: "#4fc3f7" }}>Read More →</Link>
-      </div>
+      {posts.map(post => (
+        <div key={post.id} style={{ marginBottom: "2rem" }}>
+          <h2>
+            <Link to={`/blog/${post.frontmatter.slug}`} style={{ color: "#4fc3f7" }}>
+              {post.frontmatter.title}
+            </Link>
+          </h2>
+          <small>{post.frontmatter.date}</small>
+          <p>{post.excerpt}</p>
+        </div>
+      ))}
     </Layout>
   )
 }
