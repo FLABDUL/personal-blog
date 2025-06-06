@@ -17,6 +17,10 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
+        mdxOptions: {
+          remarkPlugins: [],
+          rehypePlugins: [],
+        },
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
@@ -39,4 +43,4 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-image`,
   ],
-}
+};

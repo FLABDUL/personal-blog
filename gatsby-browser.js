@@ -1,10 +1,17 @@
 export const onClientEntry = () => {
-  const unwantedPaths = ["/en-GB", "/en-GB/account", "/account/login"]
+  const blockedPaths = new Set([
+    "/en-GB",
+    "/en-GB/account",
+    "/account/login",
+  ]);
 
-  const { pathname } = window.location
+  const { pathname } = window.location;
 
-  if (unwantedPaths.some(p => pathname.startsWith(p))) {
-    console.warn("🚫 Redirect blocked:", pathname)
-    window.location.replace("/")
+  for (const path of blockedPaths) {
+    if (pathname.startsWith(path)) {
+      console.warn("🚫 Redirect blocked:", pathname);
+      window.location.replace("/");
+      break;
+    }
   }
-}
+};
