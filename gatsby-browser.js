@@ -1,3 +1,7 @@
+// gatsby-browser.js
+import "prismjs/themes/prism-tomorrow.css";
+
+
 export const onClientEntry = () => {
   const blockedPaths = new Set([
     "/en-GB",

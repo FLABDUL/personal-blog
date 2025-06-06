@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   siteMetadata: {
     title: `Personal Blog`,
@@ -5,12 +7,15 @@ module.exports = {
     author: `Abdul Hakim Norazman`,
   },
   plugins: [
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `blog`,
-        path: `${__dirname}/src/content/blog`,
+        path: path.resolve(__dirname, "src/content/blog"),
       },
     },
     {
@@ -20,7 +25,9 @@ module.exports = {
         mdxOptions: {
           remarkPlugins: [],
           rehypePlugins: [],
+          format: "mdx",
         },
+        provideExternalSourceNode: true, // ✅ this is the key addition
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
@@ -39,8 +46,5 @@ module.exports = {
         ],
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-image`,
   ],
 };
