@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import { MDXProvider } from "@mdx-js/react"
-import { MDXRenderer } from "gatsby-plugin-mdx" // ✅ THIS is critical!
+import { MDXRenderer } from "gatsby-plugin-mdx"
 
 export const query = graphql`
   query BlogPost($id: String!) {
