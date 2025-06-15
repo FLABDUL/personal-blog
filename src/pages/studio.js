@@ -1,6 +1,6 @@
-import React from "react"
-import Layout from "../components/Layout"
-import { artworks } from "../data/artworks"
+import React from "react";
+import Layout from "../components/Layout";
+import { artworks } from "../data/artworks";
 
 export default function StudioPage() {
   return (
@@ -15,5 +15,5 @@ export default function StudioPage() {
         ))}
       </div>
     </Layout>
-  )
+  );
 }

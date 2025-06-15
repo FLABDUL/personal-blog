@@ -2,9 +2,9 @@ const path = require("path");
 
 module.exports = {
   siteMetadata: {
-    title: `Personal Blog`,
-    description: `A blog about performance tuning, tech and life.`,
-    author: `Abdul Hakim Norazman`,
+    title: "Personal Blog",
+    description: "A blog about performance tuning, tech and life.",
+    author: "Abdul Hakim Norazman",
   },
   plugins: [
     `gatsby-plugin-image`,
@@ -19,28 +19,21 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-mdx`,
+      resolve: `gatsby-transformer-remark`,
       options: {
-        extensions: [`.mdx`, `.md`],
-        mdxOptions: {
-          remarkPlugins: [],
-          rehypePlugins: [],
-          format: "mdx",
-        },
-        provideExternalSourceNode: true, // ✅ this is the key addition
-        gatsbyRemarkPlugins: [
+        plugins: [
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              showLineNumbers: true,
+            },
+          },
           {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 1035,
               quality: 90,
               linkImagesToOriginal: false,
-            },
-          },
-          {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              showLineNumbers: true,
             },
           },
         ],

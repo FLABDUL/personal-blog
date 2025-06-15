@@ -1,10 +1,10 @@
-import React from "react"
-import { graphql, Link } from "gatsby"
-import Layout from "../components/Layout"
+import React from "react";
+import { graphql, Link } from "gatsby";
+import Layout from "../components/Layout";
 
 export const query = graphql`
   query {
-    allMdx(sort: {fields: frontmatter___date, order: DESC}) {
+    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
       nodes {
         frontmatter {
           title
@@ -16,10 +16,10 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
 export default function BlogPage({ data }) {
-  const posts = data.allMdx.nodes
+  const posts = data.allMarkdownRemark.nodes;
 
   return (
     <Layout>
@@ -36,5 +36,5 @@ export default function BlogPage({ data }) {
         </div>
       ))}
     </Layout>
-  )
+  );
 }

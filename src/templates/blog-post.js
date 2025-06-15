@@ -1,33 +1,30 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
-import { MDXProvider } from "@mdx-js/react"
-import { MDXRenderer } from "gatsby-plugin-mdx"
-
-export const query = graphql`
-  query BlogPost($id: String!) {
-    mdx(id: { eq: $id }) {
-      frontmatter {
-        title
-        date(formatString: "MMMM D, YYYY")
-      }
-      body
-    }
-  }
-`
 
 export default function BlogPost({ data }) {
-  const { frontmatter, body } = data.mdx
+  const post = data.markdownRemark
+  const { title, date } = post.frontmatter
 
   return (
     <Layout>
       <article>
-        <h1>{frontmatter.title}</h1>
-        <p><em>{frontmatter.date}</em></p>
-        <MDXProvider>
-          <MDXRenderer>{body}</MDXRenderer>
-        </MDXProvider>
+        <h1>{title}</h1>
+        <p><em>{date}</em></p>
+        <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </article>
     </Layout>
   )
 }
+
+export const query = graphql`
+  query BlogPostBySlug($slug: String!) {
+    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+      html
+      frontmatter {
+        title
+        date(formatString: "MMMM D, YYYY")
+      }
+    }
+  }
+`

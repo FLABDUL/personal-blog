@@ -1,8 +1,11 @@
-exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
+const path = require("path");
+
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createPage } = actions;
+
   const result = await graphql(`
-    query {
-      allMdx {
+    {
+      allMarkdownRemark {
         nodes {
           frontmatter {
             slug
@@ -11,13 +14,27 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }
-  `)
+  `);
 
-  result.data.allMdx.nodes.forEach(node => {
+  if (result.errors) {
+    reporter.panicOnBuild("🚨 GraphQL query failed.", result.errors);
+    return;
+  }
+
+  const posts = result.data.allMarkdownRemark.nodes;
+
+  posts.forEach(post => {
+    if (!post.frontmatter?.slug) {
+      reporter.warn(`⚠️ Missing slug in frontmatter for post with ID: ${post.id}`);
+      return;
+    }
+
     createPage({
-      path: `/blog/${node.frontmatter.slug}`,
-      component: require.resolve(`./src/templates/blog-post.js`),
-      context: { id: node.id },
-    })
-  })
-}
+      path: `/blog/${post.frontmatter.slug}`,
+      component: path.resolve(`./src/templates/blog-post.js`),
+      context: {
+        slug: post.frontmatter.slug,
+      },
+    });
+  });
+};

@@ -1,6 +1,6 @@
-import React from "react"
-import Layout from "../components/Layout"
-import { books } from "../data/books"
+import React from "react";
+import Layout from "../components/Layout";
+import { books } from "../data/books";
 
 export default function BookshelfPage() {
   return (
@@ -10,10 +10,12 @@ export default function BookshelfPage() {
         {books.map((book, idx) => (
           <div key={idx} style={{ textAlign: "center" }}>
             <img src={book.cover} alt={book.title} style={{ width: "100%", borderRadius: "6px" }} />
-            <p style={{ marginTop: "0.5rem" }}><strong>{book.title}</strong><br /><small>{book.author}</small></p>
+            <p style={{ marginTop: "0.5rem" }}>
+              <strong>{book.title}</strong><br /><small>{book.author}</small>
+            </p>
           </div>
         ))}
       </div>
     </Layout>
-  )
+  );
 }
