@@ -46,7 +46,7 @@ export const books = [
   },
   {
     title: "The Secret Horsepower Race",
-    author: "Karl Ludvigsen",
+    author: "Callum E. Douglas",
     cover: "/books/secret-horsepower-race.jpg"
   },
   {
