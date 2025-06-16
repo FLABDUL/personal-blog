@@ -1,6 +1,6 @@
-import React from "react"
-import Layout from "../components/Layout"
-import ProjectCard from "../components/ProjectCard"
+import React from "react";
+import Layout from "../components/Layout";
+import ProjectCard from "../components/ProjectCard";
 
 export default function ProjectsPage() {
   const projects = [
@@ -13,8 +13,13 @@ export default function ProjectsPage() {
       title: "BEng Thesis – CAD Filter with ML",
       description: "Final year thesis on developing a machine learning–based CAD filter using computational geometry techniques.",
       link: "https://github.com/FLABDUL/beng-thesis"
+    },
+    {
+      title: "Go/TeamDiversity – Pierpont Award Winner",
+      description: "An internal JPMorgan app that calculates Diversity Scores to help teams track, compare, and improve diversity metrics. Developed during the AWS Hackathon and deployed to production to support DE&I hiring strategies.",
+      link: "https://www.linkedin.com/in/abdulhakimnorazman/overlay/1635522683594/single-media-viewer/?profileId=ACoAACVc01QB5OJBS7gD45f-9HRVkiQeveyODyA"
     }
-  ]
+  ];
 
   return (
     <Layout>
@@ -31,5 +36,5 @@ export default function ProjectsPage() {
         ))}
       </div>
     </Layout>
-  )
+  );
 }
