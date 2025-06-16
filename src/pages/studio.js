@@ -10,7 +10,9 @@ export default function StudioPage() {
         {artworks.map((item, idx) => (
           <div key={idx}>
             <img src={item.img} alt={item.title} style={{ width: "100%", borderRadius: "8px" }} />
-            <p style={{ textAlign: "center", marginTop: "0.5rem" }}>{item.title}</p>
+            <p style={{ textAlign: "center", marginTop: "0.5rem" }}>
+              <em>{item.title}</em>
+            </p>
           </div>
         ))}
       </div>
