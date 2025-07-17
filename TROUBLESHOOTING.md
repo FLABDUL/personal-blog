@@ -54,6 +54,36 @@ npm install ajv@6.12.6 ajv-keywords@3.5.2 --legacy-peer-deps
 
 ---
 
+### 5. Images Not Rendering in Production (MDX + Static/Public Folder)
+
+Symptom:
+Images show locally (e.g. in VS Code preview), but break in production with 404 errors (e.g. /static/blog/error.png not found).
+
+Cause:
+In Gatsby, anything inside the static/ folder is served from the root (/). So /static/blog/error.png should be referenced as /blog/error.png in your MDX. Including /static/ in the URL leads to incorrect paths in production.
+
+Fix:
+Update image paths in MDX to use absolute paths without /static. For example:
+
+```mdx
+<!-- ❌ Broken -->
+![OAuth error](/static/blog/error.png)
+
+<!-- ✅ Correct -->
+![OAuth error](/blog/error.png)
+```
+
+Note:
+This may cause images to not appear in local Markdown previews (e.g. VS Code), but will work correctly on the live site. As a workaround, consider:
+
+Previewing via gatsby develop
+
+Using a VS Code plugin that resolves public paths (e.g. Markdown Preview Enhanced)
+
+Creating symlinks if needed for local-only previewing
+
+---
+
 ## 💡 Best Practices
 
 - Stick to plugin versions compatible with your Gatsby version.
