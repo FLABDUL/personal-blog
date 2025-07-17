@@ -31,12 +31,16 @@ export const artworks = [
     title: "serene",
     img: "/art/serene.jpeg"
   },
-    {
+  {
     title: "spectrum",
     img: "/art/spectrum.jpeg"
   },
-    {
+  {
     title: "sylvan",
     img: "/art/sylvan.jpeg"
+  },
+  {
+    title: "thrive",
+    img: "/art/thrive.jpeg"
   }
 ]

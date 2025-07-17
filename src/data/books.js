@@ -60,9 +60,8 @@ export const books = [
     cover: "/books/hidden-life-of-trees.jpg"
   },
   {
-  title: "The Daily Stoic",
-  author: "Ryan Holiday & Stephen Hanselman",
-  cover: "/books/the-daily-stoic.jpg"
-}
-
+    title: "The Daily Stoic",
+    author: "Ryan Holiday & Stephen Hanselman",
+    cover: "/books/the-daily-stoic.jpg"
+  }
 ]
