@@ -43,7 +43,7 @@ Despite reading the Strava API docs thoroughly, getting this OAuth flow to work 
 
 📉 Here's what debugging that looked like:
 
-![OAuth failure logs](/static/blog/error.png)
+![OAuth failure logs](/blog/error.png)
 
 ---
 
@@ -86,7 +86,7 @@ The React frontend dashboard provides summaries, filters, and a distance chart.
 - Activity list with toggleable maps  
 - Distance over time chart  
 
-![Dashboard Overview](/static/blog/strava-dashboard.png)
+![Dashboard Overview](/blog/strava-dashboard.png)
 
 ---
 
@@ -94,8 +94,8 @@ The React frontend dashboard provides summaries, filters, and a distance chart.
 
 You can filter your activities by type using a simple dropdown menu.
 
-![Filter dropdown](/static/blog/filter.png)  
-![Ride summary](/static/blog/filtered.png)
+![Filter dropdown](/blog/filter.png)  
+![Ride summary](/blog/filtered.png)
 
 ---
 
@@ -103,7 +103,7 @@ You can filter your activities by type using a simple dropdown menu.
 
 Each activity entry includes a "Show map" button powered by Leaflet, displaying the GPS route from Strava.
 
-![Activity maps](/static/blog/maps.png)
+![Activity maps](/blog/maps.png)
 
 ---
 
@@ -119,8 +119,7 @@ VITE_API_BASE=http://localhost:5000
 VITE_API_BASE=https://strava-dashboard-production.up.railway.app
 ```
 The backend is hosted on Railway, and the frontend on Vercel, with automatic deployments triggered by GitHub pushes.
-
-![Vercel and Railway Deployments](/static/blog/deployments.png)
+![Vercel and Railway Deployments](/blog/strava-api.png)
 
 ---
 
@@ -128,7 +127,7 @@ The backend is hosted on Railway, and the frontend on Vercel, with automatic dep
 
 Here’s a peek at how the app is configured on the [Strava API Developer Portal](https://www.strava.com/settings/api), including rate limits and token access:
 
-![Strava Dev Dashboard](/static/blog/strava-api.png)
+![Strava Dev Dashboard](/blog/strava-api.png)
 
 ---
 
