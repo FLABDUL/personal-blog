@@ -58,5 +58,11 @@ export const books = [
     title: "The Hidden Life of Trees",
     author: "Peter Wohlleben",
     cover: "/books/hidden-life-of-trees.jpg"
-  }
+  },
+  {
+  title: "The Daily Stoic",
+  author: "Ryan Holiday & Stephen Hanselman",
+  cover: "/books/the-daily-stoic.jpg"
+}
+
 ]
