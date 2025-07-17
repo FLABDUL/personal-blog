@@ -119,7 +119,7 @@ VITE_API_BASE=http://localhost:5000
 VITE_API_BASE=https://strava-dashboard-production.up.railway.app
 ```
 The backend is hosted on Railway, and the frontend on Vercel, with automatic deployments triggered by GitHub pushes.
-![Vercel and Railway Deployments](/blog/strava-api.png)
+![Vercel and Railway Deployments](/blog/deployments.png)
 
 ---
 
