@@ -15,7 +15,7 @@ export default function HomePage() {
 
             <section style={{ lineHeight: "1.8", marginTop: "2rem" }}>
                 <p>
-                    Hi, I'm Abdul Hakim NORAZMAN — a software engineer currently working in Research Technology at JPMorgan Chase & Co., where I build quantitative tools and infrastructure. I enjoy solving problems that sit at the intersection of technology and finance.
+                    Hi, I'm Abdul Hakim NORAZMAN — a technology consultant at Detillens, contracted to Morgan Stanley as a software engineer in Client Fund Services Technology. I enjoy solving problems that sit at the intersection of technology and finance.
                 </p>
 
                 <p>
@@ -23,18 +23,14 @@ export default function HomePage() {
                 </p>
 
                 <p>
-                    Outside of work, I’m a budding triathlete — which means I spend my free time swimming, cycling, running, and learning how to pace myself (still a work in progress). Training helps me stay grounded and reminds me that progress rarely comes instantly — in fitness or in code.
+                    Outside of work, I spend much of my time cycling, coding, and playing the electric guitar. These hobbies keep me grounded and remind me that progress — whether in fitness, music, or software — is usually incremental and earned over time.
                 </p>
 
                 <p>
-                    I also have an appreciation for the creative side of life. I play piano, enjoy oil painting, and like to unwind with a good book — especially anything that challenges how I think or lets me see things from a different angle.
-                </p>
-
-                <p>
-                    If you're into tech, art, or endurance sports — or just want to chat — feel free to connect with me on{" "}
+                    If you're into tech, finance, or just want to chat, feel free to connect with me on{" "}
                     <a href="https://linkedin.com/in/flabdul" target="_blank" rel="noopener noreferrer">LinkedIn</a>, check out my work on{" "}
-                    <a href="https://github.com/FLABDUL" target="_blank" rel="noopener noreferrer">GitHub</a>, or follow me on{" "}
-                    <a href="https://www.strava.com/athletes/abdulhakim" target="_blank" rel="noopener noreferrer">Strava</a>.
+                    <a href="https://github.com/FLABDUL" target="_blank" rel="noopener noreferrer">GitHub</a>, or follow my activities on{" "}
+                    <a href="https://connect.garmin.com/app/profile/86c7a0bb-2e9b-4793-a9a3-1cb0884ec934" target="_blank" rel="noopener noreferrer">Garmin Connect</a>.
                 </p>
             </section>
         </Layout>
