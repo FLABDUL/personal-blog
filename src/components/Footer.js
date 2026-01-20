@@ -1,6 +1,6 @@
 import React from "react"
-import { FaLinkedin, FaGithub, FaStrava } from "react-icons/fa"
-import { SiGmail } from "react-icons/si"
+import { FaLinkedin, FaGithub } from "react-icons/fa"
+import { SiGmail, SiGarmin } from "react-icons/si"
 
 const Footer = () => (
   <footer style={{
@@ -24,8 +24,8 @@ const Footer = () => (
       <a href="https://github.com/FLABDUL" target="_blank" rel="noopener noreferrer" aria-label="GitHub" style={{ margin: "0 1rem", color: "#ccc" }}>
         <FaGithub />
       </a>
-      <a href="https://www.strava.com/athletes/88805607" target="_blank" rel="noopener noreferrer" aria-label="Strava" style={{ margin: "0 1rem", color: "#fc4c02" }}>
-        <FaStrava />
+      <a href="https://connect.garmin.com/app/profile/86c7a0bb-2e9b-4793-a9a3-1cb0884ec934" target="_blank" rel="noopener noreferrer" aria-label="Garmin Connect" style={{ margin: "0 1rem", color: "#007cba" }}>
+        <SiGarmin />
       </a>
     </div>
   </footer>
