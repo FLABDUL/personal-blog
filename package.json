@@ -5,10 +5,16 @@
   "description": "A Gatsby + MDX personal blog",
   "author": "Abdul Hakim Norazman",
   "scripts": {
+    "predevelop": "node scripts/cv/validate.js",
     "develop": "gatsby develop",
+    "prebuild": "node scripts/cv/validate.js && node scripts/cv/generate.js",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "cv:validate": "node scripts/cv/validate.js",
+    "cv:generate": "node scripts/cv/generate.js",
+    "cv:check": "node scripts/cv/validate.js && node scripts/cv/generate.js --check",
+    "cv:compare": "node scripts/cv/compare.js",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\""
   },
   "dependencies": {
@@ -31,6 +37,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.27.4",
+    "mammoth": "^1.10.0",
+    "pdf-parse": "^1.1.1",
     "prettier": "^2.8.8"
   },
   "keywords": [

@@ -1,0 +1,403 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Abdul Hakim Norazman master CV",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "profile",
+    "overview",
+    "jumpLinks",
+    "professionalExperience",
+    "engineeringWork",
+    "education",
+    "universityLeadership",
+    "impact",
+    "professionalDevelopment",
+    "skills"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "profile": {
+      "$ref": "#/definitions/profile"
+    },
+    "overview": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/overviewItem"
+      }
+    },
+    "jumpLinks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/jumpLink"
+      }
+    },
+    "professionalExperience": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/role"
+      }
+    },
+    "engineeringWork": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/workGroup"
+      }
+    },
+    "education": {
+      "$ref": "#/definitions/education"
+    },
+    "universityLeadership": {
+      "$ref": "#/definitions/leadership"
+    },
+    "impact": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/impactItem"
+      }
+    },
+    "professionalDevelopment": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/developmentGroup"
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/skill"
+      }
+    }
+  },
+  "definitions": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stringList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/nonEmptyString"
+      }
+    },
+    "curatedRecord": {
+      "type": "object",
+      "required": ["id", "includeInBrief"],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "includeInBrief": {
+          "type": "boolean"
+        }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "title", "summary", "updated", "contacts"],
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/nonEmptyString"
+        },
+        "title": {
+          "$ref": "#/definitions/nonEmptyString"
+        },
+        "summary": {
+          "$ref": "#/definitions/nonEmptyString"
+        },
+        "updated": {
+          "$ref": "#/definitions/nonEmptyString"
+        },
+        "contacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["label", "href"],
+            "properties": {
+              "label": {
+                "$ref": "#/definitions/nonEmptyString"
+              },
+              "href": {
+                "$ref": "#/definitions/nonEmptyString"
+              }
+            }
+          }
+        }
+      }
+    },
+    "overviewItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "value", "label"],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "value": {
+          "$ref": "#/definitions/nonEmptyString"
+        },
+        "label": {
+          "$ref": "#/definitions/nonEmptyString"
+        }
+      }
+    },
+    "jumpLink": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "href"],
+      "properties": {
+        "label": {
+          "$ref": "#/definitions/nonEmptyString"
+        },
+        "href": {
+          "type": "string",
+          "pattern": "^#[a-z0-9-]+$"
+        }
+      }
+    },
+    "role": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/curatedRecord"
+        },
+        {
+          "type": "object",
+          "required": [
+            "role",
+            "company",
+            "team",
+            "location",
+            "period",
+            "summary",
+            "highlights"
+          ],
+          "properties": {
+            "role": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "company": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "team": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "location": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "period": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "summary": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "highlights": {
+              "$ref": "#/definitions/stringList"
+            }
+          }
+        }
+      ]
+    },
+    "workGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "intro", "items"],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "title": {
+          "$ref": "#/definitions/nonEmptyString"
+        },
+        "intro": {
+          "$ref": "#/definitions/nonEmptyString"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/workItem"
+          }
+        }
+      }
+    },
+    "workItem": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/curatedRecord"
+        },
+        {
+          "type": "object",
+          "required": ["name", "context", "description", "tags"],
+          "properties": {
+            "name": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "context": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "description": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "href": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "tags": {
+              "$ref": "#/definitions/stringList"
+            }
+          }
+        }
+      ]
+    },
+    "education": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/curatedRecord"
+        },
+        {
+          "type": "object",
+          "required": [
+            "institution",
+            "qualification",
+            "period",
+            "details",
+            "coursework"
+          ],
+          "properties": {
+            "institution": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "qualification": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "period": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "details": {
+              "$ref": "#/definitions/stringList"
+            },
+            "coursework": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["label", "value"],
+                "properties": {
+                  "label": {
+                    "$ref": "#/definitions/nonEmptyString"
+                  },
+                  "value": {
+                    "$ref": "#/definitions/nonEmptyString"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "leadership": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/curatedRecord"
+        },
+        {
+          "type": "object",
+          "required": [
+            "role",
+            "organisation",
+            "location",
+            "period",
+            "summary",
+            "highlights"
+          ],
+          "properties": {
+            "role": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "organisation": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "location": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "period": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "summary": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "highlights": {
+              "$ref": "#/definitions/stringList"
+            }
+          }
+        }
+      ]
+    },
+    "impactItem": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/curatedRecord"
+        },
+        {
+          "type": "object",
+          "required": ["title", "detail"],
+          "properties": {
+            "title": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "detail": {
+              "$ref": "#/definitions/nonEmptyString"
+            }
+          }
+        }
+      ]
+    },
+    "developmentGroup": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/curatedRecord"
+        },
+        {
+          "type": "object",
+          "required": ["title", "items"],
+          "properties": {
+            "title": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "items": {
+              "$ref": "#/definitions/stringList"
+            }
+          }
+        }
+      ]
+    },
+    "skill": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/curatedRecord"
+        },
+        {
+          "type": "object",
+          "required": ["category", "detail"],
+          "properties": {
+            "category": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "detail": {
+              "$ref": "#/definitions/nonEmptyString"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

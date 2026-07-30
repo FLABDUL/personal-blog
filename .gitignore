@@ -68,3 +68,9 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 .vercel
+
+# Local CV comparison reports may contain private source material
+cv-reports/
+
+# Generated on demand from content/cv/master.json
+cv-exports/
