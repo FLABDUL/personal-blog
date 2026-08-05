@@ -43,9 +43,22 @@ npm run cv:generate
 npm run build
 ```
 
-`npm run build` refuses to continue when the master record is invalid and
-regenerates both CV exports before building the site. This means an edit made
-entirely through GitHub can still deploy without running anything locally.
+`npm run build` validates the master record and regenerates both CV exports
+before building the site. This means an edit made entirely through GitHub can
+still deploy without committing generated files.
+
+### From CV edit to the live website
+
+1. Create a branch from `main`.
+2. Update `content/cv/master.json` and `profile.updated`.
+3. Push the branch and review its Vercel preview, especially `/experience/`.
+4. Merge the branch into `main` when the preview is correct.
+5. Vercel builds `main` and publishes the updated Experience page to
+   `madebyhakim.com` automatically.
+
+The website imports the master CV directly. There is no second website copy to
+update, and `cv-exports/` remains untracked because Vercel recreates it during
+every clean build.
 
 Generated local outputs (ignored by Git because they are reproducible):
 
