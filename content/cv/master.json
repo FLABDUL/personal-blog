@@ -78,7 +78,8 @@
         "Modernised a financial-statements Bulk Override Tool by upgrading Java, Spring Boot and Gradle.",
         "Used automated refactoring and AI-assisted development tools, including Moderne and GitHub Copilot, to reduce legacy-code risk.",
         "Validated and documented REST APIs with Swagger to improve consistency for downstream financial systems.",
-        "Work across engineering and financial-domain boundaries to diagnose bottlenecks, clarify requirements and deliver maintainable production changes."
+        "Work across engineering and financial-domain boundaries to diagnose bottlenecks, clarify requirements and deliver maintainable production changes.",
+        "Addressed peak-period out-of-memory failures in ReportingService by analysing and rebalancing CPU, memory and disk allocations across containerised Statements applications and environments, and built Grafana dashboards to compare resource usage before and after the changes."
       ]
     },
     {

@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "id": "swe",
+  "outputFile": "abdul-hakim-norazman-swe-cv",
+  "website": "https://www.madebyhakim.com/",
+  "summary": "Technology consultant at Detillens, contracted to Morgan Stanley as a software engineer in Fund Services Technology. Experienced across fund reporting, investment research and cross-asset trading systems, with strengths in Java, Python, SQL, React and data-intensive financial technology.",
+  "skillRows": [
+    {
+      "label": "Languages",
+      "skillId": "professional-languages",
+      "values": ["Java", "Python", "SQL"]
+    },
+    {
+      "label": "Frameworks & Libraries",
+      "skillId": "frameworks-and-applications",
+      "values": ["Spring Boot", "React"]
+    },
+    {
+      "label": "Data & Infrastructure",
+      "skillId": "data-and-messaging",
+      "values": ["PostgreSQL", "Oracle", "Kafka"]
+    },
+    {
+      "label": "Tools",
+      "skillId": "engineering-and-delivery",
+      "values": ["Git", "Maven", "Gradle", "Swagger"]
+    }
+  ],
+  "experience": [
+    {
+      "company": "Detillens & Morgan Stanley",
+      "location": "Glasgow",
+      "period": "Dec 2025 - Present",
+      "role": "Technology Consultant & Software Engineer",
+      "team": "Fund Services Technology",
+      "highlights": [
+        [
+          {
+            "source": "experience",
+            "roleId": "technology-consultant-and-software-engineer",
+            "highlightIndex": 0
+          }
+        ],
+        [
+          {
+            "source": "experience",
+            "roleId": "technology-consultant-and-software-engineer",
+            "highlightIndex": 5
+          }
+        ]
+      ]
+    },
+    {
+      "company": "J.P. Morgan Asset Management",
+      "location": "Glasgow",
+      "period": "Jun 2021 - Nov 2025",
+      "role": "Software Engineer",
+      "team": "Research Technology & Trading Technology",
+      "highlights": [
+        [
+          {
+            "source": "experience",
+            "roleId": "software-engineer-research-technology",
+            "highlightIndex": 0
+          },
+          {
+            "source": "experience",
+            "roleId": "software-engineer-research-technology",
+            "highlightIndex": 1
+          }
+        ],
+        [
+          {
+            "source": "experience",
+            "roleId": "software-engineer-trading-technology",
+            "highlightIndex": 0
+          }
+        ],
+        [
+          {
+            "source": "professionalDevelopment",
+            "groupId": "bank-of-america-markets-programmes",
+            "itemIndex": 1
+          }
+        ]
+      ]
+    }
+  ],
+  "development": [
+    {
+      "source": "professionalDevelopment",
+      "groupId": "investment-and-markets",
+      "itemIndex": 1
+    },
+    {
+      "source": "engineeringWork",
+      "groupId": "independent-and-open-source",
+      "itemId": "dependency-agent"
+    },
+    {
+      "source": "engineeringWork",
+      "groupId": "independent-and-open-source",
+      "itemId": "octopus-energy-dashboard"
+    }
+  ],
+  "educationBullets": [
+    [
+      { "source": "education", "detailIndex": 0 },
+      { "source": "education", "detailIndex": 1 }
+    ],
+    [
+      {
+        "source": "universityLeadership",
+        "highlightIndex": 0
+      },
+      {
+        "source": "universityLeadership",
+        "highlightIndex": 1
+      }
+    ],
+    [
+      {
+        "source": "universityLeadership",
+        "highlightIndex": 2
+      },
+      {
+        "source": "universityLeadership",
+        "highlightIndex": 3
+      },
+      {
+        "source": "experience",
+        "roleId": "makerspace-technician",
+        "highlightIndex": 5
+      }
+    ]
+  ],
+  "emphasis": [
+    "Detillens",
+    "Morgan Stanley",
+    "30%",
+    "Java",
+    "Python",
+    "SQL",
+    "React",
+    "Spring Boot",
+    "Gradle",
+    "Moderne",
+    "GitHub Copilot",
+    "Long-Term Capital Market Assumptions",
+    "Asset Volatility",
+    "Sybase",
+    "Kafka",
+    "GraphQL",
+    "ReportingService",
+    "Grafana",
+    "CFA Level I",
+    "Quantitative Methods",
+    "Fixed Income",
+    "Financial Statement Analysis",
+    "OpenAI",
+    "Maven",
+    "SpaceX Hyperloop Pod Competition"
+  ]
+}
