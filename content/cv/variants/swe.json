@@ -45,12 +45,7 @@
           {
             "source": "experience",
             "roleId": "technology-consultant-and-software-engineer",
-            "highlightIndex": 1
-          },
-          {
-            "source": "experience",
-            "roleId": "technology-consultant-and-software-engineer",
-            "highlightIndex": 2
+            "highlightIndex": 5
           }
         ]
       ]
@@ -156,6 +151,8 @@
     "Sybase",
     "Kafka",
     "GraphQL",
+    "ReportingService",
+    "Grafana",
     "CFA Level I",
     "Quantitative Methods",
     "Fixed Income",
