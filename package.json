@@ -15,6 +15,9 @@
     "cv:generate": "node scripts/cv/generate.js",
     "cv:check": "node scripts/cv/validate.js && node scripts/cv/generate.js --check",
     "cv:compare": "node scripts/cv/compare.js",
+    "cv:latex": "node scripts/cv/validate.js && node scripts/cv/generate-latex.js --variant swe",
+    "cv:pdf": "npm run cv:latex && node scripts/cv/compile-pdf.js --variant swe",
+    "cv:setup-pdf": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/cv/install-tectonic.ps1",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\""
   },
   "dependencies": {

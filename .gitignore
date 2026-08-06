@@ -74,3 +74,9 @@ cv-reports/
 
 # Generated on demand from content/cv/master.json
 cv-exports/
+
+# Private CV inputs, local PDF toolchain and generated PDFs
+content/cv/private.local.json
+.tools/
+output/pdf/
+tmp/pdfs/

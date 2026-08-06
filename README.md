@@ -65,6 +65,53 @@ Generated local outputs (ignored by Git because they are reproducible):
 - `cv-exports/full-cv.md` contains the complete career record.
 - `cv-exports/brief-cv.md` contains records selected with `includeInBrief`.
 
+## Generate the software-engineering CV PDF
+
+The SWE CV is generated from the same master record using the selection and
+layout rules in `content/cv/variants/swe.json`. The generated LaTeX retains the
+one-page A4 design from the original Overleaf project, but Overleaf is no
+longer required for routine updates.
+
+Private contact data is deliberately separate from the public master record.
+For the initial setup:
+
+```powershell
+Copy-Item content/cv/private.local.example.json content/cv/private.local.json
+```
+
+Add the real mobile number to `private.local.json`. The file is ignored by Git.
+Alternatively, set `CV_MOBILE` in the environment for one build.
+
+Install the pinned, checksum-verified Tectonic compiler once:
+
+```powershell
+npm run cv:setup-pdf
+```
+
+Then generate the LaTeX and compile the PDF with one command:
+
+```powershell
+npm run cv:pdf
+```
+
+Outputs:
+
+- `cv-exports/latex/abdul-hakim-norazman-swe-cv.tex`
+- `output/pdf/abdul-hakim-norazman-swe-cv.pdf`
+
+Both outputs are ignored because the generated document may contain private
+contact information. To update the CV:
+
+1. Edit `content/cv/master.json`.
+2. Adjust `content/cv/variants/swe.json` only when the one-page selection or
+   emphasis should change.
+3. Run `npm run cv:pdf`.
+4. Review the generated PDF before sending it.
+
+The generated `.tex` can still be copied into Overleaf for collaborative
+editing or comparison, but edits made only in Overleaf will not update the
+master record and will be overwritten by the next generation.
+
 ## Compare existing or new CV files
 
 The comparison command accepts a DOCX, PDF, Markdown or plain-text file, or a
