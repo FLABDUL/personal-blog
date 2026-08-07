@@ -311,6 +311,21 @@ img {
   margin-top: 0.55rem;
 }
 
+.cv-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.1rem;
+}
+
+.cv-card__actions .cv-card__link {
+  margin-top: 0;
+}
+
+.cv-card__link--secondary {
+  color: var(--cv-muted);
+}
+
 .cv-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

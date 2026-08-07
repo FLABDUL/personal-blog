@@ -250,6 +250,9 @@
             "href": {
               "$ref": "#/definitions/nonEmptyString"
             },
+            "sourceHref": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
             "tags": {
               "$ref": "#/definitions/stringList"
             }

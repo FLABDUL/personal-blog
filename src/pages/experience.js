@@ -148,15 +148,29 @@ export default function ExperiencePage() {
                           <li key={tag}>{tag}</li>
                         ))}
                       </ul>
-                      {item.href && (
-                        <a
-                          className="cv-card__link"
-                          href={item.href}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          View project
-                        </a>
+                      {(item.href || item.sourceHref) && (
+                        <div className="cv-card__actions">
+                          {item.href && (
+                            <a
+                              className="cv-card__link"
+                              href={item.href}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              {item.sourceHref ? "Live demo" : "View project"}
+                            </a>
+                          )}
+                          {item.sourceHref && (
+                            <a
+                              className="cv-card__link cv-card__link--secondary"
+                              href={item.sourceHref}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              Source code
+                            </a>
+                          )}
+                        </div>
                       )}
                     </article>
                   ))}
