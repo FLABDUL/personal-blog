@@ -37,6 +37,7 @@ const renderWorkItem = item =>
     "",
     `Technologies and themes: ${item.tags.join(", ")}`,
     item.href ? `\nProject: ${item.href}` : "",
+    item.sourceHref ? `Source: ${item.sourceHref}` : "",
   ]
     .filter(Boolean)
     .join("\n")
