@@ -30,7 +30,7 @@ export default function HomePage() {
                     If you're into tech, finance, or just want to chat, feel free to connect with me on{" "}
                     <a href="https://linkedin.com/in/flabdul" target="_blank" rel="noopener noreferrer">LinkedIn</a>, check out my work on{" "}
                     <a href="https://github.com/FLABDUL" target="_blank" rel="noopener noreferrer">GitHub</a>, or follow my activities on{" "}
-                    <a href="https://connect.garmin.com/app/profile/86c7a0bb-2e9b-4793-a9a3-1cb0884ec934" target="_blank" rel="noopener noreferrer">Garmin Connect</a>.
+                    <a href="https://www.strava.com/athletes/88805607" target="_blank" rel="noopener noreferrer">Strava</a>.
                 </p>
             </section>
         </Layout>
