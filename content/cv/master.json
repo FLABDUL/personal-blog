@@ -161,11 +161,12 @@
           "id": "dependency-agent",
           "includeInBrief": true,
           "name": "Dependency Agent",
-          "context": "AI-assisted developer tooling",
-          "description": "Built an OpenAI-powered prototype that analyses changelogs and dependency metadata to help diagnose Maven dependency conflicts.",
-          "href": "https://github.com/FLABDUL/dependency-agent",
+          "context": "Evidence-led developer tooling",
+          "description": "Built an interactive tool that traces a Maven compilation failure to an incompatible SLF4J version, explains the supporting evidence and proposes a verified POM fix.",
+          "href": "https://dependency-agent-demo.flabdul.chatgpt.site",
+          "sourceHref": "https://github.com/FLABDUL/dependency-agent",
           "tags": [
-            "OpenAI",
+            "Python",
             "Java",
             "Maven"
           ]
