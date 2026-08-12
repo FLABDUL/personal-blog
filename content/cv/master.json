@@ -174,13 +174,15 @@
           "id": "strava-dashboard",
           "includeInBrief": false,
           "name": "Strava Dashboard",
-          "context": "Full-stack fitness analytics",
-          "description": "Developed a dashboard with OAuth integration, PostgreSQL-backed activity data, custom weekly and monthly statistics, charts and interactive filtering.",
-          "href": "https://github.com/FLABDUL/strava-dashboard",
+          "context": "AI-assisted fitness analytics",
+          "description": "Built a demo-first training dashboard with Strava OAuth, interactive activity analysis and OpenAI-generated coaching insights, while preserving a private live-data mode.",
+          "href": "https://strava.madebyhakim.com",
+          "sourceHref": "https://github.com/FLABDUL/strava-dashboard",
           "tags": [
             "React",
             "Node.js",
-            "PostgreSQL"
+            "OpenAI",
+            "Strava API"
           ]
         },
         {
@@ -200,14 +202,16 @@
         {
           "id": "machine-learning-cad-filter",
           "includeInBrief": false,
-          "name": "Machine-learning CAD Filter",
-          "context": "BEng thesis",
-          "description": "Developed a computational-geometry and machine-learning filter for CAD data in partnership with Theorem Solutions and Ford Motor Company.",
-          "href": "https://github.com/FLABDUL/beng-thesis",
+          "name": "Computational Geometry CAD Filter",
+          "context": "BEng thesis / revitalised project",
+          "description": "Extended a shrinking-ball medial-axis pipeline to expose geometric scale features from sampled CAD surfaces, then rebuilt it with reproducible C++ tooling and an interactive browser reconstruction.",
+          "href": "https://computational-geometry-cad-filter.flabdul.chatgpt.site",
+          "sourceHref": "https://github.com/FLABDUL/beng-thesis",
           "tags": [
             "C++",
-            "Python",
-            "Computational geometry"
+            "PCL",
+            "Computational geometry",
+            "React"
           ]
         }
       ]
