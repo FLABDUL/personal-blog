@@ -193,6 +193,7 @@
           "context": "Live household-energy analytics demo",
           "description": "Built a privacy-first dashboard that discovers Octopus smart meters, turns half-hourly electricity and gas readings into clear usage patterns, estimates tariff costs and offers optional server-side AI coaching.",
           "href": "https://octopus-energy-app-psi.vercel.app",
+          "sourceHref": "https://github.com/FLABDUL/octopus-energy-app",
           "tags": [
             "React",
             "Node.js",
