@@ -38,3 +38,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   });
 };
+
+exports.onCreateDevServer = ({ app }) => {
+  app.get("/api/leetcode", require("./api/leetcode"));
+};
