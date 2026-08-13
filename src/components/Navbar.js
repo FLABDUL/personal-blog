@@ -4,6 +4,7 @@ import { Link } from "gatsby"
 const links = [
   { to: "/", label: "About" },
   { to: "/experience", label: "Experience" },
+  { to: "/projects", label: "Projects" },
   { to: "/blog", label: "Blog" },
   { to: "/bookshelf", label: "Bookshelf" },
   { to: "/studio", label: "Studio" },

@@ -1,5 +1,7 @@
 import React from "react"
+import { Link } from "gatsby"
 import Layout from "../components/Layout"
+import ProjectCard from "../components/ProjectCard"
 import {
   development,
   education,
@@ -128,55 +130,37 @@ export default function ExperiencePage() {
             Engineering work
           </SectionHeading>
           <div className="cv-work">
-            {engineeringWork.map(group => (
-              <section className="cv-work__group" key={group.title}>
-                <div className="cv-work__heading">
-                  <h3>{group.title}</h3>
-                  <p>{group.intro}</p>
-                </div>
-                <div className="cv-grid">
-                  {group.items.map(item => (
-                    <article className="cv-card cv-project" key={item.name}>
-                      <p className="cv-card__eyebrow">{item.context}</p>
-                      <h4>{item.name}</h4>
-                      <p>{item.description}</p>
-                      <ul
-                        className="cv-tags"
-                        aria-label="Technologies and themes"
-                      >
-                        {item.tags.map(tag => (
-                          <li key={tag}>{tag}</li>
-                        ))}
-                      </ul>
-                      {(item.href || item.sourceHref) && (
-                        <div className="cv-card__actions">
-                          {item.href && (
-                            <a
-                              className="cv-card__link"
-                              href={item.href}
-                              target="_blank"
-                              rel="noreferrer"
-                            >
-                              {item.sourceHref ? "Live demo" : "View project"}
-                            </a>
-                          )}
-                          {item.sourceHref && (
-                            <a
-                              className="cv-card__link cv-card__link--secondary"
-                              href={item.sourceHref}
-                              target="_blank"
-                              rel="noreferrer"
-                            >
-                              Source code
-                            </a>
-                          )}
-                        </div>
-                      )}
-                    </article>
-                  ))}
-                </div>
-              </section>
-            ))}
+            {engineeringWork.map(group => {
+              const isPersonal = group.id === "independent-and-open-source"
+              const items = isPersonal
+                ? group.items.filter(item => item.featured)
+                : group.items
+
+              return (
+                <section className="cv-work__group" key={group.title}>
+                  <div className="cv-work__heading">
+                    <h3>
+                      {isPersonal ? "Selected personal projects" : group.title}
+                    </h3>
+                    <p>
+                      {isPersonal
+                        ? "A concise selection of public work. The Projects page includes visuals, every demo and source links."
+                        : group.intro}
+                    </p>
+                  </div>
+                  <div className="cv-grid">
+                    {items.map(item => (
+                      <ProjectCard project={item} key={item.id} />
+                    ))}
+                  </div>
+                  {isPersonal && (
+                    <Link className="cv-work__more cv-action" to="/projects/">
+                      Explore all projects and live demos →
+                    </Link>
+                  )}
+                </section>
+              )
+            })}
           </div>
         </section>
 

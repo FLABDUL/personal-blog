@@ -253,6 +253,18 @@
             "sourceHref": {
               "$ref": "#/definitions/nonEmptyString"
             },
+            "image": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "imageAlt": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
+            "featured": {
+              "type": "boolean"
+            },
+            "showcaseLabel": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
             "tags": {
               "$ref": "#/definitions/stringList"
             }

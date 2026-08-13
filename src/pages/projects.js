@@ -1,29 +1,58 @@
-import React, { useEffect } from "react"
-import { Link, navigate } from "gatsby"
+import React from "react"
 import Layout from "../components/Layout"
+import ProjectCard from "../components/ProjectCard"
+import { engineeringWork } from "../data/cv"
 
 export default function ProjectsPage() {
-  useEffect(() => {
-    navigate("/experience/#engineering-work", { replace: true })
-  }, [])
+  const personalProjects = engineeringWork.find(
+    group => group.id === "independent-and-open-source"
+  ).items
 
   return (
-    <Layout>
-      <h1>Projects have moved</h1>
-      <p>
-        Projects now sit alongside my professional experience, university work
-        and technical development in one long-form career record.
-      </p>
-      <p>
-        <Link to="/experience/#engineering-work">View engineering work</Link>
-      </p>
+    <Layout wide>
+      <article className="projects-showcase">
+        <header className="projects-hero">
+          <p className="projects-eyebrow">Selected independent work</p>
+          <h1>Projects built to be explored.</h1>
+          <p>
+            Public tools, technical experiments and open-source contributions.
+            The visuals below come from the working demos themselves—open one to
+            try the product, or inspect the source where it is available.
+          </p>
+          <dl className="projects-summary" aria-label="Project collection">
+            <div>
+              <dt>{personalProjects.length}</dt>
+              <dd>public projects</dd>
+            </div>
+            <div>
+              <dt>
+                {personalProjects.filter(project => project.sourceHref).length}
+              </dt>
+              <dd>interactive demos</dd>
+            </div>
+            <div>
+              <dt>1</dt>
+              <dd>open-source contribution</dd>
+            </div>
+          </dl>
+        </header>
+
+        <section className="projects-grid" aria-label="Personal projects">
+          {personalProjects.map(project => (
+            <ProjectCard project={project} visual key={project.id} />
+          ))}
+        </section>
+      </article>
     </Layout>
   )
 }
 
 export const Head = () => (
   <>
-    <title>Projects moved | Abdul Hakim Norazman</title>
-    <meta name="robots" content="noindex" />
+    <title>Projects | Abdul Hakim Norazman</title>
+    <meta
+      name="description"
+      content="Interactive software projects and open-source work by Abdul Hakim Norazman, with live demos, source code and product visuals."
+    />
   </>
 )
