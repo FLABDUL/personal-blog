@@ -1,5 +1,6 @@
 import React from "react"
 import Layout from "../components/Layout"
+import LeetCodeCard from "../components/LeetCodeCard"
 import ProjectCard from "../components/ProjectCard"
 import { engineeringWork } from "../data/cv"
 
@@ -41,6 +42,10 @@ export default function ProjectsPage() {
           {personalProjects.map(project => (
             <ProjectCard project={project} visual key={project.id} />
           ))}
+        </section>
+
+        <section className="projects-practice" aria-label="Coding practice">
+          <LeetCodeCard />
         </section>
       </article>
     </Layout>

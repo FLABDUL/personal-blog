@@ -1,0 +1,48 @@
+{
+  "username": "FLABDUL",
+  "profileUrl": "https://leetcode.com/u/FLABDUL/",
+  "fallback": {
+    "totalSolved": 143,
+    "difficulty": {
+      "easy": 83,
+      "medium": 57,
+      "hard": 3
+    },
+    "languages": [
+      {
+        "name": "Java",
+        "solved": 83
+      },
+      {
+        "name": "Pandas",
+        "solved": 43
+      },
+      {
+        "name": "Python3",
+        "solved": 17
+      }
+    ],
+    "focusAreas": [
+      {
+        "name": "Array",
+        "solved": 56
+      },
+      {
+        "name": "Hash Table",
+        "solved": 21
+      },
+      {
+        "name": "Two Pointers",
+        "solved": 20
+      },
+      {
+        "name": "Depth-First Search",
+        "solved": 15
+      },
+      {
+        "name": "Dynamic Programming",
+        "solved": 12
+      }
+    ]
+  }
+}

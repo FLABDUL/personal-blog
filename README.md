@@ -35,6 +35,23 @@ hiding a field in the UI would not make it private.
 Vercel automatically builds branch previews and deploys `main` to the live
 domain.
 
+## LeetCode profile card
+
+The Projects page displays a coding-practice card linked to the public LeetCode
+profile configured in `content/leetcode.json`. The Experience page includes a
+simple LeetCode note under professional development. The card requests fresh
+statistics from `/api/leetcode`; Vercel caches successful responses for 24
+hours, so totals update automatically without a commit or deployment.
+
+`content/leetcode.json` also contains a saved fallback snapshot. Visitors see
+that snapshot if LeetCode is temporarily unavailable or changes its public
+GraphQL response. It normally needs no maintenance, but it can be refreshed
+manually if the integration is unavailable for an extended period.
+
+To change the displayed account, update `username`, `profileUrl` and the
+fallback values together. Then run the production build and verify both
+`/projects/` and `/experience/` in the Vercel preview.
+
 ## Bookshelf
 
 The canonical bookshelf record is [`content/books.json`](content/books.json).
