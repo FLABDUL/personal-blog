@@ -5,9 +5,9 @@
   "description": "A Gatsby + MDX personal blog",
   "author": "Abdul Hakim Norazman",
   "scripts": {
-    "predevelop": "node scripts/cv/validate.js",
+    "predevelop": "node scripts/cv/validate.js && node scripts/books/validate.js",
     "develop": "gatsby develop",
-    "prebuild": "node scripts/cv/validate.js && node scripts/cv/generate.js",
+    "prebuild": "node scripts/cv/validate.js && node scripts/books/validate.js && node scripts/cv/generate.js",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
@@ -18,6 +18,7 @@
     "cv:latex": "node scripts/cv/validate.js && node scripts/cv/generate-latex.js --variant swe",
     "cv:pdf": "npm run cv:latex && node scripts/cv/compile-pdf.js --variant swe",
     "cv:setup-pdf": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/cv/install-tectonic.ps1",
+    "books:validate": "node scripts/books/validate.js",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\""
   },
   "dependencies": {

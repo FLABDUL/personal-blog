@@ -1,0 +1,194 @@
+[
+  {
+    "id": "ultra-processed-people",
+    "title": "Ultra-Processed People",
+    "author": "Chris van Tulleken",
+    "cover": "/books/ultra-processed-people.jpg",
+    "added": "2026-08-12",
+    "category": "Health & Science"
+  },
+  {
+    "id": "the-intelligent-investor",
+    "title": "The Intelligent Investor",
+    "author": "Benjamin Graham",
+    "cover": "/books/the-intelligent-investor.jpg",
+    "added": "2026-08-12",
+    "category": "Finance"
+  },
+  {
+    "id": "beyond-order",
+    "title": "Beyond Order",
+    "author": "Jordan B. Peterson",
+    "cover": "/books/beyond-order.jpg",
+    "added": "2026-08-12",
+    "category": "Personal Growth"
+  },
+  {
+    "id": "how-not-to-die",
+    "title": "How Not to Die",
+    "author": "Michael Greger with Gene Stone",
+    "cover": "/books/how-not-to-die.jpg",
+    "added": "2026-08-12",
+    "category": "Health & Science"
+  },
+  {
+    "id": "clean-code",
+    "title": "Clean Code",
+    "author": "Robert C. Martin",
+    "cover": "/books/clean-code.jpg",
+    "added": "2026-08-12",
+    "category": "Software Engineering"
+  },
+  {
+    "id": "clean-architecture",
+    "title": "Clean Architecture",
+    "author": "Robert C. Martin",
+    "cover": "/books/clean-architecture.jpg",
+    "added": "2026-08-12",
+    "category": "Software Engineering"
+  },
+  {
+    "id": "effective-java",
+    "title": "Effective Java",
+    "author": "Joshua Bloch",
+    "cover": "/books/effective-java.jpg",
+    "added": "2026-08-12",
+    "category": "Software Engineering"
+  },
+  {
+    "id": "java-concurrency-in-practice",
+    "title": "Java Concurrency in Practice",
+    "author": "Brian Goetz et al.",
+    "cover": "/books/java-concurrency-in-practice.jpg",
+    "added": "2026-08-12",
+    "category": "Software Engineering"
+  },
+  {
+    "id": "code-charles-petzold",
+    "title": "Code",
+    "author": "Charles Petzold",
+    "cover": "/books/code-charles-petzold.jpg",
+    "added": "2026-08-12",
+    "category": "Technology"
+  },
+  {
+    "id": "the-daily-stoic",
+    "title": "The Daily Stoic",
+    "author": "Ryan Holiday & Stephen Hanselman",
+    "cover": "/books/the-daily-stoic.jpg",
+    "added": "2025-07-17",
+    "category": "Personal Growth"
+  },
+  {
+    "id": "why-we-sleep",
+    "title": "Why We Sleep",
+    "author": "Matthew Walker",
+    "cover": "/books/why-we-sleep.jpg",
+    "added": "2025-06-06",
+    "category": "Health & Science"
+  },
+  {
+    "id": "the-48-laws-of-power",
+    "title": "The 48 Laws of Power",
+    "author": "Robert Greene",
+    "cover": "/books/48-laws-of-power.jpg",
+    "added": "2025-06-06",
+    "category": "Personal Growth"
+  },
+  {
+    "id": "the-trading-game",
+    "title": "The Trading Game",
+    "author": "Gary Stevenson",
+    "cover": "/books/the-trading-game.jpg",
+    "added": "2025-06-06",
+    "category": "Finance"
+  },
+  {
+    "id": "the-fellowship-of-the-ring",
+    "title": "The Fellowship of the Ring",
+    "author": "J.R.R. Tolkien",
+    "cover": "/books/the-fellowship-of-the-ring.jpg",
+    "added": "2025-06-06",
+    "category": "Other"
+  },
+  {
+    "id": "the-two-towers",
+    "title": "The Two Towers",
+    "author": "J.R.R. Tolkien",
+    "cover": "/books/the-two-towers.jpg",
+    "added": "2025-06-06",
+    "category": "Other"
+  },
+  {
+    "id": "the-return-of-the-king",
+    "title": "The Return of the King",
+    "author": "J.R.R. Tolkien",
+    "cover": "/books/the-return-of-the-king.jpg",
+    "added": "2025-06-06",
+    "category": "Other"
+  },
+  {
+    "id": "the-ideal-muslim",
+    "title": "The Ideal Muslim",
+    "author": "Dr. Muhammad Ali Al-Hashimi",
+    "cover": "/books/ideal-muslim.jpg",
+    "added": "2025-06-06",
+    "category": "Personal Growth"
+  },
+  {
+    "id": "thinking-fast-and-slow",
+    "title": "Thinking, Fast and Slow",
+    "author": "Daniel Kahneman",
+    "cover": "/books/thinking-fast-and-slow.jpg",
+    "added": "2025-06-06",
+    "category": "Personal Growth"
+  },
+  {
+    "id": "12-rules-for-life",
+    "title": "12 Rules for Life",
+    "author": "Jordan B. Peterson",
+    "cover": "/books/12-rules-for-life.jpg",
+    "added": "2025-06-06",
+    "category": "Personal Growth"
+  },
+  {
+    "id": "bad-blood",
+    "title": "Bad Blood",
+    "author": "John Carreyrou",
+    "cover": "/books/bad-blood.jpg",
+    "added": "2025-06-06",
+    "category": "Technology"
+  },
+  {
+    "id": "elon-musk",
+    "title": "Elon Musk",
+    "author": "Walter Isaacson",
+    "cover": "/books/elon-musk.jpg",
+    "added": "2025-06-06",
+    "category": "Technology"
+  },
+  {
+    "id": "the-secret-horsepower-race",
+    "title": "The Secret Horsepower Race",
+    "author": "Callum E. Douglas",
+    "cover": "/books/secret-horsepower-race.jpg",
+    "added": "2025-06-06",
+    "category": "Technology"
+  },
+  {
+    "id": "never-split-the-difference",
+    "title": "Never Split the Difference",
+    "author": "Chris Voss",
+    "cover": "/books/never-split-the-difference.jpg",
+    "added": "2025-06-06",
+    "category": "Personal Growth"
+  },
+  {
+    "id": "the-hidden-life-of-trees",
+    "title": "The Hidden Life of Trees",
+    "author": "Peter Wohlleben",
+    "cover": "/books/hidden-life-of-trees.jpg",
+    "added": "2025-06-06",
+    "category": "Health & Science"
+  }
+]
