@@ -79,6 +79,144 @@ img {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+.bookshelf-header {
+  max-width: 42rem;
+  margin-bottom: 2.5rem;
+}
+
+.bookshelf-header h1 {
+  margin: 0.15rem 0 0.5rem;
+}
+
+.bookshelf-header > p:last-child {
+  margin: 0;
+  color: #b9c0c8;
+}
+
+.bookshelf-eyebrow {
+  margin: 0;
+  color: #8f9aa6;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.bookshelf-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.bookshelf-filter {
+  padding: 0.45rem 0.8rem;
+  color: #cbd5df;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: #191f27;
+  border: 1px solid #343d48;
+  border-radius: 999px;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.bookshelf-filter:hover {
+  color: #fff;
+  border-color: #5a6877;
+}
+
+.bookshelf-filter:focus-visible {
+  outline: 3px solid rgba(88, 166, 255, 0.38);
+  outline-offset: 2px;
+}
+
+.bookshelf-filter[aria-pressed="true"] {
+  color: #08111a;
+  background: #77bdfb;
+  border-color: #77bdfb;
+}
+
+.bookshelf-count {
+  margin: 0 0 1.25rem;
+  color: #8f9aa6;
+  font-size: 0.86rem;
+}
+
+.bookshelf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+  gap: 2rem 1.5rem;
+}
+
+.book-card {
+  min-width: 0;
+}
+
+.book-card__cover {
+  overflow: hidden;
+  aspect-ratio: 2 / 3;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 0.75rem 1.75rem rgba(0, 0, 0, 0.24);
+}
+
+.book-card__cover img {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border-radius: 0;
+  object-fit: contain;
+  box-shadow: none;
+}
+
+.book-card__fallback {
+  display: flex;
+  height: 100%;
+  padding: 1.25rem;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(145deg, #243447, #121820 72%);
+}
+
+.book-card__fallback span {
+  font-family: Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.book-card__fallback small {
+  color: #c3ccd6;
+  line-height: 1.4;
+}
+
+.book-card h2 {
+  margin: 0.75rem 0 0.15rem;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.book-card > p {
+  margin: 0;
+  color: #aeb7c1;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.book-card__category {
+  margin: 0.65rem 0 0;
+  width: fit-content;
+  padding: 0.12rem 0.45rem;
+  color: #9da8b5;
+  font-size: 0.68rem;
+  line-height: 1.45;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 999px;
+}
+
 .cv {
   --cv-muted: #aeb7c1;
   --cv-border: #30363d;

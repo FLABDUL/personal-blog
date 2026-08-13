@@ -35,6 +35,30 @@ hiding a field in the UI would not make it private.
 Vercel automatically builds branch previews and deploys `main` to the live
 domain.
 
+## Bookshelf
+
+The canonical bookshelf record is [`content/books.json`](content/books.json).
+The website reads this file directly, so there is no generated copy to update.
+Books are displayed newest first using their `added` date; keep existing stable
+IDs unchanged when editing titles or authors.
+
+To add a book:
+
+1. Save an optimized portrait cover in `static/books/` using a lowercase,
+   hyphenated filename such as `my-book.jpg`. If a cover is not yet available,
+   omit the `cover` field and the page will show a text fallback.
+2. Add a record to `content/books.json` with a unique `id`, `title`, `author`,
+   ISO `added` date, one of the established recruiter-friendly `category`
+   values and an optional `/books/...` cover path.
+3. Run `npm run books:validate`.
+4. Run `npm run build` and review `/bookshelf/` in the Vercel preview.
+5. Merge the branch into `main` to publish it.
+
+The validator rejects malformed records, duplicate IDs/books, missing categories
+and missing cover paths. It warns about books using the fallback and
+unreferenced files in the cover directory. The production build runs this
+validation automatically.
+
 ### Local update
 
 ```powershell
