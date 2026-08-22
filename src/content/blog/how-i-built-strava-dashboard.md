@@ -2,9 +2,8 @@
 title: "How I Built My Strava Dashboard 🚴‍♂️"
 date: "2025-07-17"
 slug: "how-i-built-strava-dashboard"
+description: "Building a privacy-respecting training dashboard while learning about Strava OAuth, data modelling, and React performance."
 ---
-
-# How I Built My Strava Dashboard 📈
 
 This project started as a way to visualize my endurance training data from Strava — running, cycling, swimming, and more — in a personalized, privacy-respecting dashboard. I wanted an app that not only pulled in activity data, but also gave meaningful breakdowns like distance over time, summaries by activity type, and weekly/monthly stats.
 

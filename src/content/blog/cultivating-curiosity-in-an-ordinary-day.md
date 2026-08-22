@@ -2,6 +2,7 @@
 title: "Cultivating Curiosity in an Ordinary Day"
 date: "2026-08-18"
 slug: "cultivating-curiosity-in-an-ordinary-day"
+description: "A small personal experiment in interrupting routine, paying attention, and leaving more room for everyday surprise."
 ---
 
 I recently found a short line in my notes: “Curiosity cultivator—where to eat,
