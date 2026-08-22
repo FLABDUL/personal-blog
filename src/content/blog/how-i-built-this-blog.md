@@ -2,9 +2,8 @@
 title: "How I Built This Blog"
 date: "2025-06-05"
 slug: "how-i-built-this-blog"
+description: "How a Gatsby experiment became my personal portfolio, blog, and a place to keep learning in public."
 ---
-
-# How I Built This Blog 💻
 
 This blog began as an exploration into building static sites with React + Gatsby + MDX, and turned into a personal portfolio and learning space for all my creative and technical work.
 
