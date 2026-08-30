@@ -1,0 +1,21 @@
+# Generated for Codex local worktrees. Keep commands cross-platform where practical.
+version = 1
+name = "personal-blog"
+
+[setup]
+script = "npm ci"
+
+[[actions]]
+name = "Develop"
+icon = "run"
+command = "npm run develop"
+
+[[actions]]
+name = "Build"
+icon = "build"
+command = "npm run build"
+
+[[actions]]
+name = "Validate content"
+icon = "test"
+command = "npm run cv:validate && npm run books:validate"
