@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import { Link, navigate } from "gatsby"
 import Layout from "../components/Layout"
+import Seo from "../components/Seo"
 
 export default function ProjectsPage() {
   useEffect(() => {
@@ -21,9 +22,6 @@ export default function ProjectsPage() {
   )
 }
 
-export const Head = () => (
-  <>
-    <title>Projects moved | Abdul Hakim Norazman</title>
-    <meta name="robots" content="noindex" />
-  </>
+export const Head = ({ location }) => (
+  <Seo title="Projects moved" pathname={location.pathname} noIndex />
 )

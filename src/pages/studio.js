@@ -1,5 +1,6 @@
 import React from "react";
 import Layout from "../components/Layout";
+import Seo from "../components/Seo";
 import { artworks } from "../data/artworks";
 
 export default function StudioPage() {
@@ -19,3 +20,7 @@ export default function StudioPage() {
     </Layout>
   );
 }
+
+export const Head = ({ location }) => (
+  <Seo title="Studio" pathname={location.pathname} />
+);

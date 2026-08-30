@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import Layout from "../components/Layout"
+import Seo from "../components/Seo"
 import books from "../../content/books.json"
 
 const booksByNewest = [...books].sort((first, second) =>
@@ -78,3 +79,7 @@ export default function BookshelfPage() {
     </Layout>
   )
 }
+
+export const Head = ({ location }) => (
+  <Seo title="Bookshelf" pathname={location.pathname} />
+)

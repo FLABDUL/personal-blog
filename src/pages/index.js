@@ -1,5 +1,6 @@
 import React from "react";
 import Layout from "../components/Layout";
+import Seo from "../components/Seo";
 
 export default function HomePage() {
     return (
@@ -36,3 +37,7 @@ export default function HomePage() {
         </Layout>
     );
 }
+
+export const Head = ({ location }) => (
+    <Seo title="About" pathname={location.pathname} />
+);
