@@ -2,6 +2,7 @@ import React from "react"
 import Layout from "../components/Layout"
 import LeetCodeCard from "../components/LeetCodeCard"
 import ProjectCard from "../components/ProjectCard"
+import Seo from "../components/Seo"
 import { engineeringWork } from "../data/cv"
 
 export default function ProjectsPage() {
@@ -52,12 +53,10 @@ export default function ProjectsPage() {
   )
 }
 
-export const Head = () => (
-  <>
-    <title>Projects | Abdul Hakim Norazman</title>
-    <meta
-      name="description"
-      content="Interactive software projects and open-source work by Abdul Hakim Norazman, with live demos, source code and product visuals."
-    />
-  </>
+export const Head = ({ location }) => (
+  <Seo
+    title="Projects"
+    description="Interactive software projects and open-source work by Abdul Hakim Norazman, with live demos, source code and product visuals."
+    pathname={location.pathname}
+  />
 )

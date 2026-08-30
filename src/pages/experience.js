@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import Layout from "../components/Layout"
 import ProjectCard from "../components/ProjectCard"
+import Seo from "../components/Seo"
 import {
   development,
   education,
@@ -266,12 +267,10 @@ export default function ExperiencePage() {
   )
 }
 
-export const Head = () => (
-  <>
-    <title>Experience | Abdul Hakim Norazman</title>
-    <meta
-      name="description"
-      content="The long-form career record of Abdul Hakim Norazman: professional software engineering, projects, university leadership, community impact and continuing development."
-    />
-  </>
+export const Head = ({ location }) => (
+  <Seo
+    title="Experience"
+    description="The long-form career record of Abdul Hakim Norazman: professional software engineering, projects, university leadership, community impact and continuing development."
+    pathname={location.pathname}
+  />
 )

@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
+import Seo from "../components/Seo"
 
 export const query = graphql`
   query {
@@ -137,3 +138,7 @@ export default function BlogPage({ data }) {
     </Layout>
   )
 }
+
+export const Head = ({ location }) => (
+  <Seo title="Blog" pathname={location.pathname} />
+)

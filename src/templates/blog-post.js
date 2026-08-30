@@ -1,6 +1,7 @@
 import * as React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
+import Seo from "../components/Seo"
 
 export default function BlogPost({ data }) {
   const post = data.markdownRemark
@@ -24,6 +25,13 @@ export default function BlogPost({ data }) {
     </Layout>
   )
 }
+
+export const Head = ({ data, location }) => (
+  <Seo
+    title={data.markdownRemark.frontmatter.title}
+    pathname={location.pathname}
+  />
+)
 
 export const query = graphql`
   query BlogPostBySlug($slug: String!) {

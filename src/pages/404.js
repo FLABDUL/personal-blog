@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import Layout from "../components/Layout"
+import Seo from "../components/Seo"
 
 export default function NotFoundPage() {
   return (
@@ -18,9 +19,6 @@ export default function NotFoundPage() {
   )
 }
 
-export const Head = () => (
-  <>
-    <title>Page not found | Abdul Hakim Norazman</title>
-    <meta name="robots" content="noindex" />
-  </>
+export const Head = ({ location }) => (
+  <Seo title="Page not found" pathname={location.pathname} noIndex />
 )
