@@ -1,5 +1,13 @@
 [
   {
+    "id": "maus",
+    "title": "Maus",
+    "author": "Art Spiegelman",
+    "cover": "/books/maus.jpg",
+    "added": "2026-08-31",
+    "category": "Other"
+  },
+  {
     "id": "ultra-processed-people",
     "title": "Ultra-Processed People",
     "author": "Chris van Tulleken",
