@@ -22,6 +22,8 @@
     "cv:pdf": "npm run cv:latex && node scripts/cv/compile-pdf.js --variant swe",
     "cv:setup-pdf": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/cv/install-tectonic.ps1",
     "books:validate": "node scripts/books/validate.js",
+    "test:smoke": "playwright test",
+    "test:smoke:local": "npm run build && playwright test",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\""
   },
   "dependencies": {
@@ -42,6 +44,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",
+    "@playwright/test": "^1.62.1",
     "mammoth": "^1.12.2",
     "pdf-parse": "^1.1.4",
     "prettier": "^2.8.8"
