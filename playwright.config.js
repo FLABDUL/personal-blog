@@ -1,6 +1,7 @@
 const { defineConfig, devices } = require("@playwright/test")
 
 const baseURL = process.env.BASE_URL || "http://127.0.0.1:9000"
+const protectionBypass = process.env.VERCEL_AUTOMATION_BYPASS_SECRET
 
 module.exports = defineConfig({
   testDir: "./tests/smoke",
@@ -14,6 +15,12 @@ module.exports = defineConfig({
     trace: "on-first-retry",
     screenshot: "only-on-failure",
     video: "retain-on-failure",
+    extraHTTPHeaders: protectionBypass
+      ? {
+          "x-vercel-protection-bypass": protectionBypass,
+          "x-vercel-set-bypass-cookie": "true",
+        }
+      : undefined,
   },
   projects: [
     {
