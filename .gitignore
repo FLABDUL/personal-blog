@@ -80,3 +80,7 @@ content/cv/private.local.json
 .tools/
 output/pdf/
 tmp/pdfs/
+
+# Playwright test artefacts
+playwright-report/
+test-results/
