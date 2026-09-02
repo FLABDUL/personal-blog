@@ -11,7 +11,7 @@ permissions:
 jobs:
   dependabot-automerge:
     name: Dependabot Auto-merge
-    if: github.actor == 'dependabot[bot]' && vars.DEPENDABOT_AUTOMERGE == 'enabled'
+    if: github.event.pull_request.user.login == 'dependabot[bot]' && vars.DEPENDABOT_AUTOMERGE == 'enabled'
     runs-on: ubuntu-latest
     steps:
       - id: metadata
