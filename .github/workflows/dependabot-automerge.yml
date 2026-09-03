@@ -18,6 +18,9 @@ jobs:
         uses: dependabot/fetch-metadata@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          # The job-level condition still requires the PR author to be Dependabot.
+          # This permits a maintainer-triggered rebase to refresh a trusted bot PR.
+          skip-commit-verification: true
       - name: Enable auto-merge for patch updates
         if: steps.metadata.outputs.update-type == 'version-update:semver-patch'
         env:
