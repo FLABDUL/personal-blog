@@ -1,5 +1,5 @@
 import React from "react"
-import { FaLinkedin, FaGithub } from "react-icons/fa"
+import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa"
 import { SiGmail, SiStrava } from "react-icons/si"
 
 const Footer = () => (
@@ -26,6 +26,9 @@ const Footer = () => (
       </a>
       <a href="https://www.strava.com/athletes/88805607" target="_blank" rel="noopener noreferrer" aria-label="Strava" style={{ margin: "0 1rem", color: "#fc4c02" }}>
         <SiStrava />
+      </a>
+      <a href="https://www.instagram.com/e3m_hakim/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{ margin: "0 1rem", color: "#e4405f" }}>
+        <FaInstagram />
       </a>
     </div>
   </footer>
