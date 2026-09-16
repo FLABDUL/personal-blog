@@ -46,7 +46,7 @@
     "@babel/core": "^7.29.7",
     "@playwright/test": "^1.62.1",
     "mammoth": "^1.12.2",
-    "pdf-parse": "^1.1.4",
+    "pdf-parse": "^2.4.5",
     "prettier": "^3.9.6"
   },
   "keywords": [
