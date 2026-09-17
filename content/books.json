@@ -1,5 +1,13 @@
 [
   {
+    "id": "dune",
+    "title": "Dune",
+    "author": "Frank Herbert",
+    "cover": "/books/dune.jpg",
+    "added": "2026-09-17",
+    "category": "Other"
+  },
+  {
     "id": "maus",
     "title": "Maus",
     "author": "Art Spiegelman",
