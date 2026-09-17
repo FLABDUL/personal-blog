@@ -250,6 +250,9 @@
             "href": {
               "$ref": "#/definitions/nonEmptyString"
             },
+            "actionLabel": {
+              "$ref": "#/definitions/nonEmptyString"
+            },
             "sourceHref": {
               "$ref": "#/definitions/nonEmptyString"
             },

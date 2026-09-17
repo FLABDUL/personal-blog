@@ -1,4 +1,16 @@
 import React from "react"
+import { Link } from "gatsby"
+
+const ProjectLink = ({ href, children, ...props }) =>
+  href.startsWith("/") ? (
+    <Link to={href} {...props}>
+      {children}
+    </Link>
+  ) : (
+    <a href={href} target="_blank" rel="noreferrer" {...props}>
+      {children}
+    </a>
+  )
 
 const ProjectCard = ({ project, visual = false }) => {
   const linkLabels = {
@@ -11,8 +23,11 @@ const ProjectCard = ({ project, visual = false }) => {
     product: "product",
     source: "source",
   }
-  const primaryLabel = linkLabels[project.linkType] || "View project"
-  const linkTarget = linkTargets[project.linkType] || "project"
+  const primaryLabel =
+    project.actionLabel || linkLabels[project.linkType] || "View project"
+  const linkTarget = project.href?.startsWith("/")
+    ? "case study"
+    : linkTargets[project.linkType] || "project"
 
   return (
     <article
@@ -21,11 +36,9 @@ const ProjectCard = ({ project, visual = false }) => {
       }`}
     >
       {visual && project.image && (
-        <a
+        <ProjectLink
           className="project-card__media"
           href={project.href}
-          target="_blank"
-          rel="noreferrer"
           aria-label={`${primaryLabel}: ${project.name}`}
         >
           <img
@@ -36,7 +49,7 @@ const ProjectCard = ({ project, visual = false }) => {
           <span className="project-card__media-action" aria-hidden="true">
             Open {linkTarget} ↗
           </span>
-        </a>
+        </ProjectLink>
       )}
 
       <div className={visual ? "project-card__body" : undefined}>
@@ -50,9 +63,9 @@ const ProjectCard = ({ project, visual = false }) => {
         </div>
         <h4>
           {visual && project.href ? (
-            <a href={project.href} target="_blank" rel="noreferrer">
+            <ProjectLink href={project.href}>
               {project.name}
-            </a>
+            </ProjectLink>
           ) : (
             project.name
           )}
@@ -66,14 +79,12 @@ const ProjectCard = ({ project, visual = false }) => {
         {(project.href || project.sourceHref) && (
           <div className="cv-card__actions">
             {project.href && (
-              <a
+              <ProjectLink
                 className="project-button project-button--primary"
                 href={project.href}
-                target="_blank"
-                rel="noreferrer"
               >
                 {primaryLabel}
-              </a>
+              </ProjectLink>
             )}
             {project.sourceHref && (
               <a

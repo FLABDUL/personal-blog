@@ -183,6 +183,20 @@
           ]
         },
         {
+          "id": "budget-v2",
+          "includeInBrief": false,
+          "name": "Budget V2",
+          "context": "Private financial data engineering case study",
+          "description": "Built a PostgreSQL-first personal-finance ledger that preserves immutable source evidence, applies deterministic financial semantics and reconciles generated workbook outputs; demonstrated here with entirely synthetic data.",
+          "href": "/projects/budget-v2/",
+          "actionLabel": "Read case study",
+          "image": "/projects/budget-v2/dashboard.webp",
+          "imageAlt": "Synthetic Budget V2 workbook dashboard showing a fictional plan and operational checks",
+          "featured": true,
+          "showcaseLabel": "Synthetic case study",
+          "tags": ["Python", "PostgreSQL", "Data engineering", "Excel"]
+        },
+        {
           "id": "backtest-library",
           "includeInBrief": true,
           "name": "Backtest Library",
