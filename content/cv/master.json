@@ -4,7 +4,7 @@
     "name": "Abdul Hakim Norazman",
     "title": "Software Engineer building financial and data-intensive systems",
     "summary": "Technology consultant at Detillens, contracted to Morgan Stanley as a software engineer in Fund Services Technology. This is my long-form career record: the systems I have shipped, the teams and communities I have contributed to, the technical work I pursue independently, and the learning behind it.",
-    "updated": "August 2026",
+    "updated": "September 2026",
     "contacts": [
       {
         "label": "Email",
@@ -145,12 +145,51 @@
       "intro": "Public work where the code, product decisions or ongoing experiments can be explored directly.",
       "items": [
         {
+          "id": "residue-lens",
+          "includeInBrief": false,
+          "name": "Residue Lens",
+          "context": "Evidence-led consumer product",
+          "description": "Built and launched a public tool that turns official UK, US and European pesticide-residue monitoring into calm, comparable food evidence, helping shoppers decide where an organic-food budget matters.",
+          "href": "https://residuelens.com/",
+          "linkType": "product",
+          "image": "/projects/residue-lens.webp",
+          "imageAlt": "Residue Lens homepage introducing its evidence-led food comparison product",
+          "featured": true,
+          "showcaseLabel": "Live product",
+          "tags": [
+            "Next.js",
+            "TypeScript",
+            "Python",
+            "Public data"
+          ]
+        },
+        {
+          "id": "period-place",
+          "includeInBrief": false,
+          "name": "Period Place",
+          "context": "Evidence-led social-impact platform",
+          "description": "Built and launched a UK finder for free period products, combining traceable official sources with moderated community reports while showing uncertainty and known coverage gaps.",
+          "href": "https://periodplace.org/",
+          "linkType": "product",
+          "image": "/projects/period-place.webp",
+          "imageAlt": "Period Place homepage introducing its UK free period-product finder",
+          "featured": true,
+          "showcaseLabel": "Live product",
+          "tags": [
+            "Next.js",
+            "TypeScript",
+            "MapLibre",
+            "Community moderation"
+          ]
+        },
+        {
           "id": "backtest-library",
           "includeInBrief": true,
           "name": "Backtest Library",
           "context": "Open-source quantitative tooling",
           "description": "Contributed tests and engineering improvements to a Python library for evaluating trading strategies, with an emphasis on reproducibility and trustworthy performance analysis.",
           "href": "https://github.com/FLABDUL/backtest-lib",
+          "linkType": "source",
           "image": "/projects/backtest-library.webp",
           "imageAlt": "Backtest Library source repository showing its Python package and test suite",
           "featured": false,
@@ -169,9 +208,10 @@
           "description": "Built an interactive tool that traces a Maven compilation failure to an incompatible SLF4J version, explains the supporting evidence and proposes a verified POM fix.",
           "href": "https://dependency-agent-demo.flabdul.chatgpt.site",
           "sourceHref": "https://github.com/FLABDUL/dependency-agent",
+          "linkType": "demo",
           "image": "/projects/dependency-agent.webp",
           "imageAlt": "Dependency Agent demo introducing its evidence-led Maven failure analysis",
-          "featured": true,
+          "featured": false,
           "showcaseLabel": "Interactive demo",
           "tags": [
             "Python",
@@ -187,6 +227,7 @@
           "description": "Built a demo-first training dashboard with Strava OAuth, interactive activity analysis and OpenAI-generated coaching insights, while preserving a private live-data mode.",
           "href": "https://strava.madebyhakim.com",
           "sourceHref": "https://github.com/FLABDUL/strava-dashboard",
+          "linkType": "demo",
           "image": "/projects/strava-dashboard.webp",
           "imageAlt": "Strava Dashboard demo showing its activity-intelligence overview",
           "featured": false,
@@ -206,9 +247,10 @@
           "description": "Built a privacy-first dashboard that discovers Octopus smart meters, turns half-hourly electricity and gas readings into clear usage patterns, estimates tariff costs and offers optional server-side AI coaching.",
           "href": "https://octopus-energy-app-psi.vercel.app",
           "sourceHref": "https://github.com/FLABDUL/octopus-energy-app",
+          "linkType": "demo",
           "image": "/projects/pulse-energy-dashboard.webp",
           "imageAlt": "Pulse Energy Dashboard showing consumption totals and daily usage charts",
-          "featured": true,
+          "featured": false,
           "showcaseLabel": "Interactive demo",
           "tags": [
             "React",
@@ -225,6 +267,7 @@
           "description": "Extended a shrinking-ball medial-axis pipeline to expose geometric scale features from sampled CAD surfaces, then rebuilt it with reproducible C++ tooling and an interactive browser reconstruction.",
           "href": "https://computational-geometry-cad-filter.flabdul.chatgpt.site",
           "sourceHref": "https://github.com/FLABDUL/beng-thesis",
+          "linkType": "demo",
           "image": "/projects/computational-geometry-cad-filter.webp",
           "imageAlt": "Computational Geometry CAD Filter browser reconstruction and project introduction",
           "featured": true,
