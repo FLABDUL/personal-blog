@@ -7,7 +7,7 @@ import { engineeringWork } from "../data/cv"
 
 export default function ProjectsPage() {
   const personalProjects = engineeringWork.find(
-    group => group.id === "independent-and-open-source"
+    group => group.id === "independent-and-open-source",
   ).items
 
   return (
@@ -28,9 +28,13 @@ export default function ProjectsPage() {
             </div>
             <div>
               <dt>
-                {personalProjects.filter(project => project.sourceHref).length}
+                {
+                  personalProjects.filter(project =>
+                    ["demo", "product"].includes(project.linkType),
+                  ).length
+                }
               </dt>
-              <dd>interactive demos</dd>
+              <dd>live products &amp; demos</dd>
             </div>
             <div>
               <dt>1</dt>

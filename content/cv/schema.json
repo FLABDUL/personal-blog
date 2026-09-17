@@ -253,6 +253,10 @@
             "sourceHref": {
               "$ref": "#/definitions/nonEmptyString"
             },
+            "linkType": {
+              "type": "string",
+              "enum": ["demo", "product", "source"]
+            },
             "image": {
               "$ref": "#/definitions/nonEmptyString"
             },

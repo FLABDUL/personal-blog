@@ -1,7 +1,18 @@
 import React from "react"
 
 const ProjectCard = ({ project, visual = false }) => {
-  const primaryLabel = project.sourceHref ? "Live demo" : "View source"
+  const linkLabels = {
+    demo: "Live demo",
+    product: "Visit product",
+    source: "View source",
+  }
+  const linkTargets = {
+    demo: "demo",
+    product: "product",
+    source: "source",
+  }
+  const primaryLabel = linkLabels[project.linkType] || "View project"
+  const linkTarget = linkTargets[project.linkType] || "project"
 
   return (
     <article
@@ -23,7 +34,7 @@ const ProjectCard = ({ project, visual = false }) => {
             loading="lazy"
           />
           <span className="project-card__media-action" aria-hidden="true">
-            Open {project.sourceHref ? "demo" : "project"} ↗
+            Open {linkTarget} ↗
           </span>
         </a>
       )}
