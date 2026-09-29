@@ -1594,6 +1594,32 @@ img {
   list-style: none;
 }
 
+.stockfit-case-study__metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.stockfit-case-study__metrics div {
+  display: grid;
+  gap: 0.4rem;
+  padding: 1.25rem;
+  background: var(--cv-panel);
+  border: 1px solid var(--cv-border);
+  border-radius: 0.85rem;
+}
+
+.stockfit-case-study__metrics span {
+  color: var(--cv-muted);
+  font-size: 0.82rem;
+}
+
+.stockfit-case-study__metrics strong {
+  color: #f0f6fc;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  line-height: 1.1;
+}
+
 .budget-case-study__closing {
   display: flex;
   flex-wrap: wrap;
@@ -1610,7 +1636,8 @@ img {
   .budget-case-study__intro,
   .budget-case-study__evidence-item,
   .budget-case-study__architecture,
-  .budget-case-study__decisions {
+  .budget-case-study__decisions,
+  .stockfit-case-study__metrics {
     grid-template-columns: 1fr;
   }
 
