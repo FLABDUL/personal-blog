@@ -28,6 +28,10 @@ const routes = [
     path: "/projects/budget-v2/",
     heading: "Building a trustworthy personal-finance data pipeline",
   },
+  {
+    path: "/projects/backtest-library/",
+    heading: "Testing a point-in-time fundamental strategy",
+  },
 ]
 
 function monitorPage(page) {
@@ -150,6 +154,7 @@ test("visible site images load successfully", async ({ page }) => {
     "/studio/",
     "/projects/",
     "/projects/budget-v2/",
+    "/projects/backtest-library/",
   ]) {
     await page.goto(path, { waitUntil: "domcontentloaded" })
     const images = page.locator("img")
@@ -187,7 +192,7 @@ test("Budget V2 is linked as an internal case study", async ({ page }) => {
   const errors = monitorPage(page)
   await page.goto("/projects/", { waitUntil: "domcontentloaded" })
 
-  const card = page.getByRole("article").filter({ hasText: "Budget V2" })
+  const card = page.locator(".project-card").filter({ hasText: "Budget V2" })
   const link = card.getByRole("link", { name: "Read case study", exact: true })
   await expect(link).toHaveAttribute("href", "/projects/budget-v2/")
   await expect(link).not.toHaveAttribute("target", "_blank")
@@ -253,5 +258,55 @@ test("Budget V2 exposes full-size evidence links on mobile", async ({ page }) =>
     await expect(link).toHaveAttribute("rel", "noreferrer")
   }
 
+  expect(errors).toEqual([])
+})
+
+test("Backtest Library is linked as an internal case study with separate source code", async ({
+  page,
+}) => {
+  const errors = monitorPage(page)
+  await page.goto("/projects/", { waitUntil: "domcontentloaded" })
+
+  const card = page
+    .locator(".project-card")
+    .filter({ hasText: "Backtest Library" })
+  await expect(
+    card.getByRole("link", { name: "Read case study", exact: true }),
+  ).toHaveAttribute("href", "/projects/backtest-library/")
+  await expect(
+    card.getByRole("link", { name: "Source code", exact: true }),
+  ).toHaveAttribute("href", "https://github.com/FLABDUL/backtest-lib")
+  expect(errors).toEqual([])
+})
+
+test("Backtest Library presents verified results without an alpha claim", async ({
+  page,
+}) => {
+  const errors = monitorPage(page)
+  await page.goto("/projects/backtest-library/", {
+    waitUntil: "domcontentloaded",
+  })
+
+  await expect(
+    page.getByText(
+      "Derived live results · Raw provider data not redistributed",
+      {
+        exact: true,
+      },
+    ),
+  ).toBeVisible()
+  await expect(page.getByRole("figure")).toHaveCount(2)
+  await expect(page.getByText("157.80%", { exact: true })).toBeVisible()
+  await expect(page.getByText("166.27%", { exact: true })).toBeVisible()
+  await expect(page.getByText("9 pass · 3 fail", { exact: true })).toBeVisible()
+  await expect(
+    page.getByRole("heading", { name: "What this does not claim" }),
+  ).toBeVisible()
+  await expect(
+    page.getByRole("link", { name: "View source code" }),
+  ).toHaveAttribute("href", "https://github.com/FLABDUL/backtest-lib")
+  await expect(
+    page.getByRole("link", { name: "View experience" }),
+  ).toHaveAttribute("href", "/experience/")
   expect(errors).toEqual([])
 })
