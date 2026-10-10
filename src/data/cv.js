@@ -1,4 +1,5 @@
 import masterCv from "../../content/cv/master.json"
+import cvModel from "../../content/cv/model"
 
 export const {
   education,
@@ -11,7 +12,7 @@ export const {
   universityLeadership,
 } = masterCv
 
-export const experience = masterCv.professionalExperience
+export const experience = cvModel.hydrateProfessionalExperience(masterCv)
 export const development = masterCv.professionalDevelopment
 
 export default masterCv

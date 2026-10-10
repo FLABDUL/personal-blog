@@ -83,6 +83,7 @@ cv-exports/
 content/cv/private.local.json
 .tools/
 output/pdf/
+output/applications/
 tmp/pdfs/
 
 # Playwright test artefacts

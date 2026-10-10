@@ -106,12 +106,14 @@ Generated local outputs (ignored by Git because they are reproducible):
 - `cv-exports/full-cv.md` contains the complete career record.
 - `cv-exports/brief-cv.md` contains records selected with `includeInBrief`.
 
-## Generate the software-engineering CV PDF
+## Generate the Career CV PDF
 
-The SWE CV is generated from the same master record using the selection and
-layout rules in `content/cv/variants/swe.json`. The generated LaTeX retains the
-one-page A4 design from the original Overleaf project, but Overleaf is no
-longer required for routine updates.
+The canonical application CV is generated from the master record and confirmed
+achievement evidence. `master-v2.json` produces the one-page Senior
+Backend/Platform CV. The same variant system remains available for genuinely
+role-specific versions. The generated LaTeX retains the A4 design from the
+accepted Overleaf-based CV, but Overleaf is no longer required for routine
+updates.
 
 Private contact data is deliberately separate from the public master record.
 For the initial setup:
@@ -129,7 +131,7 @@ Install the pinned, checksum-verified Tectonic compiler once:
 npm run cv:setup-pdf
 ```
 
-Then generate the LaTeX and compile the PDF with one command:
+Generate and compile the canonical PDF with:
 
 ```powershell
 npm run cv:pdf
@@ -139,25 +141,27 @@ npm run cv:pdf
 
 The finished PDF is saved inside this project at:
 
-`output/pdf/abdul-hakim-norazman-swe-cv.pdf`
+`output/pdf/abdul-hakim-norazman-master-v2-cv.pdf`
 
-On the current Windows machine, the full path is:
+The generated LaTeX sources are saved under `cv-exports/latex/`. Compilation
+logs are stored beside the PDF in `output/pdf/`. Running the PDF command again
+overwrites the generated `.tex`, `.pdf` and `.log` with the latest version.
 
-`C:\Users\hakim\OneDrive\Documents\Coding\personal-blog\output\pdf\abdul-hakim-norazman-swe-cv.pdf`
+Generated files are ignored by Git because they may contain private contact
+information. They are not deployed to the website or stored in GitHub.
 
-The generated LaTeX source is saved at:
+### Immutable application snapshots
 
-`cv-exports/latex/abdul-hakim-norazman-swe-cv.tex`
+After compiling a variant, capture its exact variant specification, LaTeX and
+PDF with SHA-256 hashes:
 
-The PDF compilation log is stored beside the PDF in `output/pdf/`. Running
-`npm run cv:pdf` again overwrites the generated `.tex`, `.pdf` and `.log` with
-the latest version.
+```powershell
+npm run cv:snapshot -- --variant master-v2 --slug senior-backend-master --date 2026-10-10
+```
 
-These generated files are ignored by Git because the PDF and LaTeX may contain
-private contact information. The project is inside OneDrive, but the generated
-files are not deployed to the website or stored in GitHub. When using the CV
-for an application, copy the finished PDF into the relevant application folder
-and rename that copy if a dated or company-specific snapshot is needed.
+Snapshots are written under `output/applications/YYYY-MM-DD/<slug>/` and are
+ignored by Git. The command refuses to overwrite an existing snapshot; use a
+new slug or date for a new application revision.
 
 Do not edit the generated PDF or LaTeX as the source of truth. The next build
 will overwrite those edits.
@@ -170,31 +174,31 @@ For a normal career update that should appear on both the website and CV:
 2. Edit the relevant record in `content/cv/master.json`.
 3. Update `profile.updated` in `master.json`.
 4. Run `npm run cv:validate` to check the master record.
-5. Run `npm run cv:pdf` to regenerate the one-page SWE CV.
-6. Open `output/pdf/abdul-hakim-norazman-swe-cv.pdf` and check its wording,
-   page count and layout.
+5. Run `npm run cv:pdf` to regenerate the CV.
+6. Open the PDF and check wording, exact page count and layout.
 7. Run `npm run build` to verify the website and regenerate its CV exports.
 8. Commit and push the branch, then review the Vercel preview of `/experience/`.
 9. Merge into `main` to deploy the website update.
 10. Copy the finished PDF to the relevant application folder when needed.
 
 If the new master-record content does not fit the one-page CV, edit
-`content/cv/variants/swe.json`. This file decides which master-record bullets
-are selected, combined or emphasised in the SWE version. Removing a point from
-the SWE variant does not remove it from the master record or website.
+`content/cv/variants/master-v2.json`. This file decides which master-record
+bullets are selected, combined or emphasised. Removing a point from the variant
+does not remove it from the master record or website.
 
 For CV-only tailoring, such as changing the summary, selecting different
-achievements or changing emphasis, edit `content/cv/variants/swe.json` and run
-`npm run cv:pdf`. The website changes only when `master.json` changes.
+achievements or changing emphasis, edit `content/cv/variants/master-v2.json`
+and run `npm run cv:pdf`. The website changes only when `master.json` changes.
 
 For a private mobile-number change, edit
 `content/cv/private.local.json` and run `npm run cv:pdf`. Never commit that file.
 Public contact details such as the email address and LinkedIn URL remain in
 `master.json` because the public website uses them.
 
-To create another generated CV version, copy `content/cv/variants/swe.json` to
+To create a role-specific CV version, copy `content/cv/variants/master-v2.json` to
 a new file such as `content/cv/variants/backend.json`, give it a unique `id` and
-`outputFile`, then tailor its selections. Generate it with:
+`outputFile`, declare `expectedPages`, then tailor its selections using stable
+achievement and project IDs. Generate it with:
 
 ```powershell
 npm run cv:validate
