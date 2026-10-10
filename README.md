@@ -109,8 +109,8 @@ Generated local outputs (ignored by Git because they are reproducible):
 ## Generate the Career CV PDFs
 
 Both application CVs are generated from the same master record and confirmed
-achievement evidence. `master-v2.json` produces the two-page Senior
-Backend/Platform master CV; `swe.json` produces the one-page comparison. The
+achievement evidence. `master-v2.json` produces the one-page Senior
+Backend/Platform CV; `swe.json` produces a one-page role-specific variant. The
 generated LaTeX retains the A4 design from the accepted Overleaf-based CV, but
 Overleaf is no longer required for routine updates.
 

@@ -2,7 +2,7 @@
 
 ## Outcome
 
-Create a reviewable Career CV v2 system inside the public personal-blog repository. The system must produce a strong two-page Senior Backend/Platform master CV and a one-page comparison from the existing canonical career record, while keeping the Experience page and all generated documents consistent.
+Create a reviewable Career CV v2 system inside the public personal-blog repository. The system must produce a strong one-page Senior Backend/Platform application CV and one-page role-specific variants from the existing canonical career record, while keeping the Experience page as the detailed evidence layer and all generated documents consistent.
 
 ## Evidence and privacy
 
@@ -15,8 +15,8 @@ Create a reviewable Career CV v2 system inside the public personal-blog reposito
 
 ## CV products
 
-- `master-v2`: two A4 pages, focused on senior backend/platform engineering, with quantified Morgan Stanley work, selected earlier experience, and verified personal projects.
-- `swe`: one A4 page retained as the comparison CV, updated from the same evidence.
+- `master-v2`: one A4 page, focused on the most impactful senior backend/platform evidence, selected earlier experience, and two verified personal projects.
+- `swe`: one A4 page retained as a role-specific software-engineering variant, updated from the same evidence.
 - Variant files select stable evidence/project IDs. The generator must reject missing, unsafe or unconfirmed references.
 - The existing LaTeX/Tectonic visual language remains the baseline; no Word conversion is introduced.
 
@@ -42,7 +42,7 @@ Do not imply these projects are broader than their repositories demonstrate.
 
 - Validate schema, stable IDs, evidence references, allowed statuses and variant references.
 - Unit-test evidence hydration, variant generation, page-count enforcement and no-overwrite snapshots.
-- Compile both PDFs with Tectonic, require exactly two pages for `master-v2` and one page for `swe`, extract text, and compare source/PDF claims.
+- Compile both PDFs with Tectonic, require exactly one page for both `master-v2` and `swe`, extract text, and compare source/PDF claims.
 - Render every page to PNG and visually inspect for clipping, overlap, broken glyphs and weak page transitions.
 - Run the repository tests and production Gatsby build.
 - Review the whole branch before pushing and creating the draft PR.

@@ -16,8 +16,18 @@ const readVariant = id =>
   readJson(path.join(root, "content", "cv", "variants", `${id}.json`))
 
 test("master and comparison variants declare exact page counts", () => {
-  assert.equal(readVariant("master-v2").expectedPages, 2)
+  assert.equal(readVariant("master-v2").expectedPages, 1)
   assert.equal(readVariant("swe").expectedPages, 1)
+})
+
+test("master variant stays selective enough for a one-page application CV", () => {
+  const variant = readVariant("master-v2")
+
+  assert.equal(variant.experience[0].highlights.length, 4)
+  assert.equal(variant.experience[1].highlights.length, 2)
+  assert.equal(variant.projects.length, 2)
+  assert.equal(variant.pageBreakBeforeExperienceIndex, undefined)
+  assert.ok(variant.summary.trim().split(/\s+/).length <= 30)
 })
 
 test("rejects a successful compile with the wrong page count", () => {
@@ -42,7 +52,7 @@ test("variants reference confirmed achievements and existing projects", () => {
   )
 })
 
-test("master variant renders selected projects and achievement text", () => {
+test("master variant renders project bullets and achievement text", () => {
   const result = spawnSync(
     process.execPath,
     ["scripts/cv/generate-latex.js", "--variant", "master-v2"],
@@ -59,14 +69,13 @@ test("master variant renders selected projects and achievement text", () => {
     ),
     "utf8"
   )
-  assert.match(tex, /\\section\*\{Selected Projects\}/)
-  assert.match(
-    tex,
-    /\\newpage\s+\\textbf\{J\.P\. Morgan Asset Management/
-  )
-  assert.match(tex, /Residue Lens/)
-  assert.match(tex, /Budget V2/)
+  assert.match(tex, /\\section\*\{Projects\}/)
+  assert.doesNotMatch(tex, /\\section\*\{Selected Projects\}/)
+  assert.match(tex, /\\section\*\{Projects\}\s+\\begin\{itemize\}/)
+  assert.match(tex, /\\item \\textbf\{Budget V2\}/)
+  assert.match(tex, /\\item \\textbf\{Dependency Agent\}/)
+  assert.doesNotMatch(tex, /\\newpage/)
   assert.match(tex, /220,000/)
   assert.match(tex, /production database round-trips/)
-  assert.match(tex, /Dependency Agent[\s\S]*\\par\s+\\section\*\{Education\}/)
+  assert.match(tex, /Dependency Agent[\s\S]*\\end\{itemize\}\s+\\section\*\{Education\}/)
 })

@@ -251,15 +251,15 @@ const projectBlocks = (variant.projects || [])
     const group = workGroups.get(reference.groupId)
     const project = group?.items.find(item => item.id === reference.itemId)
     if (!project) throw new Error(`Project not found: ${reference.itemId}`)
-    return `\\textbf{${escapeLatex(project.name)}} - ${renderText(
+    return `    \\item \\textbf{${escapeLatex(project.name)}} - ${renderText(
       project.description,
       variant.emphasis
     )}`
   })
-  .join("\\\\[3pt]\n")
+  .join("\n")
 
 const projectsSection = projectBlocks
-  ? `${variant.pageBreakBeforeProjects ? "\\newpage\n" : ""}\\section*{Selected Projects}\n${projectBlocks}\n\\par`
+  ? `${variant.pageBreakBeforeProjects ? "\\newpage\n" : ""}\\section*{Projects}\n\\begin{itemize}\n${projectBlocks}\n\\end{itemize}`
   : ""
 
 const developmentSection = developmentBullets
