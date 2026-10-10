@@ -41,7 +41,15 @@
   "development": [],
   "educationBullets": [
     [{ "source": "education", "detailIndex": 0 }, { "source": "education", "detailIndex": 1 }],
-    [{ "source": "universityLeadership", "highlightIndex": 0 }, { "source": "universityLeadership", "highlightIndex": 1 }]
+    [
+      { "source": "universityLeadership", "highlightIndex": 0 },
+      { "source": "universityLeadership", "highlightIndex": 2 },
+      { "source": "universityLeadership", "highlightIndex": 1 }
+    ],
+    [
+      { "source": "education", "detailIndex": 3 },
+      { "source": "experience", "roleId": "makerspace-technician", "highlightIndex": 0 }
+    ]
   ],
   "emphasis": [
     "Detillens", "Morgan Stanley", "Java", "Python", "SQL", "TypeScript", "Spring Boot", "FastAPI",

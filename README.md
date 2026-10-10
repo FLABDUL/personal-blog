@@ -106,13 +106,14 @@ Generated local outputs (ignored by Git because they are reproducible):
 - `cv-exports/full-cv.md` contains the complete career record.
 - `cv-exports/brief-cv.md` contains records selected with `includeInBrief`.
 
-## Generate the Career CV PDFs
+## Generate the Career CV PDF
 
-Both application CVs are generated from the same master record and confirmed
+The canonical application CV is generated from the master record and confirmed
 achievement evidence. `master-v2.json` produces the one-page Senior
-Backend/Platform CV; `swe.json` produces a one-page role-specific variant. The
-generated LaTeX retains the A4 design from the accepted Overleaf-based CV, but
-Overleaf is no longer required for routine updates.
+Backend/Platform CV. The same variant system remains available for genuinely
+role-specific versions. The generated LaTeX retains the A4 design from the
+accepted Overleaf-based CV, but Overleaf is no longer required for routine
+updates.
 
 Private contact data is deliberately separate from the public master record.
 For the initial setup:
@@ -130,24 +131,21 @@ Install the pinned, checksum-verified Tectonic compiler once:
 npm run cv:setup-pdf
 ```
 
-Generate and compile either PDF with:
+Generate and compile the canonical PDF with:
 
 ```powershell
-npm run cv:master-pdf
 npm run cv:pdf
 ```
 
-### Where the generated CVs are saved
+### Where the generated CV is saved
 
-The finished PDFs are saved inside this project at:
+The finished PDF is saved inside this project at:
 
 `output/pdf/abdul-hakim-norazman-master-v2-cv.pdf`
-`output/pdf/abdul-hakim-norazman-swe-cv.pdf`
 
 The generated LaTeX sources are saved under `cv-exports/latex/`. Compilation
-logs are stored beside the PDFs in `output/pdf/`. Running either PDF command
-again overwrites that variant's generated `.tex`, `.pdf` and `.log` with the
-latest version.
+logs are stored beside the PDF in `output/pdf/`. Running the PDF command again
+overwrites the generated `.tex`, `.pdf` and `.log` with the latest version.
 
 Generated files are ignored by Git because they may contain private contact
 information. They are not deployed to the website or stored in GitHub.
@@ -176,28 +174,28 @@ For a normal career update that should appear on both the website and CV:
 2. Edit the relevant record in `content/cv/master.json`.
 3. Update `profile.updated` in `master.json`.
 4. Run `npm run cv:validate` to check the master record.
-5. Run `npm run cv:master-pdf` and `npm run cv:pdf` to regenerate both CVs.
-6. Open both PDFs and check wording, exact page counts and layout.
+5. Run `npm run cv:pdf` to regenerate the CV.
+6. Open the PDF and check wording, exact page count and layout.
 7. Run `npm run build` to verify the website and regenerate its CV exports.
 8. Commit and push the branch, then review the Vercel preview of `/experience/`.
 9. Merge into `main` to deploy the website update.
 10. Copy the finished PDF to the relevant application folder when needed.
 
 If the new master-record content does not fit the one-page CV, edit
-`content/cv/variants/swe.json`. This file decides which master-record bullets
-are selected, combined or emphasised in the SWE version. Removing a point from
-the SWE variant does not remove it from the master record or website.
+`content/cv/variants/master-v2.json`. This file decides which master-record
+bullets are selected, combined or emphasised. Removing a point from the variant
+does not remove it from the master record or website.
 
 For CV-only tailoring, such as changing the summary, selecting different
-achievements or changing emphasis, edit `content/cv/variants/swe.json` and run
-`npm run cv:pdf`. The website changes only when `master.json` changes.
+achievements or changing emphasis, edit `content/cv/variants/master-v2.json`
+and run `npm run cv:pdf`. The website changes only when `master.json` changes.
 
 For a private mobile-number change, edit
 `content/cv/private.local.json` and run `npm run cv:pdf`. Never commit that file.
 Public contact details such as the email address and LinkedIn URL remain in
 `master.json` because the public website uses them.
 
-To create another role-specific CV version, copy `content/cv/variants/swe.json` to
+To create a role-specific CV version, copy `content/cv/variants/master-v2.json` to
 a new file such as `content/cv/variants/backend.json`, give it a unique `id` and
 `outputFile`, declare `expectedPages`, then tailor its selections using stable
 achievement and project IDs. Generate it with:

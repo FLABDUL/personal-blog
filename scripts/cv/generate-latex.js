@@ -150,7 +150,7 @@ const getContact = (cv, label) => {
   return contact.href
 }
 
-const variantId = getArgument("--variant", "swe")
+const variantId = getArgument("--variant", "master-v2")
 const cv = readMasterCv()
 const variantPath = path.join(
   root,
