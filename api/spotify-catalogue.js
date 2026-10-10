@@ -24,14 +24,6 @@ function createCatalogueHandler({ store, now = Date.now }) {
 }
 
 async function handler(request, response) {
-  const configured =
-    Boolean(process.env.BLOB_READ_WRITE_TOKEN) ||
-    (Boolean(process.env.VERCEL_OIDC_TOKEN) &&
-      Boolean(process.env.BLOB_STORE_ID))
-  if (!configured) {
-    response.setHeader("Cache-Control", "no-store")
-    return response.status(503).json({ status: "unavailable" })
-  }
   return createCatalogueHandler({ store: createBlobCatalogueStore() })(
     request,
     response,
