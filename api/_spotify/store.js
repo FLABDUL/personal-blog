@@ -9,7 +9,33 @@ function validateForStorage(snapshot) {
   })
 }
 
-function createBlobCatalogueStore(blobClient = require("@vercel/blob")) {
+function safeStoreDiagnostic(operation, error) {
+  const diagnostic = { operation }
+  if (!error || typeof error !== "object") return diagnostic
+  if (typeof error.name === "string") diagnostic.name = error.name
+  if (
+    typeof error.code === "string" &&
+    /^[A-Za-z0-9_-]{1,80}$/.test(error.code)
+  )
+    diagnostic.code = error.code
+  if (Number.isInteger(error.statusCode))
+    diagnostic.statusCode = error.statusCode
+  if (
+    typeof error.message === "string" &&
+    error.message.startsWith("Spotify catalogue is invalid:")
+  )
+    diagnostic.validation = error.message
+  return diagnostic
+}
+
+function reportStoreFailure(diagnostic) {
+  console.error("Spotify catalogue store failure", diagnostic)
+}
+
+function createBlobCatalogueStore(
+  blobClient = require("@vercel/blob"),
+  reportFailure = reportStoreFailure,
+) {
   return {
     async read() {
       try {
@@ -22,7 +48,8 @@ function createBlobCatalogueStore(blobClient = require("@vercel/blob")) {
         return validateForStorage(
           JSON.parse(await new Response(result.stream).text()),
         )
-      } catch {
+      } catch (error) {
+        reportFailure(safeStoreDiagnostic("read", error))
         throw new Error("Current Spotify catalogue is unavailable")
       }
     },
@@ -39,14 +66,16 @@ function createBlobCatalogueStore(blobClient = require("@vercel/blob")) {
             cacheControlMaxAge: 60,
           },
         )
-      } catch {
+      } catch (error) {
+        reportFailure(safeStoreDiagnostic("write", error))
         throw new Error("Current Spotify catalogue is unavailable")
       }
     },
     async clear() {
       try {
         await blobClient.del(CURRENT_CATALOGUE_PATHNAME)
-      } catch {
+      } catch (error) {
+        reportFailure(safeStoreDiagnostic("clear", error))
         throw new Error("Current Spotify catalogue is unavailable")
       }
     },

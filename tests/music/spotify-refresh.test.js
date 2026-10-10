@@ -8,6 +8,7 @@ const {
   getSpotifyAppToken,
 } = require("../../api/_spotify/client")
 const { refreshSpotifyCatalogue } = require("../../api/_spotify/refresh")
+const { createBlobCatalogueStore } = require("../../api/_spotify/store")
 const { createCatalogueHandler } = require("../../api/spotify-catalogue")
 const { createRefreshHandler } = require("../../api/spotify-refresh")
 
@@ -225,4 +226,29 @@ test("production cron targets the canonical refresh function URL", () => {
   assert.deepEqual(crons, [
     { path: "/api/spotify-refresh/", schedule: "0 6 * * *" },
   ])
+})
+
+test("blob failures emit only safe catalogue diagnostics", async () => {
+  const diagnostics = []
+  const secret = "must-not-appear-in-logs"
+  const error = Object.assign(new Error(`Request failed with ${secret}`), {
+    name: "BlobRequestError",
+    code: "store_not_found",
+    statusCode: 404,
+  })
+  const store = createBlobCatalogueStore(
+    { get: async () => Promise.reject(error) },
+    diagnostic => diagnostics.push(diagnostic),
+  )
+
+  await assert.rejects(store.read(), /Current Spotify catalogue is unavailable/)
+  assert.deepEqual(diagnostics, [
+    {
+      operation: "read",
+      name: "BlobRequestError",
+      code: "store_not_found",
+      statusCode: 404,
+    },
+  ])
+  assert.equal(JSON.stringify(diagnostics).includes(secret), false)
 })
