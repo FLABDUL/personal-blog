@@ -1,4 +1,6 @@
 const Ajv = require("ajv")
+const fs = require("fs")
+const path = require("path")
 const {
   getIdentifiedRecords,
   masterPath,
@@ -6,8 +8,9 @@ const {
   readSchema,
   root,
   validateAchievementData,
+  validateVariant,
+  variantsDirectory,
 } = require("./lib")
-const path = require("path")
 
 const cv = readMasterCv()
 const schema = readSchema()
@@ -30,6 +33,15 @@ if (!validate(cv)) {
 }
 
 errors.push(...validateAchievementData(cv))
+
+for (const fileName of fs
+  .readdirSync(variantsDirectory)
+  .filter(fileName => fileName.endsWith(".json"))) {
+  const variant = JSON.parse(
+    fs.readFileSync(path.join(variantsDirectory, fileName), "utf8")
+  )
+  errors.push(...validateVariant(cv, variant))
+}
 
 const seenIds = new Set()
 for (const record of getIdentifiedRecords(cv)) {

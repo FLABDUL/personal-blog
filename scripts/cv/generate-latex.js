@@ -1,6 +1,11 @@
 const fs = require("fs")
 const path = require("path")
-const { readMasterCv, root } = require("./lib")
+const {
+  getAchievementMap,
+  readMasterCv,
+  root,
+  validateVariant,
+} = require("./lib")
 
 const readJson = filePath => JSON.parse(fs.readFileSync(filePath, "utf8"))
 
@@ -75,6 +80,16 @@ const ensureIndex = (items, index, description) => {
 }
 
 const resolveReference = (cv, reference) => {
+  if (reference.source === "achievement") {
+    const achievement = achievements.get(reference.achievementId)
+    if (!achievement || achievement.ownership !== "confirmed") {
+      throw new Error(
+        `Confirmed achievement not found: ${reference.achievementId}`
+      )
+    }
+    return achievement.cvText || achievement.text
+  }
+
   if (reference.source === "experience") {
     const role = findById(
       cv.professionalExperience,
@@ -145,6 +160,11 @@ const variantPath = path.join(
   `${variantId}.json`
 )
 const variant = readJson(variantPath)
+const variantErrors = validateVariant(cv, variant)
+if (variantErrors.length > 0) {
+  throw new Error(`Invalid CV variant ${variant.id}:\n- ${variantErrors.join("\n- ")}`)
+}
+const achievements = getAchievementMap(cv)
 const privatePath = path.join(root, "content", "cv", "private.local.json")
 const privateData = fs.existsSync(privatePath) ? readJson(privatePath) : {}
 const mobile = process.env.CV_MOBILE || privateData.mobile || ""
@@ -215,7 +235,7 @@ ${bullets}
   })
   .join("\n\n")
 
-const developmentBullets = variant.development
+const developmentBullets = (variant.development || [])
   .map(
     reference =>
       `    \\item ${renderText(
@@ -224,6 +244,27 @@ const developmentBullets = variant.development
       )}`
   )
   .join("\n")
+
+const workGroups = new Map(cv.engineeringWork.map(group => [group.id, group]))
+const projectBlocks = (variant.projects || [])
+  .map(reference => {
+    const group = workGroups.get(reference.groupId)
+    const project = group?.items.find(item => item.id === reference.itemId)
+    if (!project) throw new Error(`Project not found: ${reference.itemId}`)
+    return `\\textbf{${escapeLatex(project.name)}} - ${renderText(
+      project.description,
+      variant.emphasis
+    )}`
+  })
+  .join("\\\\[3pt]\n")
+
+const projectsSection = projectBlocks
+  ? `${variant.pageBreakBeforeProjects ? "\\newpage\n" : ""}\\section*{Selected Projects}\n${projectBlocks}`
+  : ""
+
+const developmentSection = developmentBullets
+  ? `\\section*{Professional Development}\n\\begin{itemize}\n${developmentBullets}\n\\end{itemize}`
+  : ""
 
 const educationBullets = variant.educationBullets
   .map(
@@ -272,10 +313,9 @@ ${skillLines}
 
 ${experienceBlocks}
 
-\\section*{Personal Development}
-\\begin{itemize}
-${developmentBullets}
-\\end{itemize}
+${projectsSection}
+
+${developmentSection}
 
 \\section*{Education}
 

@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "id": "swe",
-  "outputFile": "abdul-hakim-norazman-swe-cv",
-  "expectedPages": 1,
+  "id": "master-v2",
+  "outputFile": "abdul-hakim-norazman-master-v2-cv",
+  "expectedPages": 2,
   "website": "https://www.madebyhakim.com/",
-  "summary": "Backend and platform engineer specialising in Java/Spring services, database and JVM performance, distributed workflow reliability and evidence-led production engineering across fund reporting, investment research and trading systems.",
+  "summary": "Senior backend and platform engineer specialising in Java/Spring services, database and JVM performance, distributed workflow reliability and evidence-led production engineering. Experience spans fund reporting, investment research and cross-asset trading, complemented by production-minded Python, TypeScript and PostgreSQL projects.",
   "skillRows": [
     { "label": "Languages", "skillId": "professional-languages", "values": ["Java", "Python", "SQL", "TypeScript"] },
     { "label": "Backend & APIs", "skillId": "frameworks-and-applications", "values": ["Spring Boot", "FastAPI", "Node.js"] },
-    { "label": "Data & Messaging", "skillId": "data-and-messaging", "values": ["PostgreSQL", "Oracle", "Kafka"] },
-    { "label": "Platform & Delivery", "skillId": "engineering-and-delivery", "values": ["Docker", "Prometheus", "Grafana", "Maven"] }
+    { "label": "Data & Messaging", "skillId": "data-and-messaging", "values": ["PostgreSQL", "Oracle", "Kafka", "REST APIs"] },
+    { "label": "Platform & Delivery", "skillId": "engineering-and-delivery", "values": ["Docker", "Prometheus", "Grafana", "Maven", "Gradle"] }
   ],
   "experience": [
     {
@@ -19,7 +19,10 @@
         [{ "source": "achievement", "achievementId": "ms-n-plus-one-lookups" }],
         [{ "source": "achievement", "achievementId": "ms-upstream-allocation-fetch" }],
         [{ "source": "achievement", "achievementId": "ms-recurring-database-failure" }],
-        [{ "source": "achievement", "achievementId": "ms-jvm-container-sizing" }]
+        [{ "source": "achievement", "achievementId": "ms-right-sized-data-fetches" }],
+        [{ "source": "achievement", "achievementId": "ms-jvm-container-sizing" }],
+        [{ "source": "achievement", "achievementId": "ms-dag-failure-isolation" }],
+        [{ "source": "achievement", "achievementId": "ms-connection-pool-leak" }]
       ]
     },
     {
@@ -30,14 +33,21 @@
           { "source": "experience", "roleId": "software-engineer-research-technology", "highlightIndex": 0 },
           { "source": "experience", "roleId": "software-engineer-research-technology", "highlightIndex": 1 }
         ],
-        [{ "source": "experience", "roleId": "software-engineer-trading-technology", "highlightIndex": 0 }]
+        [{ "source": "experience", "roleId": "software-engineer-trading-technology", "highlightIndex": 0 }],
+        [
+          { "source": "experience", "roleId": "software-engineer-trading-technology", "highlightIndex": 5 },
+          { "source": "experience", "roleId": "software-engineer-trading-technology", "highlightIndex": 7 }
+        ]
       ]
     }
   ],
   "projects": [
     { "groupId": "independent-and-open-source", "itemId": "budget-v2" },
+    { "groupId": "independent-and-open-source", "itemId": "residue-lens" },
+    { "groupId": "independent-and-open-source", "itemId": "period-place" },
     { "groupId": "independent-and-open-source", "itemId": "dependency-agent" }
   ],
+  "pageBreakBeforeProjects": true,
   "development": [],
   "educationBullets": [
     [{ "source": "education", "detailIndex": 0 }, { "source": "education", "detailIndex": 1 }],
@@ -46,7 +56,9 @@
   "emphasis": [
     "Detillens", "Morgan Stanley", "Java", "Python", "SQL", "TypeScript", "Spring Boot", "FastAPI",
     "PostgreSQL", "Kafka", "Docker", "Prometheus", "Grafana", "103 to 2", "220,000",
-    "13.9 times faster", "31 minutes to 10 seconds", "2,285", "zero", "127-CPU", "2-4-core",
-    "Budget V2", "Dependency Agent", "Long-Term Capital Market Assumptions", "Asset Volatility", "Sybase", "GraphQL"
+    "13.9 times faster", "31 minutes to 10 seconds", "2,285", "zero", "36 times faster",
+    "15-57 times less", "127-CPU", "2-4-core", "75%", "UAT", "load test", "204 requests",
+    "Budget V2", "Residue Lens", "Period Place", "Dependency Agent", "Long-Term Capital Market Assumptions",
+    "Asset Volatility", "Sybase", "GraphQL", "SpaceX Hyperloop Pod Competition"
   ]
 }

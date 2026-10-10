@@ -195,6 +195,9 @@
         "text": {
           "$ref": "#/definitions/nonEmptyString"
         },
+        "cvText": {
+          "$ref": "#/definitions/nonEmptyString"
+        },
         "ownership": {
           "const": "confirmed"
         },
