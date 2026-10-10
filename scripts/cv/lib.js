@@ -1,5 +1,9 @@
 const fs = require("fs")
 const path = require("path")
+const {
+  getAchievementMap,
+  hydrateProfessionalExperience,
+} = require("../../content/cv/model")
 
 const root = path.resolve(__dirname, "..", "..")
 const masterPath = path.join(root, "content", "cv", "master.json")
@@ -19,9 +23,6 @@ const allowedAchievementValidations = new Set([
   "load-tested",
   "not-production",
 ])
-
-const getAchievementMap = cv =>
-  new Map((cv.achievements || []).map(achievement => [achievement.id, achievement]))
 
 const assertExpectedPages = (variant, actualPages) => {
   if (actualPages !== variant.expectedPages) {
@@ -64,26 +65,6 @@ const validateAchievementData = cv => {
   }
 
   return errors
-}
-
-const hydrateProfessionalExperience = cv => {
-  const achievements = getAchievementMap(cv)
-
-  return cv.professionalExperience.map(role => ({
-    ...role,
-    highlights: [
-      ...(role.achievementIds || []).map(achievementId => {
-        const achievement = achievements.get(achievementId)
-        if (!achievement) {
-          throw new Error(
-            `Role ${role.id} references unknown achievement: ${achievementId}`
-          )
-        }
-        return achievement.text
-      }),
-      ...role.highlights,
-    ],
-  }))
 }
 
 const validateVariant = (cv, variant) => {
