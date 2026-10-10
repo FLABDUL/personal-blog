@@ -12,8 +12,74 @@ const readJson = filePath => JSON.parse(fs.readFileSync(filePath, "utf8"))
 const readMasterCv = () => readJson(masterPath)
 const readSchema = () => readJson(schemaPath)
 
+const allowedAchievementValidations = new Set([
+  "production",
+  "uat",
+  "load-tested",
+  "not-production",
+])
+
+const getAchievementMap = cv =>
+  new Map((cv.achievements || []).map(achievement => [achievement.id, achievement]))
+
+const validateAchievementData = cv => {
+  const errors = []
+  const seenIds = new Set()
+
+  for (const achievement of cv.achievements || []) {
+    if (seenIds.has(achievement.id)) {
+      errors.push(`Duplicate achievement id: ${achievement.id}`)
+    }
+    seenIds.add(achievement.id)
+
+    if (achievement.ownership !== "confirmed") {
+      errors.push(
+        `Achievement ${achievement.id} must have confirmed ownership`
+      )
+    }
+    if (!allowedAchievementValidations.has(achievement.validation)) {
+      errors.push(
+        `Achievement ${achievement.id} has unsupported validation: ${achievement.validation}`
+      )
+    }
+  }
+
+  for (const role of cv.professionalExperience || []) {
+    for (const achievementId of role.achievementIds || []) {
+      if (!seenIds.has(achievementId)) {
+        errors.push(
+          `Role ${role.id} references unknown achievement: ${achievementId}`
+        )
+      }
+    }
+  }
+
+  return errors
+}
+
+const hydrateProfessionalExperience = cv => {
+  const achievements = getAchievementMap(cv)
+
+  return cv.professionalExperience.map(role => ({
+    ...role,
+    highlights: [
+      ...(role.achievementIds || []).map(achievementId => {
+        const achievement = achievements.get(achievementId)
+        if (!achievement) {
+          throw new Error(
+            `Role ${role.id} references unknown achievement: ${achievementId}`
+          )
+        }
+        return achievement.text
+      }),
+      ...role.highlights,
+    ],
+  }))
+}
+
 const getIdentifiedRecords = cv => [
   ...cv.overview,
+  ...(cv.achievements || []),
   ...cv.professionalExperience,
   ...cv.engineeringWork,
   ...cv.engineeringWork.flatMap(group => group.items),
@@ -81,11 +147,14 @@ const writeGeneratedFile = (filePath, content, checkOnly) => {
 module.exports = {
   collectContentStrings,
   exportsDirectory,
+  getAchievementMap,
   getIdentifiedRecords,
+  hydrateProfessionalExperience,
   masterPath,
   readMasterCv,
   readSchema,
   reportsDirectory,
   root,
+  validateAchievementData,
   writeGeneratedFile,
 }

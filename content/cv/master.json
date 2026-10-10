@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "profile": {
     "name": "Abdul Hakim Norazman",
-    "title": "Software Engineer building financial and data-intensive systems",
-    "summary": "Technology consultant at Detillens, contracted to Morgan Stanley as a software engineer in Fund Services Technology. This is my long-form career record: the systems I have shipped, the teams and communities I have contributed to, the technical work I pursue independently, and the learning behind it.",
-    "updated": "September 2026",
+    "title": "Senior backend and platform engineer building reliable, data-intensive systems",
+    "summary": "Technology consultant at Detillens, contracted to Morgan Stanley in Fund Services Technology. I specialise in Java and Spring backend systems, database and JVM performance, distributed workflow reliability and evidence-led production engineering, alongside independent products built with Python, TypeScript and PostgreSQL.",
+    "updated": "October 2026",
     "contacts": [
       {
         "label": "Email",
@@ -63,6 +63,125 @@
       "href": "#technical-skills"
     }
   ],
+  "achievements": [
+    {
+      "id": "ms-n-plus-one-lookups",
+      "roleId": "technology-consultant-and-software-engineer",
+      "text": "Eliminated an N+1 database lookup in a high-volume statement-generation service, reducing allocation-type lookups from 103 to 2 per request and removing about 220,000 production database round-trips per business day.",
+      "ownership": "confirmed",
+      "validation": "production",
+      "scope": "Per request and per business day",
+      "tags": ["Java", "Spring", "Database", "Performance"]
+    },
+    {
+      "id": "ms-upstream-allocation-fetch",
+      "roleId": "technology-consultant-and-software-engineer",
+      "text": "Redesigned a returns-calculation data fetch to make one lean, deduplicated upstream call per fund, making the median fetch 13.9 times faster and reducing the worst production case from 31 minutes to 10 seconds.",
+      "ownership": "confirmed",
+      "validation": "production",
+      "scope": "Fetch step across all funds",
+      "tags": ["Java", "API", "Distributed systems", "Performance"]
+    },
+    {
+      "id": "ms-right-sized-data-fetches",
+      "roleId": "technology-consultant-and-software-engineer",
+      "text": "Fixed deterministic out-of-memory failures on the largest client funds by right-sizing data fetches; UAT showed a previously failing fund completing and another running about 36 times faster with 15-57 times less allocated and promoted memory.",
+      "ownership": "confirmed",
+      "validation": "uat",
+      "scope": "Largest-fund data fetches",
+      "tags": ["Java", "JVM", "Memory", "Reliability"]
+    },
+    {
+      "id": "ms-lean-stored-procedure-adoption",
+      "roleId": "technology-consultant-and-software-engineer",
+      "text": "Led adoption of lean upstream-owned stored procedures using 14 of about 230 columns and fixed a join-fanout defect; UAT cut payloads by 94-95%, made one fetch up to 18 times faster and brought a previously failing 72-minute case below four minutes.",
+      "ownership": "confirmed",
+      "validation": "uat",
+      "scope": "Allocation data-fetch path",
+      "tags": ["SQL", "Database", "Leadership", "Performance"]
+    },
+    {
+      "id": "ms-parallel-call-deduplication",
+      "roleId": "technology-consultant-and-software-engineer",
+      "text": "Deduplicated redundant upstream calls across parallel calculation branches, reducing calls per run by 64% and avoiding about 6,900 production calls per month.",
+      "ownership": "confirmed",
+      "validation": "production",
+      "scope": "Parallel calculation branches",
+      "tags": ["Distributed systems", "Concurrency", "Performance"]
+    },
+    {
+      "id": "ms-dag-failure-isolation",
+      "roleId": "technology-consultant-and-software-engineer",
+      "text": "Restructured a workflow dependency graph so one task failure invalidates two downstream tasks instead of eight, a 75% reduction validated in UAT, preventing unrelated investor-report work from waiting on the failure.",
+      "ownership": "confirmed",
+      "validation": "uat",
+      "scope": "Workflow dependency graph",
+      "tags": ["Architecture", "Distributed systems", "Reliability"]
+    },
+    {
+      "id": "ms-jvm-container-sizing",
+      "roleId": "technology-consultant-and-software-engineer",
+      "text": "Diagnosed JVM and container mis-sizing across four services, correcting a 127-CPU JVM view on 2-4-core containers, a profile-selection heap defect and manual production memory overrides through configuration as code.",
+      "ownership": "confirmed",
+      "validation": "production",
+      "scope": "Four-service JVM fleet",
+      "tags": ["Java", "JVM", "Containers", "Reliability"]
+    },
+    {
+      "id": "ms-minimal-reference-data-mode",
+      "roleId": "technology-consultant-and-software-engineer",
+      "text": "Added an opt-in minimal-reference-data mode to a downstream reporting API, removing all 15 downstream calls per request; validated in UAT, with production adoption owned by the calling team.",
+      "ownership": "confirmed",
+      "validation": "uat",
+      "scope": "Opt-in API request mode",
+      "tags": ["API", "Architecture", "Database", "Performance"]
+    },
+    {
+      "id": "ms-prometheus-onboarding",
+      "roleId": "technology-consultant-and-software-engineer",
+      "text": "Onboarded an API gateway service to Prometheus and replaced stale, crash-looping monitors with working production telemetry, enabling fleet-wide out-of-memory and heap tracking.",
+      "ownership": "confirmed",
+      "validation": "production",
+      "scope": "API gateway and service fleet telemetry",
+      "tags": ["Prometheus", "Observability", "Reliability"]
+    },
+    {
+      "id": "ms-recurring-database-failure",
+      "roleId": "technology-consultant-and-software-engineer",
+      "text": "Eliminated a recurring production database failure caused by temporary-table name collisions under concurrency, reducing 2,285 incidents across 84% of business days to zero after release, confirmed in two independent log sources.",
+      "ownership": "confirmed",
+      "validation": "production",
+      "scope": "Recurring concurrency failure",
+      "tags": ["Database", "Concurrency", "Reliability", "Production"]
+    },
+    {
+      "id": "ms-parallel-returns-calculation",
+      "roleId": "technology-consultant-and-software-engineer",
+      "text": "Parallelised a three-way returns calculation, making that production step 54% faster across all funds and 50% faster on the largest fund.",
+      "ownership": "confirmed",
+      "validation": "production",
+      "scope": "Returns-calculation step only",
+      "tags": ["Java", "Concurrency", "Performance"]
+    },
+    {
+      "id": "ms-connection-pool-leak",
+      "roleId": "technology-consultant-and-software-engineer",
+      "text": "Fixed connection leaks behind a production database-pool exhaustion incident and added pool-usage gauges; a load test drove the pool to its 20-connection limit, completed all 204 requests and returned usage to zero within about 30 seconds ahead of production release.",
+      "ownership": "confirmed",
+      "validation": "load-tested",
+      "scope": "Database connection pool under load",
+      "tags": ["Database", "Reliability", "Observability", "Load testing"]
+    },
+    {
+      "id": "ms-returns-initialisation-lookups",
+      "roleId": "technology-consultant-and-software-engineer",
+      "text": "Removed duplicate lookups from a returns-initialisation path, making that phase 27% faster and reducing a large-fund generation run by about 15%; measured in UAT and not yet in production.",
+      "ownership": "confirmed",
+      "validation": "not-production",
+      "scope": "Returns-initialisation phase and one large-fund UAT run",
+      "tags": ["Database", "Performance", "UAT"]
+    }
+  ],
   "professionalExperience": [
     {
       "id": "technology-consultant-and-software-engineer",
@@ -72,14 +191,20 @@
       "team": "Fund Services Technology",
       "location": "Glasgow",
       "period": "Dec 2025 - Present",
-      "summary": "Modernising and improving software used in large-scale financial-statement and fund-reporting workflows.",
+      "summary": "Scaling and hardening a Java/Spring microservices platform used for large fund-administration reporting workflows.",
+      "achievementIds": [
+        "ms-n-plus-one-lookups",
+        "ms-upstream-allocation-fetch",
+        "ms-right-sized-data-fetches",
+        "ms-parallel-call-deduplication",
+        "ms-dag-failure-isolation",
+        "ms-jvm-container-sizing",
+        "ms-recurring-database-failure",
+        "ms-connection-pool-leak"
+      ],
       "highlights": [
-        "Reduced latency in financial-statement generation workflows by up to 30%, improving returns, allocation-extract and account-level data processing.",
         "Modernised a financial-statements Bulk Override Tool by upgrading Java, Spring Boot and Gradle.",
-        "Used automated refactoring and AI-assisted development tools, including Moderne and GitHub Copilot, to reduce legacy-code risk.",
-        "Validated and documented REST APIs with Swagger to improve consistency for downstream financial systems.",
-        "Work across engineering and financial-domain boundaries to diagnose bottlenecks, clarify requirements and deliver maintainable production changes.",
-        "Addressed peak-period out-of-memory failures in ReportingService by analysing and rebalancing CPU, memory and disk allocations across containerised Statements applications and environments, and built Grafana dashboards to compare resource usage before and after the changes."
+        "Worked across engineering and financial-domain boundaries to diagnose bottlenecks, clarify requirements and deliver maintainable production changes."
       ]
     },
     {
@@ -149,7 +274,7 @@
           "includeInBrief": false,
           "name": "Residue Lens",
           "context": "Evidence-led consumer product",
-          "description": "Built and launched a public tool that turns official UK, US and European pesticide-residue monitoring into calm, comparable food evidence, helping shoppers decide where an organic-food budget matters.",
+          "description": "Built and launched a Next.js/TypeScript product with Python import and validation pipelines that keep official UK, US and European pesticide-monitoring programmes comparable without pooling unlike evidence.",
           "href": "https://residuelens.com/",
           "linkType": "product",
           "image": "/projects/residue-lens.webp",
@@ -168,7 +293,7 @@
           "includeInBrief": false,
           "name": "Period Place",
           "context": "Evidence-led social-impact platform",
-          "description": "Built and launched a UK finder for free period products, combining traceable official sources with moderated community reports while showing uncertainty and known coverage gaps.",
+          "description": "Built and launched a Next.js/TypeScript UK finder backed by libSQL/Turso, with MapLibre search, moderated community reports, audit history, guarded environment operations and explicit evidence gaps.",
           "href": "https://periodplace.org/",
           "linkType": "product",
           "image": "/projects/period-place.webp",
@@ -187,7 +312,7 @@
           "includeInBrief": false,
           "name": "Budget V2",
           "context": "Private financial data engineering case study",
-          "description": "Built a PostgreSQL-first personal-finance ledger that preserves immutable source evidence, applies deterministic financial semantics and reconciles generated workbook outputs; demonstrated here with entirely synthetic data.",
+          "description": "Built a Python/PostgreSQL personal-finance ledger with immutable source evidence, idempotent provider refreshes, deterministic classification and reconciliation, guarded monthly delivery and verified backup/restore; demonstrated publicly with synthetic data.",
           "href": "/projects/budget-v2/",
           "actionLabel": "Read case study",
           "image": "/projects/budget-v2/dashboard.webp",
@@ -220,7 +345,7 @@
           "includeInBrief": true,
           "name": "Dependency Agent",
           "context": "Evidence-led developer tooling",
-          "description": "Built an interactive tool that traces a Maven compilation failure to an incompatible SLF4J version, explains the supporting evidence and proposes a verified POM fix.",
+          "description": "Built a bounded Python/FastAPI developer tool that reads Java and Maven source evidence, traces a compilation failure to an incompatible SLF4J version and produces the smallest verified POM patch.",
           "href": "https://dependency-agent-demo.flabdul.chatgpt.site",
           "sourceHref": "https://github.com/FLABDUL/dependency-agent",
           "linkType": "demo",
@@ -306,7 +431,7 @@
           "includeInBrief": true,
           "name": "Fund-reporting workflow performance",
           "context": "Morgan Stanley Fund Services Technology",
-          "description": "Profiled and improved financial-statement generation workflows, reducing latency by up to 30% while modernising the surrounding Java and Spring platform.",
+        "description": "Drove measured Java/Spring scalability and reliability improvements spanning database access, distributed calls, workflow dependencies, JVM/container sizing and production observability.",
           "tags": [
             "Java",
             "Spring Boot",
@@ -544,31 +669,31 @@
       "id": "professional-languages",
       "includeInBrief": true,
       "category": "Professional languages",
-      "detail": "Java, Python, SQL, JavaScript and Bash"
+      "detail": "Java, Python, SQL, TypeScript, JavaScript and Bash"
     },
     {
       "id": "frameworks-and-applications",
       "includeInBrief": true,
       "category": "Frameworks & applications",
-      "detail": "Spring Boot, React, Node.js, Gatsby and Flask"
+      "detail": "Spring Boot, FastAPI, React, Next.js, Node.js, Gatsby and Flask"
     },
     {
       "id": "data-and-messaging",
       "includeInBrief": true,
       "category": "Data & messaging",
-      "detail": "PostgreSQL, Oracle, Sybase, Kafka, GraphQL and REST APIs"
+      "detail": "PostgreSQL, Oracle, Sybase, libSQL/Turso, Kafka, GraphQL and REST APIs"
     },
     {
       "id": "engineering-and-delivery",
       "includeInBrief": true,
       "category": "Engineering & delivery",
-      "detail": "Git, Maven, Gradle, Swagger, CI/CD, production support, release management and incident review"
+      "detail": "Git, Maven, Gradle, Docker, Prometheus, Grafana, Loki, Splunk, CI/CD, production support and incident review"
     },
     {
       "id": "cloud-and-platforms",
       "includeInBrief": true,
       "category": "Cloud & platforms",
-      "detail": "AWS, Vercel, distributed data platforms and AI-assisted development tooling"
+      "detail": "AWS, Vercel, containerised services, distributed data platforms and AI-assisted development tooling"
     },
     {
       "id": "earlier-engineering-tools",

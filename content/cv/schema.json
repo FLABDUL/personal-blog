@@ -8,6 +8,7 @@
     "profile",
     "overview",
     "jumpLinks",
+    "achievements",
     "professionalExperience",
     "engineeringWork",
     "education",
@@ -33,6 +34,13 @@
       "type": "array",
       "items": {
         "$ref": "#/definitions/jumpLink"
+      }
+    },
+    "achievements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/achievement"
       }
     },
     "professionalExperience": {
@@ -165,6 +173,43 @@
         }
       }
     },
+    "achievement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "roleId",
+        "text",
+        "ownership",
+        "validation",
+        "scope",
+        "tags"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "roleId": {
+          "$ref": "#/definitions/id"
+        },
+        "text": {
+          "$ref": "#/definitions/nonEmptyString"
+        },
+        "ownership": {
+          "const": "confirmed"
+        },
+        "validation": {
+          "type": "string",
+          "enum": ["production", "uat", "load-tested", "not-production"]
+        },
+        "scope": {
+          "$ref": "#/definitions/nonEmptyString"
+        },
+        "tags": {
+          "$ref": "#/definitions/stringList"
+        }
+      }
+    },
     "role": {
       "allOf": [
         {
@@ -199,6 +244,13 @@
             },
             "summary": {
               "$ref": "#/definitions/nonEmptyString"
+            },
+            "achievementIds": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/definitions/id"
+              }
             },
             "highlights": {
               "$ref": "#/definitions/stringList"

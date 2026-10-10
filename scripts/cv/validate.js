@@ -5,6 +5,7 @@ const {
   readMasterCv,
   readSchema,
   root,
+  validateAchievementData,
 } = require("./lib")
 const path = require("path")
 
@@ -27,6 +28,8 @@ if (!validate(cv)) {
     )
   )
 }
+
+errors.push(...validateAchievementData(cv))
 
 const seenIds = new Set()
 for (const record of getIdentifiedRecords(cv)) {
