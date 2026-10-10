@@ -47,10 +47,15 @@ const createSnapshot = ({
   }
 
   const destination = path.join(rootDir, "output", "applications", date, slug)
-  if (fs.existsSync(destination)) {
-    throw new Error(`Snapshot already exists: ${destination}`)
+  fs.mkdirSync(path.dirname(destination), { recursive: true })
+  try {
+    fs.mkdirSync(destination)
+  } catch (error) {
+    if (error.code === "EEXIST") {
+      throw new Error(`Snapshot already exists: ${destination}`)
+    }
+    throw error
   }
-  fs.mkdirSync(destination, { recursive: true })
 
   const copiedNames = [
     `${variantId}.json`,

@@ -71,3 +71,44 @@ test("refuses to overwrite an existing snapshot", t => {
   createSnapshot(options)
   assert.throws(() => createSnapshot(options), /Snapshot already exists/)
 })
+
+test("atomically refuses a snapshot created after an existence check", t => {
+  const rootDir = makeFixture()
+  t.after(() => fs.rmSync(rootDir, { recursive: true, force: true }))
+  const destination = path.join(
+    rootDir,
+    "output",
+    "applications",
+    "2026-10-10",
+    "backend-role"
+  )
+  fs.mkdirSync(destination, { recursive: true })
+  fs.writeFileSync(path.join(destination, "manifest.json"), "do not replace")
+
+  const originalExistsSync = fs.existsSync
+  fs.existsSync = target =>
+    path.resolve(target) === path.resolve(destination)
+      ? false
+      : originalExistsSync(target)
+
+  try {
+    assert.throws(
+      () =>
+        createSnapshot({
+          rootDir,
+          variantId: "test-variant",
+          slug: "backend-role",
+          date: "2026-10-10",
+          sourceRevision: "abc123",
+        }),
+      /Snapshot already exists/
+    )
+  } finally {
+    fs.existsSync = originalExistsSync
+  }
+
+  assert.equal(
+    fs.readFileSync(path.join(destination, "manifest.json"), "utf8"),
+    "do not replace"
+  )
+})

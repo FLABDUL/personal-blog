@@ -24,6 +24,7 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npm run build
       - run: npm run cv:check
+      - run: npm run test:cv
       - run: npm audit --audit-level=critical
       - run: npm run test:smoke
       - name: Upload browser diagnostics

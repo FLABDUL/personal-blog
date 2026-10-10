@@ -35,12 +35,16 @@ const assertExpectedPages = (variant, actualPages) => {
 const validateAchievementData = cv => {
   const errors = []
   const seenIds = new Set()
+  const achievementsById = new Map()
 
   for (const achievement of cv.achievements || []) {
     if (seenIds.has(achievement.id)) {
       errors.push(`Duplicate achievement id: ${achievement.id}`)
     }
     seenIds.add(achievement.id)
+    if (!achievementsById.has(achievement.id)) {
+      achievementsById.set(achievement.id, achievement)
+    }
 
     if (achievement.ownership !== "confirmed") {
       errors.push(
@@ -60,6 +64,13 @@ const validateAchievementData = cv => {
         errors.push(
           `Role ${role.id} references unknown achievement: ${achievementId}`
         )
+      } else {
+        const achievement = achievementsById.get(achievementId)
+        if (achievement.roleId !== role.id) {
+          errors.push(
+            `Role ${role.id} references achievement ${achievementId} owned by ${achievement.roleId}`
+          )
+        }
       }
     }
   }

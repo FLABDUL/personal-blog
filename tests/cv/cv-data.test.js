@@ -69,3 +69,16 @@ test("throws when hydration encounters an unknown achievement", () => {
     /Role current-role references unknown achievement: missing-achievement/
   )
 })
+
+test("rejects an achievement attributed to the wrong role", () => {
+  const cv = makeCv()
+  cv.professionalExperience.push({
+    id: "previous-role",
+    achievementIds: ["measured-production-change"],
+    highlights: [],
+  })
+
+  assert.deepEqual(validateAchievementData(cv), [
+    "Role previous-role references achievement measured-production-change owned by current-role",
+  ])
+})

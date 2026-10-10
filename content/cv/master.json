@@ -88,7 +88,7 @@
       "id": "ms-right-sized-data-fetches",
       "roleId": "technology-consultant-and-software-engineer",
       "text": "Fixed deterministic out-of-memory failures on the largest client funds by right-sizing data fetches; UAT showed a previously failing fund completing and another running about 36 times faster with 15-57 times less allocated and promoted memory.",
-      "cvText": "Fixed deterministic out-of-memory failures by right-sizing data fetches; UAT showed a failed case completing and another running about 36 times faster with 15-57 times less memory.",
+      "cvText": "Fixed deterministic out-of-memory failures by right-sizing data fetches; UAT showed a failed case completing and another running about 36 times faster with 15-57 times less allocated and promoted memory.",
       "ownership": "confirmed",
       "validation": "uat",
       "scope": "Largest-fund data fetches",
