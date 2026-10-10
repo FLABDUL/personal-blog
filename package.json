@@ -32,7 +32,7 @@
   "dependencies": {
     "@vercel/blob": "^2.8.1",
     "ajv": "^6.15.0",
-    "ajv-keywords": "^3.5.2",
+    "ajv-keywords": "^5.1.0",
     "gatsby": "5.16.1",
     "gatsby-plugin-image": "3.16.0",
     "gatsby-plugin-sharp": "5.16.0",
