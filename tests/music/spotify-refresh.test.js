@@ -218,3 +218,11 @@ test("refresh handler rejects missing and incorrect cron credentials", async () 
   }
   assert.equal(calls, 0)
 })
+
+test("production cron targets the canonical refresh function URL", () => {
+  const { crons } = require("../../vercel.json")
+
+  assert.deepEqual(crons, [
+    { path: "/api/spotify-refresh/", schedule: "0 6 * * *" },
+  ])
+})
