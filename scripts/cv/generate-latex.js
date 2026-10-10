@@ -213,7 +213,7 @@ const skillLines = variant.skillRows
   .replace(/ \\\\\s*$/, "")
 
 const experienceBlocks = variant.experience
-  .map(entry => {
+  .map((entry, index) => {
     const bullets = entry.highlights
       .map(
         references =>
@@ -224,7 +224,7 @@ const experienceBlocks = variant.experience
       )
       .join("\n")
 
-    return `\\textbf{${escapeLatex(entry.company)}, ${escapeLatex(
+    return `${variant.pageBreakBeforeExperienceIndex === index ? "\\newpage\n" : ""}\\textbf{${escapeLatex(entry.company)}, ${escapeLatex(
       entry.location
     )}} \\hfill \\textit{${escapeLatex(entry.period)}} \\\\
 \\textit{${escapeLatex(entry.role)}} \\\\

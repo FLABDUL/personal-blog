@@ -60,6 +60,10 @@ test("master variant renders selected projects and achievement text", () => {
     "utf8"
   )
   assert.match(tex, /\\section\*\{Selected Projects\}/)
+  assert.match(
+    tex,
+    /\\newpage\s+\\textbf\{J\.P\. Morgan Asset Management/
+  )
   assert.match(tex, /Residue Lens/)
   assert.match(tex, /Budget V2/)
   assert.match(tex, /220,000/)
