@@ -84,6 +84,10 @@ test("orphan tracks fail with a path-specific error", () => {
 })
 
 test("draft content is available only when explicitly allowed", () => {
-  assert.equal(loadMusicPortrait(portrait, { allowDraft: false }), null)
-  assert.equal(loadMusicPortrait(portrait, { allowDraft: true }), portrait)
+  const draft = clone(portrait)
+  draft.status = "draft"
+
+  assert.equal(loadMusicPortrait(draft, { allowDraft: false }), null)
+  assert.equal(loadMusicPortrait(draft, { allowDraft: true }), draft)
+  assert.equal(loadMusicPortrait(portrait, { allowDraft: false }), portrait)
 })

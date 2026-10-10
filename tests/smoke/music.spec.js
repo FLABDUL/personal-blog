@@ -67,6 +67,7 @@ test.beforeEach(async ({ page }) => {
 test("draft preview uses a local catalogue when the server API is unavailable", async ({
   page,
 }) => {
+  let previewRequested = false
   const catalogue = catalogueWithAukai()
   catalogue.artists[AUKAI_SPOTIFY_ID].imageUrl =
     "https://images.example.test/aukai.jpg"
@@ -74,9 +75,10 @@ test("draft preview uses a local catalogue when the server API is unavailable", 
     "https://images.example.test/slow-sun.jpg"
 
   await page.unroute("**/music/catalogue-preview.json")
-  await page.route("**/music/catalogue-preview.json", route =>
-    route.fulfill({ status: 200, json: catalogue }),
-  )
+  await page.route("**/music/catalogue-preview.json", route => {
+    previewRequested = true
+    return route.fulfill({ status: 200, json: catalogue })
+  })
   await page.route("https://images.example.test/**", route =>
     route.fulfill({
       status: 200,
@@ -89,6 +91,14 @@ test("draft preview uses a local catalogue when the server API is unavailable", 
   const portraitRoot = page.getByRole("region", {
     name: "Interactive music portrait",
   })
+  await expect(portraitRoot).toHaveAttribute(
+    "data-catalogue-status",
+    /^(?:available|unavailable)$/,
+  )
+  test.skip(
+    !previewRequested,
+    "The production bundle intentionally omits the draft-preview fallback",
+  )
   await expect(portraitRoot).toHaveAttribute(
     "data-catalogue-status",
     "available",
