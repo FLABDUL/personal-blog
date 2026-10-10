@@ -228,6 +228,13 @@ test("selection changes rapidly and chapter spotlight stays inside the chart", a
   page,
 }) => {
   await page.goto("/music/")
+  const portraitRoot = page.getByRole("region", {
+    name: "Interactive music portrait",
+  })
+  await expect(portraitRoot).toHaveAttribute(
+    "data-catalogue-status",
+    "unavailable",
+  )
   const aukai = page.getByRole("button", { name: /^Explore Aukai/ })
   await aukai.focus()
   await aukai.dispatchEvent("click")
