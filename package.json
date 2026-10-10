@@ -8,9 +8,9 @@
     "node": ">=24 <25"
   },
   "scripts": {
-    "predevelop": "node scripts/cv/validate.js && node scripts/books/validate.js",
+    "predevelop": "node scripts/cv/validate.js && node scripts/books/validate.js && npm run music:validate && npm run music:prepare-preview",
     "develop": "gatsby develop",
-    "prebuild": "node scripts/cv/validate.js && node scripts/books/validate.js && node scripts/cv/generate.js",
+    "prebuild": "node scripts/cv/validate.js && node scripts/books/validate.js && npm run music:validate && npm run music:prepare-preview && node scripts/cv/generate.js",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
@@ -22,11 +22,15 @@
     "cv:pdf": "npm run cv:latex && node scripts/cv/compile-pdf.js --variant swe",
     "cv:setup-pdf": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/cv/install-tectonic.ps1",
     "books:validate": "node scripts/books/validate.js",
+    "music:validate": "node scripts/music/validate.js",
+    "music:prepare-preview": "node scripts/music/prepare-preview-catalogue.js",
+    "test:music": "node --test tests/music/*.test.js",
     "test:smoke": "playwright test",
     "test:smoke:local": "npm run build && playwright test",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\""
   },
   "dependencies": {
+    "@vercel/blob": "^2.8.1",
     "ajv": "^6.15.0",
     "ajv-keywords": "^3.5.2",
     "gatsby": "5.16.1",

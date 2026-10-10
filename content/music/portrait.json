@@ -1,0 +1,342 @@
+{
+  "schemaVersion": 2,
+  "status": "draft",
+  "chapters": {
+    "in_rotation": {
+      "label": "In rotation",
+      "members": [
+        { "artistId": "tom-day", "prominence": 3 },
+        { "artistId": "aukai", "prominence": 4 },
+        { "artistId": "doja-cat", "prominence": 3 },
+        { "artistId": "night-swimming", "prominence": 3 },
+        { "artistId": "young-t-and-bugsey", "prominence": 3 },
+        { "artistId": "miyagi", "prominence": 3 }
+      ]
+    },
+    "always_returning": {
+      "label": "Always returning",
+      "members": [
+        { "artistId": "jadu-heart", "prominence": 3 },
+        { "artistId": "kings-of-leon", "prominence": 3 }
+      ]
+    },
+    "creative_fuel": {
+      "label": "Creative fuel",
+      "members": [
+        { "artistId": "marlon-funaki", "prominence": 4 },
+        { "artistId": "aukai", "prominence": 4 },
+        { "artistId": "hans-zimmer", "prominence": 3 }
+      ]
+    }
+  },
+  "artists": {
+    "jadu-heart": {
+      "id": "jadu-heart",
+      "status": "draft",
+      "name": "Jadu Heart",
+      "note": "My girlfriend and I met at one of their gigs.",
+      "spotifyArtistId": "7vjRpVXoecwKTEsrb9iscj"
+    },
+    "kings-of-leon": {
+      "id": "kings-of-leon",
+      "status": "draft",
+      "name": "Kings of Leon",
+      "note": "Takes me back to high school.",
+      "spotifyArtistId": "2qk9voo8llSGYcZ6xrBzKx"
+    },
+    "tom-day": {
+      "id": "tom-day",
+      "status": "draft",
+      "name": "Tom Day",
+      "note": "An upbeat pianist and a running favourite.",
+      "spotifyArtistId": "74yueOpxONIcPCjGyF84jG"
+    },
+    "aukai": {
+      "id": "aukai",
+      "status": "draft",
+      "name": "Aukai",
+      "note": "An incredible guitarist and a cycling favourite.",
+      "spotifyArtistId": "2AyLrA3GFbgbrjOjVnGcny"
+    },
+    "marlon-funaki": {
+      "id": "marlon-funaki",
+      "status": "draft",
+      "name": "Marlon Funaki",
+      "note": "The reason I started playing guitar.",
+      "spotifyArtistId": "3BcSXip92N0HwJRA9sVmP6"
+    },
+    "doja-cat": {
+      "id": "doja-cat",
+      "status": "draft",
+      "name": "Doja Cat",
+      "note": "For working out like a badass.",
+      "spotifyArtistId": "5cj0lLjcoR7YOSnhnX0Po5"
+    },
+    "night-swimming": {
+      "id": "night-swimming",
+      "status": "draft",
+      "name": "Night Swimming",
+      "note": "A recent discovery.",
+      "spotifyArtistId": "3e2PXYMu8ijWVUZOhgU018"
+    },
+    "young-t-and-bugsey": {
+      "id": "young-t-and-bugsey",
+      "status": "draft",
+      "name": "Young T & Bugsey",
+      "note": "For getting hyped on UK rap.",
+      "spotifyArtistId": "6M6XXCcO5gI68XpIlrUL3Z"
+    },
+    "miyagi": {
+      "id": "miyagi",
+      "status": "draft",
+      "name": "MiyaGi",
+      "note": "Part of my exploration of Russian music.",
+      "spotifyArtistId": "1kmpkcYbuaZ8tnFejLzkj2"
+    },
+    "hans-zimmer": {
+      "id": "hans-zimmer",
+      "status": "draft",
+      "name": "Hans Zimmer",
+      "note": "Epic music for studying.",
+      "spotifyArtistId": "0YC192cP3KPCRWx8zr8MfZ"
+    }
+  },
+  "tracks": {
+    "jadu-heart-burning-hour": {
+      "id": "jadu-heart-burning-hour",
+      "status": "draft",
+      "name": "Burning Hour",
+      "spotifyTrackId": "2dje3ZBu1j1r0QfR7mtS0l",
+      "placement": { "kind": "moon", "artistId": "jadu-heart" }
+    },
+    "jadu-heart-freedom": {
+      "id": "jadu-heart-freedom",
+      "status": "draft",
+      "name": "Freedom",
+      "spotifyTrackId": "78durx9d4jIEKagBqxaNf6",
+      "placement": { "kind": "moon", "artistId": "jadu-heart" }
+    },
+    "jadu-heart-blame": {
+      "id": "jadu-heart-blame",
+      "status": "draft",
+      "name": "Blame",
+      "spotifyTrackId": "61zGmSBNDo8KmTBgCCEogT",
+      "placement": { "kind": "moon", "artistId": "jadu-heart" }
+    },
+    "kings-of-leon-closer": {
+      "id": "kings-of-leon-closer",
+      "status": "draft",
+      "name": "Closer",
+      "spotifyTrackId": "47jpI85aNpUG0KDLpTPVEq",
+      "placement": { "kind": "moon", "artistId": "kings-of-leon" }
+    },
+    "kings-of-leon-100000-people": {
+      "id": "kings-of-leon-100000-people",
+      "status": "draft",
+      "name": "100,000 People",
+      "spotifyTrackId": "2wuxCm6QikYr215FwRMF1I",
+      "placement": { "kind": "moon", "artistId": "kings-of-leon" }
+    },
+    "kings-of-leon-time-in-disguise": {
+      "id": "kings-of-leon-time-in-disguise",
+      "status": "draft",
+      "name": "Time in Disguise",
+      "spotifyTrackId": "35OVbqhT8KWwfIip7fKJbw",
+      "placement": { "kind": "moon", "artistId": "kings-of-leon" }
+    },
+    "tom-day-flemington": {
+      "id": "tom-day-flemington",
+      "status": "draft",
+      "name": "Flemington",
+      "spotifyTrackId": "0tXmVU58oG5vpPQZ69bAYO",
+      "placement": { "kind": "moon", "artistId": "tom-day" }
+    },
+    "tom-day-valerie": {
+      "id": "tom-day-valerie",
+      "status": "draft",
+      "name": "Valerie",
+      "spotifyTrackId": "0ubaAiJ8RNsOlLZRhephHC",
+      "placement": { "kind": "moon", "artistId": "tom-day" }
+    },
+    "tom-day-fixation": {
+      "id": "tom-day-fixation",
+      "status": "draft",
+      "name": "Fixation",
+      "spotifyTrackId": "6sxRXJddyMbdksRdxQwxif",
+      "placement": { "kind": "moon", "artistId": "tom-day" }
+    },
+    "aukai-early-crossing": {
+      "id": "aukai-early-crossing",
+      "status": "draft",
+      "name": "Early Crossing",
+      "spotifyTrackId": "5zjLSqVqTPvKuHlSzCsi0a",
+      "placement": { "kind": "moon", "artistId": "aukai" }
+    },
+    "aukai-chacahua": {
+      "id": "aukai-chacahua",
+      "status": "draft",
+      "name": "Chacahua",
+      "spotifyTrackId": "6OHKAu7eDR4ootzfCMDJy0",
+      "placement": { "kind": "moon", "artistId": "aukai" }
+    },
+    "aukai-slow-sun": {
+      "id": "aukai-slow-sun",
+      "status": "draft",
+      "name": "Slow Sun",
+      "spotifyTrackId": "3NsZZpRmWNGvE0WmCuZPAu",
+      "placement": { "kind": "moon", "artistId": "aukai" }
+    },
+    "marlon-funaki-red-hearts": {
+      "id": "marlon-funaki-red-hearts",
+      "status": "draft",
+      "name": "Red Hearts",
+      "spotifyTrackId": "7aU8ycwySg1LQAuCKgr3z9",
+      "placement": { "kind": "moon", "artistId": "marlon-funaki" }
+    },
+    "marlon-funaki-overdue": {
+      "id": "marlon-funaki-overdue",
+      "status": "draft",
+      "name": "Overdue",
+      "spotifyTrackId": "1cFuwJ0QYpa4GRVjYecHaz",
+      "placement": { "kind": "moon", "artistId": "marlon-funaki" }
+    },
+    "marlon-funaki-amends": {
+      "id": "marlon-funaki-amends",
+      "status": "draft",
+      "name": "Amends",
+      "spotifyTrackId": "6Az7DXdxCLUEiZFSMH7w0P",
+      "placement": { "kind": "moon", "artistId": "marlon-funaki" }
+    },
+    "doja-cat-need-to-know": {
+      "id": "doja-cat-need-to-know",
+      "status": "draft",
+      "name": "Need to Know",
+      "spotifyTrackId": "3Vi5XqYrmQgOYBajMWSvCi",
+      "placement": { "kind": "moon", "artistId": "doja-cat" }
+    },
+    "doja-cat-been-like-this": {
+      "id": "doja-cat-been-like-this",
+      "status": "draft",
+      "name": "Been Like This",
+      "spotifyTrackId": "7y3xU9vEC1s8DSuuoSYKih",
+      "placement": { "kind": "moon", "artistId": "doja-cat" }
+    },
+    "doja-cat-gun": {
+      "id": "doja-cat-gun",
+      "status": "draft",
+      "name": "Gun",
+      "spotifyTrackId": "15sNe8FD178zMsVz6ug0AS",
+      "placement": { "kind": "moon", "artistId": "doja-cat" }
+    },
+    "night-swimming-evergreen": {
+      "id": "night-swimming-evergreen",
+      "status": "draft",
+      "name": "Evergreen",
+      "spotifyTrackId": "0PF5tV6hp4cW38HF1LCSDk",
+      "placement": { "kind": "moon", "artistId": "night-swimming" }
+    },
+    "night-swimming-a-wall": {
+      "id": "night-swimming-a-wall",
+      "status": "draft",
+      "name": "A Wall",
+      "spotifyTrackId": "0NitO4rWKaarDuBOdNI6SW",
+      "placement": { "kind": "moon", "artistId": "night-swimming" }
+    },
+    "night-swimming-freight-train": {
+      "id": "night-swimming-freight-train",
+      "status": "draft",
+      "name": "Freight Train",
+      "spotifyTrackId": "4aQAsbHH0eV04FZ5ARtWP3",
+      "placement": { "kind": "moon", "artistId": "night-swimming" }
+    },
+    "young-t-and-bugsey-gangland": {
+      "id": "young-t-and-bugsey-gangland",
+      "status": "draft",
+      "name": "Gangland",
+      "spotifyTrackId": "4Axp1wyE3x5E13ijci7UO7",
+      "placement": { "kind": "moon", "artistId": "young-t-and-bugsey" }
+    },
+    "young-t-and-bugsey-glistenin": {
+      "id": "young-t-and-bugsey-glistenin",
+      "status": "draft",
+      "name": "Glistenin'",
+      "spotifyTrackId": "3UlHrxfGs0AVUkqkQjFyIH",
+      "placement": { "kind": "moon", "artistId": "young-t-and-bugsey" }
+    },
+    "young-t-and-bugsey-strike-a-pose": {
+      "id": "young-t-and-bugsey-strike-a-pose",
+      "status": "draft",
+      "name": "Strike a Pose (feat. Aitch)",
+      "spotifyTrackId": "23GvTfcGK454ppLsts3W44",
+      "placement": { "kind": "moon", "artistId": "young-t-and-bugsey" }
+    },
+    "miyagi-music-is-love": {
+      "id": "miyagi-music-is-love",
+      "status": "draft",
+      "name": "Music is love",
+      "spotifyTrackId": "59fpJ30uvubFveSrwgCxMC",
+      "placement": { "kind": "moon", "artistId": "miyagi" }
+    },
+    "miyagi-marlboro": {
+      "id": "miyagi-marlboro",
+      "status": "draft",
+      "name": "Marlboro",
+      "spotifyTrackId": "1V0XzDGcYMtjAysR3uyZbb",
+      "placement": { "kind": "moon", "artistId": "miyagi" }
+    },
+    "miyagi-korabli": {
+      "id": "miyagi-korabli",
+      "status": "draft",
+      "name": "Корабли",
+      "spotifyTrackId": "5oCneCUH3EwpQ5SnrisRE3",
+      "placement": { "kind": "moon", "artistId": "miyagi" }
+    },
+    "hans-zimmer-time": {
+      "id": "hans-zimmer-time",
+      "status": "draft",
+      "name": "Time",
+      "spotifyTrackId": "6ZFbXIJkuI1dVNWvzJzown",
+      "placement": { "kind": "moon", "artistId": "hans-zimmer" }
+    },
+    "hans-zimmer-a-way-of-life": {
+      "id": "hans-zimmer-a-way-of-life",
+      "status": "draft",
+      "name": "A Way of Life",
+      "spotifyTrackId": "6DHYWelHYuynVVPv2m58wl",
+      "placement": { "kind": "moon", "artistId": "hans-zimmer" }
+    },
+    "hans-zimmer-imagine-the-fire": {
+      "id": "hans-zimmer-imagine-the-fire",
+      "status": "draft",
+      "name": "Imagine The Fire",
+      "spotifyTrackId": "0umlh8c6f97cLxW6KxSHlV",
+      "placement": { "kind": "moon", "artistId": "hans-zimmer" }
+    }
+  },
+  "relationships": [
+    {
+      "id": "guitar-reasons",
+      "status": "draft",
+      "source": "marlon-funaki",
+      "target": "aukai",
+      "chapters": ["creative_fuel"],
+      "text": "Two guitar-led reasons I keep returning to the instrument."
+    },
+    {
+      "id": "music-in-motion",
+      "status": "draft",
+      "source": "tom-day",
+      "target": "aukai",
+      "chapters": ["in_rotation"],
+      "text": "Music I reach for while moving—running and cycling."
+    },
+    {
+      "id": "high-energy",
+      "status": "draft",
+      "source": "doja-cat",
+      "target": "young-t-and-bugsey",
+      "chapters": ["in_rotation"],
+      "text": "High-energy music for working out and getting hyped."
+    }
+  ]
+}

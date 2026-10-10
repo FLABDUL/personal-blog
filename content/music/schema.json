@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "status",
+    "chapters",
+    "artists",
+    "tracks",
+    "relationships"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 2 },
+    "status": { "enum": ["draft", "published"] },
+    "chapters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["in_rotation", "always_returning", "creative_fuel"],
+      "properties": {
+        "in_rotation": { "$ref": "#/definitions/chapter" },
+        "always_returning": { "$ref": "#/definitions/chapter" },
+        "creative_fuel": { "$ref": "#/definitions/chapter" }
+      }
+    },
+    "artists": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "$ref": "#/definitions/artist" }
+    },
+    "tracks": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "$ref": "#/definitions/track" }
+    },
+    "relationships": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/relationship" }
+    }
+  },
+  "definitions": {
+    "status": { "enum": ["draft", "published"] },
+    "spotifyId": { "type": "string", "pattern": "^[A-Za-z0-9]{22}$" },
+    "chapter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "members"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "members": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["artistId", "prominence"],
+            "properties": {
+              "artistId": { "type": "string", "minLength": 1 },
+              "prominence": { "type": "integer", "minimum": 1, "maximum": 5 }
+            }
+          }
+        }
+      }
+    },
+    "artist": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "name", "note", "spotifyArtistId"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "status": { "$ref": "#/definitions/status" },
+        "name": { "type": "string", "minLength": 1 },
+        "note": { "type": "string", "minLength": 1 },
+        "spotifyArtistId": { "$ref": "#/definitions/spotifyId" }
+      }
+    },
+    "track": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "name", "spotifyTrackId", "placement"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "status": { "$ref": "#/definitions/status" },
+        "name": { "type": "string", "minLength": 1 },
+        "spotifyTrackId": { "$ref": "#/definitions/spotifyId" },
+        "placement": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "artistId"],
+          "properties": {
+            "kind": { "const": "moon" },
+            "artistId": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    "relationship": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "source", "target", "chapters", "text"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "status": { "$ref": "#/definitions/status" },
+        "source": { "type": "string", "minLength": 1 },
+        "target": { "type": "string", "minLength": 1 },
+        "chapters": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": ["in_rotation", "always_returning", "creative_fuel"]
+          }
+        },
+        "text": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

@@ -69,6 +69,10 @@ yarn-error.log
 .yarn-integrity
 .vercel
 
+# Local Spotify catalogue used only by the draft preview
+.spotify-catalogue.local.json
+static/music/catalogue-preview.json
+
 # Local CV comparison reports may contain private source material
 cv-reports/
 
