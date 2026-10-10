@@ -1,7 +1,8 @@
 const fs = require("fs")
 const path = require("path")
 const { spawnSync } = require("child_process")
-const { root } = require("./lib")
+const pdfParse = require("pdf-parse")
+const { assertExpectedPages, root } = require("./lib")
 
 const getArgument = (name, fallback) => {
   const index = process.argv.indexOf(name)
@@ -56,5 +57,15 @@ if (result.error && result.error.code === "ENOENT") {
     throw new Error(`Tectonic completed without creating ${pdfPath}`)
   }
   console.log(result.stdout.trim())
-  console.log(`Created ${path.relative(root, pdfPath)}`)
+  pdfParse(fs.readFileSync(pdfPath))
+    .then(document => {
+      assertExpectedPages(variant, document.numpages)
+      console.log(
+        `Created ${path.relative(root, pdfPath)} (${document.numpages} pages)`
+      )
+    })
+    .catch(error => {
+      console.error(error.message)
+      process.exitCode = 1
+    })
 }

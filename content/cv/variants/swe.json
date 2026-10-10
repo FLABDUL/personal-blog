@@ -2,163 +2,51 @@
   "schemaVersion": 1,
   "id": "swe",
   "outputFile": "abdul-hakim-norazman-swe-cv",
+  "expectedPages": 1,
   "website": "https://www.madebyhakim.com/",
-  "summary": "Technology consultant at Detillens, contracted to Morgan Stanley as a software engineer in Fund Services Technology. Experienced across fund reporting, investment research and cross-asset trading systems, with strengths in Java, Python, SQL, React and data-intensive financial technology.",
+  "summary": "Backend and platform engineer specialising in Java/Spring services, database and JVM performance, distributed workflow reliability and evidence-led production engineering across fund reporting, investment research and trading systems.",
   "skillRows": [
-    {
-      "label": "Languages",
-      "skillId": "professional-languages",
-      "values": ["Java", "Python", "SQL"]
-    },
-    {
-      "label": "Frameworks & Libraries",
-      "skillId": "frameworks-and-applications",
-      "values": ["Spring Boot", "React"]
-    },
-    {
-      "label": "Data & Infrastructure",
-      "skillId": "data-and-messaging",
-      "values": ["PostgreSQL", "Oracle", "Kafka"]
-    },
-    {
-      "label": "Tools",
-      "skillId": "engineering-and-delivery",
-      "values": ["Git", "Maven", "Gradle", "Swagger"]
-    }
+    { "label": "Languages", "skillId": "professional-languages", "values": ["Java", "Python", "SQL", "TypeScript"] },
+    { "label": "Backend & APIs", "skillId": "frameworks-and-applications", "values": ["Spring Boot", "FastAPI", "Node.js"] },
+    { "label": "Data & Messaging", "skillId": "data-and-messaging", "values": ["PostgreSQL", "Oracle", "Kafka"] },
+    { "label": "Platform & Delivery", "skillId": "engineering-and-delivery", "values": ["Docker", "Prometheus", "Grafana", "Maven"] }
   ],
   "experience": [
     {
-      "company": "Detillens & Morgan Stanley",
-      "location": "Glasgow",
-      "period": "Dec 2025 - Present",
-      "role": "Technology Consultant & Software Engineer",
-      "team": "Fund Services Technology",
+      "company": "Detillens & Morgan Stanley", "location": "Glasgow", "period": "Dec 2025 - Present",
+      "role": "Technology Consultant & Software Engineer", "team": "Fund Services Technology",
       "highlights": [
-        [
-          {
-            "source": "experience",
-            "roleId": "technology-consultant-and-software-engineer",
-            "highlightIndex": 0
-          }
-        ],
-        [
-          {
-            "source": "experience",
-            "roleId": "technology-consultant-and-software-engineer",
-            "highlightIndex": 5
-          }
-        ]
+        [{ "source": "achievement", "achievementId": "ms-n-plus-one-lookups" }],
+        [{ "source": "achievement", "achievementId": "ms-upstream-allocation-fetch" }],
+        [{ "source": "achievement", "achievementId": "ms-recurring-database-failure" }],
+        [{ "source": "achievement", "achievementId": "ms-jvm-container-sizing" }]
       ]
     },
     {
-      "company": "J.P. Morgan Asset Management",
-      "location": "Glasgow",
-      "period": "Jun 2021 - Nov 2025",
-      "role": "Software Engineer",
-      "team": "Research Technology & Trading Technology",
+      "company": "J.P. Morgan Asset Management", "location": "Glasgow", "period": "Jun 2021 - Nov 2025",
+      "role": "Software Engineer", "team": "Research Technology & Trading Technology",
       "highlights": [
         [
-          {
-            "source": "experience",
-            "roleId": "software-engineer-research-technology",
-            "highlightIndex": 0
-          },
-          {
-            "source": "experience",
-            "roleId": "software-engineer-research-technology",
-            "highlightIndex": 1
-          }
+          { "source": "experience", "roleId": "software-engineer-research-technology", "highlightIndex": 0 },
+          { "source": "experience", "roleId": "software-engineer-research-technology", "highlightIndex": 1 }
         ],
-        [
-          {
-            "source": "experience",
-            "roleId": "software-engineer-trading-technology",
-            "highlightIndex": 0
-          }
-        ],
-        [
-          {
-            "source": "professionalDevelopment",
-            "groupId": "bank-of-america-markets-programmes",
-            "itemIndex": 1
-          }
-        ]
+        [{ "source": "experience", "roleId": "software-engineer-trading-technology", "highlightIndex": 0 }]
       ]
     }
   ],
-  "development": [
-    {
-      "source": "professionalDevelopment",
-      "groupId": "investment-and-markets",
-      "itemIndex": 1
-    },
-    {
-      "source": "engineeringWork",
-      "groupId": "independent-and-open-source",
-      "itemId": "dependency-agent"
-    },
-    {
-      "source": "engineeringWork",
-      "groupId": "independent-and-open-source",
-      "itemId": "octopus-energy-dashboard"
-    }
+  "projects": [
+    { "groupId": "independent-and-open-source", "itemId": "budget-v2" },
+    { "groupId": "independent-and-open-source", "itemId": "dependency-agent" }
   ],
+  "development": [],
   "educationBullets": [
-    [
-      { "source": "education", "detailIndex": 0 },
-      { "source": "education", "detailIndex": 1 }
-    ],
-    [
-      {
-        "source": "universityLeadership",
-        "highlightIndex": 0
-      },
-      {
-        "source": "universityLeadership",
-        "highlightIndex": 1
-      }
-    ],
-    [
-      {
-        "source": "universityLeadership",
-        "highlightIndex": 2
-      },
-      {
-        "source": "universityLeadership",
-        "highlightIndex": 3
-      },
-      {
-        "source": "experience",
-        "roleId": "makerspace-technician",
-        "highlightIndex": 5
-      }
-    ]
+    [{ "source": "education", "detailIndex": 0 }, { "source": "education", "detailIndex": 1 }],
+    [{ "source": "universityLeadership", "highlightIndex": 0 }, { "source": "universityLeadership", "highlightIndex": 1 }]
   ],
   "emphasis": [
-    "Detillens",
-    "Morgan Stanley",
-    "30%",
-    "Java",
-    "Python",
-    "SQL",
-    "React",
-    "Spring Boot",
-    "Gradle",
-    "Moderne",
-    "GitHub Copilot",
-    "Long-Term Capital Market Assumptions",
-    "Asset Volatility",
-    "Sybase",
-    "Kafka",
-    "GraphQL",
-    "ReportingService",
-    "Grafana",
-    "CFA Level I",
-    "Quantitative Methods",
-    "Fixed Income",
-    "Financial Statement Analysis",
-    "OpenAI",
-    "Maven",
-    "SpaceX Hyperloop Pod Competition"
+    "Detillens", "Morgan Stanley", "Java", "Python", "SQL", "TypeScript", "Spring Boot", "FastAPI",
+    "PostgreSQL", "Kafka", "Docker", "Prometheus", "Grafana", "103 to 2", "220,000",
+    "13.9 times faster", "31 minutes to 10 seconds", "2,285", "zero", "127-CPU", "2-4-core",
+    "Budget V2", "Dependency Agent", "Long-Term Capital Market Assumptions", "Asset Volatility", "Sybase", "GraphQL"
   ]
 }
