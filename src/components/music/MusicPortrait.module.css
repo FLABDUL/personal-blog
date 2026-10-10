@@ -567,16 +567,61 @@
   box-shadow:
     inset 0 0 80px rgb(0 0 0 / 38%),
     0 24px 70px rgb(0 0 0 / 24%);
-  min-height: 42rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-areas:
+    "filters guide"
+    "filters canvas"
+    ". details"
+    "spotify spotify";
+  grid-template-columns: minmax(10rem, 14rem) minmax(0, 1fr);
   overflow: hidden;
-  position: relative;
+  padding: 1rem;
+}
+
+.regionFilters {
+  align-content: start;
+  display: grid;
+  gap: 0.85rem;
+  grid-area: filters;
+}
+
+.regionFilters button {
+  background: rgb(16 58 72 / 92%);
+  border: 1px solid #dca747;
+  border-radius: 18px;
+  color: #ffe5a3;
+  cursor: pointer;
+  font:
+    700 1rem Georgia,
+    serif;
+  min-height: 5.5rem;
+  padding: 0.8rem;
+}
+
+.regionFilters button:hover,
+.regionFilters button[aria-pressed="true"] {
+  background: #8f3f35;
+  border-color: #fff1c2;
+}
+
+.regionFilters button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.atlasCanvas {
+  aspect-ratio: 1;
+  border: 1px solid rgb(218 164 67 / 28%);
+  border-radius: 18px;
+  grid-area: canvas;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .livingAtlas {
   display: block;
   height: auto;
-  max-height: 80vh;
-  min-height: 42rem;
   width: 100%;
 }
 
@@ -592,7 +637,6 @@
 }
 
 .orbitLayer[data-quiet="true"] > .atlasOrbit,
-.orbitLayer[data-quiet="true"] > .orbitLabelControl,
 .orbitLayer[data-quiet="true"] .atlasRelationship,
 .nodeSelector[data-region-quiet="true"] {
   opacity: 0.24;
@@ -680,32 +724,6 @@
   stroke-width: 2px;
 }
 
-.orbitLabelControl {
-  cursor: pointer;
-  outline: none;
-}
-
-.orbitLabelControl rect {
-  fill: #103a48;
-  stroke: #dca747;
-  stroke-width: 1.5px;
-}
-
-.orbitLabelControl text {
-  fill: #ffe5a3;
-  font:
-    700 17px Georgia,
-    serif;
-  letter-spacing: 0.03em;
-}
-
-.orbitLabelControl:focus-visible rect,
-.orbitLabelControl[aria-pressed="true"] rect {
-  fill: #8f3f35;
-  stroke: #fff1c2;
-  stroke-width: 4px;
-}
-
 .atlasRelationship {
   cursor: pointer;
   outline: none;
@@ -767,13 +785,9 @@
   background: rgb(7 31 42 / 92%);
   border: 1px solid #c9923b;
   border-radius: 18px;
-  bottom: 6rem;
   color: #f8efd8;
-  left: 1.25rem;
-  max-width: min(28rem, calc(100% - 2.5rem));
+  grid-area: details;
   padding: 1.1rem 1.25rem;
-  position: absolute;
-  z-index: 3;
 }
 
 .atlasDetails h2 {
@@ -811,12 +825,8 @@
   border: 1px solid rgb(218 164 67 / 68%);
   border-radius: 12px;
   color: #f8efd8;
-  max-width: 26rem;
+  grid-area: guide;
   padding: 0.7rem 0.9rem;
-  position: absolute;
-  right: 1.25rem;
-  top: 1.25rem;
-  z-index: 3;
 }
 
 .atlasGuide summary {
@@ -850,14 +860,13 @@
   background: rgb(7 31 42 / 88%);
   border: 1px solid rgb(218 164 67 / 58%);
   border-radius: 12px;
-  bottom: 1.25rem;
-  display: inline-flex;
+  display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 0.65rem;
+  grid-area: spotify;
+  justify-content: center;
   padding: 0.6rem 0.75rem;
-  position: absolute;
-  right: 1.25rem;
-  z-index: 3;
 }
 
 .catalogueAttribution p {
@@ -871,37 +880,23 @@
 }
 
 @media (max-width: 48rem) {
-  .atlasFrame,
-  .livingAtlas {
-    min-height: auto;
+  .atlasFrame {
+    grid-template-areas:
+      "filters"
+      "guide"
+      "canvas"
+      "details"
+      "spotify";
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  .livingAtlas {
-    max-height: none;
+  .regionFilters {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .atlasDetails {
-    bottom: auto;
-    left: auto;
-    margin: 0 1rem 1rem;
-    max-width: none;
-    position: relative;
-  }
-
-  .atlasGuide {
-    margin: 0 1rem 1rem;
-    max-width: none;
-    position: relative;
-    right: auto;
-    top: auto;
-  }
-
-  .catalogueAttribution {
-    bottom: auto;
-    flex-wrap: wrap;
-    margin: 0 1rem 1rem;
-    position: relative;
-    right: auto;
+  .regionFilters button {
+    min-height: 4rem;
+    padding-inline: 0.45rem;
   }
 }
 
@@ -917,26 +912,6 @@
   .atlasPlanetLabel {
     font-size: 36px;
     stroke-width: 7px;
-  }
-
-  .orbitLabelControl text {
-    font-size: 36px;
-  }
-
-  .orbitLabelControl rect {
-    width: 260px;
-  }
-
-  .orbitLayer[data-orbit-chapter="in_rotation"] .orbitLabelControl {
-    transform: translate(680px, 80px);
-  }
-
-  .orbitLayer[data-orbit-chapter="always_returning"] .orbitLabelControl {
-    transform: translate(680px, 250px);
-  }
-
-  .orbitLayer[data-orbit-chapter="creative_fuel"] .orbitLabelControl {
-    transform: translate(680px, 680px);
   }
 
   .mobileSelectorHitTarget {
