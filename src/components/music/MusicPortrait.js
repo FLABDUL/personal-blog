@@ -105,22 +105,27 @@ export default function MusicPortrait({ portrait }) {
     >
       <p className={styles.atlasStatus}>{message}</p>
       <div className={styles.atlasFrame}>
-        <LivingAtlas
-          model={model}
-          layout={layout}
-          spotlight={spotlight}
-          selection={selection}
-          allPaused={allPaused}
-          onSpotlight={chapter =>
-            setSpotlight(current => (current === chapter ? null : chapter))
-          }
-          onSelect={selectFromTrigger}
-          onReset={() => {
-            setSelection(null)
-            setSpotlight(null)
-          }}
-        />
-        <MusicDetails model={model} selection={selection} />
+        <div
+          className={styles.regionFilters}
+          role="group"
+          aria-label="Music map regions"
+        >
+          {model.chapters.map(chapter => (
+            <button
+              key={chapter.id}
+              type="button"
+              aria-label={`Spotlight ${chapter.orbitLabel}`}
+              aria-pressed={spotlight === chapter.id}
+              onClick={() =>
+                setSpotlight(current =>
+                  current === chapter.id ? null : chapter.id,
+                )
+              }
+            >
+              {chapter.orbitLabel}
+            </button>
+          ))}
+        </div>
         <details className={styles.atlasGuide}>
           <summary>How to read this map</summary>
           <p>
@@ -138,6 +143,21 @@ export default function MusicPortrait({ portrait }) {
             ))}
           </div>
         </details>
+        <div className={styles.atlasCanvas}>
+          <LivingAtlas
+            model={model}
+            layout={layout}
+            spotlight={spotlight}
+            selection={selection}
+            allPaused={allPaused}
+            onSelect={selectFromTrigger}
+            onReset={() => {
+              setSelection(null)
+              setSpotlight(null)
+            }}
+          />
+        </div>
+        <MusicDetails model={model} selection={selection} />
         <SpotifyAttribution />
       </div>
     </section>

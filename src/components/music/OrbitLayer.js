@@ -5,11 +5,6 @@ import ArtistPlanet from "./ArtistPlanet"
 import TrackNode from "./TrackNode"
 import * as styles from "./MusicPortrait.module.css"
 
-const LABEL_POSITION = {
-  in_rotation: { x: 72, y: 104 },
-  always_returning: { x: 72, y: 232 },
-  creative_fuel: { x: 72, y: 360 },
-}
 const activateOnKey = (event, activate) => {
   if (event.key !== "Enter" && event.key !== " ") return
   event.preventDefault()
@@ -24,10 +19,8 @@ export default function OrbitLayer({
   selection,
   paused,
   onPauseChange,
-  onSpotlight,
   onSelect,
 }) {
-  const position = LABEL_POSITION[orbit.chapter]
   const quiet = spotlight !== null && spotlight !== orbit.chapter
   const planetByArtistId = new Map(
     planets.map(planet => [planet.artistId, planet]),
@@ -71,35 +64,6 @@ export default function OrbitLayer({
         r={orbit.radius}
         aria-hidden="true"
       />
-      <g
-        className={styles.orbitLabelControl}
-        role="button"
-        tabIndex="0"
-        aria-label={`Spotlight ${orbit.label}`}
-        aria-pressed={spotlight === orbit.chapter}
-        transform={`translate(${position.x} ${position.y})`}
-        onClick={event => {
-          event.currentTarget.focus()
-          onSpotlight(orbit.chapter)
-        }}
-        onKeyDown={event =>
-          activateOnKey(event, () => onSpotlight(orbit.chapter))
-        }
-      >
-        <rect
-          data-hit-target
-          x="-18"
-          y="-80"
-          width="160"
-          height="160"
-          rx="24"
-          fill="transparent"
-        />
-        <rect x="-18" y="-24" width="150" height="42" rx="18" />
-        <text x="0" y="3">
-          {orbit.label}
-        </text>
-      </g>
       <g className={styles.orbitMotion}>
         {relationships.map(relationship => {
           const source = planetByArtistId.get(relationship.source)

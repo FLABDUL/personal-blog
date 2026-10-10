@@ -12,7 +12,6 @@ export default function LivingAtlas({
   spotlight,
   selection,
   allPaused,
-  onSpotlight,
   onSelect,
   onReset,
 }) {
@@ -80,7 +79,6 @@ export default function LivingAtlas({
                   : current,
             )
           }
-          onSpotlight={onSpotlight}
           onSelect={onSelect}
         />
       ))}
