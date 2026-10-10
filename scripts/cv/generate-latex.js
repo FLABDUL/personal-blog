@@ -259,7 +259,7 @@ const projectBlocks = (variant.projects || [])
   .join("\\\\[3pt]\n")
 
 const projectsSection = projectBlocks
-  ? `${variant.pageBreakBeforeProjects ? "\\newpage\n" : ""}\\section*{Selected Projects}\n${projectBlocks}`
+  ? `${variant.pageBreakBeforeProjects ? "\\newpage\n" : ""}\\section*{Selected Projects}\n${projectBlocks}\n\\par`
   : ""
 
 const developmentSection = developmentBullets

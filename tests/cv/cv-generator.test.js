@@ -68,4 +68,5 @@ test("master variant renders selected projects and achievement text", () => {
   assert.match(tex, /Budget V2/)
   assert.match(tex, /220,000/)
   assert.match(tex, /production database round-trips/)
+  assert.match(tex, /Dependency Agent[\s\S]*\\par\s+\\section\*\{Education\}/)
 })
