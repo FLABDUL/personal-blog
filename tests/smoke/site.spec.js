@@ -14,6 +14,9 @@ test.beforeEach(async ({ page }) => {
     await page.route("**/api/leetcode", route =>
       route.fulfill({ status: 200, json: leetcodeFallback }),
     )
+    await page.route("**/api/spotify-catalogue", route =>
+      route.fulfill({ status: 200, json: { status: "unavailable" } }),
+    )
   }
 })
 
@@ -23,7 +26,10 @@ const routes = [
   { path: "/projects/", heading: "Projects built to be explored." },
   { path: "/blog/", heading: "Blog" },
   { path: "/bookshelf/", heading: "Bookshelf" },
+  { path: "/music/", heading: "Music Portrait" },
+  { path: "/music/case-study/", heading: "Turning listening into a living atlas" },
   { path: "/studio/", heading: "Studio" },
+  { path: "/privacy/", heading: "Privacy" },
   {
     path: "/projects/budget-v2/",
     heading: "Building a trustworthy personal-finance data pipeline",
@@ -69,14 +75,17 @@ test("primary navigation and a published article work", async ({ page }) => {
   const navigation = page.getByRole("navigation", {
     name: "Primary navigation",
   })
-  for (const label of [
+  const expectedLabels = [
     "About",
     "Experience",
     "Projects",
     "Blog",
     "Bookshelf",
+    "Music",
     "Studio",
-  ]) {
+  ]
+  await expect(navigation.getByRole("link")).toHaveText(expectedLabels)
+  for (const label of expectedLabels) {
     await expect(
       navigation.getByRole("link", { name: label, exact: true }),
     ).toBeVisible()
@@ -88,6 +97,28 @@ test("primary navigation and a published article work", async ({ page }) => {
     page.getByRole("heading", { level: 1, name: "The Walk I Keep Missing" }),
   ).toBeVisible()
   expect(errors).toEqual([])
+})
+
+test("music navigation and privacy disclosure remain reachable on mobile", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto("/music/")
+
+  const navigation = page.getByRole("navigation", { name: "Primary navigation" })
+  await expect(navigation.getByRole("link")).toHaveCount(7)
+  await expect(navigation.getByRole("link", { name: "Music", exact: true })).toHaveAttribute(
+    "aria-current",
+    "page",
+  )
+  await expect(page.getByRole("link", { name: "Privacy", exact: true })).toHaveAttribute(
+    "href",
+    "/privacy/",
+  )
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true)
+
+  await page.goto("/privacy/")
+  await expect(page.getByText(/Spotify supplies public catalogue details/i)).toBeVisible()
+  await expect(page.getByText(/does not connect a visitor's Spotify account/i)).toBeVisible()
+  await expect(page.getByText(/does not use Music-specific analytics/i)).toBeVisible()
 })
 
 test("live products lead the project collection and remain curated on Experience", async ({

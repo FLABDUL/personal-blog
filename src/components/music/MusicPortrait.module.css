@@ -1,0 +1,978 @@
+.constellation {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  color: var(--foreground);
+  background: #061926;
+  border: 1px solid #695432;
+  border-radius: 1.15rem;
+  box-shadow:
+    0 2rem 8rem rgb(0 0 0 / 38%),
+    inset 0 0 4rem rgb(21 147 152 / 8%);
+}
+
+.portrait {
+  width: 100%;
+}
+
+.portraitControls,
+.chapterTabs,
+.viewSwitch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.portraitControls {
+  justify-content: space-between;
+  margin-block: 2rem 1rem;
+}
+
+.chapterTabs,
+.viewSwitch {
+  padding: 0.25rem;
+  border: 1px solid var(--brass-dim);
+  border-radius: 999px;
+  background: var(--surface);
+}
+
+.chapterTabs button,
+.viewSwitch button,
+.guideButton,
+.dialogClose {
+  min-height: 44px;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--brass-dim);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--foreground);
+  font: inherit;
+  cursor: pointer;
+}
+
+.chapterTabs button,
+.viewSwitch button {
+  border-color: transparent;
+}
+
+.chapterTabs button[aria-selected="true"],
+.viewSwitch button[aria-pressed="true"] {
+  border-color: var(--brass);
+  background: var(--brass);
+  color: #061926;
+}
+
+.chapterTabs button:hover:not([aria-selected="true"]),
+.viewSwitch button:hover:not([aria-pressed="true"]),
+.guideButton:hover,
+.dialogClose:hover {
+  border-color: var(--brass);
+  background: rgb(239 189 98 / 10%);
+}
+
+.chapterTabs button:focus-visible,
+.viewSwitch button:focus-visible,
+.guideButton:focus-visible,
+.dialogClose:focus-visible,
+.rankedArtistList button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.hint {
+  margin-block: 0 1rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.rankedArtistList {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rankedArtistList button {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+  min-height: 52px;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgb(239 189 98 / 22%);
+  border-radius: 0.75rem;
+  background: var(--surface);
+  color: var(--foreground);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.rankedArtistList button[aria-pressed="true"] {
+  border-color: var(--brass);
+  box-shadow: inset 0 0 0 1px var(--brass);
+}
+
+.rankedArtistName {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.detailsDialog {
+  width: min(100% - 2rem, 36rem);
+  max-height: min(80vh, 44rem);
+  overflow: auto;
+  padding: 2rem;
+  color: var(--foreground);
+  background: var(--surface-raised);
+  border: 1px solid var(--brass-dim);
+  border-radius: 1rem;
+  box-shadow: 0 2rem 8rem rgb(0 0 0 / 55%);
+}
+
+.detailsDialog::backdrop {
+  background: rgb(2 10 16 / 78%);
+  backdrop-filter: blur(8px);
+}
+
+.detailsDialog h2 {
+  margin-block: 0 0.75rem;
+  padding-right: 5rem;
+}
+
+.detailsDialog h3 {
+  margin-block-end: 0.5rem;
+}
+
+.detailsDialog a {
+  color: var(--brass);
+}
+
+.dialogClose {
+  float: right;
+}
+
+.guideList {
+  display: grid;
+  gap: 0.75rem;
+  padding-left: 1.25rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.mapGrid line {
+  stroke: var(--brass);
+  stroke-width: 1;
+  opacity: 0.09;
+}
+
+.minorStars circle {
+  fill: var(--foreground);
+  opacity: 0.38;
+}
+
+.compassRose circle,
+.compassRose path {
+  fill: none;
+  stroke: var(--brass);
+  stroke-width: 2;
+  opacity: 0.58;
+}
+
+.compassRose .compassNorth {
+  fill: var(--brass);
+  stroke: none;
+  opacity: 1;
+}
+
+.orbits ellipse {
+  fill: none;
+  stroke: var(--brass);
+  stroke-width: 1.5;
+  opacity: 0.2;
+}
+
+.orbits text {
+  fill: var(--brass);
+  font:
+    700 13px Arial,
+    sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.orbits [data-active="true"] ellipse {
+  stroke-width: 2.5;
+  opacity: 0.68;
+}
+
+.orbits [data-active="true"] text {
+  opacity: 1;
+}
+
+.homeStar,
+.mapGrid,
+.minorStars,
+.compassRose,
+.orbits {
+  pointer-events: none;
+}
+
+.homeStarOuter {
+  fill: var(--brass);
+  stroke: #fff0bd;
+  stroke-width: 2;
+}
+
+.homeStarInner {
+  fill: var(--rust);
+}
+
+.homeStar text {
+  fill: #10212b;
+  font:
+    700 12px Georgia,
+    serif;
+  letter-spacing: 0.08em;
+}
+
+.artist,
+.relationship {
+  cursor: pointer;
+  outline: none;
+}
+
+.artist,
+.node,
+.glow,
+.edgeLine,
+.constellationContent {
+  transition:
+    transform 300ms ease,
+    r 300ms ease,
+    opacity 300ms ease;
+}
+
+.artist[data-planet-colour="teal"] .node {
+  fill: var(--teal);
+}
+
+.artist[data-planet-colour="rust"] .node {
+  fill: var(--rust);
+}
+
+.artist[data-planet-colour="ochre"] .node {
+  fill: var(--ochre);
+}
+
+.artist[data-planet-colour="violet"] .node {
+  fill: var(--violet);
+}
+
+.artist[data-planet-colour="rose"] .node {
+  fill: var(--rose);
+}
+
+.node {
+  stroke: var(--brass);
+  stroke-width: 2.5;
+}
+
+.artist[aria-pressed="true"] .node {
+  stroke: #fff0bd;
+  stroke-width: 6;
+  stroke-dasharray: 10 5;
+}
+
+.artist:focus-visible .node {
+  stroke: var(--focus);
+  stroke-width: 6;
+  stroke-dasharray: 4 3;
+}
+
+.patternInk {
+  fill: #061926;
+  opacity: 0.45;
+}
+
+.patternStroke {
+  stroke: #061926;
+  stroke-width: 2;
+  opacity: 0.42;
+}
+
+.planetPattern {
+  pointer-events: none;
+  opacity: 0.45;
+}
+
+.planetBands {
+  fill: none;
+  stroke: #f8e8be;
+  stroke-width: 6;
+  opacity: 0.62;
+  pointer-events: none;
+}
+
+.glow {
+  fill: var(--brass);
+  filter: blur(10px);
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+.edgeLine {
+  fill: none;
+  stroke: var(--brass);
+  stroke-dasharray: 3 8;
+  opacity: 0.62;
+}
+
+.relationship[aria-pressed="true"] .edgeLine,
+.relationship:focus-visible .edgeLine {
+  stroke-width: 5;
+  stroke-dasharray: 10 5;
+  opacity: 1;
+}
+
+.artistLabel {
+  fill: var(--foreground);
+  font:
+    700 16px Arial,
+    sans-serif;
+  paint-order: stroke;
+  stroke: #061926;
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+
+.artistVisual {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.artistEntering .artistVisual {
+  animation: artist-enter 300ms ease-out both;
+}
+
+.artistExiting {
+  pointer-events: none;
+}
+
+.artistExiting .artistVisual {
+  animation: artist-exit 300ms ease-in both;
+}
+
+@keyframes artist-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes artist-exit {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .artist,
+  .artist *,
+  .relationship,
+  .relationship *,
+  .constellationContent {
+    transition: none !important;
+  }
+
+  .artistEntering .artistVisual,
+  .artistExiting .artistVisual {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 42rem) {
+  .portraitControls {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .chapterTabs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .viewSwitch {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .chapterTabs button {
+    padding-inline: 0.45rem;
+    white-space: normal;
+  }
+
+  .compassRose,
+  .minorStars {
+    display: none;
+  }
+
+  .artistLabel {
+    font-size: 32px;
+    stroke-width: 7px;
+  }
+
+  .rankedArtistList {
+    grid-template-columns: 1fr;
+  }
+
+  .rankedArtistList button {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+}
+
+@media (forced-colors: active) {
+  .node,
+  .edgeLine,
+  .orbits ellipse {
+    stroke: CanvasText;
+  }
+
+  .artist[aria-pressed="true"] .node,
+  .relationship[aria-pressed="true"] .edgeLine {
+    stroke: Highlight;
+    stroke-width: 6;
+  }
+}
+
+.atlasPlanet,
+.trackNode {
+  outline: none;
+}
+
+.nodeSelector {
+  cursor: pointer;
+  outline: none;
+}
+
+.atlasPlanetBody {
+  fill: var(--surface-raised, #173e4a);
+  stroke: var(--accent, #f4b84a);
+  stroke-width: 2px;
+}
+
+.atlasPlanet[data-planet-colour="teal"] .atlasPlanetBody {
+  fill: #176f75;
+}
+.atlasPlanet[data-planet-colour="rust"] .atlasPlanetBody {
+  fill: #944a34;
+}
+.atlasPlanet[data-planet-colour="ochre"] .atlasPlanetBody {
+  fill: #8a6821;
+}
+.atlasPlanet[data-planet-colour="violet"] .atlasPlanetBody {
+  fill: #594c83;
+}
+.atlasPlanet[data-planet-colour="rose"] .atlasPlanetBody {
+  fill: #8a405c;
+}
+.atlasPlanet[data-planet-pattern="bands"] .atlasPlanetBody {
+  stroke-dasharray: 14 5;
+}
+.atlasPlanet[data-planet-pattern="dots"] .atlasPlanetBody {
+  stroke-dasharray: 2 6;
+}
+.atlasPlanet[data-planet-pattern="hatch"] .atlasPlanetBody {
+  stroke-dasharray: 8 3 2 3;
+}
+
+.mobileSelectorHitTarget {
+  display: none;
+}
+
+.nodeSelector[aria-pressed="true"] .atlasPlanetBody,
+.nodeSelector[aria-pressed="true"] .trackBody {
+  stroke-width: 6px;
+}
+
+.nodeSelector:focus-visible .atlasPlanetBody,
+.nodeSelector:focus-visible .trackBody {
+  stroke: var(--foreground, #fff7df);
+  stroke-width: 5px;
+}
+
+.atlasPlanetLabel,
+.trackLabel {
+  fill: var(--foreground, #fff7df);
+  font:
+    700 16px Arial,
+    sans-serif;
+  paint-order: stroke;
+  stroke: #061926;
+  stroke-linejoin: round;
+  stroke-width: 4px;
+}
+
+.trackBody {
+  fill: var(--accent, #f4b84a);
+  stroke: var(--foreground, #fff7df);
+  stroke-width: 2px;
+}
+
+.regionMembershipMarker {
+  pointer-events: none;
+}
+
+.regionMembershipMarker circle {
+  fill: #f5c261;
+  stroke: #061926;
+  stroke-width: 2px;
+}
+
+.regionMembershipMarker circle[data-region-chapter="creative_fuel"] {
+  fill: #9ee2d4;
+}
+
+.atlasStatus {
+  color: #f6c767;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  margin: 0 0 0.75rem;
+}
+
+.atlasFrame {
+  background:
+    radial-gradient(circle at 50% 48%, rgb(19 85 91 / 82%), transparent 38%),
+    linear-gradient(145deg, #06202d 0%, #0b3040 58%, #071823 100%);
+  border: 1px solid rgb(226 168 65 / 68%);
+  border-radius: 28px;
+  box-shadow:
+    inset 0 0 80px rgb(0 0 0 / 38%),
+    0 24px 70px rgb(0 0 0 / 24%);
+  min-height: 42rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.livingAtlas {
+  display: block;
+  height: auto;
+  max-height: 80vh;
+  min-height: 42rem;
+  width: 100%;
+}
+
+.atlasGrid path {
+  fill: none;
+  stroke: rgb(242 198 112 / 8%);
+  stroke-width: 1px;
+}
+
+.orbitLayer {
+  opacity: 1;
+  transition: opacity 180ms ease;
+}
+
+.orbitLayer[data-quiet="true"] > .atlasOrbit,
+.orbitLayer[data-quiet="true"] > .orbitLabelControl,
+.orbitLayer[data-quiet="true"] .atlasRelationship,
+.nodeSelector[data-region-quiet="true"] {
+  opacity: 0.24;
+}
+
+.nodeSelector[data-region-spotlighted="true"] .atlasPlanetBody {
+  stroke: #fff1c2;
+  stroke-width: 5px;
+}
+
+.orbitMotion {
+  animation: orbit-turn var(--orbit-duration) linear infinite;
+  animation-direction: var(--orbit-direction);
+  animation-play-state: running;
+  transform-box: view-box;
+  transform-origin: 500px 500px;
+}
+
+.planetUpright {
+  animation: orbit-counter-turn var(--orbit-duration) linear infinite;
+  animation-direction: var(--orbit-direction);
+  animation-play-state: running;
+  transform-box: view-box;
+  transform-origin: var(--planet-x) var(--planet-y);
+}
+
+.moonSystem {
+  animation: moon-turn var(--moon-duration) linear infinite;
+  animation-play-state: running;
+  transform-box: view-box;
+  transform-origin: var(--moon-centre-x) var(--moon-centre-y);
+}
+
+.moonUpright {
+  animation: moon-counter-turn var(--moon-duration) linear infinite;
+  animation-play-state: running;
+  transform-box: view-box;
+  transform-origin: var(--moon-x) var(--moon-y);
+}
+
+.moonSystem[data-paused="true"],
+.moonSystem[data-paused="true"] .moonUpright,
+.moonSystem:hover,
+.moonSystem:hover .moonUpright,
+.moonSystem:focus-within,
+.moonSystem:focus-within .moonUpright {
+  animation-play-state: paused;
+}
+
+.orbitLayer[data-paused="true"] .orbitMotion,
+.orbitLayer[data-paused="true"] .planetUpright,
+.portrait[data-all-paused="true"] .orbitMotion,
+.portrait[data-all-paused="true"] .planetUpright {
+  animation-play-state: paused;
+}
+
+@keyframes orbit-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-counter-turn {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes moon-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moon-counter-turn {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.atlasOrbit {
+  fill: none;
+  stroke: rgb(245 194 97 / 45%);
+  stroke-dasharray: 6 10;
+  stroke-width: 2px;
+}
+
+.orbitLabelControl {
+  cursor: pointer;
+  outline: none;
+}
+
+.orbitLabelControl rect {
+  fill: #103a48;
+  stroke: #dca747;
+  stroke-width: 1.5px;
+}
+
+.orbitLabelControl text {
+  fill: #ffe5a3;
+  font:
+    700 17px Georgia,
+    serif;
+  letter-spacing: 0.03em;
+}
+
+.orbitLabelControl:focus-visible rect,
+.orbitLabelControl[aria-pressed="true"] rect {
+  fill: #8f3f35;
+  stroke: #fff1c2;
+  stroke-width: 4px;
+}
+
+.atlasRelationship {
+  cursor: pointer;
+  outline: none;
+}
+
+.atlasRelationship path:first-child {
+  fill: none;
+  stroke: #e0ad55;
+  stroke-dasharray: 8 8;
+  stroke-width: 2px;
+}
+
+.atlasRelationship:focus-visible path:first-child,
+.atlasRelationship[aria-pressed="true"] path:first-child {
+  stroke: #fff4c7;
+  stroke-width: 6px;
+}
+
+.atlasHomeStar {
+  cursor: pointer;
+  outline: none;
+}
+
+.atlasHomeStar circle:first-child {
+  fill: rgb(241 172 65 / 20%);
+  stroke: #f2b74d;
+  stroke-width: 2px;
+}
+
+.atlasHomeStar circle:nth-child(2) {
+  fill: #f0a83b;
+  stroke: #fff1bd;
+  stroke-width: 3px;
+}
+
+.atlasHomeStarLabel {
+  fill: #182b31;
+  font:
+    800 12px Arial,
+    sans-serif;
+  letter-spacing: 0.07em;
+  paint-order: stroke;
+  stroke: #fff1bd;
+  stroke-linejoin: round;
+  stroke-width: 4px;
+  pointer-events: none;
+}
+
+.atlasHomeStar image {
+  pointer-events: none;
+}
+
+.atlasHomeStar:focus-visible circle:first-child {
+  stroke: #fff;
+  stroke-width: 7px;
+}
+
+.atlasDetails {
+  background: rgb(7 31 42 / 92%);
+  border: 1px solid #c9923b;
+  border-radius: 18px;
+  bottom: 6rem;
+  color: #f8efd8;
+  left: 1.25rem;
+  max-width: min(28rem, calc(100% - 2.5rem));
+  padding: 1.1rem 1.25rem;
+  position: absolute;
+  z-index: 3;
+}
+
+.atlasDetails h2 {
+  color: #ffd77f;
+  font-family: Georgia, serif;
+  margin: 0.15rem 0 0.5rem;
+}
+
+.atlasDetails p {
+  margin: 0.4rem 0;
+}
+
+.detailConnections {
+  border-left: 2px solid rgb(226 173 80 / 58%);
+  margin-top: 0.75rem;
+  padding-left: 0.8rem;
+}
+
+.atlasDetails a {
+  color: #9ee2d4;
+  display: inline-block;
+  margin-top: 0.55rem;
+}
+
+.detailEyebrow {
+  color: #e2ad50;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.atlasGuide {
+  background: rgb(7 31 42 / 84%);
+  border: 1px solid rgb(218 164 67 / 68%);
+  border-radius: 12px;
+  color: #f8efd8;
+  max-width: 26rem;
+  padding: 0.7rem 0.9rem;
+  position: absolute;
+  right: 1.25rem;
+  top: 1.25rem;
+  z-index: 3;
+}
+
+.atlasGuide summary {
+  color: #ffd77f;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.atlasGuide p {
+  margin: 0.65rem 0 0;
+}
+
+.regionGuide {
+  border-top: 1px solid rgb(218 164 67 / 38%);
+  margin-top: 0.8rem;
+  padding-top: 0.15rem;
+}
+
+.regionGuide p {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.regionGuide strong {
+  color: #ffd77f;
+  font-family: Georgia, serif;
+}
+
+.catalogueAttribution {
+  align-items: center;
+  background: rgb(7 31 42 / 88%);
+  border: 1px solid rgb(218 164 67 / 58%);
+  border-radius: 12px;
+  bottom: 1.25rem;
+  display: inline-flex;
+  flex-direction: row;
+  gap: 0.65rem;
+  padding: 0.6rem 0.75rem;
+  position: absolute;
+  right: 1.25rem;
+  z-index: 3;
+}
+
+.catalogueAttribution p {
+  color: #f8efd8;
+  margin: 0;
+}
+
+.spotifyLogo {
+  height: auto;
+  width: 92px;
+}
+
+@media (max-width: 48rem) {
+  .atlasFrame,
+  .livingAtlas {
+    min-height: auto;
+  }
+
+  .livingAtlas {
+    max-height: none;
+  }
+
+  .atlasDetails {
+    bottom: auto;
+    left: auto;
+    margin: 0 1rem 1rem;
+    max-width: none;
+    position: relative;
+  }
+
+  .atlasGuide {
+    margin: 0 1rem 1rem;
+    max-width: none;
+    position: relative;
+    right: auto;
+    top: auto;
+  }
+
+  .catalogueAttribution {
+    bottom: auto;
+    flex-wrap: wrap;
+    margin: 0 1rem 1rem;
+    position: relative;
+    right: auto;
+  }
+}
+
+@media (max-width: 30rem) {
+  .atlasGrid {
+    display: none;
+  }
+
+  .trackNode:not(:has([data-node-selector][aria-pressed="true"])) .trackLabel {
+    display: none;
+  }
+
+  .atlasPlanetLabel {
+    font-size: 36px;
+    stroke-width: 7px;
+  }
+
+  .orbitLabelControl text {
+    font-size: 36px;
+  }
+
+  .orbitLabelControl rect {
+    width: 260px;
+  }
+
+  .orbitLayer[data-orbit-chapter="in_rotation"] .orbitLabelControl {
+    transform: translate(680px, 80px);
+  }
+
+  .orbitLayer[data-orbit-chapter="always_returning"] .orbitLabelControl {
+    transform: translate(680px, 250px);
+  }
+
+  .orbitLayer[data-orbit-chapter="creative_fuel"] .orbitLabelControl {
+    transform: translate(680px, 680px);
+  }
+
+  .mobileSelectorHitTarget {
+    display: block;
+  }
+
+  .atlasPlanet[data-label-anchor="start"] .atlasPlanetLabel {
+    transform: translateX(50px);
+  }
+
+  .atlasPlanet[data-label-anchor="end"] .atlasPlanetLabel {
+    transform: translateX(-50px);
+  }
+
+  .trackLabel {
+    transform: translateY(80px);
+  }
+
+  .atlasHomeStarLabel {
+    font-size: 30px;
+    stroke-width: 7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbitMotion,
+  .planetUpright,
+  .moonSystem,
+  .moonUpright {
+    animation: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .nodeSelector:focus-visible .atlasPlanetBody,
+  .nodeSelector:focus-visible .trackBody {
+    stroke: Highlight;
+  }
+}

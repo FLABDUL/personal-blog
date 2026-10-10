@@ -1,0 +1,274 @@
+.caseStudy {
+  width: min(100%, 76rem);
+  margin-inline: auto;
+  padding-block: clamp(2rem, 7vw, 6rem);
+}
+.hero {
+  position: relative;
+  padding: clamp(2rem, 6vw, 5.5rem);
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 78% 28%,
+      rgb(239 189 98 / 18%),
+      transparent 14rem
+    ),
+    repeating-radial-gradient(
+      circle at 78% 28%,
+      transparent 0 74px,
+      rgb(239 189 98 / 10%) 75px 76px
+    ),
+    linear-gradient(145deg, #0b3040, #061926 62%);
+  border: 1px solid rgb(239 189 98 / 65%);
+  border-radius: 28px;
+  box-shadow:
+    inset 0 0 80px rgb(0 0 0 / 34%),
+    0 28px 80px rgb(0 0 0 / 22%);
+}
+.hero::after {
+  position: absolute;
+  right: clamp(1.5rem, 5vw, 4rem);
+  bottom: clamp(1.5rem, 5vw, 4rem);
+  width: 7rem;
+  height: 7rem;
+  border: 1px solid rgb(239 189 98 / 36%);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 1.5rem rgb(239 189 98 / 6%),
+    0 0 0 3rem rgb(239 189 98 / 4%);
+  content: "";
+  pointer-events: none;
+}
+.eyebrow,
+.kicker,
+.projectSummary p,
+.designPrinciple span,
+.decisionGrid span {
+  margin: 0;
+  color: #efbd62;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.hero h1 {
+  position: relative;
+  z-index: 1;
+  max-width: 13ch;
+  margin: 0.65rem 0 1.25rem;
+  color: #ffe4a5;
+  font-size: clamp(3rem, 8vw, 6.8rem);
+  line-height: 0.95;
+}
+.lede {
+  position: relative;
+  z-index: 1;
+  max-width: 60ch;
+  margin: 0;
+  color: #d4e2e3;
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  line-height: 1.65;
+}
+.heroActions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem 1.25rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+.primaryAction {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  padding: 0.75rem 1.15rem;
+  color: #061926;
+  font-weight: 800;
+  text-decoration: none;
+  background: #efbd62;
+  border: 1px solid #ffe2a0;
+  border-radius: 999px;
+}
+.projectSummary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 1.25rem 0 5rem;
+  overflow: hidden;
+  background: rgb(8 35 47 / 82%);
+  border: 1px solid rgb(239 189 98 / 42%);
+  border-radius: 18px;
+}
+.projectSummary div {
+  min-width: 0;
+  padding: 1.25rem;
+}
+.projectSummary div + div {
+  border-left: 1px solid rgb(239 189 98 / 28%);
+}
+.projectSummary strong {
+  display: block;
+  margin-top: 0.5rem;
+  color: #f8efd8;
+  line-height: 1.45;
+}
+.chapter {
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  gap: clamp(1.25rem, 4vw, 3rem);
+  max-width: 68rem;
+  margin: 0 auto;
+  padding-block: clamp(3rem, 7vw, 5.5rem);
+  border-top: 1px solid rgb(239 189 98 / 24%);
+}
+.chapterMarker {
+  display: grid;
+  width: 3.25rem;
+  height: 3.25rem;
+  place-items: center;
+  color: #efbd62;
+  font-family: Georgia, serif;
+  font-weight: 700;
+  background: #0b2a3b;
+  border: 1px solid rgb(239 189 98 / 58%);
+  border-radius: 50%;
+}
+.chapter h2 {
+  margin: 0.35rem 0 1.25rem;
+  color: #ffe0a0;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.05;
+}
+.chapter > div:last-child > p:not(.kicker),
+.decisionGrid p,
+.architectureStep p,
+.designPrinciple p {
+  max-width: 68ch;
+  color: #c6d2d5;
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+.designPrinciple {
+  max-width: 50rem;
+  margin: 2rem 0 0;
+  padding: 1.4rem 1.5rem;
+  background: linear-gradient(
+    135deg,
+    rgb(159 65 54 / 42%),
+    rgb(10 47 62 / 92%)
+  );
+  border: 1px solid rgb(239 189 98 / 48%);
+  border-radius: 16px;
+}
+.designPrinciple p {
+  margin-bottom: 0;
+  color: #f8efd8;
+  font-family: Georgia, serif;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+}
+.decisionGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.decisionGrid article {
+  padding: 1.35rem;
+  background: rgb(8 35 47 / 82%);
+  border: 1px solid rgb(239 189 98 / 30%);
+  border-radius: 16px;
+}
+.decisionGrid h3 {
+  margin: 0.55rem 0 0.75rem;
+  color: #f8efd8;
+  font-family: Georgia, serif;
+  font-size: 1.25rem;
+}
+.decisionGrid p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+.architecture {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 2rem 0;
+  overflow: hidden;
+  background: #071f2b;
+  border: 1px solid rgb(239 189 98 / 48%);
+  border-radius: 18px;
+}
+.architectureStep {
+  position: relative;
+  padding: 1.4rem;
+}
+.architectureStep + .architectureStep {
+  border-left: 1px solid rgb(239 189 98 / 28%);
+}
+.architectureStep > span {
+  display: block;
+  color: #efbd62;
+  font:
+    700 0.75rem Arial,
+    sans-serif;
+  letter-spacing: 0.12em;
+}
+.architectureStep strong {
+  display: block;
+  margin-top: 0.5rem;
+  color: #f8efd8;
+  font-family: Georgia, serif;
+  font-size: 1.1rem;
+}
+.architectureStep p {
+  margin-bottom: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+.learning {
+  margin-bottom: 1rem;
+}
+.learning .primaryAction {
+  margin-top: 1rem;
+}
+@media (max-width: 52rem) {
+  .projectSummary,
+  .decisionGrid,
+  .architecture {
+    grid-template-columns: 1fr;
+  }
+  .projectSummary div + div,
+  .architectureStep + .architectureStep {
+    border-top: 1px solid rgb(239 189 98 / 28%);
+    border-left: 0;
+  }
+}
+@media (max-width: 34rem) {
+  .hero {
+    padding: 1.5rem;
+    border-radius: 20px;
+  }
+  .hero::after {
+    opacity: 0.45;
+  }
+  .chapter {
+    grid-template-columns: 1fr;
+  }
+  .chapterMarker {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+}
+@media (forced-colors: active) {
+  .hero,
+  .projectSummary,
+  .chapterMarker,
+  .decisionGrid article,
+  .architecture,
+  .designPrinciple {
+    border-color: CanvasText;
+  }
+  .primaryAction {
+    color: ButtonText;
+    background: ButtonFace;
+  }
+}

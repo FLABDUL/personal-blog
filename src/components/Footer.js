@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa"
 import { SiGmail, SiStrava } from "react-icons/si"
 
@@ -13,6 +14,9 @@ const Footer = () => (
     backgroundColor: "#111"
   }}>
     <div>© Abdul Hakim Norazman {new Date().getFullYear()}</div>
+    <div style={{ marginTop: "0.5rem" }}>
+      <Link to="/privacy/" style={{ color: "#ccc" }}>Privacy</Link>
+    </div>
 
     <div style={{ marginTop: "0.5rem", fontSize: "1.5rem" }}>
       <a href="mailto:ahnorazman@gmail.com" aria-label="Email" style={{ margin: "0 1rem", color: "#db4437" }}>
