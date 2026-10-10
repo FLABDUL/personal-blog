@@ -181,6 +181,62 @@ test("the map keeps its region explanations in the guide", async ({ page }) => {
   }
 })
 
+test("desktop atlas controls and attribution stay outside the solar system", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 900 })
+  await page.goto("/music/")
+
+  const map = page.getByRole("group", { name: "Living Atlas music map" })
+  const mapBox = await map.boundingBox()
+  expect(mapBox).not.toBeNull()
+
+  const surroundingItems = [
+    page.getByRole("group", { name: "Music map regions" }),
+    page.locator("details").filter({ hasText: "How to read this map" }),
+    page.getByLabel("Spotify catalogue attribution"),
+  ]
+  for (const item of surroundingItems) {
+    const box = await item.boundingBox()
+    expect(box).not.toBeNull()
+    const overlaps = !(
+      box.x + box.width <= mapBox.x ||
+      box.x >= mapBox.x + mapBox.width ||
+      box.y + box.height <= mapBox.y ||
+      box.y >= mapBox.y + mapBox.height
+    )
+    expect(overlaps).toBe(false)
+  }
+})
+
+test("mobile atlas chrome stacks without covering the solar system", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto("/music/")
+
+  const mapBox = await page
+    .getByRole("group", { name: "Living Atlas music map" })
+    .boundingBox()
+  expect(mapBox).not.toBeNull()
+
+  for (const item of [
+    page.getByRole("group", { name: "Music map regions" }),
+    page.locator("details").filter({ hasText: "How to read this map" }),
+    page.getByLabel("Spotify catalogue attribution"),
+  ]) {
+    const box = await item.boundingBox()
+    expect(box).not.toBeNull()
+    const overlaps = !(
+      box.x + box.width <= mapBox.x ||
+      box.x >= mapBox.x + mapBox.width ||
+      box.y + box.height <= mapBox.y ||
+      box.y >= mapBox.y + mapBox.height
+    )
+    expect(overlaps).toBe(false)
+  }
+})
+
 test("selection pauses the atlas and gives Aukai three orbiting song moons", async ({
   page,
 }) => {
