@@ -13,6 +13,7 @@
 }
 
 .portrait {
+  --focus: #ffe5a3;
   width: 100%;
 }
 
@@ -531,6 +532,14 @@
   stroke-width: 4px;
 }
 
+.portrait[data-source="snapshot"] .atlasPlanetLabel {
+  pointer-events: none;
+}
+
+.portrait[data-source="snapshot"] .atlasOrbit {
+  pointer-events: none;
+}
+
 .trackBody {
   fill: var(--accent, #f4b84a);
   stroke: var(--foreground, #fff7df);
@@ -587,6 +596,7 @@
 }
 
 .regionFilters button {
+  overflow-wrap: anywhere;
   background: rgb(16 58 72 / 92%);
   border: 1px solid #dca747;
   border-radius: 18px;
@@ -668,6 +678,19 @@
   animation-play-state: running;
   transform-box: view-box;
   transform-origin: var(--moon-centre-x) var(--moon-centre-y);
+}
+
+.moonSystem[data-bounded="true"],
+.moonSystem[data-bounded="true"] .moonUpright,
+.portrait[data-compact-expanded="true"] .orbitMotion,
+.portrait[data-compact-expanded="true"] .planetUpright {
+  animation: none;
+}
+
+.trackNode[data-bounded-moon="true"] .trackLabel {
+  font-size: 36px;
+  transform: none;
+  pointer-events: none;
 }
 
 .moonUpright {
@@ -820,6 +843,53 @@
   text-transform: uppercase;
 }
 
+.spotifyEmbed {
+  min-width: 0;
+}
+
+.spotifyEmbed iframe {
+  border: 0;
+  border-radius: 12px;
+  display: block;
+  margin-top: 0.75rem;
+  max-width: 100%;
+}
+
+.shootingStars,
+.shootingStars * {
+  pointer-events: none;
+}
+
+.shootingStar {
+  animation: arrival-flight 1300ms ease-in var(--arrival-delay) 1 both;
+  fill: #fff1bd;
+  stroke: #f2b74d;
+  stroke-width: 3px;
+}
+
+@keyframes arrival-flight {
+  from {
+    opacity: 0;
+    transform: translate(-100px, var(--arrival-y));
+  }
+  15% {
+    opacity: 0.9;
+  }
+  to {
+    opacity: 0;
+    transform: translate(1100px, calc(var(--arrival-y) + 280px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shootingStars {
+    display: none;
+  }
+  .shootingStar {
+    animation: none;
+  }
+}
+
 .atlasGuide {
   background: rgb(7 31 42 / 84%);
   border: 1px solid rgb(218 164 67 / 68%);
@@ -896,11 +966,31 @@
 
   .regionFilters button {
     min-height: 4rem;
-    padding-inline: 0.45rem;
+    padding-inline: 0.25rem;
+    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 30rem) {
+  .portrait[data-dense-layout="true"] .orbitMotion,
+  .portrait[data-dense-layout="true"] .planetUpright {
+    animation: none;
+  }
+
+  .portrait[data-source="snapshot"]
+    .nodeSelector:not(:focus):not(:hover):not([aria-pressed="true"])
+    .atlasPlanetLabel {
+    visibility: hidden;
+  }
+
+  .portrait[data-source="snapshot"] .atlasPlanet .mobileSelectorHitTarget {
+    display: none;
+  }
+
+  .portrait[data-source="snapshot"] .atlasPlanet [data-hit-target] {
+    r: 90px;
+  }
+
   .atlasGrid {
     display: none;
   }

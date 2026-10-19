@@ -24,6 +24,7 @@
     "cv:setup-pdf": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/cv/install-tectonic.ps1",
     "books:validate": "node scripts/books/validate.js",
     "music:validate": "node scripts/music/validate.js",
+    "music:invite": "node scripts/music/create-beta-invite.js",
     "music:prepare-preview": "node scripts/music/prepare-preview-catalogue.js",
     "test:music": "node --test tests/music/*.test.js",
     "test:cv": "node --test tests/cv/*.test.js",

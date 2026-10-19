@@ -1,4 +1,9 @@
-const { CHAPTERS, ORBIT_DESCRIPTIONS, ORBIT_LABELS } = require("./portrait")
+const {
+  CHAPTERS,
+  ORBIT_DESCRIPTIONS,
+  ORBIT_LABELS,
+  compareIds,
+} = require("./portrait")
 
 const ORBIT_SPECS = {
   in_rotation: { radius: 175, durationSeconds: 72, direction: "normal" },
@@ -17,7 +22,7 @@ const pointOnCircle = (radius, angle, centre) => ({
   y: centre + Math.sin(angle) * radius,
 })
 
-function computeAtlasLayout(model, size = 1000) {
+function computeAtlasLayout(model, size = 1000, { compact = false } = {}) {
   const centre = size / 2
   const scale = size / 1000
   const orbits = CHAPTERS.map(chapter => ({
@@ -32,6 +37,12 @@ function computeAtlasLayout(model, size = 1000) {
 
   for (const chapter of CHAPTERS) {
     const members = model.planets.filter(planet => planet.chapter === chapter)
+    if (members.every(planet => Number.isSafeInteger(planet.layoutSeed)))
+      members.sort(
+        (first, second) =>
+          first.layoutSeed - second.layoutSeed ||
+          compareIds(first.artistId, second.artistId),
+      )
     members.forEach((planet, index) => {
       const angle =
         START_ANGLE[chapter] +
@@ -51,10 +62,111 @@ function computeAtlasLayout(model, size = 1000) {
     })
   }
 
-  return { size, centre, orbits, planets, relationships: model.relationships }
+  const compactSnapshot =
+    compact &&
+    planets.length > 0 &&
+    planets.every(p => Number.isSafeInteger(p.layoutSeed))
+  const dense =
+    compactSnapshot &&
+    planets.some((p, index) =>
+      planets
+        .slice(index + 1)
+        .some(other => Math.hypot(p.x - other.x, p.y - other.y) < 180 * scale),
+    )
+  if (dense) {
+    // Two shared rings reserve disjoint mobile targets across every region.
+    const ordered = [...planets].sort(
+      (a, b) =>
+        a.layoutSeed - b.layoutSeed || compareIds(a.artistId, b.artistId),
+    )
+    const innerCount = Math.max(0, ordered.length - 13)
+    ordered.forEach((planet, index) => {
+      const inner = index < innerCount
+      const count = inner ? innerCount : ordered.length - innerCount
+      const position = inner ? index : index - innerCount
+      const angle = -Math.PI / 2 + (Math.PI * 2 * position) / count
+      Object.assign(
+        planet,
+        pointOnCircle((inner ? 210 : 400) * scale, angle, centre),
+        { angle },
+      )
+      planet.labelAnchor = planet.x >= centre ? "end" : "start"
+    })
+  }
+  return {
+    size,
+    centre,
+    orbits,
+    planets,
+    dense,
+    compact: compactSnapshot,
+    relationships: model.relationships,
+  }
 }
 
-function computeMoonLayout(planet, tracks) {
+function computeMoonLayout(
+  planet,
+  tracks,
+  { compact = false, size = 1000 } = {},
+) {
+  if (compact) {
+    const scale = size / 1000
+    const centre = size / 2
+    const radius = 15 * scale
+    const hitRadius = 90 * scale
+    const inner = Math.SQRT2 * 80 * scale + hitRadius + 12 * scale
+    const outer = centre - hitRadius - 10 * scale
+    const parentDistance = Math.hypot(planet.x - centre, planet.y - centre)
+    const clearance = planet.radius + radius + 24 * scale
+    const expansionRadius =
+      Math.abs(outer - parentDistance) + 1e-8 >= clearance ? outer : inner
+    const step =
+      2 * Math.asin((2 * hitRadius + 10 * scale) / (2 * expansionRadius))
+    const direction =
+      parentDistance === 0
+        ? -Math.PI / 2
+        : Math.atan2(planet.y - centre, planet.x - centre)
+    const clamp = (value, min, max) => Math.max(min, Math.min(max, value))
+    return tracks.map((track, index) => {
+      const angle = direction + (index - (tracks.length - 1) / 2) * step
+      const point = pointOnCircle(expansionRadius, angle, centre)
+      const caption =
+        [...track.name].length > 20
+          ? [...track.name].slice(0, 19).join("") + "…"
+          : track.name
+      const labelWidth =
+        Math.min(220, Math.max(40, [...caption].length * 20)) * scale
+      const labelX = clamp(
+        point.x,
+        labelWidth / 2 + 8 * scale,
+        size - labelWidth / 2 - 8 * scale,
+      )
+      const labelY = clamp(
+        point.y + (point.y <= centre ? -1 : 1) * (hitRadius + 44 * scale),
+        44 * scale,
+        size - 12 * scale,
+      )
+      return {
+        trackId: track.id,
+        angle,
+        x: point.x - planet.x,
+        y: point.y - planet.y,
+        radius,
+        hitRadius,
+        caption,
+        labelWidth,
+        labelX: labelX - point.x,
+        labelY: labelY - point.y,
+        labelAnchor: "middle",
+        labelBounds: {
+          x: labelX - labelWidth / 2 - 4 * scale,
+          y: labelY - 40 * scale,
+          width: labelWidth + 8 * scale,
+          height: 48 * scale,
+        },
+      }
+    })
+  }
   return tracks.map((track, index) => {
     const ring = Math.floor(index / 8)
     const position = index % 8

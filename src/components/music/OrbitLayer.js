@@ -20,6 +20,7 @@ export default function OrbitLayer({
   paused,
   onPauseChange,
   onSelect,
+  compact = false,
 }) {
   const quiet = spotlight !== null && spotlight !== orbit.chapter
   const planetByArtistId = new Map(
@@ -106,6 +107,7 @@ export default function OrbitLayer({
           const showMoons =
             (selection?.kind === "artist" || selection?.kind === "track") &&
             selection.nodeKey === planet.key
+          const tracks = model.tracksByArtistId[planet.artistId] || []
           return (
             <g
               key={planet.key}
@@ -132,64 +134,83 @@ export default function OrbitLayer({
                   })
                 }
               />
-              {showMoons ? (
-                <g
-                  className={styles.moonSystem}
-                  role="group"
-                  aria-label={`Songs orbiting ${planet.name}`}
-                  data-paused={selection?.kind === "track"}
-                  style={{
-                    "--moon-centre-x": `${planet.x}px`,
-                    "--moon-centre-y": `${planet.y}px`,
-                    "--moon-duration": "18s",
-                  }}
-                >
-                  {computeMoonLayout(
-                    planet,
-                    planet.trackIds.map(id => model.tracksById[id]),
-                  ).map(moon => {
-                    const track = model.tracksById[moon.trackId]
-                    const moonX = planet.x + moon.x
-                    const moonY = planet.y + moon.y
-                    return track ? (
-                      <g
-                        key={track.id}
-                        className={styles.moonUpright}
-                        style={{
-                          "--moon-x": `${moonX}px`,
-                          "--moon-y": `${moonY}px`,
-                          "--moon-duration": "18s",
-                        }}
-                      >
-                        <TrackNode
-                          track={track}
-                          x={moonX}
-                          y={moonY}
-                          radius={moon.radius}
-                          labelX={moon.labelX}
-                          labelY={moon.labelY}
-                          labelAnchor={moon.labelAnchor}
-                          selected={
-                            selection?.kind === "track" &&
-                            selection.trackId === track.id
-                          }
-                          onActivate={() =>
-                            onSelect({
-                              kind: "track",
-                              trackId: track.id,
-                              nodeKey: planet.key,
-                            })
-                          }
-                        />
-                      </g>
-                    ) : null
-                  })}
-                </g>
+              {showMoons && !compact ? (
+                <PlanetMoons
+                  planet={planet}
+                  tracks={tracks}
+                  selection={selection}
+                  onSelect={onSelect}
+                />
               ) : null}
             </g>
           )
         })}
       </g>
+    </g>
+  )
+}
+
+export function PlanetMoons({
+  planet,
+  tracks,
+  selection,
+  onSelect,
+  compact = false,
+  size = 1000,
+}) {
+  return (
+    <g
+      className={styles.moonSystem}
+      role="group"
+      aria-label={`Songs orbiting ${planet.name}`}
+      data-paused={selection?.kind === "track"}
+      data-bounded={compact}
+      style={{
+        "--moon-centre-x": `${planet.x}px`,
+        "--moon-centre-y": `${planet.y}px`,
+        "--moon-duration": "18s",
+      }}
+    >
+      {computeMoonLayout(planet, tracks, { compact, size }).map(moon => {
+        const track = tracks.find(track => track.id === moon.trackId)
+        const moonX = planet.x + moon.x,
+          moonY = planet.y + moon.y
+        return track ? (
+          <g
+            key={track.id}
+            className={styles.moonUpright}
+            style={{
+              "--moon-x": `${moonX}px`,
+              "--moon-y": `${moonY}px`,
+              "--moon-duration": "18s",
+            }}
+          >
+            <TrackNode
+              track={track}
+              x={moonX}
+              y={moonY}
+              radius={moon.radius}
+              labelX={moon.labelX}
+              labelY={moon.labelY}
+              labelAnchor={moon.labelAnchor}
+              hitRadius={moon.hitRadius}
+              bounded={compact}
+              caption={moon.caption}
+              labelWidth={moon.labelWidth}
+              selected={
+                selection?.kind === "track" && selection.trackId === track.id
+              }
+              onActivate={() =>
+                onSelect({
+                  kind: "track",
+                  trackId: track.id,
+                  nodeKey: planet.key,
+                })
+              }
+            />
+          </g>
+        ) : null
+      })}
     </g>
   )
 }

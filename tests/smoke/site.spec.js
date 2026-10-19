@@ -116,8 +116,11 @@ test("music navigation and privacy disclosure remain reachable on mobile", async
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true)
 
   await page.goto("/privacy/")
-  await expect(page.getByText(/Spotify supplies public catalogue details/i)).toBeVisible()
-  await expect(page.getByText(/does not connect a visitor's Spotify account/i)).toBeVisible()
+  await expect(page.getByRole("heading", { name: "The authored Music Portrait", exact: true })).toBeVisible()
+  await expect(page.getByText(/uses Spotify's public catalogue integration/i)).toBeVisible()
+  await expect(page.getByText(/does not read a visitor's listening history/i)).toBeVisible()
+  await expect(page.getByRole("heading", { name: "The invited owner beta", exact: true })).toBeVisible()
+  await expect(page.getByText(/five people: Hakim and up to four friends/i)).toBeVisible()
   await expect(page.getByText(/does not use Music-specific analytics/i)).toBeVisible()
 })
 

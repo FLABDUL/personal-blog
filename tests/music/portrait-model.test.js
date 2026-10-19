@@ -14,6 +14,7 @@ const {
 
 const aukai = portrait.artists.aukai
 const slowSun = portrait.tracks["aukai-slow-sun"]
+const { resolvePortraitModel } = require("../../src/lib/music/snapshot")
 const catalogue = {
   artists: {
     [aukai.spotifyArtistId]: {
@@ -72,6 +73,27 @@ test("prominence creates visibly different planet radii", () => {
   )
 
   assert.ok(aukaiPlanet.radius > dojaPlanet.radius)
+  assert.equal(aukaiPlanet.prominence, 4)
+  assert.equal(aukaiPlanet.radius, 52)
+  assert.equal(dojaPlanet.prominence, 3)
+  assert.equal(dojaPlanet.radius, 32)
+})
+
+test("authored source retains Hakim identity and the complete catalogue fallback", () => {
+  const model = resolvePortraitModel({ portrait })
+  assert.deepEqual(model.homeStar, {
+    displayName: "Abdul Hakim Norazman",
+    initials: "HN",
+    imageUrl: "/profile.jpg",
+    label: "HAKIM · HOME STAR",
+  })
+  const { homeStar, ...authored } = model
+  assert.deepEqual(authored, buildMusicPortraitModel(portrait))
+  assert.equal(model.catalogueAvailable, false)
+  assert.equal(model.planets.length, 10)
+  assert.equal(model.tracksByArtistId.aukai.length, 3)
+  assert.ok(model.planets.every(p => p.name && !p.spotifyUrl && !p.imageUrl))
+  assert.ok(Object.values(model.tracksById).every(t => t.name && !t.spotifyUrl))
 })
 
 test("Spotify destinations are accepted only when canonical", () => {
@@ -120,4 +142,17 @@ test("moon and distant-track layouts are deterministic and bounded", () => {
       item => item.y >= item.radius && item.y <= atlas.size - item.radius,
     ),
   )
+})
+
+test("authored moon geometry keeps its original rotating orbit positions", () => {
+  const model = buildMusicPortraitModel(portrait, catalogue)
+  const planet = computeAtlasLayout(model).planets.find(
+    p => p.artistId === "aukai",
+  )
+  const moons = computeMoonLayout(planet, model.tracksByArtistId.aukai)
+  assert.ok(Math.abs(moons[0].x) < 1e-10)
+  assert.equal(moons[0].y, -112)
+  assert.equal(moons[0].radius, 15)
+  assert.equal(moons[0].hitRadius, undefined)
+  assert.equal(moons[0].caption, undefined)
 })

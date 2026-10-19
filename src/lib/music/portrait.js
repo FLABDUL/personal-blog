@@ -14,6 +14,10 @@ function spotifyEntityUrl(kind, id) {
   return `https://open.spotify.com/${kind}/${id}`
 }
 
+function compareIds(first, second) {
+  return first < second ? -1 : first > second ? 1 : 0
+}
+
 function validMetadata(kind, id, metadata) {
   return metadata?.id === id &&
     metadata.spotifyUrl === spotifyEntityUrl(kind, id)
@@ -114,4 +118,5 @@ module.exports = {
   ORBIT_LABELS,
   buildMusicPortraitModel,
   spotifyEntityUrl,
+  compareIds,
 }

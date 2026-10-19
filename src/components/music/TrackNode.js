@@ -14,11 +14,16 @@ export default function TrackNode({
   labelX = 0,
   labelY = radius + 18,
   labelAnchor = "middle",
+  bounded = false,
+  hitRadius = Math.max(22, radius),
+  caption = track.name,
+  labelWidth,
 }) {
   return (
     <g
       className={styles.trackNode}
       data-track-id={track.id}
+      data-bounded-moon={bounded}
       transform={`translate(${x} ${y})`}
     >
       <g
@@ -36,18 +41,20 @@ export default function TrackNode({
           if (event.key === "Enter" || event.key === " ") onActivate?.(track)
         }}
       >
-        <rect
-          className={styles.mobileSelectorHitTarget}
-          x="-100"
-          y="80"
-          width="200"
-          height="160"
-          rx="24"
-          fill="transparent"
-        />
+        {!bounded ? (
+          <rect
+            className={styles.mobileSelectorHitTarget}
+            x="-100"
+            y="80"
+            width="200"
+            height="160"
+            rx="24"
+            fill="transparent"
+          />
+        ) : null}
         <circle
           data-hit-target
-          r={Math.max(22, radius)}
+          r={hitRadius}
           fill="transparent"
           pointerEvents="all"
         />
@@ -64,8 +71,10 @@ export default function TrackNode({
             x={labelX}
             y={labelY}
             textAnchor={labelAnchor}
+            textLength={labelWidth}
+            lengthAdjust={labelWidth ? "spacingAndGlyphs" : undefined}
           >
-            {track.name}
+            {caption}
           </text>
         ) : null}
       </g>

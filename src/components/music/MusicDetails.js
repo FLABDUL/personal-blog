@@ -1,8 +1,9 @@
 import React from "react"
 
+import SpotifyEmbed from "./SpotifyEmbed"
 import * as styles from "./MusicPortrait.module.css"
 
-export default function MusicDetails({ model, selection }) {
+export default function MusicDetails({ model, selection, ownerName }) {
   if (!selection) return null
   if (selection.kind === "artist") {
     const planet = model.planets.find(item => item.key === selection.nodeKey)
@@ -15,7 +16,10 @@ export default function MusicDetails({ model, selection }) {
       >
         <p className={styles.detailEyebrow}>{planet.orbitLabels.join(" · ")}</p>
         <h2>{planet.name}</h2>
-        <p>{planet.note || "This artist has a place in Hakim's music map."}</p>
+        <p>
+          {planet.note ||
+            `This artist has a place in ${ownerName || "Hakim"}'s music map.`}
+        </p>
         {planet.spotifyUrl ? (
           <a href={planet.spotifyUrl} target="_blank" rel="noopener noreferrer">
             Open {planet.name} in Spotify
@@ -25,7 +29,12 @@ export default function MusicDetails({ model, selection }) {
     )
   }
   if (selection.kind === "track") {
-    const track = model.tracksById[selection.trackId]
+    const planet = model.planets.find(p => p.key === selection.nodeKey)
+    const track = selection.nodeKey
+      ? model.tracksByArtistId[planet?.artistId]?.find(
+          t => t.id === selection.trackId,
+        )
+      : model.tracksById[selection.trackId]
     if (!track) return null
     return (
       <aside
@@ -39,11 +48,7 @@ export default function MusicDetails({ model, selection }) {
         {track.artists.length > 0 ? (
           <p>By {track.artists.map(artist => artist.name).join(", ")}.</p>
         ) : null}
-        {track.spotifyUrl ? (
-          <a href={track.spotifyUrl} target="_blank" rel="noopener noreferrer">
-            Open {track.name} in Spotify
-          </a>
-        ) : null}
+        <SpotifyEmbed track={track} />
       </aside>
     )
   }

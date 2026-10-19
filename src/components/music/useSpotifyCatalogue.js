@@ -12,6 +12,7 @@ export default function useSpotifyCatalogue(url, fallbackUrl = null) {
   const [state, setState] = useState({ status: "loading", catalogue: null })
 
   useEffect(() => {
+    if (!url) return undefined
     const controller = new AbortController()
     loadCatalogue(url, controller.signal)
       .catch(error => {

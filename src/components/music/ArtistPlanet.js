@@ -41,7 +41,7 @@ export default function ArtistPlanet({
         data-node-selector
         data-region-spotlighted={regionSpotlighted}
         data-region-quiet={regionQuiet}
-        aria-label={`Explore ${planet.name}, ${planet.orbitLabels.join(" and ")}, authored prominence ${planet.prominence} out of 5`}
+        aria-label={`Explore ${planet.name}, ${planet.orbitLabels.join(" and ")}, ${planet.region ? "listening evidence size" : "authored prominence"} ${planet.prominence} out of 5`}
         aria-pressed={selected}
         onClick={event => {
           event.currentTarget.focus()

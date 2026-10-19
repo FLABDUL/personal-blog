@@ -42,3 +42,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 exports.onCreateDevServer = ({ app }) => {
   app.get("/api/leetcode", require("./api/leetcode"));
 };
+
+exports.onCreatePage = ({ page, actions }) => {
+  if (page.path === "/music/galaxy/" && page.matchPath !== "/music/galaxy/*") {
+    actions.createPage({ ...page, matchPath: "/music/galaxy/*" });
+  }
+};

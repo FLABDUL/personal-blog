@@ -1,21 +1,35 @@
-import React, { useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 
 import { computeDistantTrackLayout } from "../../lib/music/layout"
-import OrbitLayer from "./OrbitLayer"
+import OrbitLayer, { PlanetMoons } from "./OrbitLayer"
 import PlanetArtwork from "./PlanetArtwork"
+import ShootingStars from "./ShootingStars"
 import TrackNode from "./TrackNode"
 import * as styles from "./MusicPortrait.module.css"
 
 export default function LivingAtlas({
   model,
+  homeStar,
   layout,
   spotlight,
   selection,
   allPaused,
+  arrivals = [],
+  onArrivalsComplete,
   onSelect,
   onReset,
 }) {
-  const [pausedOrbit, setPausedOrbit] = useState(null)
+  const [pausedOrbits, setPausedOrbits] = useState([])
+  const atlasRef = useRef(null)
+  const updatePausedOrbits = () =>
+    setPausedOrbits(
+      [
+        ...atlasRef.current.querySelectorAll(
+          "[data-orbit-chapter]:focus-within, [data-orbit-chapter]:hover",
+        ),
+      ].map(node => node.getAttribute("data-orbit-chapter")),
+    )
+  useEffect(updatePausedOrbits, [model])
   const distantTracks = computeDistantTrackLayout(model, layout.size)
   const selectedNodeKey =
     selection?.kind === "artist" || selection?.kind === "track"
@@ -24,6 +38,10 @@ export default function LivingAtlas({
   const selectedChapter = selectedNodeKey
     ? layout.planets.find(planet => planet.key === selectedNodeKey)?.chapter
     : undefined
+  const compactPlanet =
+    layout.compact && selectedNodeKey
+      ? layout.planets.find(planet => planet.key === selectedNodeKey)
+      : null
   const orderedOrbits = selectedChapter
     ? [...layout.orbits].sort(
         (first, second) =>
@@ -34,6 +52,7 @@ export default function LivingAtlas({
 
   return (
     <svg
+      ref={atlasRef}
       className={styles.livingAtlas}
       viewBox={`0 0 ${layout.size} ${layout.size}`}
       role="group"
@@ -69,17 +88,10 @@ export default function LivingAtlas({
           model={model}
           spotlight={spotlight}
           selection={selection}
-          paused={allPaused || pausedOrbit === orbit.chapter}
-          onPauseChange={paused =>
-            setPausedOrbit(current =>
-              paused
-                ? orbit.chapter
-                : current === orbit.chapter
-                  ? null
-                  : current,
-            )
-          }
+          paused={allPaused || pausedOrbits.includes(orbit.chapter)}
+          onPauseChange={updatePausedOrbits}
           onSelect={onSelect}
+          compact={layout.compact}
         />
       ))}
       {distantTracks.map(position => {
@@ -125,18 +137,29 @@ export default function LivingAtlas({
         />
         <circle r="58" />
         <circle r="40" />
-        <g role="img" aria-label="Abdul Hakim Norazman">
+        <g role="img" aria-label={homeStar.displayName}>
           <PlanetArtwork
             variant="home"
-            imageUrl="/profile.jpg"
-            initials="HN"
+            imageUrl={homeStar.imageUrl}
+            initials={homeStar.initials}
             size={80}
           />
         </g>
         <text className={styles.atlasHomeStarLabel} textAnchor="middle" y="82">
-          HAKIM · HOME STAR
+          {homeStar.label}
         </text>
       </g>
+      {compactPlanet ? (
+        <PlanetMoons
+          planet={compactPlanet}
+          tracks={model.tracksByArtistId[compactPlanet.artistId] || []}
+          selection={selection}
+          onSelect={onSelect}
+          compact
+          size={layout.size}
+        />
+      ) : null}
+      <ShootingStars tracks={arrivals} onComplete={onArrivalsComplete} />
     </svg>
   )
 }

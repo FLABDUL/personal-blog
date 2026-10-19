@@ -1,4 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "crons": [{ "path": "/api/spotify-refresh/", "schedule": "0 6 * * *" }]
+  "crons": [
+    { "path": "/api/spotify-refresh/", "schedule": "0 6 * * *" },
+    { "path": "/api/music-portrait-refresh-cron/", "schedule": "0 7 * * 1" }
+  ]
 }

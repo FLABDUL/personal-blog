@@ -225,6 +225,7 @@ test("production cron targets the canonical refresh function URL", () => {
 
   assert.deepEqual(crons, [
     { path: "/api/spotify-refresh/", schedule: "0 6 * * *" },
+    { path: "/api/music-portrait-refresh-cron/", schedule: "0 7 * * 1" },
   ])
 })
 

@@ -1,0 +1,108 @@
+.studio {
+  min-width: 0;
+}
+.studio header {
+  max-width: 48rem;
+}
+.status {
+  padding: 1rem;
+  border-left: 3px solid #bda46f;
+  min-height: 3rem;
+  overflow-wrap: anywhere;
+}
+.controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2rem;
+  margin-block: 2rem;
+  min-width: 0;
+}
+.controls section {
+  min-width: 0;
+  padding: 1.25rem;
+  border: 1px solid #726347;
+  border-radius: 0.4rem;
+}
+.controls section:first-child {
+  grid-row: span 3;
+}
+.controls fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.controls legend {
+  margin-block-end: 1rem;
+}
+.controls details {
+  border-bottom: 1px solid #726347;
+  padding-block: 0.75rem;
+}
+.controls summary {
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+.artist,
+.share {
+  display: grid;
+  gap: 0.6rem;
+  margin-block: 1rem;
+  min-width: 0;
+}
+.studio :is(input:not([type="checkbox"]), select, textarea) {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0.6rem;
+  color: #f3ebdc;
+  background: #1e1d21;
+  border: 1px solid #bda46f;
+  border-radius: 0.25rem;
+  font: inherit;
+}
+.studio textarea {
+  min-height: 6rem;
+  resize: vertical;
+}
+.controls button,
+.entryButton,
+.connect {
+  padding: 0.7rem 1rem;
+  border: 1px solid #bda46f;
+  border-radius: 0.25rem;
+  background: #27252a;
+  color: #f3ebdc;
+  font: inherit;
+  cursor: pointer;
+}
+.controls button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+.controls :is(button, input, select, textarea, summary, a):focus-visible,
+.entryButton:focus-visible,
+.connect:focus-visible {
+  outline: 3px solid #edcc84;
+  outline-offset: 3px;
+}
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-block: 1rem;
+}
+.studio p {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 48rem) {
+  .controls {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+  .controls section:first-child {
+    grid-row: auto;
+  }
+}
