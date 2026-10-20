@@ -102,7 +102,7 @@ export default function LivingAtlas({
         className={styles.atlasHomeStar}
         role="button"
         tabIndex="0"
-        aria-label="Reset music map"
+        aria-label="Reset music map · Hakim · Home star"
         transform={`translate(${layout.centre} ${layout.centre})`}
         onClick={event => {
           event.currentTarget.focus()

@@ -1,51 +1,41 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { Link } from "gatsby"
 
 const links = [
-  { to: "/", label: "About" },
-  { to: "/experience", label: "Experience" },
-  { to: "/projects", label: "Projects" },
-  { to: "/blog", label: "Blog" },
-  { to: "/bookshelf", label: "Bookshelf" },
-  { to: "/music", label: "Music" },
-  { to: "/studio", label: "Studio" },
+  ["/", "About"],
+  ["/experience/", "Experience"],
+  ["/projects/", "Projects"],
+  ["/blog/", "Blog"],
+  ["/bookshelf/", "Bookshelf"],
+  ["/music/", "Music"],
+  ["/studio/", "Studio"],
 ]
 
-const Navbar = () => {
-  const [visible, setVisible] = useState(true)
-  const [lastScrollY, setLastScrollY] = useState(0)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentY = window.scrollY
-      setVisible(currentY < lastScrollY)
-      setLastScrollY(currentY)
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [lastScrollY])
-
+export default function Navbar() {
   return (
-    <nav
-      className="site-nav"
-      style={{
-        transform: visible ? "translateY(0)" : "translateY(-100%)",
-      }}
-      aria-label="Primary navigation"
-    >
-      {links.map(({ to, label }) => (
-        <Link
-          key={to}
-          to={to}
-          className="site-nav__link"
-          activeClassName="site-nav__link--active"
-        >
-          {label}
-        </Link>
-      ))}
-    </nav>
+    <header className="masthead">
+      <Link to="/" className="wordmark">
+        <span className="wordmark__symbol" aria-hidden="true">
+          m/h
+        </span>
+        <span>
+          Made by <br />
+          <strong>Hakim.</strong>
+        </span>
+      </Link>
+      <nav className="site-nav" aria-label="Primary navigation">
+        {links.map(([to, label]) => (
+          <Link
+            key={to}
+            to={to}
+            className="site-nav__link"
+            activeClassName="site-nav__link--active"
+            partiallyActive={to !== "/"}
+          >
+            {label}
+          </Link>
+        ))}
+      </nav>
+    </header>
   )
 }
-
-export default Navbar

@@ -29,7 +29,7 @@ const architectureSteps = [
 
 export default function MusicCaseStudyPage() {
   return (
-    <Layout wide>
+    <Layout wide world="music">
       <article className={styles.caseStudy}>
         <header className={styles.hero}>
           <p className={styles.eyebrow}>

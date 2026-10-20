@@ -1,26 +1,37 @@
-import React from "react";
-import Layout from "../components/Layout";
-import Seo from "../components/Seo";
-import { artworks } from "../data/artworks";
+import React from "react"
+import Layout from "../components/Layout"
+import Seo from "../components/Seo"
+import StudioCollection from "../components/StudioCollection"
 
 export default function StudioPage() {
   return (
-    <Layout>
-      <h1>Studio</h1>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "1.5rem" }}>
-        {artworks.map((item, idx) => (
-          <div key={idx}>
-            <img src={item.img} alt={item.title} style={{ width: "100%", borderRadius: "8px" }} />
-            <p style={{ textAlign: "center", marginTop: "0.5rem" }}>
-              <em>{item.title}</em>
-            </p>
-          </div>
-        ))}
+    <Layout wide world="studio">
+      <header className="studio-header">
+        <div>
+          <p className="eyebrow">Made by hand / A collection of paintings</p>
+          <h1>
+            Studio<span aria-hidden="true">.</span>
+          </h1>
+        </div>
+        <p>
+          A different kind
+          <br />
+          of making.
+        </p>
+      </header>
+      <StudioCollection />
+      <div className="studio-end">
+        <span aria-hidden="true">m/h</span>
+        <p>Thank you for taking a look.</p>
+        <a href="#main-content">Back to the beginning ↑</a>
       </div>
     </Layout>
-  );
+  )
 }
-
 export const Head = ({ location }) => (
-  <Seo title="Studio" pathname={location.pathname} />
-);
+  <Seo
+    title="Studio"
+    description="Paintings by Abdul Hakim Norazman. Explore the collection and view each work in detail."
+    pathname={location.pathname}
+  />
+)

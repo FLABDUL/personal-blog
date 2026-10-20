@@ -68,7 +68,7 @@ export default function BudgetV2Page() {
   )
 
   return (
-    <Layout wide>
+    <Layout wide world="projects">
       <article className="budget-case-study">
         <header className="budget-case-study__hero">
           <p className="budget-case-study__eyebrow">

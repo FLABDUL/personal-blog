@@ -18,16 +18,10 @@ const ProjectCard = ({ project, visual = false }) => {
     product: "Visit product",
     source: "View source",
   }
-  const linkTargets = {
-    demo: "demo",
-    product: "product",
-    source: "source",
-  }
   const primaryLabel =
     project.actionLabel || linkLabels[project.linkType] || "View project"
-  const linkTarget = project.href?.startsWith("/")
-    ? "case study"
-    : linkTargets[project.linkType] || "project"
+
+  const Heading = visual ? "h2" : "h4"
 
   return (
     <article
@@ -47,7 +41,7 @@ const ProjectCard = ({ project, visual = false }) => {
             loading="lazy"
           />
           <span className="project-card__media-action" aria-hidden="true">
-            Open {linkTarget} ↗
+            {primaryLabel} ↗
           </span>
         </ProjectLink>
       )}
@@ -61,15 +55,13 @@ const ProjectCard = ({ project, visual = false }) => {
             </span>
           )}
         </div>
-        <h4>
+        <Heading>
           {visual && project.href ? (
-            <ProjectLink href={project.href}>
-              {project.name}
-            </ProjectLink>
+            <ProjectLink href={project.href}>{project.name}</ProjectLink>
           ) : (
             project.name
           )}
-        </h4>
+        </Heading>
         <p>{project.description}</p>
         <ul className="cv-tags" aria-label="Technologies and themes">
           {project.tags.map(tag => (

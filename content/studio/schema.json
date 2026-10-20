@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["items"],
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/item" }
+    }
+  },
+  "definitions": {
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "category",
+        "media",
+        "status",
+        "featured",
+        "provenance"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "title": { "type": "string", "minLength": 1 },
+        "category": {
+          "enum": [
+            "photography",
+            "painting",
+            "pottery",
+            "craft",
+            "video",
+            "ai-artwork"
+          ]
+        },
+        "media": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "path"],
+          "properties": {
+            "type": { "enum": ["image", "video"] },
+            "path": {
+              "type": "string",
+              "pattern": "^/[A-Za-z0-9][A-Za-z0-9/_-]*\\.(?:jpg|jpeg|png|webp|gif|avif|mp4|webm)$"
+            },
+            "poster": {
+              "type": "string",
+              "pattern": "^/[A-Za-z0-9][A-Za-z0-9/_-]*\\.(?:jpg|jpeg|png|webp|avif)$"
+            },
+            "width": { "type": "integer", "minimum": 1 },
+            "height": { "type": "integer", "minimum": 1 }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": { "type": { "const": "image" } },
+                "required": ["type"]
+              },
+              "then": {
+                "required": ["width", "height"],
+                "properties": {
+                  "path": { "pattern": "\\.(?:jpg|jpeg|png|webp|gif|avif)$" }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": { "type": { "const": "video" } },
+                "required": ["type"]
+              },
+              "then": {
+                "properties": { "path": { "pattern": "\\.(?:mp4|webm)$" } }
+              }
+            }
+          ]
+        },
+        "date": { "type": "string", "format": "date" },
+        "medium": { "type": "string", "minLength": 1 },
+        "caption": { "type": "string", "minLength": 1 },
+        "alt": { "type": "string", "minLength": 1 },
+        "status": { "enum": ["draft", "published"] },
+        "featured": { "type": "boolean" },
+        "provenance": { "enum": ["human", "ai", "human-ai"] },
+        "aiDisclosure": { "type": "string", "minLength": 1 }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "media": { "properties": { "type": { "const": "image" } } }
+            },
+            "required": ["media"]
+          },
+          "then": { "required": ["alt"] }
+        },
+        {
+          "if": {
+            "properties": { "category": { "const": "ai-artwork" } },
+            "required": ["category"]
+          },
+          "then": {
+            "required": ["aiDisclosure"],
+            "properties": { "provenance": { "enum": ["ai", "human-ai"] } }
+          }
+        },
+        {
+          "if": {
+            "properties": { "provenance": { "enum": ["ai", "human-ai"] } },
+            "required": ["provenance"]
+          },
+          "then": { "required": ["aiDisclosure"] }
+        }
+      ]
+    }
+  }
+}

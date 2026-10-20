@@ -50,7 +50,7 @@ const RoleCard = ({ role }) => (
 
 export default function ExperiencePage() {
   return (
-    <Layout wide>
+    <Layout wide world="experience">
       <article className="cv">
         <header className="cv-hero">
           <p className="cv-eyebrow">Long-form career record</p>

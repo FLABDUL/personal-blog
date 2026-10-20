@@ -1,4 +1,7 @@
-const path = require("path");
+process.env.GATSBY_REVIEW_ALLOWED =
+  process.env.VERCEL_ENV === "production" ? "0" : "1"
+
+const path = require("path")
 
 module.exports = {
   siteMetadata: {
@@ -40,4 +43,4 @@ module.exports = {
       },
     },
   ],
-};
+}

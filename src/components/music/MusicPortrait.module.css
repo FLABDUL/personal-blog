@@ -931,8 +931,8 @@
   }
 
   .atlasHomeStarLabel {
-    font-size: 30px;
-    stroke-width: 7px;
+    /* The portrait remains the reset control; keep the small chart clear of its long label. */
+    display: none;
   }
 }
 

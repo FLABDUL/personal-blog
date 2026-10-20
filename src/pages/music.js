@@ -12,9 +12,9 @@ const portrait = loadMusicPortrait(portraitManifest, { allowDraft })
 
 export default function MusicPage() {
   return (
-    <Layout wide>
-      <header>
-        <p>Abdul Hakim Norazman · Music</p>
+    <Layout wide world="music">
+      <header className="music-header">
+        <p className="eyebrow">The listening room / A personal atlas</p>
         <h1>Music Portrait</h1>
         <p>
           A personal chart of the music that moves, grounds and inspires me.

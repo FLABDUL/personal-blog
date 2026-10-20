@@ -1,0 +1,139 @@
+{
+  "items": [
+    {
+      "id": "painting-abyss",
+      "title": "abyss",
+      "category": "painting",
+      "media": {
+        "type": "image",
+        "path": "/art/abyss.jpeg",
+        "width": 1080,
+        "height": 1349
+      },
+      "alt": "abyss",
+      "status": "published",
+      "featured": false,
+      "provenance": "human"
+    },
+    {
+      "id": "painting-agony",
+      "title": "agony",
+      "category": "painting",
+      "media": {
+        "type": "image",
+        "path": "/art/agony.jpeg",
+        "width": 1080,
+        "height": 1349
+      },
+      "alt": "agony",
+      "status": "published",
+      "featured": false,
+      "provenance": "human"
+    },
+    {
+      "id": "painting-furl",
+      "title": "furl",
+      "category": "painting",
+      "media": {
+        "type": "image",
+        "path": "/art/furl.jpeg",
+        "width": 1080,
+        "height": 1080
+      },
+      "alt": "furl",
+      "status": "published",
+      "featured": false,
+      "provenance": "human"
+    },
+    {
+      "id": "painting-inferno",
+      "title": "inferno",
+      "category": "painting",
+      "media": {
+        "type": "image",
+        "path": "/art/inferno.jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "alt": "inferno",
+      "status": "published",
+      "featured": false,
+      "provenance": "human"
+    },
+    {
+      "id": "painting-pulse",
+      "title": "pulse",
+      "category": "painting",
+      "media": {
+        "type": "image",
+        "path": "/art/pulse.jpeg",
+        "width": 1080,
+        "height": 1349
+      },
+      "alt": "pulse",
+      "status": "published",
+      "featured": false,
+      "provenance": "human"
+    },
+    {
+      "id": "painting-serene",
+      "title": "serene",
+      "category": "painting",
+      "media": {
+        "type": "image",
+        "path": "/art/serene.jpeg",
+        "width": 1080,
+        "height": 1080
+      },
+      "alt": "serene",
+      "status": "published",
+      "featured": false,
+      "provenance": "human"
+    },
+    {
+      "id": "painting-spectrum",
+      "title": "spectrum",
+      "category": "painting",
+      "media": {
+        "type": "image",
+        "path": "/art/spectrum.jpeg",
+        "width": 1080,
+        "height": 1349
+      },
+      "alt": "spectrum",
+      "status": "published",
+      "featured": false,
+      "provenance": "human"
+    },
+    {
+      "id": "painting-sylvan",
+      "title": "sylvan",
+      "category": "painting",
+      "media": {
+        "type": "image",
+        "path": "/art/sylvan.jpeg",
+        "width": 1080,
+        "height": 1350
+      },
+      "alt": "sylvan",
+      "status": "published",
+      "featured": false,
+      "provenance": "human"
+    },
+    {
+      "id": "painting-thrive",
+      "title": "thrive",
+      "category": "painting",
+      "media": {
+        "type": "image",
+        "path": "/art/thrive.jpeg",
+        "width": 1282,
+        "height": 1920
+      },
+      "alt": "thrive",
+      "status": "published",
+      "featured": false,
+      "provenance": "human"
+    }
+  ]
+}

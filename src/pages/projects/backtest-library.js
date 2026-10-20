@@ -50,7 +50,7 @@ const metrics = [
 
 export default function BacktestLibraryPage() {
   return (
-    <Layout wide>
+    <Layout wide world="projects">
       <article className="budget-case-study stockfit-case-study">
         <header className="budget-case-study__hero">
           <p className="budget-case-study__eyebrow">

@@ -21,13 +21,16 @@ test.beforeEach(async ({ page }) => {
 })
 
 const routes = [
-  { path: "/", heading: "About Me" },
+  { path: "/", heading: "Software, art" },
   { path: "/experience/", heading: "Abdul Hakim Norazman" },
   { path: "/projects/", heading: "Projects built to be explored." },
   { path: "/blog/", heading: "Blog" },
   { path: "/bookshelf/", heading: "Bookshelf" },
   { path: "/music/", heading: "Music Portrait" },
-  { path: "/music/case-study/", heading: "Turning listening into a living atlas" },
+  {
+    path: "/music/case-study/",
+    heading: "Turning listening into a living atlas",
+  },
   { path: "/studio/", heading: "Studio" },
   { path: "/privacy/", heading: "Privacy" },
   {
@@ -99,26 +102,38 @@ test("primary navigation and a published article work", async ({ page }) => {
   expect(errors).toEqual([])
 })
 
-test("music navigation and privacy disclosure remain reachable on mobile", async ({ page }) => {
+test("music navigation and privacy disclosure remain reachable on mobile", async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto("/music/")
 
-  const navigation = page.getByRole("navigation", { name: "Primary navigation" })
+  const navigation = page.getByRole("navigation", {
+    name: "Primary navigation",
+  })
   await expect(navigation.getByRole("link")).toHaveCount(7)
-  await expect(navigation.getByRole("link", { name: "Music", exact: true })).toHaveAttribute(
-    "aria-current",
-    "page",
-  )
-  await expect(page.getByRole("link", { name: "Privacy", exact: true })).toHaveAttribute(
-    "href",
-    "/privacy/",
-  )
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true)
+  await expect(
+    navigation.getByRole("link", { name: "Music", exact: true }),
+  ).toHaveAttribute("aria-current", "page")
+  await expect(
+    page.getByRole("link", { name: "Privacy", exact: true }),
+  ).toHaveAttribute("href", "/privacy/")
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= window.innerWidth,
+    ),
+  ).toBe(true)
 
   await page.goto("/privacy/")
-  await expect(page.getByText(/Spotify supplies public catalogue details/i)).toBeVisible()
-  await expect(page.getByText(/does not connect a visitor's Spotify account/i)).toBeVisible()
-  await expect(page.getByText(/does not use Music-specific analytics/i)).toBeVisible()
+  await expect(
+    page.getByText(/Spotify supplies public catalogue details/i),
+  ).toBeVisible()
+  await expect(
+    page.getByText(/does not connect a visitor's Spotify account/i),
+  ).toBeVisible()
+  await expect(
+    page.getByText(/does not use Music-specific analytics/i),
+  ).toBeVisible()
 })
 
 test("live products lead the project collection and remain curated on Experience", async ({
@@ -131,10 +146,10 @@ test("live products lead the project collection and remain curated on Experience
   const projectCards = page.locator(".projects-grid .project-card")
   await expect(projectCards).toHaveCount(8)
   await expect(
-    projectCards.nth(0).getByRole("heading", { level: 4 }),
+    projectCards.nth(0).getByRole("heading", { level: 2 }),
   ).toHaveText("Residue Lens")
   await expect(
-    projectCards.nth(1).getByRole("heading", { level: 4 }),
+    projectCards.nth(1).getByRole("heading", { level: 2 }),
   ).toHaveText("Period Place")
 
   const residueLensCard = projectCards.filter({ hasText: "Residue Lens" })
@@ -237,7 +252,7 @@ test("Budget V2 discloses synthetic evidence and shows the full workflow", async
   await page.goto("/projects/budget-v2/", { waitUntil: "domcontentloaded" })
 
   await expect(
-    page.getByText("Entirely synthetic demonstration", { exact: true })
+    page.getByText("Entirely synthetic demonstration", { exact: true }),
   ).toBeVisible()
   await expect(page.getByRole("figure")).toHaveCount(4)
   for (const heading of [
@@ -249,15 +264,17 @@ test("Budget V2 discloses synthetic evidence and shows the full workflow", async
     await expect(page.getByRole("heading", { name: heading })).toBeVisible()
   }
   await expect(
-    page.getByRole("link", { name: "View experience" })
+    page.getByRole("link", { name: "View experience" }),
   ).toHaveAttribute("href", "/experience/")
   await expect(
-    page.getByRole("link", { name: "Connect on LinkedIn" })
+    page.getByRole("link", { name: "Connect on LinkedIn" }),
   ).toBeVisible()
   expect(errors).toEqual([])
 })
 
-test("Budget V2 exposes full-size evidence links on mobile", async ({ page }) => {
+test("Budget V2 exposes full-size evidence links on mobile", async ({
+  page,
+}) => {
   const errors = monitorPage(page)
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto("/projects/budget-v2/", { waitUntil: "domcontentloaded" })
