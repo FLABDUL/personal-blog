@@ -299,17 +299,63 @@ test("review pages are labelled, clickable and noindexed", async ({ page }) => {
   await expect(page).toHaveURL(/\/review\/studio-daylight\/$/)
 })
 
-test("built output excludes draft art and contains only published Studio metadata", () => {
+test("built output excludes draft art and contains only published Studio metadata", async ({
+  request,
+}) => {
   expect(studio.items.every(item => item.status === "published")).toBe(true)
-  for (const name of ["fox.jpg", "pottery.jpg"])
-    expect(fs.existsSync(path.resolve("public/art", name))).toBe(false)
-  const page = fs.readFileSync("public/studio/index.html", "utf8")
+  for (const name of ["fox.jpg", "pottery.jpg"]) {
+    if (process.env.BASE_URL) {
+      const response = await request.get(`/art/${name}`)
+      expect(response.status()).toBe(404)
+    } else {
+      expect(fs.existsSync(path.resolve("public/art", name))).toBe(false)
+    }
+  }
+  let page
+  if (process.env.BASE_URL) {
+    const response = await request.get("/studio/")
+    expect(response.status()).toBe(200)
+    page = await response.text()
+  } else {
+    page = fs.readFileSync("public/studio/index.html", "utf8")
+  }
+  expect(page).toContain("View inferno")
   expect(page).not.toMatch(
     /Pottery Practice|Sunset over Dune|fox\.jpg|pottery\.jpg/,
   )
 })
 
-test("generated pages reference one current shared stylesheet", () => {
+test("generated pages reference one current shared stylesheet", async ({
+  request,
+}) => {
+  if (process.env.BASE_URL) {
+    const routes = [
+      "/",
+      "/blog/",
+      "/projects/",
+      "/experience/",
+      "/studio/",
+      "/bookshelf/",
+      "/music/",
+      "/projects/budget-v2/",
+      "/projects/backtest-library/",
+    ]
+    const styles = await Promise.all(
+      routes.map(async route => {
+        const response = await request.get(route)
+        expect(response.status(), route).toBe(200)
+        const html = await response.text()
+        const stylesheet = html.match(/styles\.[a-z0-9]+\.css/)?.[0]
+        expect(stylesheet, route).toBeTruthy()
+        return stylesheet
+      }),
+    )
+    expect(new Set(styles).size).toBe(1)
+    const response = await request.get(`/${styles[0]}`)
+    expect(response.status()).toBe(200)
+    expect(response.headers()["content-type"]).toContain("text/css")
+    return
+  }
   const output = path.resolve("public")
   const styles = fs
     .readdirSync(output)

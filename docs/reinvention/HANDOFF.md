@@ -15,6 +15,8 @@ No runtime dependency was added. See REVIEW.md for implementation and removal de
 
 Follow-up verification: clean Gatsby build passed. The full browser run passed 133 checks with one intentionally skipped draft-only test. The expanded theme run passed 63 scenarios and exposed the same code-scroll issue in Light and Dark at 390px. After the wrapping fix, all four article/theme/viewport combinations and the generated stylesheet consistency check passed (5/5). All 65 new theme scenarios are therefore verified across these runs, including 60 axe scans across fourteen routes at 390/1440px and the two collection dialogs in both themes. There were no remaining detected WCAG A/AA violations in this coverage. The existing cross-browser, real-device and full assistive-technology limitations below still apply. No separate release review was performed.
 
+The first follow-up deployment was Ready with target Preview at commit 3a75d880938ff045ca227f26b1739ddaa0e73bfc. Both study routes returned 200, and Light selection persisted through reload in the deployed browser. The earlier deployment smoke failures were traced to two tests reading nonexistent local public/ files on a deployment-only runner. These checks now fetch the deployed Studio, excluded asset URLs and shared stylesheets when BASE_URL is supplied, retaining filesystem checks for local builds. Both modes passed their focused checks (2/2 each). The subsequent test-harness commit and final CI result are recorded in the chat hand-off.
+
 ## Open the candidate
 
 - Integrated Preview: https://personal-blog-git-codex-madebyhakim-re-aabbd1-flabduls-projects.vercel.app/

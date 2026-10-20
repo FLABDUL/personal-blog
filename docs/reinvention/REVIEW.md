@@ -56,6 +56,8 @@ Accessibility checks exposed repeated mismatches between visible text and explic
 
 The theme follow-up extends this coverage to fourteen routes, including a technical article with code blocks, in both themes at mobile and desktop sizes. Keep this article coverage in the smoke run: it caught an existing keyboard-inaccessible scroll region that index-page scans could not detect. Code now wraps without changing article content.
 
+Deployment smoke runs have BASE_URL but no local build output. Keep output checks dual-mode: inspect files after a local build, and request the actual deployed HTML, stylesheet and excluded asset URLs in deployment mode. Both modes have been exercised. Do not hide a missing deployed asset or authentication failure by skipping the assertion.
+
 ## Recommendation
 
 Keep the integrated identity, selected editorial About and exhibition Studio, unboxed sections and engineering studies. Light Studio uses the selected exhibition composition; it does not switch to the unselected salon concept. Discard simulated book spines and additional decorative room metaphors unless real assets or a clear interaction need justify them.
