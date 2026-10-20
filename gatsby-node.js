@@ -61,4 +61,11 @@ exports.onPostBuild = () => {
     const file = path.resolve("public", "art", name)
     if (require("fs").existsSync(file)) require("fs").unlinkSync(file)
   }
+  const review = require("./config/design-review.json")
+  if (!review.enabled || process.env.VERCEL_ENV === "production") {
+    require("fs").rmSync(path.resolve("public", "review"), {
+      recursive: true,
+      force: true,
+    })
+  }
 }

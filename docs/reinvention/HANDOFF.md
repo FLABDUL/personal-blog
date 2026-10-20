@@ -2,13 +2,29 @@
 
 All four requested stages are done: audit and competing directions; selected site-wide direction; integrated implementation; desktop/mobile critique and refinement. Production release is not started and requires Hakim's separate decision.
 
+## Latest follow-up: logo choices and Music atmosphere
+
+- Done: three independently generated logo concepts at `/review/logos/`, linked prominently from the review hub. A is the editorial m/h monogram (recommended); B is a bold mh ligature; C is a printer’s flower. Each has a full-size image, rationale and trade-off. AI provenance is explicit. No final logo has been selected or installed. LOGOS.md contains the exact prompts and saved assets.
+- Done: Music's chart, artist/track labels, fallback initials, guide, region controls and selected details now follow Light and Dark. The palette uses pale sage and dark ink in Light, deep green and warm brass in Dark. Spotify artwork is unchanged. The heavy outer box is replaced by lighter rules and a restrained chart frame.
+- Done: 96 fixed star points and eight slow twinkles behind the map. They have no focus targets, capture no pointer input, share the existing pause state, remain static with reduced motion and disappear in forced-colour mode. The seeded positions match between server and browser. There are no new Music functions or controls.
+- Done: the review-output guard also removes logo assets from production output or a build with review disabled. A fixture check verifies that published files remain intact.
+- Not started: final vector logo production, pending Hakim's choice. Separate release review also remains not started; Hakim will change model intelligence first.
+
+Verification: clean Gatsby build passed. The initial expanded browser run passed 161 checks and exposed four fallback-initial colour assertions; the light fallback was visibly too pale. After correcting the SVG fallback colours and refining star distribution, all 29 focused Music, logo, theme and exclusion checks passed, with one intentional draft-only skip. This includes expanded guide/artist-detail axe scans and keyboard selection in both themes at 390/1440px, motion pause and reduced-motion checks, clickable logo assets, noindex and 320px logo-page reflow. The final deployed run and immutable URL are recorded in the chat hand-off.
+
+Screenshots: `output/reinvention/theme-light--music--390.png`, `theme-light--music--1440.png`, matching dark versions, and `theme-light--review-logos--390.png` / `theme-dark--review-logos--1440.png`. Browser checks also inspected the local rendered atlas and logo comparison. Local Music tests stub the catalogue; live deployment checks are separate.
+
+No runtime dependency was added. Logo web assets total 64,734 bytes and are used only in the identity review. No new artwork was added to Studio. The existing moving atlas can still have crowded labels in some orbital positions, especially on phones; this aesthetic follow-up preserves its spatial and interaction model. Safari, Firefox, physical devices, a full screen-reader audit and fresh performance benchmarks remain unverified.
+
+Recommendation: keep the theme integration and restrained star field. Prefer logo A for continuity; choose before producing a final vector and favicon. The existing About and Studio selections remain unchanged.
+
 ## Follow-up: selected direction, themes and engineering studies
 
 Hakim selected the recommended editorial About and exhibition Studio on 20 October. Both remain the integrated design; the two alternatives are labelled as unselected references in the review hub.
 
 - Done: explicit Light and Dark masthead controls, a saved preference across routes and reloads, pre-hydration preference application, graceful behaviour with storage disabled, and light print output.
 - Done: Budget V2 and Backtest Library use open editorial studies with section navigation, connected architecture steps, larger evidence figures and ruled results. Factual copy, results, synthetic-data disclosures, image files and full-size links are preserved. Image dimensions reserve their layout space; evidence loads lazily.
-- Done: Music case-study prose adapts to either theme. The atlas itself retains its night-sky palette. Technical article code wraps inside the reading column, resolving an existing keyboard-inaccessible horizontal scroll region found by the expanded checks.
+- Done: Music case-study prose adapts to either theme. The atlas palette was subsequently integrated in the latest follow-up above. Technical article code wraps inside the reading column, resolving an existing keyboard-inaccessible horizontal scroll region found by the expanded checks.
 - Not started: separate release review. Hakim wants to change model intelligence before it begins.
 
 No runtime dependency was added. See REVIEW.md for implementation and removal details. Follow-up screenshots are named theme-light-* and theme-dark-* in output/reinvention.
@@ -25,6 +41,8 @@ Remote testing then exposed loading races: programmatic keyboard focus could arr
 - Budget V2: https://personal-blog-git-codex-madebyhakim-re-aabbd1-flabduls-projects.vercel.app/projects/budget-v2/
 - Backtest Library: https://personal-blog-git-codex-madebyhakim-re-aabbd1-flabduls-projects.vercel.app/projects/backtest-library/
 - Review hub: https://personal-blog-git-codex-madebyhakim-re-aabbd1-flabduls-projects.vercel.app/review/
+- Logo concepts: https://personal-blog-git-codex-madebyhakim-re-aabbd1-flabduls-projects.vercel.app/review/logos/
+- Music Portrait: https://personal-blog-git-codex-madebyhakim-re-aabbd1-flabduls-projects.vercel.app/music/
 - Alternative About: https://personal-blog-git-codex-madebyhakim-re-aabbd1-flabduls-projects.vercel.app/review/about-table/
 - Alternative Studio: https://personal-blog-git-codex-madebyhakim-re-aabbd1-flabduls-projects.vercel.app/review/studio-daylight/
 
@@ -92,10 +110,10 @@ The moving Music atlas can still produce dense labels in some positions; its exi
 
 Two obstacles were resolved: early interaction before hydration, and Gatsby incremental HTML referencing a stale CSS hash locally and on Vercel. Controls now wait for hydration; regression tests cover the interactions and generated stylesheet consistency. Every build now cleans Gatsby's cache and output before compiling, preventing mixed stylesheet versions across routes. One Studio Lighthouse attempt lost the test-owned local server; the reported measurements use a persistent server.
 
-Usage was monitored. During this follow-up, the check showed approximately 39% remaining. No reset was redeemed; the specifically authorised reset remains unused.
+Usage was monitored. The latest check during the logo/Music follow-up showed approximately 17% remaining. No reset was redeemed; the specifically authorised reset remains unused.
 
 ## Recommendation
 
 Keep the integrated identity, selected editorial About and exhibition Studio, the unboxed sections and the new engineering studies. Light Studio retains the selected exhibition layout. Revise Studio performance and review the remaining dependency advisories before a production release. Discard fake book spines and additional decorative room metaphors.
 
-Recommended next action: change model intelligence, then request the separate release review. Do not flip production from this experiment automatically.
+Recommended next action: choose logo A, B or C. Before a later separate release review, change model intelligence and explicitly request that review. Do not flip production from this experiment automatically.

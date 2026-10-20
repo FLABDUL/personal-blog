@@ -300,6 +300,40 @@ test("review pages are labelled, clickable and noindexed", async ({ page }) => {
   await expect(page).toHaveURL(/\/review\/studio-daylight\/$/)
 })
 
+test("logo review is linked, transparent about provenance and offers three working concepts", async ({
+  page,
+  request,
+}) => {
+  await page.goto("/review/")
+  await page.getByRole("link", { name: /compare three logo concepts/ }).click()
+  await expect(page).toHaveURL(/\/review\/logos\/$/)
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+    "content",
+    "noindex",
+  )
+  await expect(
+    page.getByText(/These are AI-generated identity concepts/),
+  ).toBeVisible()
+  for (const link of await page
+    .getByRole("link", { name: /Open concept [ABC] at full size/ })
+    .all()) {
+    const response = await request.get(await link.getAttribute("href"))
+    expect(response.status()).toBe(200)
+    expect(response.headers()["content-type"]).toContain("image/webp")
+  }
+  await expect(
+    page.getByRole("link", { name: /Open concept [ABC] at full size/ }),
+  ).toHaveCount(3)
+  await page.setViewportSize({ width: 320, height: 844 })
+  await page.getByRole("link", { name: "C / The printer’s flower" }).click()
+  await expect(page).toHaveURL(/#printers-flower$/)
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBe(true)
+})
+
 test("built output excludes draft art and contains only published Studio metadata", async ({
   request,
 }) => {
@@ -382,14 +416,57 @@ test("production and disabled-review guards remove experiment routes", () => {
   try {
     process.env.VERCEL_ENV = "production"
     onCreatePage({ page: { path: "/review/" }, actions })
+    onCreatePage({ page: { path: "/review/logos/" }, actions })
     onCreatePage({ page: { path: "/" }, actions })
     process.env.VERCEL_ENV = "preview"
     review.enabled = false
     onCreatePage({ page: { path: "/review/about-table/" }, actions })
-    expect(deleted).toEqual(["/review/", "/review/about-table/"])
+    expect(deleted).toEqual([
+      "/review/",
+      "/review/logos/",
+      "/review/about-table/",
+    ])
   } finally {
     review.enabled = wasEnabled
     if (previous === undefined) delete process.env.VERCEL_ENV
     else process.env.VERCEL_ENV = previous
   }
+})
+
+test("production output removes review artwork while retaining published files", () => {
+  const { spawnSync } = require("node:child_process")
+  const evidence = path.resolve("output/reinvention")
+  fs.mkdirSync(evidence, { recursive: true })
+  const fixture = fs.mkdtempSync(path.join(evidence, "review-guard-"))
+  const reviewOutput = path.join(fixture, "public", "review")
+  expect(path.resolve(reviewOutput).startsWith(`${fixture}${path.sep}`)).toBe(
+    true,
+  )
+  fs.mkdirSync(path.join(reviewOutput, "logos"), { recursive: true })
+  fs.writeFileSync(
+    path.join(reviewOutput, "logos", "concept.webp"),
+    "review fixture",
+  )
+  fs.writeFileSync(
+    path.join(fixture, "public", "index.html"),
+    "published fixture",
+  )
+  const result = spawnSync(
+    process.execPath,
+    [
+      "-e",
+      "require(process.argv[1]).onPostBuild()",
+      path.resolve("gatsby-node.js"),
+    ],
+    {
+      cwd: fixture,
+      env: { ...process.env, VERCEL_ENV: "production" },
+      encoding: "utf8",
+    },
+  )
+  expect(result.status, result.stderr).toBe(0)
+  expect(fs.existsSync(reviewOutput)).toBe(false)
+  expect(
+    fs.readFileSync(path.join(fixture, "public", "index.html"), "utf8"),
+  ).toBe("published fixture")
 })

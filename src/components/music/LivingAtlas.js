@@ -6,6 +6,20 @@ import PlanetArtwork from "./PlanetArtwork"
 import TrackNode from "./TrackNode"
 import * as styles from "./MusicPortrait.module.css"
 
+// Fixed positions keep the decorative sky identical during server rendering and hydration.
+const stars = (() => {
+  let seed = 1747
+  const coordinate = () => {
+    seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0
+    return 35 + (seed % 930)
+  }
+  return Array.from({ length: 96 }, (_, index) => ({
+    x: coordinate(),
+    y: coordinate(),
+    radius: 0.8 + (index % 4) * 0.45,
+  }))
+})()
+
 export default function LivingAtlas({
   model,
   layout,
@@ -58,6 +72,30 @@ export default function LivingAtlas({
             />
           )
         })}
+      </g>
+      <g
+        className={styles.starField}
+        data-atlas-stars
+        aria-hidden="true"
+        focusable="false"
+        transform={`scale(${layout.size / 1000})`}
+      >
+        {stars.map((star, index) => (
+          <circle key={index} cx={star.x} cy={star.y} r={star.radius} />
+        ))}
+        {stars
+          .filter((_, index) => index % 12 === 5)
+          .map((star, index) => (
+            <path
+              key={index}
+              className={styles.twinkle}
+              d={`M ${star.x} ${star.y - 7} Q ${star.x + 1} ${star.y - 1} ${star.x + 5} ${star.y} Q ${star.x + 1} ${star.y + 1} ${star.x} ${star.y + 7} Q ${star.x - 1} ${star.y + 1} ${star.x - 5} ${star.y} Q ${star.x - 1} ${star.y - 1} ${star.x} ${star.y - 7}`}
+              style={{
+                "--twinkle-duration": `${7 + (index % 4)}s`,
+                "--twinkle-delay": `${-index * 1.7}s`,
+              }}
+            />
+          ))}
       </g>
       {orderedOrbits.map(orbit => (
         <OrbitLayer

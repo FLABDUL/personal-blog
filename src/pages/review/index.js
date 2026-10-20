@@ -18,6 +18,10 @@ export default function ReviewPage() {
           The earlier alternatives remain here for reference. Nothing here
           changes the live site.
         </p>
+        <p className="text-actions">
+          <Link to="/review/logos/">New: compare three logo concepts ↗</Link>
+          <Link to="/music/">Explore the updated Music Portrait ↗</Link>
+        </p>
       </header>
       <div className="review-options">
         <Link className="review-option" to="/">

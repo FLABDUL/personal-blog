@@ -1,4 +1,5 @@
 const { test, expect } = require("@playwright/test")
+const AxeBuilder = require("@axe-core/playwright").default
 const portrait = require("../../content/music/portrait.json")
 
 const AUKAI_SPOTIFY_ID = portrait.artists.aukai.spotifyArtistId
@@ -260,6 +261,10 @@ test("selection pauses the atlas and gives Aukai three orbiting song moons", asy
 
   await expect(portraitRoot).toHaveAttribute("data-selection", "artist")
   await expect(portraitRoot).toHaveAttribute("data-all-paused", "true")
+  await expect(page.locator("[data-atlas-stars] path").first()).toHaveCSS(
+    "animation-play-state",
+    "paused",
+  )
   await expect(aukai).toHaveAttribute("aria-pressed", "true")
   await expect(
     page.getByRole("group", { name: "Songs orbiting Aukai" }),
@@ -338,9 +343,12 @@ test("motion pauses for reduced motion and a hidden document", async ({
   })
   await expect(portraitRoot).toHaveAttribute("data-reduced-motion", "true")
   await expect(portraitRoot).toHaveAttribute("data-all-paused", "true")
+  const twinkle = page.locator("[data-atlas-stars] path").first()
+  await expect(twinkle).toHaveCSS("animation-name", "none")
 
   await page.emulateMedia({ reducedMotion: "no-preference" })
   await expect(portraitRoot).toHaveAttribute("data-reduced-motion", "false")
+  await expect(twinkle).toHaveCSS("animation-play-state", "running")
   await page.evaluate(() => {
     Object.defineProperty(document, "visibilityState", {
       configurable: true,
@@ -350,7 +358,58 @@ test("motion pauses for reduced motion and a hidden document", async ({
   })
   await expect(portraitRoot).toHaveAttribute("data-page-visible", "false")
   await expect(portraitRoot).toHaveAttribute("data-all-paused", "true")
+  await expect(twinkle).toHaveCSS("animation-play-state", "paused")
 })
+
+for (const theme of ["light", "dark"]) {
+  for (const width of [390, 1440]) {
+    test(`the ${theme} atlas guide and artist details remain accessible at ${width}px`, async ({
+      page,
+    }) => {
+      await page.setViewportSize({ width, height: 900 })
+      await page.emulateMedia({ reducedMotion: "reduce" })
+      await page.goto("/music/")
+      await page
+        .getByRole("button", {
+          name: theme === "light" ? "Light" : "Dark",
+          exact: true,
+        })
+        .click()
+      const sky = page.locator("[data-atlas-stars]")
+      await expect(sky).toHaveAttribute("aria-hidden", "true")
+      await expect(sky).toHaveCSS("pointer-events", "none")
+      await expect(sky.locator("[tabindex]")).toHaveCount(0)
+      const label = page.locator('[data-artist-id="aukai"] text').last()
+      await expect(label).toHaveCSS(
+        "fill",
+        theme === "light" ? "rgb(32, 63, 61)" : "rgb(242, 238, 223)",
+      )
+      await page.getByText("How to read this map", { exact: true }).click()
+      const artist = page.getByRole("button", { name: /^Explore Aukai/ })
+      await artist.focus()
+      await page.keyboard.press("Enter")
+      await expect(
+        page.getByRole("heading", { name: "Aukai", exact: true }),
+      ).toBeVisible()
+      const scan = await new AxeBuilder({ page })
+        .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])
+        .analyze()
+      expect(
+        scan.violations.map(item => ({
+          id: item.id,
+          nodes: item.nodes.map(node => node.failureSummary),
+        })),
+      ).toEqual([])
+      expect(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth <= innerWidth,
+        ),
+      ).toBe(true)
+      await page.keyboard.press("Escape")
+      await expect(artist).toBeFocused()
+    })
+  }
+}
 
 test("failed catalogue artwork falls back without weakening the authored portrait", async ({
   page,

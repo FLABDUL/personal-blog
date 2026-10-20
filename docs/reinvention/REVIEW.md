@@ -26,7 +26,11 @@ Hakim selected the integrated editorial About and exhibition Studio on 20 Octobe
 
 ## Selected-direction refinement
 
-The masthead now has explicit Light and Dark buttons. Before a preference is chosen, each section keeps its authored palette. A choice follows the reader between routes and persists in local browser storage. A small inline head script applies a saved choice before hydration; unavailable storage does not stop the controls working for the current visit. Theme rules apply only on screen, preserving the light print layout. The Music atlas keeps its original night-sky artwork palette within the themed page.
+The masthead now has explicit Light and Dark buttons. Before a preference is chosen, each section keeps its authored palette. A choice follows the reader between routes and persists in local browser storage. A small inline head script applies a saved choice before hydration; unavailable storage does not stop the controls working for the current visit. Theme rules apply only on screen, preserving the light print layout. The Music atlas now follows the selected theme throughout: sage chart paper and dark ink in Light, deep green with warm brass in Dark. Spotify artwork retains its original colours.
+
+The Music follow-up replaces the heavy outer box with a fine rule, simpler region controls and a lightly framed chart. Ninety-six fixed decorative points and eight slow twinkles sit behind the existing interactive map. The decoration is hidden from assistive technology and cannot capture pointer or keyboard input. Twinkles share the map's pause state and are static with reduced motion; forced-colour mode removes them. No new controls or data claims were added.
+
+Three AI-generated logo directions are available at `/review/logos/`: the editorial monogram (recommended), maker’s ligature and printer’s flower. Their provenance, exact prompts, assets and trade-offs are recorded in LOGOS.md. Hakim has not selected a final identity; the current masthead remains installed. These are concept sheets pending a final vector redraw, not production logo files.
 
 Budget V2 and Backtest Library now use a continuous editorial study layout: large serif introductions, numbered section links, connected architecture steps, open evidence rows and visible limitations. Evidence images retain their original files, captions and full-size links, with intrinsic dimensions and lazy loading. All engineering claims and result values are preserved. The obsolete shared card stylesheet was removed.
 

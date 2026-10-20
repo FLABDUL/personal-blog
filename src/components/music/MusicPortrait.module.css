@@ -474,8 +474,8 @@
 }
 
 .atlasPlanetBody {
-  fill: var(--surface-raised, #173e4a);
-  stroke: var(--accent, #f4b84a);
+  fill: var(--sky-surface);
+  stroke: var(--sky-brass);
   stroke-width: 2px;
 }
 
@@ -515,26 +515,30 @@
 
 .nodeSelector:focus-visible .atlasPlanetBody,
 .nodeSelector:focus-visible .trackBody {
-  stroke: var(--foreground, #fff7df);
+  stroke: var(--sky-ink);
   stroke-width: 5px;
 }
 
 .atlasPlanetLabel,
 .trackLabel {
-  fill: var(--foreground, #fff7df);
+  fill: var(--sky-ink);
   font:
     700 16px Arial,
     sans-serif;
   paint-order: stroke;
-  stroke: #061926;
+  stroke: var(--sky-base);
   stroke-linejoin: round;
   stroke-width: 4px;
 }
 
 .trackBody {
-  fill: var(--accent, #f4b84a);
-  stroke: var(--foreground, #fff7df);
+  fill: var(--sky-surface);
+  stroke: var(--sky-brass);
   stroke-width: 2px;
+}
+
+.atlasFrame [data-artwork-fallback] {
+  fill: var(--sky-ink);
 }
 
 .regionMembershipMarker {
@@ -542,13 +546,13 @@
 }
 
 .regionMembershipMarker circle {
-  fill: #f5c261;
-  stroke: #061926;
+  fill: var(--sky-brass);
+  stroke: var(--sky-base);
   stroke-width: 2px;
 }
 
 .regionMembershipMarker circle[data-region-chapter="creative_fuel"] {
-  fill: #9ee2d4;
+  fill: var(--sky-teal);
 }
 
 .atlasStatus {
@@ -559,27 +563,38 @@
 }
 
 .atlasFrame {
-  /* The chart keeps its night-sky palette in either surrounding page theme. */
-  --accent: #ebc879;
-  color: #f3edda;
-  background:
-    radial-gradient(circle at 50% 48%, rgb(19 85 91 / 82%), transparent 38%),
-    linear-gradient(145deg, #06202d 0%, #0b3040 58%, #071823 100%);
-  border: 1px solid rgb(226 168 65 / 68%);
-  border-radius: 28px;
-  box-shadow:
-    inset 0 0 80px rgb(0 0 0 / 38%),
-    0 24px 70px rgb(0 0 0 / 24%);
+  --sky-base: #102d32;
+  --sky-surface: #173b3e;
+  --sky-ink: #f2eedf;
+  --sky-brass: #e6c88a;
+  --sky-teal: #a8d8cb;
+  --sky-rule: #4e6964;
+  --sky-glow: rgb(68 128 113 / 30%);
+  --sky-warmth: rgb(192 155 90 / 9%);
+  --sky-star: #e1d9b8;
+  color: var(--sky-ink);
+  border-top: 1px solid var(--rule);
   display: grid;
-  gap: 1rem;
+  gap: 1.25rem;
   grid-template-areas:
     "filters guide"
     "filters canvas"
     ". details"
     "spotify spotify";
   grid-template-columns: minmax(10rem, 14rem) minmax(0, 1fr);
-  overflow: hidden;
-  padding: 1rem;
+  padding-top: 1.25rem;
+}
+
+:global(html[data-theme="light"]) .atlasFrame {
+  --sky-base: #e1e9df;
+  --sky-surface: #d4e1d7;
+  --sky-ink: #203f3d;
+  --sky-brass: #765323;
+  --sky-teal: #296b60;
+  --sky-rule: #9bb2a6;
+  --sky-glow: rgb(248 244 215 / 74%);
+  --sky-warmth: rgb(168 190 166 / 32%);
+  --sky-star: #617a68;
 }
 
 .regionFilters {
@@ -590,33 +605,40 @@
 }
 
 .regionFilters button {
-  background: rgb(16 58 72 / 92%);
-  border: 1px solid #dca747;
-  border-radius: 18px;
-  color: #ffe5a3;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--sky-rule);
+  border-left: 2px solid transparent;
+  border-radius: 0;
+  color: var(--sky-ink);
   cursor: pointer;
   font:
     700 1rem Georgia,
     serif;
-  min-height: 5.5rem;
-  padding: 0.8rem;
+  min-height: 4.5rem;
+  padding: 0.8rem 1rem;
+  text-align: left;
 }
 
 .regionFilters button:hover,
 .regionFilters button[aria-pressed="true"] {
-  background: #8f3f35;
-  border-color: #fff1c2;
+  background: var(--sky-surface);
+  border-left-color: var(--sky-brass);
 }
 
 .regionFilters button:focus-visible {
-  outline: 3px solid var(--focus);
+  outline: 3px solid var(--sky-brass);
   outline-offset: 3px;
 }
 
 .atlasCanvas {
   aspect-ratio: 1;
-  border: 1px solid rgb(218 164 67 / 28%);
-  border-radius: 18px;
+  background:
+    radial-gradient(ellipse at 48% 54%, var(--sky-glow), transparent 62%),
+    radial-gradient(ellipse at 90% 12%, var(--sky-warmth), transparent 48%),
+    var(--sky-base);
+  border: 1px solid var(--sky-rule);
+  border-radius: 4px;
   grid-area: canvas;
   min-width: 0;
   overflow: hidden;
@@ -630,8 +652,41 @@
 
 .atlasGrid path {
   fill: none;
-  stroke: rgb(242 198 112 / 8%);
+  stroke: var(--sky-rule);
+  opacity: 0.22;
   stroke-width: 1px;
+}
+
+.starField {
+  fill: var(--sky-star);
+  pointer-events: none;
+}
+
+.starField circle {
+  opacity: 0.48;
+}
+.starField circle:nth-child(3n) {
+  opacity: 0.24;
+}
+
+.twinkle {
+  opacity: 0.55;
+  animation: star-breathe var(--twinkle-duration) ease-in-out
+    var(--twinkle-delay) infinite;
+}
+
+@keyframes star-breathe {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.portrait[data-all-paused="true"] .twinkle {
+  animation-play-state: paused;
 }
 
 .orbitLayer {
@@ -646,7 +701,7 @@
 }
 
 .nodeSelector[data-region-spotlighted="true"] .atlasPlanetBody {
-  stroke: #fff1c2;
+  stroke: var(--sky-ink);
   stroke-width: 5px;
 }
 
@@ -722,7 +777,8 @@
 
 .atlasOrbit {
   fill: none;
-  stroke: rgb(245 194 97 / 45%);
+  stroke: var(--sky-brass);
+  opacity: 0.45;
   stroke-dasharray: 6 10;
   stroke-width: 2px;
 }
@@ -734,14 +790,14 @@
 
 .atlasRelationship path:first-child {
   fill: none;
-  stroke: #e0ad55;
+  stroke: var(--sky-brass);
   stroke-dasharray: 8 8;
   stroke-width: 2px;
 }
 
 .atlasRelationship:focus-visible path:first-child,
 .atlasRelationship[aria-pressed="true"] path:first-child {
-  stroke: #fff4c7;
+  stroke: var(--sky-ink);
   stroke-width: 6px;
 }
 
@@ -750,26 +806,26 @@
   outline: none;
 }
 
-.atlasHomeStar circle:first-child {
-  fill: rgb(241 172 65 / 20%);
-  stroke: #f2b74d;
+.atlasHomeStar > circle:first-of-type {
+  fill: var(--sky-surface);
+  stroke: var(--sky-brass);
   stroke-width: 2px;
 }
 
-.atlasHomeStar circle:nth-child(2) {
-  fill: #f0a83b;
-  stroke: #fff1bd;
+.atlasHomeStar > circle:nth-of-type(2) {
+  fill: var(--sky-surface);
+  stroke: var(--sky-ink);
   stroke-width: 3px;
 }
 
 .atlasHomeStarLabel {
-  fill: #182b31;
+  fill: var(--sky-ink);
   font:
     800 12px Arial,
     sans-serif;
   letter-spacing: 0.07em;
   paint-order: stroke;
-  stroke: #fff1bd;
+  stroke: var(--sky-base);
   stroke-linejoin: round;
   stroke-width: 4px;
   pointer-events: none;
@@ -779,22 +835,21 @@
   pointer-events: none;
 }
 
-.atlasHomeStar:focus-visible circle:first-child {
-  stroke: #fff;
+.atlasHomeStar:focus-visible > circle:first-of-type {
+  stroke: var(--sky-ink);
   stroke-width: 7px;
 }
 
 .atlasDetails {
-  background: rgb(7 31 42 / 92%);
-  border: 1px solid #c9923b;
-  border-radius: 18px;
-  color: #f8efd8;
+  background: var(--sky-surface);
+  border-left: 2px solid var(--sky-brass);
+  color: var(--sky-ink);
   grid-area: details;
   padding: 1.1rem 1.25rem;
 }
 
 .atlasDetails h2 {
-  color: #ffd77f;
+  color: var(--sky-ink);
   font-family: Georgia, serif;
   margin: 0.15rem 0 0.5rem;
 }
@@ -810,13 +865,13 @@
 }
 
 .atlasDetails a {
-  color: #9ee2d4;
+  color: var(--sky-teal);
   display: inline-block;
   margin-top: 0.55rem;
 }
 
 .detailEyebrow {
-  color: #e2ad50;
+  color: var(--sky-brass);
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -824,16 +879,14 @@
 }
 
 .atlasGuide {
-  background: rgb(7 31 42 / 84%);
-  border: 1px solid rgb(218 164 67 / 68%);
-  border-radius: 12px;
-  color: #f8efd8;
+  border-bottom: 1px solid var(--sky-rule);
+  color: var(--sky-ink);
   grid-area: guide;
-  padding: 0.7rem 0.9rem;
+  padding: 0.7rem 0;
 }
 
 .atlasGuide summary {
-  color: #ffd77f;
+  color: var(--sky-brass);
   cursor: pointer;
   font-weight: 800;
 }
@@ -843,7 +896,7 @@
 }
 
 .regionGuide {
-  border-top: 1px solid rgb(218 164 67 / 38%);
+  border-top: 1px solid var(--sky-rule);
   margin-top: 0.8rem;
   padding-top: 0.15rem;
 }
@@ -854,32 +907,34 @@
 }
 
 .regionGuide strong {
-  color: #ffd77f;
+  color: var(--sky-brass);
   font-family: Georgia, serif;
 }
 
 .catalogueAttribution {
   align-items: center;
-  background: rgb(7 31 42 / 88%);
-  border: 1px solid rgb(218 164 67 / 58%);
-  border-radius: 12px;
+  border-top: 1px solid var(--sky-rule);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 0.65rem;
   grid-area: spotify;
-  justify-content: center;
-  padding: 0.6rem 0.75rem;
+  justify-content: flex-start;
+  padding: 1rem 0;
 }
 
 .catalogueAttribution p {
-  color: #f8efd8;
+  color: var(--sky-ink);
   margin: 0;
 }
 
 .spotifyLogo {
   height: auto;
   width: 92px;
+}
+
+:global(html[data-theme="light"]) .spotifyLogo {
+  filter: brightness(0);
 }
 
 @media (max-width: 48rem) {
@@ -943,12 +998,16 @@
   .orbitMotion,
   .planetUpright,
   .moonSystem,
-  .moonUpright {
+  .moonUpright,
+  .twinkle {
     animation: none;
   }
 }
 
 @media (forced-colors: active) {
+  .starField {
+    display: none;
+  }
   .nodeSelector:focus-visible .atlasPlanetBody,
   .nodeSelector:focus-visible .trackBody {
     stroke: Highlight;

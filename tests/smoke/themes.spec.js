@@ -35,6 +35,7 @@ for (const theme of ["light", "dark"]) {
       "/projects/budget-v2/",
       "/projects/backtest-library/",
       "/review/",
+      "/review/logos/",
       "/review/about-table/",
       "/review/studio-daylight/",
       "/music/case-study/",
@@ -76,6 +77,8 @@ for (const theme of ["light", "dark"]) {
           [
             "/",
             "/studio/",
+            "/music/",
+            "/review/logos/",
             "/projects/budget-v2/",
             "/projects/backtest-library/",
           ].includes(route)
