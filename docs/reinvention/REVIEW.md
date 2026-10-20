@@ -30,7 +30,7 @@ The masthead now has explicit Light and Dark buttons. Before a preference is cho
 
 The Music follow-up replaces the heavy outer box with a fine rule, simpler region controls and a lightly framed chart. Ninety-six fixed decorative points and eight slow twinkles sit behind the existing interactive map. The decoration is hidden from assistive technology and cannot capture pointer or keyboard input. Twinkles share the map's pause state and are static with reduced motion; forced-colour mode removes them. No new controls or data claims were added.
 
-Three AI-generated logo directions are available at `/review/logos/`: the editorial monogram (recommended), maker’s ligature and printer’s flower. Their provenance, exact prompts, assets and trade-offs are recorded in LOGOS.md. Hakim has not selected a final identity; the current masthead remains installed. These are concept sheets pending a final vector redraw, not production logo files.
+Three revised AI-generated logo directions are available at `/review/logos/`: Jade Signature, Structured Script and Woven Roots (recommended for the current brief). All use the confirmed personal name حكيم without a prefix, in green; Woven Roots adds an original Malaysian songket-inspired geometric border. These replace the rejected first-round monogram, ligature and flower. Their provenance, exact prompts, assets and lettering limitations are recorded in LOGOS-ROOTS.md; LOGOS.md preserves the superseded first round. Hakim has not selected a final identity; the current masthead remains installed. These are concept sheets pending final Arabic lettering proof and vector drawing.
 
 Budget V2 and Backtest Library now use a continuous editorial study layout: large serif introductions, numbered section links, connected architecture steps, open evidence rows and visible limitations. Evidence images retain their original files, captions and full-size links, with intrinsic dimensions and lazy loading. All engineering claims and result values are preserved. The obsolete shared card stylesheet was removed.
 
@@ -66,4 +66,4 @@ Deployment smoke runs have BASE_URL but no local build output. Keep output check
 
 Keep the integrated identity, selected editorial About and exhibition Studio, unboxed sections and engineering studies. Light Studio uses the selected exhibition composition; it does not switch to the unselected salon concept. Discard simulated book spines and additional decorative room metaphors unless real assets or a clear interaction need justify them.
 
-The next action is for Hakim to change model intelligence before requesting the separate release review. That review has not started. This branch does not authorise a production flip.
+The next action is for Hakim to choose among the revised logo directions. Change model intelligence before requesting the later separate release review; that review has not started. This branch does not authorise a production flip.

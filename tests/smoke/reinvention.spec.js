@@ -314,6 +314,8 @@ test("logo review is linked, transparent about provenance and offers three worki
   await expect(
     page.getByText(/These are AI-generated identity concepts/),
   ).toBeVisible()
+  await expect(page.locator('[lang="ar"]')).toHaveText("حكيم")
+  await expect(page.locator('[lang="ar"]')).toHaveAttribute("dir", "rtl")
   for (const link of await page
     .getByRole("link", { name: /Open concept [ABC] at full size/ })
     .all()) {
@@ -325,8 +327,8 @@ test("logo review is linked, transparent about provenance and offers three worki
     page.getByRole("link", { name: /Open concept [ABC] at full size/ }),
   ).toHaveCount(3)
   await page.setViewportSize({ width: 320, height: 844 })
-  await page.getByRole("link", { name: "C / The printer’s flower" }).click()
-  await expect(page).toHaveURL(/#printers-flower$/)
+  await page.getByRole("link", { name: "C / Woven Roots" }).click()
+  await expect(page).toHaveURL(/#woven-roots$/)
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,

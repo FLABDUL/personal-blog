@@ -2,7 +2,16 @@
 
 All four requested stages are done: audit and competing directions; selected site-wide direction; integrated implementation; desktop/mobile critique and refinement. Production release is not started and requires Hakim's separate decision.
 
-## Latest follow-up: logo choices and Music atmosphere
+## Latest follow-up: Arabic name and Malaysian roots
+
+- Done: replace the rejected logo choices with Jade Signature, Structured Script and Woven Roots. Each uses the confirmed personal name حكيم without a prefix, with a green palette. Woven Roots is recommended for the new brief because its original songket-inspired border adds the clearest Malaysian craft connection.
+- Done: visually inspect all sheets and correct a disconnected Arabic join in Structured Script. The review page includes accessible right-to-left name text and full-size links. Exact prompts, assets, cultural source and lettering limitations are in LOGOS-ROOTS.md.
+- Not started: final calligraphy proof, vector logo, favicon or installation, pending Hakim's choice. No artwork from the reference screenshot was copied.
+- Not started: separate release review. Hakim will change model intelligence before requesting it.
+
+Verification: clean Gatsby build and all 10 focused checks passed. These cover the review hub and logo page in Light/Dark at 390/1440px, eight axe scans with no detected violations, noindex, image URLs, the confirmed Arabic text/direction and the concept anchor at 320px without horizontal overflow. Light desktop and dark mobile screenshots were visually inspected. The immutable Preview URL and deployment CI result are recorded in the chat delivery hand-off. The earlier checks below describe their respective revisions.
+
+## Previous follow-up: first logo choices and Music atmosphere
 
 - Done: three independently generated logo concepts at `/review/logos/`, linked prominently from the review hub. A is the editorial m/h monogram (recommended); B is a bold mh ligature; C is a printer’s flower. Each has a full-size image, rationale and trade-off. AI provenance is explicit. No final logo has been selected or installed. LOGOS.md contains the exact prompts and saved assets.
 - Done: Music's chart, artist/track labels, fallback initials, guide, region controls and selected details now follow Light and Dark. The palette uses pale sage and dark ink in Light, deep green and warm brass in Dark. Spotify artwork is unchanged. The heavy outer box is replaced by lighter rules and a restrained chart frame.
@@ -16,7 +25,7 @@ Screenshots: `output/reinvention/theme-light--music--390.png`, `theme-light--mus
 
 No runtime dependency was added. Logo web assets total 64,734 bytes and are used only in the identity review. No new artwork was added to Studio. The existing moving atlas can still have crowded labels in some orbital positions, especially on phones; this aesthetic follow-up preserves its spatial and interaction model. Safari, Firefox, physical devices, a full screen-reader audit and fresh performance benchmarks remain unverified.
 
-Recommendation: keep the theme integration and restrained star field. Prefer logo A for continuity; choose before producing a final vector and favicon. The existing About and Studio selections remain unchanged.
+Recommendation: keep the theme integration and restrained star field. The first logo recommendations were superseded by the Arabic-name round above. The existing About and Studio selections remain unchanged.
 
 ## Follow-up: selected direction, themes and engineering studies
 

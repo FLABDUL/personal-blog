@@ -6,39 +6,39 @@ import * as styles from "./logos.module.css"
 
 const concepts = [
   {
-    id: "editorial-monogram",
+    id: "jade-signature",
     letter: "A",
-    title: "The editorial monogram",
-    verdict: "Recommended / Closest to the selected direction",
+    title: "Jade Signature",
+    verdict: "Quietest / The name as a signature",
     description:
-      "A refined m/h seal beside a generous serif wordmark. It connects naturally with the editorial About and exhibition Studio, and keeps the recognisable initials already in the masthead.",
+      "Your Arabic name leads, drawn in flowing jade-green strokes above a small English wordmark. The open composition feels personal and sits naturally beside the writing and paintings.",
     tradeoff:
-      "The finest strokes need simplifying for a tiny favicon. This is the most elegant, least disruptive evolution.",
-    alt: "A: a circular serif m slash h monogram beside Made by Hakim, with three smaller monogram proofs",
+      "The most restrained option. It carries the green and Arabic direction with very little decoration; the fine strokes and paired dots need care at small sizes.",
+    alt: "A: حكيم in flowing jade-green Arabic lettering above made by hakim, with two smaller wordmark studies",
     height: 853,
   },
   {
-    id: "makers-ligature",
+    id: "structured-script",
     letter: "B",
-    title: "The maker’s ligature",
-    verdict: "Bolder / Strongest compact mark",
+    title: "Structured Script",
+    verdict: "Architectural / A precise maker’s mark",
     description:
-      "A continuous, softly geometric mh joins the two initials. The heavier silhouette feels practical and contemporary, bringing the software and making sides of the portfolio forward.",
+      "The same name becomes a continuous geometric wordmark in deep forest green. A fine brass rule separates it from the English name. The strong horizontal rhythm brings the engineering side of the portfolio forward.",
     tradeoff:
-      "The compact shape has presence at small sizes, but the joined letters are more abstract. It moves furthest from the current editorial identity.",
-    alt: "B: a bold joined lowercase mh mark beside Made by Hakim in a rounded sans serif, with three smaller mark proofs",
-    height: 720,
+      "The boldest silhouette, with the least pen-like warmth. The geometric letterforms need a final Arabic typography proof before becoming a finished identity.",
+    alt: "B: حكيم in connected geometric forest-green Arabic lettering beside Made by Hakim, separated by a brass rule",
+    height: 853,
   },
   {
-    id: "printers-flower",
+    id: "woven-roots",
     letter: "C",
-    title: "The printer’s flower",
-    verdict: "Artistic / An independent imprint",
+    title: "Woven Roots",
+    verdict: "Recommended / The strongest link to your brief",
     description:
-      "Four ink-like petals gather around a small centre. Paired with a warm lowercase wordmark, it feels like the imprint of an art book: personal, tactile and at home beside the paintings and writing.",
+      "Green Arabic lettering sits above an original brass-coloured border inspired by Malaysian songket. The stepped triangles and diamonds bring a textile rhythm to the identity while keeping your name at the centre.",
     tradeoff:
-      "The symbol is less directly connected to your name. It is the most expressive choice, but needs the wordmark alongside it while the identity becomes familiar.",
-    alt: "C: four dark leaf-shaped petals forming a printer’s flower beside lowercase made by hakim, with three smaller symbol proofs",
+      "The richest connection to your Malaysian roots. Keep the border for larger settings and use the plain wordmark in the masthead; a small favicon would need its own carefully drawn treatment.",
+    alt: "C: حكيم in rainforest-green Arabic lettering above made by hakim, with a gold geometric woven border and two plain wordmark studies",
     height: 853,
   },
 ]
@@ -50,17 +50,21 @@ export default function LogosPage() {
         ← Back to design review
       </Link>
       <header className="review-heading">
-        <p className="eyebrow">
-          Identity study / Preview only / Awaiting your choice
-        </p>
+        <p className="eyebrow">Identity study / Round two / Preview only</p>
         <h1>
-          Three ways <br />
-          to leave a mark.
+          A name. <br />A sense of belonging.
         </h1>
         <p>
-          One name, three different signatures. Each is shown in a single ink so
-          the shape and typography can do the talking. The current site logo
-          stays in place while you choose.
+          Three new directions, centred on your Malaysian roots, the green you
+          associate with Islam, and your Arabic name. These replace the earlier
+          monogram and flower proposals. The current site logo stays in place
+          while you choose.
+        </p>
+        <p className={styles.nameProof}>
+          <span lang="ar" dir="rtl">
+            حكيم
+          </span>
+          <span>Hakim · Your confirmed personal name, without a prefix.</span>
         </p>
         <nav className={styles.index} aria-label="Logo concepts">
           {concepts.map(concept => (
@@ -98,7 +102,7 @@ export default function LogosPage() {
                 loading={index === 0 ? "eager" : "lazy"}
               />
               <figcaption>
-                Concept {concept.letter} · Wordmark and small-mark explorations
+                Concept {concept.letter} · Arabic wordmark and smaller studies
               </figcaption>
             </figure>
           </section>
@@ -108,9 +112,17 @@ export default function LogosPage() {
         <h2>A direction to choose, then refine.</h2>
         <p>
           These are AI-generated identity concepts, created for this review. The
-          chosen direction would next be redrawn as a crisp vector logo, with
-          dedicated light, dark and favicon versions. None has been installed as
-          the final identity.
+          chosen direction would next receive a final Arabic lettering proof and
+          a crisp vector redraw, with dedicated light, dark and favicon
+          versions. None has been installed as the final identity.
+        </p>
+        <p>
+          The woven border is an original interpretation, not a copied textile.
+          Its craft reference is{" "}
+          <a href="https://ich.unesco.org/en/RL/songket-01505">
+            Malaysian songket and its geometric and nature-inspired patterns
+          </a>
+          .
         </p>
         <Link to="/music/">See the updated Music Portrait ↗</Link>
       </aside>

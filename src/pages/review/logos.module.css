@@ -10,6 +10,25 @@
   padding-block: 0.7rem;
 }
 
+.nameProof {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+}
+
+.nameProof [lang="ar"] {
+  font:
+    2.5rem / 1.5 Tahoma,
+    "Segoe UI",
+    serif;
+  letter-spacing: normal;
+}
+
+.nameProof span:last-child {
+  font-size: 0.9rem;
+}
+
 .concept {
   display: grid;
   grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
