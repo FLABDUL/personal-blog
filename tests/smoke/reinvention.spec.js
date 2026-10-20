@@ -309,6 +309,22 @@ test("built output excludes draft art and contains only published Studio metadat
   )
 })
 
+test("generated pages reference one current shared stylesheet", () => {
+  const output = path.resolve("public")
+  const styles = fs
+    .readdirSync(output)
+    .filter(name => /^styles\..+\.css$/.test(name))
+  expect(styles).toHaveLength(1)
+  const pages = fs
+    .readdirSync(output, { recursive: true })
+    .filter(name => name.endsWith("index.html"))
+  expect(pages.length).toBeGreaterThan(10)
+  for (const name of pages) {
+    const html = fs.readFileSync(path.join(output, name), "utf8")
+    expect(html.match(/styles\.[a-z0-9]+\.css/)?.[0], name).toBe(styles[0])
+  }
+})
+
 test("production and disabled-review guards remove experiment routes", () => {
   const { onCreatePage } = require("../../gatsby-node")
   const previous = process.env.VERCEL_ENV

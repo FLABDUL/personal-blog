@@ -44,7 +44,7 @@ Playwright checks routes and existing interactions, all seven sections at 320/76
 
 Screenshots and performance evidence remain local in output/reinvention. API fallbacks are deliberately stubbed in local browser tests; deployment API checks must be reported separately.
 
-Use a clean build and restart gatsby serve before final browser checks. During this run, Gatsby's incremental output retained HTML referencing an older CSS hash despite generating a new stylesheet. test:smoke:local now cleans first to prevent this stale-output failure from recurring.
+Stop gatsby serve before rebuilding, then start it again for final browser checks. A running server can hold Gatsby's cache open on Windows. During this run, Gatsby's incremental output retained HTML referencing an older CSS hash despite generating a new stylesheet, both locally and on Vercel. The build script now runs gatsby clean before gatsby build, so local checks and deployments receive consistent generated output.
 
 Accessibility checks exposed repeated mismatches between visible text and explicit ARIA labels. The added axe suite is the focused workflow improvement: keep it in the normal smoke run so future labels and colour changes are checked automatically.
 

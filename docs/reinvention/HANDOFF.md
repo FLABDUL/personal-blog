@@ -18,7 +18,7 @@ These branch Preview links retain the project's existing Vercel authentication p
 - Worktree: C:/Users/hakim/.codex/worktrees/madebyhakim-reinvention/personal-blog.
 - Baseline and unchanged production SHA: df581f093488c90fe6e79f3a5d8cd00c5befb48c.
 - Integrated design commit: 3cdf00ff2caffd1b619c8f18518220c8ff360cd2.
-- This report is committed with the final Studio image and mobile-order refinement.
+- The branch also includes the final Studio image/mobile-order refinement and a clean-build correction.
 - Vercel project: personal-blog (prj_Gl1jBuHyYujIwyRAOxJDmayrvINp), flabduls-projects.
 - Configured production branch: main. Protection: prod_deployment_urls_and_all_previews.
 - Only the isolated branch was pushed. No merge, promotion, production deployment, domain change or protection change.
@@ -71,7 +71,7 @@ Not verified: Safari/Firefox, physical phones, a full screen-reader audit, print
 
 The moving Music atlas can still produce dense labels in some positions; its existing spatial model was preserved. It remains a candidate for a focused later readability pass.
 
-Two local obstacles were resolved: early interaction before hydration, and Gatsby incremental HTML referencing a stale CSS hash. Controls now wait for hydration, regression tests cover the interactions, and test:smoke:local cleans before building. One Studio Lighthouse attempt lost the test-owned local server; the reported measurements use a persistent server.
+Two obstacles were resolved: early interaction before hydration, and Gatsby incremental HTML referencing a stale CSS hash locally and on Vercel. Controls now wait for hydration; regression tests cover the interactions and generated stylesheet consistency. Every build now cleans Gatsby's cache and output before compiling, preventing mixed stylesheet versions across routes. One Studio Lighthouse attempt lost the test-owned local server; the reported measurements use a persistent server.
 
 Usage was monitored. The last check showed approximately 57% remaining. No reset was redeemed; the specifically authorised reset remains unused.
 

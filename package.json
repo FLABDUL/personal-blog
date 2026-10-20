@@ -11,7 +11,7 @@
     "predevelop": "npm run studio:validate && node scripts/cv/validate.js && node scripts/books/validate.js && npm run music:validate && npm run music:prepare-preview",
     "develop": "gatsby develop",
     "prebuild": "npm run studio:validate && node scripts/cv/validate.js && node scripts/books/validate.js && npm run music:validate && npm run music:prepare-preview && node scripts/cv/generate.js",
-    "build": "gatsby build",
+    "build": "gatsby clean && gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "cv:validate": "node scripts/cv/validate.js",
@@ -28,7 +28,7 @@
     "test:music": "node --test tests/music/*.test.js",
     "test:cv": "node --test tests/cv/*.test.js",
     "test:smoke": "playwright test",
-    "test:smoke:local": "npm run clean && npm run build && playwright test",
+    "test:smoke:local": "npm run build && playwright test",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\"",
     "studio:validate": "node scripts/studio/validate.js"
   },
