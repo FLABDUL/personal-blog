@@ -6,63 +6,63 @@ import * as styles from "./logos.module.css"
 
 const concepts = [
   {
-    id: "courtyard-grid",
+    id: "botanical-seal",
     letter: "A",
-    title: "Courtyard Grid",
-    verdict: "Geometric / Precise and interlaced",
+    title: "Botanical Seal",
+    verdict: "Restrained / Closest to the original monogram",
     description:
-      "An H appears in the open centre of a jade lattice. Interlocking ribbons turn the geometry into a personal initial, paired with confident, widely spaced lettering.",
+      "The familiar circular m/h gains a small gold-and-green branch along its edge. The open space, slash and calm English typography remain the focus.",
     tradeoff:
-      "A strong square emblem for the engineering side of the portfolio. The narrow crossings need simplifying at favicon size; it is the most formal of the five.",
-    alt: "A: a jade interlaced geometric emblem with a white H at its centre, beside MADE BY HAKIM",
+      "My first choice for everyday website use. Keep the full branch at larger sizes and use the plain monogram where the finer leaves would disappear.",
+    alt: "A: a green circular m slash h monogram with a small gold and jade flowering branch, beside Made by Hakim",
     height: 853,
   },
   {
-    id: "hibiscus-imprint",
+    id: "illuminated-monogram",
     letter: "B",
-    title: "Hibiscus Imprint",
-    verdict: "Botanical / Colourful and expressive",
+    title: "Illuminated Monogram",
+    verdict: "Rich / The two favourites combined directly",
     description:
-      "A coral hibiscus and deep-green leaves sweep into a lively silhouette beside a sculpted lowercase name. It brings the garden, colour and handmade character to the foreground.",
+      "The m/h sits inside Night Garden’s floral language, with ivory lettering on deep green. Four tulips and a lighter leaf ring connect the ornate emblem to the editorial name.",
     tradeoff:
-      "The most personal botanical direction. Its fine veins and long stamen need a simpler small-size version; the full flower is better for a larger signature.",
-    alt: "B: a coral hibiscus with green stem and leaves beside a bold lowercase made by hakim wordmark",
+      "The richest fusion of your two references. It works as a larger signature; the plain circle or simplified outline should take over in a small masthead or favicon.",
+    alt: "B: an ivory m slash h monogram surrounded by gold and jade tulips on deep green beside Made by Hakim",
     height: 853,
   },
   {
-    id: "blue-vine",
+    id: "garden-slash",
     letter: "C",
-    title: "Blue Vine",
-    verdict: "Typographic / The name becomes the ornament",
+    title: "Garden Slash",
+    verdict: "Inventive / The divider becomes a stem",
     description:
-      "Hakim becomes a cobalt-blue vine, with curling leaves growing from the first and last strokes and a small flower over the i. The lettering carries the identity without a separate emblem.",
+      "The circle disappears and the diagonal slash becomes a flowering stem between the m and h. Ornament becomes part of the monogram’s construction rather than a frame around it.",
     tradeoff:
-      "The clearest departure from the earlier proposals. Its long flourishes need shortening in navigation; the H-and-leaf study suggests a compact companion mark.",
-    alt: "C: the name Hakim in flowing cobalt lettering with leaf flourishes and a flower above the i",
+      "My alternative to A if you want a more distinctive signature. A final drawing should simplify the bud and keep the two letters clearly separated at small sizes.",
+    alt: "C: an open green m slash h monogram with the slash drawn as a gold flowering stem, beside Made by Hakim",
     height: 853,
   },
   {
-    id: "petal-portal",
+    id: "twin-script",
     letter: "D",
-    title: "Petal Portal",
-    verdict: "Abstract / The simplest silhouette",
+    title: "Twin Script",
+    verdict: "Bilingual / A lighter Arabic seal",
     description:
-      "Two broad petals make a small opening between them. Forest green and terracotta bring warmth to an abstract mark that can suggest a flower, a threshold or a quiet H rhythm.",
+      "Your Arabic name sits in a spacious ring with four small floral accents, paired with the English wordmark. It keeps the personal name from Night Garden while borrowing the first reference’s restraint.",
     tradeoff:
-      "The strongest starting point for a small icon. Its connection to your name and the art reference is less explicit, so it needs the wordmark beside it while becoming familiar.",
-    alt: "D: two simple green and terracotta petals forming an arched opening above made by hakim",
+      "The clearest bilingual direction. The Arabic lettering needs final professional proof, and the small emblem needs fewer petal details before becoming a finished logo.",
+    alt: "D: حكيم inside a thin gold floral ring beside the English Made by Hakim wordmark",
     height: 853,
   },
   {
-    id: "night-garden",
+    id: "floral-initial",
     letter: "E",
-    title: "Night Garden",
-    verdict: "Illuminated / Closest to the ornate reference",
+    title: "Floral Initial",
+    verdict: "Compact / Ornament grows into the letter",
     description:
-      "A ring of gold and jade flowers surrounds your Arabic name on deep green. The illuminated composition puts ornamental craft at the centre of the identity.",
+      "A single serif H becomes the structure for a gold vine and jade tulip. The large initial and English wordmark share the same typographic character.",
     tradeoff:
-      "The richest visual world, but the least practical unchanged at small sizes. Treat this as a larger signature and simplify the floral H study for navigation and the favicon.",
-    alt: "E: حكيم inside an ivory medallion surrounded by gold and jade flowers on deep green, above Made by Hakim",
+      "A useful compact direction if you prefer one initial to m/h. The tall flower should shorten in navigation, with a simpler two-leaf version for tiny uses.",
+    alt: "E: a green serif H entwined with a gold and jade flowering vine beside Made by Hakim",
     height: 853,
   },
 ]
@@ -74,22 +74,31 @@ export default function LogosPage() {
         ← Back to design review
       </Link>
       <header className="review-heading">
-        <p className="eyebrow">Identity study / Round three / Preview only</p>
+        <p className="eyebrow">
+          Identity study / Combining your favourites / Preview only
+        </p>
         <h1>
-          Five directions. <br />A wider imagination.
+          A little ornament. <br />A familiar signature.
         </h1>
         <p>
-          Geometry, flowers, flowing letters, a simple symbol and an illuminated
-          garden. Five deliberately different ways to bring your name and the
-          art you are drawn to together. These replace the earlier proposals;
-          the current site logo stays in place while you choose.
+          Five permutations of the two directions you prefer: the restrained
+          editorial monogram and the green-and-gold Night Garden. Each keeps the
+          calm typography and explores a different amount of floral detail. The
+          current site logo stays in place while you choose.
+        </p>
+        <p>
+          Your references:{" "}
+          <a href="/review/logos/editorial-monogram.webp">
+            the editorial monogram
+          </a>{" "}
+          and <a href="/review/logos/night-garden.webp">Night Garden</a>.
         </p>
         <p className={styles.nameProof}>
           <span lang="ar" dir="rtl">
             حكيم
           </span>
           <span>
-            Only concept E uses Arabic: your confirmed name, without a prefix.
+            Only concept D uses Arabic: your confirmed name, without a prefix.
           </span>
         </p>
         <nav className={styles.index} aria-label="Logo concepts">
@@ -140,20 +149,14 @@ export default function LogosPage() {
           These are AI-generated identity concepts, created for this review. The
           chosen direction would next receive a crisp vector redraw, small-size
           simplification and dedicated light, dark and favicon versions. Concept
-          E also needs a final Arabic lettering proof. None has been installed
+          D also needs a final Arabic lettering proof. None has been installed
           as the final identity.
         </p>
         <p>
-          The reference is the interplay of{" "}
-          <a href="https://www.metmuseum.org/fr/essays/geometric-patterns-in-islamic-art">
-            geometric
-          </a>{" "}
-          and{" "}
-          <a href="https://www.metmuseum.org/es/essays/vegetal-patterns-in-islamic-art">
-            vegetal ornament in Islamic art
-          </a>
-          . All five are original interpretations. No artwork or inscription
-          from the supplied search screenshot was copied.
+          These variations were generated from your two preferred concepts, both
+          created during this design review. The changes are in the lettering,
+          floral structure and balance of ornament; no external artwork or
+          sacred inscription has been added.
         </p>
         <Link to="/music/">See the updated Music Portrait ↗</Link>
       </aside>

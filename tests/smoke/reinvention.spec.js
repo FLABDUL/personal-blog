@@ -327,8 +327,8 @@ test("logo review is linked, transparent about provenance and offers five workin
     page.getByRole("link", { name: /Open concept [ABCDE] at full size/ }),
   ).toHaveCount(5)
   await page.setViewportSize({ width: 320, height: 844 })
-  await page.getByRole("link", { name: "E / Night Garden" }).click()
-  await expect(page).toHaveURL(/#night-garden$/)
+  await page.getByRole("link", { name: "E / Floral Initial" }).click()
+  await expect(page).toHaveURL(/#floral-initial$/)
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,

@@ -1,5 +1,7 @@
 # Logo round three: geometry, flowers and the name
 
+Latest feedback: Hakim prefers Night Garden together with the first-round editorial monogram. The current permutations of those references are documented in [LOGOS-BLENDS.md](LOGOS-BLENDS.md). This round remains available as design history.
+
 Status: five new directions ready for selection; earlier rounds rejected. Built-in image generation was used independently for each concept; no CLI/API fallback. No final identity is installed.
 
 ## A: Courtyard Grid

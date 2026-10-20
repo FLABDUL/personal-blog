@@ -2,7 +2,16 @@
 
 All four requested stages are done: audit and competing directions; selected site-wide direction; integrated implementation; desktop/mobile critique and refinement. Production release is not started and requires Hakim's separate decision.
 
-## Latest follow-up: five distinct art-led logos
+## Latest follow-up: combining the two preferred references
+
+- Done: five new permutations of the editorial m/h monogram and Night Garden: Botanical Seal, Illuminated Monogram, Garden Slash, Twin Script and Floral Initial. Both source concepts are linked on the review page.
+- Done: originals and web assets saved in the worktree; all exact prompts, reference roles, trade-offs and asset paths recorded in LOGOS-BLENDS.md. Only D contains Arabic, strictly حكيم.
+- Recommendation: A for a restrained everyday identity, C for the more inventive monogram, B for a richer floral treatment.
+- Not started: final vector identity, small-size proof, installation or separate release review. Hakim will change model intelligence before requesting release review.
+
+Current local verification: clean build exited successfully with GATSBY_TELEMETRY_DISABLED=1 set only for the build command; no project telemetry configuration changed. All 10 focused browser checks passed, including eight axe scans across the hub and logo page in both themes at 390/1440px, five image links, Arabic text/direction, noindex and 320px anchor/reflow. Desktop/mobile screenshots were visually inspected. Remote Git and Vercel preflight checks now succeeded: origin is FLABDUL/personal-blog, production remains main at df581f093488c90fe6e79f3a5d8cd00c5befb48c, and protection remains prod_deployment_urls_and_all_previews. Final Preview and deployment CI are recorded in the delivery hand-off. The previous round's network and build-process blockers below describe that earlier run.
+
+## Previous follow-up: five distinct art-led logos
 
 - Done: five new concepts at `/review/logos/`: Courtyard Grid, Hibiscus Imprint, Blue Vine, Petal Portal and Night Garden. These replace both rejected rounds. Differences span geometry, silhouette, lettering, colour and ornamental density.
 - Done: original generated assets saved in the worktree; exact prompts, cultural sources, small-size limitations and asset paths recorded in LOGOS-ART.md. Only Night Garden uses Arabic, strictly the confirmed personal name حكيم without a prefix.
