@@ -22,7 +22,13 @@ The shared masthead, m/h monogram, Georgia display type, sans-serif reading text
 - /review/about-table/ — complete specimen-table About alternative, with six clickable objects and the same factual biography.
 - /review/studio-daylight/ — complete daylight salon alternative, with all nine works and the same accessible lightbox.
 
-Prefer the integrated editorial About for immediate clarity. The specimen table is an intentional alternative for a more exploratory introduction. Prefer the dark Studio for individual encounters; consider the daylight version if quickly comparing the collection matters more.
+Hakim selected the integrated editorial About and exhibition Studio on 20 October. The specimen table and salon are retained as clearly labelled, unselected references until experiment cleanup.
+
+## Selected-direction refinement
+
+The masthead now has explicit Light and Dark buttons. Before a preference is chosen, each section keeps its authored palette. A choice follows the reader between routes and persists in local browser storage. A small inline head script applies a saved choice before hydration; unavailable storage does not stop the controls working for the current visit. Theme rules apply only on screen, preserving the light print layout. The Music atlas keeps its original night-sky artwork palette within the themed page.
+
+Budget V2 and Backtest Library now use a continuous editorial study layout: large serif introductions, numbered section links, connected architecture steps, open evidence rows and visible limitations. Evidence images retain their original files, captions and full-size links, with intrinsic dimensions and lazy loading. All engineering claims and result values are preserved. The obsolete shared card stylesheet was removed.
 
 ## Content and image provenance
 
@@ -48,8 +54,10 @@ Stop gatsby serve before rebuilding, then start it again for final browser check
 
 Accessibility checks exposed repeated mismatches between visible text and explicit ARIA labels. The added axe suite is the focused workflow improvement: keep it in the normal smoke run so future labels and colour changes are checked automatically.
 
+The theme follow-up extends this coverage to fourteen routes, including a technical article with code blocks, in both themes at mobile and desktop sizes. Keep this article coverage in the smoke run: it caught an existing keyboard-inaccessible scroll region that index-page scans could not detect. Code now wraps without changing article content.
+
 ## Recommendation
 
-Keep the integrated identity, editorial About, unboxed Blog/Projects/Experience, and Studio close viewing. Review the dark-versus-daylight Studio choice. Discard simulated book spines and additional decorative room metaphors unless real assets or a clear interaction need justify them.
+Keep the integrated identity, selected editorial About and exhibition Studio, unboxed sections and engineering studies. Light Studio uses the selected exhibition composition; it does not switch to the unselected salon concept. Discard simulated book spines and additional decorative room metaphors unless real assets or a clear interaction need justify them.
 
-The next action is to compare About and Studio through the protected review hub, then decide which direction should proceed to a separate release review. This branch does not authorise a production flip.
+The next action is for Hakim to change model intelligence before requesting the separate release review. That review has not started. This branch does not authorise a production flip.

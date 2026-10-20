@@ -610,6 +610,11 @@ input:focus-visible {
 .blog-post__body code {
   overflow-wrap: anywhere;
 }
+.blog-post__body pre,
+.blog-post__body pre code {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
 /* Engineering workbench */
 .world-projects {
   --bg: #152b38;

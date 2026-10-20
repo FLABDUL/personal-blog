@@ -2,6 +2,8 @@
 import "prismjs/themes/prism-tomorrow.css";
 import "./src/styles/global.css";
 import "./src/styles/worlds.css";
+import "./src/styles/studies.css";
+import "./src/styles/themes.css";
 
 export const onClientEntry = () => {
   const blockedPaths = new Set([

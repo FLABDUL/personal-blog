@@ -9,7 +9,11 @@ const Layout = ({ children, wide = false, world = "default" }) => (
     <a className="skip-link" href="#main-content">
       Skip to content
     </a>
-    <Navbar />
+    <Navbar
+      defaultTheme={
+        ["projects", "studio", "music"].includes(world) ? "dark" : "light"
+      }
+    />
     {review.enabled && process.env.GATSBY_REVIEW_ALLOWED !== "0" && (
       <aside className="review-ribbon" aria-label="Experimental preview">
         <span>

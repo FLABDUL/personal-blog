@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import ThemeControls from "./ThemeControls"
 
 const links = [
   ["/", "About"],
@@ -11,7 +12,7 @@ const links = [
   ["/studio/", "Studio"],
 ]
 
-export default function Navbar() {
+export default function Navbar({ defaultTheme = "light" }) {
   return (
     <header className="masthead">
       <Link to="/" className="wordmark">
@@ -36,6 +37,7 @@ export default function Navbar() {
           </Link>
         ))}
       </nav>
+      <ThemeControls defaultTheme={defaultTheme} />
     </header>
   )
 }

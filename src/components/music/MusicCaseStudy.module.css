@@ -4,6 +4,7 @@
   padding-block: clamp(2rem, 7vw, 6rem);
 }
 .hero {
+  color: #f8efd8;
   position: relative;
   padding: clamp(2rem, 6vw, 5.5rem);
   overflow: hidden;
@@ -119,7 +120,7 @@
   max-width: 68rem;
   margin: 0 auto;
   padding-block: clamp(3rem, 7vw, 5.5rem);
-  border-top: 1px solid rgb(239 189 98 / 24%);
+  border-top: 1px solid var(--rule);
 }
 .chapterMarker {
   display: grid;
@@ -135,7 +136,7 @@
 }
 .chapter h2 {
   margin: 0.35rem 0 1.25rem;
-  color: #ffe0a0;
+  color: var(--fg);
   font-size: clamp(2rem, 4vw, 3.4rem);
   line-height: 1.05;
 }
@@ -147,6 +148,12 @@
   color: #c6d2d5;
   font-size: 1.05rem;
   line-height: 1.75;
+}
+.chapter > div:last-child > p:not(.kicker) {
+  color: var(--soft);
+}
+.kicker {
+  color: var(--accent);
 }
 .designPrinciple {
   max-width: 50rem;

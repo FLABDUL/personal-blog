@@ -10,13 +10,13 @@ export default function ReviewPage() {
         <p className="eyebrow">Design review / Experimental preview</p>
         <h1>
           One collection.
-          <br />
-          Three ways to see it.
+          <br />A direction chosen.
         </h1>
         <p>
-          A complete candidate, with two focused alternatives for the decisions
-          that change the character of the site most. These are working pages.
-          Nothing here changes the live site.
+          The editorial About and exhibition Studio are the selected direction.
+          Light and dark themes and the engineering studies extend that design.
+          The earlier alternatives remain here for reference. Nothing here
+          changes the live site.
         </p>
       </header>
       <div className="review-options">
@@ -41,7 +41,7 @@ export default function ReviewPage() {
             />
           </div>
           <div>
-            <p className="eyebrow">A / Integrated candidate / Recommended</p>
+            <p className="eyebrow">A / Integrated candidate / Selected</p>
             <h2>Collected Works</h2>
             <p>
               An editorial entrance and distinct settings for each discipline. A
@@ -75,7 +75,7 @@ export default function ReviewPage() {
             />
           </div>
           <div>
-            <p className="eyebrow">B / About alternative</p>
+            <p className="eyebrow">B / About alternative / Not selected</p>
             <h2>The specimen table</h2>
             <p>
               A more playful entrance built from things already in the
@@ -109,7 +109,7 @@ export default function ReviewPage() {
             />
           </div>
           <div>
-            <p className="eyebrow">C / Studio alternative</p>
+            <p className="eyebrow">C / Studio alternative / Not selected</p>
             <h2>The daylight salon</h2>
             <p>
               All nine paintings share a warm, light wall. A faster overview
@@ -123,15 +123,15 @@ export default function ReviewPage() {
         </Link>
       </div>
       <section className="review-notes">
-        <h2>What to decide</h2>
+        <h2>The selected direction</h2>
         <p>
-          <strong>About:</strong> does the direct editorial opening feel like
-          you, or does the object-led table invite a better first encounter?
+          <strong>About:</strong> keep the direct editorial opening, portrait
+          and painting detail.
         </p>
         <p>
-          <strong>Studio:</strong> do the paintings benefit more from the space
-          and contrast of the dark exhibition, or the ease of comparing them in
-          daylight?
+          <strong>Studio:</strong> keep the exhibition layout, varied scale and
+          close-viewing interaction. The Light button changes the palette while
+          preserving this selected composition.
         </p>
         <p>
           <strong>Across the site:</strong> the masthead, type, numbering and
@@ -141,11 +141,13 @@ export default function ReviewPage() {
         <p>
           The alternatives and this review ribbon are controlled by one review
           switch and are excluded from production builds. This remains a preview
-          for your decision.
+          for a separate release review, which has not started.
         </p>
         <div className="text-actions">
           <Link to="/studio/">Compare the selected Studio ↗</Link>
           <Link to="/projects/">Inspect Projects ↗</Link>
+          <Link to="/projects/budget-v2/">Budget V2 study ↗</Link>
+          <Link to="/projects/backtest-library/">Backtest Library study ↗</Link>
         </div>
       </section>
     </Layout>

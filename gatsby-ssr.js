@@ -7,6 +7,18 @@
 /**
  * @type {import('gatsby').GatsbySSR['onRenderBody']}
  */
-exports.onRenderBody = ({ setHtmlAttributes }) => {
+const React = require("react")
+
+exports.onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
   setHtmlAttributes({ lang: `en` })
+  // Apply an explicit preference before the first paint, without hiding content.
+  setHeadComponents([
+    React.createElement("script", {
+      key: "colour-theme",
+      dangerouslySetInnerHTML: {
+        __html:
+          'try{var t=localStorage.getItem("madebyhakim-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}',
+      },
+    }),
+  ])
 }

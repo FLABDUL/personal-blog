@@ -552,13 +552,16 @@
 }
 
 .atlasStatus {
-  color: #f6c767;
+  color: var(--accent);
   font-size: 0.875rem;
   letter-spacing: 0.04em;
   margin: 0 0 0.75rem;
 }
 
 .atlasFrame {
+  /* The chart keeps its night-sky palette in either surrounding page theme. */
+  --accent: #ebc879;
+  color: #f3edda;
   background:
     radial-gradient(circle at 50% 48%, rgb(19 85 91 / 82%), transparent 38%),
     linear-gradient(145deg, #06202d 0%, #0b3040 58%, #071823 100%);
