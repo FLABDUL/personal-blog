@@ -10,7 +10,7 @@ export function ArtImage({ item, priority = false }) {
   return (
     <img
       src={`/design/art/${item.title}.webp`}
-      srcSet={`/design/art/${item.title}-480.webp 480w, /design/art/${item.title}.webp 1000w`}
+      srcSet={`/design/art/${item.title}-480.webp 480w, /design/art/${item.title}-720.webp 720w, /design/art/${item.title}.webp 1000w`}
       sizes="(max-width: 480px) 90vw, (max-width: 760px) 45vw, 600px"
       width={item.media.width}
       height={item.media.height}

@@ -8,8 +8,8 @@ async function prepare() {
   for (const item of manifest.items.filter(
     item => item.status === "published",
   )) {
-    for (const width of [480, 1000]) {
-      const suffix = width === 480 ? "-480" : ""
+    for (const width of [480, 720, 1000]) {
+      const suffix = width === 1000 ? "" : `-${width}`
       await sharp(path.join("static", item.media.path))
         .rotate()
         .resize({ width, withoutEnlargement: true })

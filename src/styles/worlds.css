@@ -2252,6 +2252,9 @@ input:focus-visible {
   .studio-statement {
     font-size: 3rem;
   }
+  .studio-feature {
+    grid-row: 1;
+  }
   .studio-opening__copy > a {
     margin-top: 0.5rem;
   }
