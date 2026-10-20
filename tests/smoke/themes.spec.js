@@ -107,6 +107,7 @@ test("theme choice works by keyboard, follows navigation and survives reload", a
 }) => {
   await page.goto("/")
   const dark = page.getByRole("button", { name: "Dark", exact: true })
+  await expect(dark).toBeEnabled()
   await dark.focus()
   await page.keyboard.press("Enter")
   await expect(dark).toHaveAttribute("aria-pressed", "true")
@@ -197,6 +198,47 @@ test("stored theme is applied before hydration and print stays light", async ({
     "rgb(255, 255, 255)",
   )
 })
+
+for (const [route, label] of [
+  ["/", "Dark"],
+  ["/experience/", "Print / Save as PDF"],
+]) {
+  test(`${label} waits for JavaScript before accepting input`, async ({
+    page,
+  }) => {
+    let releaseScripts
+    const scriptsReady = new Promise(resolve => {
+      releaseScripts = resolve
+    })
+    await page.addInitScript(() => {
+      window.print = () => {
+        window.__printRequested = true
+      }
+    })
+    await page.route("**/*.js", async route => {
+      await scriptsReady
+      await route.continue()
+    })
+    try {
+      await page.goto(route, { waitUntil: "commit" })
+      const control = page.getByRole("button", { name: label, exact: true })
+      await expect(control).toBeVisible()
+      await expect(control).toBeDisabled()
+      releaseScripts()
+      await expect(control).toBeEnabled()
+      await control.click()
+      if (label === "Dark") {
+        await expect(page.locator("html")).toHaveAttribute("data-theme", "dark")
+      } else {
+        await expect
+          .poll(() => page.evaluate(() => window.__printRequested))
+          .toBe(true)
+      }
+    } finally {
+      releaseScripts()
+    }
+  })
+}
 
 for (const route of ["/projects/budget-v2/", "/projects/backtest-library/"]) {
   test(`${route} study index reaches the evidence and boundaries at 320px`, async ({

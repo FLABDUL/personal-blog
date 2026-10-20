@@ -207,6 +207,7 @@ for (const route of ["/studio/", "/review/studio-daylight/"]) {
       /Pottery Practice|Sunset over Dune/,
     )
     const work = page.getByRole("button", { name: "View inferno", exact: true })
+    await expect(work).toBeEnabled()
     await work.focus()
     await page.keyboard.press("Enter")
     await expect(page.getByRole("dialog", { name: "inferno" })).toBeVisible()

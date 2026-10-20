@@ -17,6 +17,8 @@ Follow-up verification: clean Gatsby build passed. The full browser run passed 1
 
 The first follow-up deployment was Ready with target Preview at commit 3a75d880938ff045ca227f26b1739ddaa0e73bfc. Both study routes returned 200, and Light selection persisted through reload in the deployed browser. The earlier deployment smoke failures were traced to two tests reading nonexistent local public/ files on a deployment-only runner. These checks now fetch the deployed Studio, excluded asset URLs and shared stylesheets when BASE_URL is supplied, retaining filesystem checks for local builds. Both modes passed their focused checks (2/2 each). The subsequent test-harness commit and final CI result are recorded in the chat hand-off.
 
+Remote testing then exposed loading races: programmatic keyboard focus could arrive while the Studio control was still disabled, and theme/print clicks could arrive before hydration. Theme and print controls now stay disabled until ready; keyboard tests assert enabled state before focusing. A clean build and all nine focused checks passed, including two tests that deliberately hold JavaScript back. The new tests/smoke/AGENTS.md records these conventions and the local/deployment distinction. These are implementation checks; the separate release review remains unstarted.
+
 ## Open the candidate
 
 - Integrated Preview: https://personal-blog-git-codex-madebyhakim-re-aabbd1-flabduls-projects.vercel.app/

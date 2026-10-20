@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
 import Layout from "../components/Layout"
 import ProjectCard from "../components/ProjectCard"
@@ -49,6 +49,8 @@ const RoleCard = ({ role }) => (
 )
 
 export default function ExperiencePage() {
+  const [ready, setReady] = useState(false)
+  useEffect(() => setReady(true), [])
   return (
     <Layout wide world="experience">
       <article className="cv">
@@ -75,6 +77,7 @@ export default function ExperiencePage() {
             <button
               type="button"
               className="cv-action"
+              disabled={!ready}
               onClick={() => window.print()}
             >
               Print / Save as PDF

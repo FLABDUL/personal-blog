@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react"
 
 export default function ThemeControls({ defaultTheme }) {
   const [choice, setChoice] = useState(null)
+  const [ready, setReady] = useState(false)
 
   useEffect(() => {
     const saved = document.documentElement.dataset.theme
     if (saved === "light" || saved === "dark") setChoice(saved)
+    setReady(true)
   }, [])
 
   const choose = theme => {
@@ -24,6 +26,7 @@ export default function ThemeControls({ defaultTheme }) {
         <button
           key={theme}
           type="button"
+          disabled={!ready}
           aria-pressed={(choice || defaultTheme) === theme}
           onClick={() => choose(theme)}
         >

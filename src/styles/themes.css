@@ -33,6 +33,11 @@
 .theme-controls button:hover {
   color: var(--fg);
 }
+.theme-controls button:disabled,
+.cv-action:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
 @media (max-width: 1100px) {
   .masthead {
     grid-template-columns: 1fr auto;
