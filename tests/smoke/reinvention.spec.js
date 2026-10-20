@@ -300,12 +300,12 @@ test("review pages are labelled, clickable and noindexed", async ({ page }) => {
   await expect(page).toHaveURL(/\/review\/studio-daylight\/$/)
 })
 
-test("logo review is linked, transparent about provenance and offers three working concepts", async ({
+test("logo review is linked, transparent about provenance and offers five working concepts", async ({
   page,
   request,
 }) => {
   await page.goto("/review/")
-  await page.getByRole("link", { name: /compare three logo concepts/ }).click()
+  await page.getByRole("link", { name: /compare five logo concepts/ }).click()
   await expect(page).toHaveURL(/\/review\/logos\/$/)
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
     "content",
@@ -317,18 +317,18 @@ test("logo review is linked, transparent about provenance and offers three worki
   await expect(page.locator('[lang="ar"]')).toHaveText("حكيم")
   await expect(page.locator('[lang="ar"]')).toHaveAttribute("dir", "rtl")
   for (const link of await page
-    .getByRole("link", { name: /Open concept [ABC] at full size/ })
+    .getByRole("link", { name: /Open concept [ABCDE] at full size/ })
     .all()) {
     const response = await request.get(await link.getAttribute("href"))
     expect(response.status()).toBe(200)
     expect(response.headers()["content-type"]).toContain("image/webp")
   }
   await expect(
-    page.getByRole("link", { name: /Open concept [ABC] at full size/ }),
-  ).toHaveCount(3)
+    page.getByRole("link", { name: /Open concept [ABCDE] at full size/ }),
+  ).toHaveCount(5)
   await page.setViewportSize({ width: 320, height: 844 })
-  await page.getByRole("link", { name: "C / Woven Roots" }).click()
-  await expect(page).toHaveURL(/#woven-roots$/)
+  await page.getByRole("link", { name: "E / Night Garden" }).click()
+  await expect(page).toHaveURL(/#night-garden$/)
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,

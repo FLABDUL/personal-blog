@@ -1,6 +1,6 @@
 # Superseded logo concepts: first-round provenance and prompts
 
-Hakim rejected this first round. The current Arabic-name and green concepts are documented in [LOGOS-ROOTS.md](LOGOS-ROOTS.md) and shown at `/review/logos/`. The recommendation and prompts below are historical, not current choices.
+Hakim rejected this first round and the subsequent Arabic-name round. The five current concepts are documented in [LOGOS-ART.md](LOGOS-ART.md) and shown at `/review/logos/`. The recommendation and prompts below are historical, not current choices.
 
 Status: three concepts created; final identity not selected or installed. Review at `/review/logos/`. These are AI-generated proposals made with the built-in image-generation tool, not externally sourced artwork. Each was generated independently, inspected, then resized and encoded to WebP for the review page. No CLI/API fallback was used.
 

@@ -2,7 +2,19 @@
 
 All four requested stages are done: audit and competing directions; selected site-wide direction; integrated implementation; desktop/mobile critique and refinement. Production release is not started and requires Hakim's separate decision.
 
-## Latest follow-up: Arabic name and Malaysian roots
+## Latest follow-up: five distinct art-led logos
+
+- Done: five new concepts at `/review/logos/`: Courtyard Grid, Hibiscus Imprint, Blue Vine, Petal Portal and Night Garden. These replace both rejected rounds. Differences span geometry, silhouette, lettering, colour and ornamental density.
+- Done: original generated assets saved in the worktree; exact prompts, cultural sources, small-size limitations and asset paths recorded in LOGOS-ART.md. Only Night Garden uses Arabic, strictly the confirmed personal name حكيم without a prefix.
+- Not started: final vector identity, professional Arabic proof if E is selected, favicon or installation. The separate release review remains not started; Hakim will change model intelligence first.
+
+Current verification: all 10 focused browser checks passed, covering the hub and five-concept page in both themes at 390/1440px, eight axe scans without detected violations, five image URLs, Arabic text/direction, noindex and 320px reflow. Desktop/mobile screenshots were visually inspected. Gatsby generated all 22 pages and completed onPostBuild, but its process remained open and was interrupted; its log also reports a punycode deprecation under ERROR UNKNOWN. This is not a verified clean process exit.
+
+Online update blocked: Git remote checks stalled, including a retry with interactive credentials disabled and HTTP low-speed limits. Vercel inspection also stalled; an offline-cache CLI retry reported fetch failed when interrupted. No push or deployment was attempted. The earlier immutable Preview still shows round two. The new comparison is served locally at http://127.0.0.1:9000/review/logos/ and was opened successfully in the browser. Originals, WebP assets, prompts and screenshots are preserved locally.
+
+For the next run, add a bounded overall timeout to remote preflight checks so an unavailable service cannot hold the hand-off open indefinitely; do not weaken authentication or Preview protection. Earlier checks below apply to their respective revisions.
+
+## Previous follow-up: Arabic name and Malaysian roots
 
 - Done: replace the rejected logo choices with Jade Signature, Structured Script and Woven Roots. Each uses the confirmed personal name حكيم without a prefix, with a green palette. Woven Roots is recommended for the new brief because its original songket-inspired border adds the clearest Malaysian craft connection.
 - Done: visually inspect all sheets and correct a disconnected Arabic join in Structured Script. The review page includes accessible right-to-left name text and full-size links. Exact prompts, assets, cultural source and lettering limitations are in LOGOS-ROOTS.md.

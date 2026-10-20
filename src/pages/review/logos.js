@@ -6,39 +6,63 @@ import * as styles from "./logos.module.css"
 
 const concepts = [
   {
-    id: "jade-signature",
+    id: "courtyard-grid",
     letter: "A",
-    title: "Jade Signature",
-    verdict: "Quietest / The name as a signature",
+    title: "Courtyard Grid",
+    verdict: "Geometric / Precise and interlaced",
     description:
-      "Your Arabic name leads, drawn in flowing jade-green strokes above a small English wordmark. The open composition feels personal and sits naturally beside the writing and paintings.",
+      "An H appears in the open centre of a jade lattice. Interlocking ribbons turn the geometry into a personal initial, paired with confident, widely spaced lettering.",
     tradeoff:
-      "The most restrained option. It carries the green and Arabic direction with very little decoration; the fine strokes and paired dots need care at small sizes.",
-    alt: "A: حكيم in flowing jade-green Arabic lettering above made by hakim, with two smaller wordmark studies",
+      "A strong square emblem for the engineering side of the portfolio. The narrow crossings need simplifying at favicon size; it is the most formal of the five.",
+    alt: "A: a jade interlaced geometric emblem with a white H at its centre, beside MADE BY HAKIM",
     height: 853,
   },
   {
-    id: "structured-script",
+    id: "hibiscus-imprint",
     letter: "B",
-    title: "Structured Script",
-    verdict: "Architectural / A precise maker’s mark",
+    title: "Hibiscus Imprint",
+    verdict: "Botanical / Colourful and expressive",
     description:
-      "The same name becomes a continuous geometric wordmark in deep forest green. A fine brass rule separates it from the English name. The strong horizontal rhythm brings the engineering side of the portfolio forward.",
+      "A coral hibiscus and deep-green leaves sweep into a lively silhouette beside a sculpted lowercase name. It brings the garden, colour and handmade character to the foreground.",
     tradeoff:
-      "The boldest silhouette, with the least pen-like warmth. The geometric letterforms need a final Arabic typography proof before becoming a finished identity.",
-    alt: "B: حكيم in connected geometric forest-green Arabic lettering beside Made by Hakim, separated by a brass rule",
+      "The most personal botanical direction. Its fine veins and long stamen need a simpler small-size version; the full flower is better for a larger signature.",
+    alt: "B: a coral hibiscus with green stem and leaves beside a bold lowercase made by hakim wordmark",
     height: 853,
   },
   {
-    id: "woven-roots",
+    id: "blue-vine",
     letter: "C",
-    title: "Woven Roots",
-    verdict: "Recommended / The strongest link to your brief",
+    title: "Blue Vine",
+    verdict: "Typographic / The name becomes the ornament",
     description:
-      "Green Arabic lettering sits above an original brass-coloured border inspired by Malaysian songket. The stepped triangles and diamonds bring a textile rhythm to the identity while keeping your name at the centre.",
+      "Hakim becomes a cobalt-blue vine, with curling leaves growing from the first and last strokes and a small flower over the i. The lettering carries the identity without a separate emblem.",
     tradeoff:
-      "The richest connection to your Malaysian roots. Keep the border for larger settings and use the plain wordmark in the masthead; a small favicon would need its own carefully drawn treatment.",
-    alt: "C: حكيم in rainforest-green Arabic lettering above made by hakim, with a gold geometric woven border and two plain wordmark studies",
+      "The clearest departure from the earlier proposals. Its long flourishes need shortening in navigation; the H-and-leaf study suggests a compact companion mark.",
+    alt: "C: the name Hakim in flowing cobalt lettering with leaf flourishes and a flower above the i",
+    height: 853,
+  },
+  {
+    id: "petal-portal",
+    letter: "D",
+    title: "Petal Portal",
+    verdict: "Abstract / The simplest silhouette",
+    description:
+      "Two broad petals make a small opening between them. Forest green and terracotta bring warmth to an abstract mark that can suggest a flower, a threshold or a quiet H rhythm.",
+    tradeoff:
+      "The strongest starting point for a small icon. Its connection to your name and the art reference is less explicit, so it needs the wordmark beside it while becoming familiar.",
+    alt: "D: two simple green and terracotta petals forming an arched opening above made by hakim",
+    height: 853,
+  },
+  {
+    id: "night-garden",
+    letter: "E",
+    title: "Night Garden",
+    verdict: "Illuminated / Closest to the ornate reference",
+    description:
+      "A ring of gold and jade flowers surrounds your Arabic name on deep green. The illuminated composition puts ornamental craft at the centre of the identity.",
+    tradeoff:
+      "The richest visual world, but the least practical unchanged at small sizes. Treat this as a larger signature and simplify the floral H study for navigation and the favicon.",
+    alt: "E: حكيم inside an ivory medallion surrounded by gold and jade flowers on deep green, above Made by Hakim",
     height: 853,
   },
 ]
@@ -50,21 +74,23 @@ export default function LogosPage() {
         ← Back to design review
       </Link>
       <header className="review-heading">
-        <p className="eyebrow">Identity study / Round two / Preview only</p>
+        <p className="eyebrow">Identity study / Round three / Preview only</p>
         <h1>
-          A name. <br />A sense of belonging.
+          Five directions. <br />A wider imagination.
         </h1>
         <p>
-          Three new directions, centred on your Malaysian roots, the green you
-          associate with Islam, and your Arabic name. These replace the earlier
-          monogram and flower proposals. The current site logo stays in place
-          while you choose.
+          Geometry, flowers, flowing letters, a simple symbol and an illuminated
+          garden. Five deliberately different ways to bring your name and the
+          art you are drawn to together. These replace the earlier proposals;
+          the current site logo stays in place while you choose.
         </p>
         <p className={styles.nameProof}>
           <span lang="ar" dir="rtl">
             حكيم
           </span>
-          <span>Hakim · Your confirmed personal name, without a prefix.</span>
+          <span>
+            Only concept E uses Arabic: your confirmed name, without a prefix.
+          </span>
         </p>
         <nav className={styles.index} aria-label="Logo concepts">
           {concepts.map(concept => (
@@ -102,7 +128,7 @@ export default function LogosPage() {
                 loading={index === 0 ? "eager" : "lazy"}
               />
               <figcaption>
-                Concept {concept.letter} · Arabic wordmark and smaller studies
+                Concept {concept.letter} · Identity and smaller studies
               </figcaption>
             </figure>
           </section>
@@ -112,17 +138,22 @@ export default function LogosPage() {
         <h2>A direction to choose, then refine.</h2>
         <p>
           These are AI-generated identity concepts, created for this review. The
-          chosen direction would next receive a final Arabic lettering proof and
-          a crisp vector redraw, with dedicated light, dark and favicon
-          versions. None has been installed as the final identity.
+          chosen direction would next receive a crisp vector redraw, small-size
+          simplification and dedicated light, dark and favicon versions. Concept
+          E also needs a final Arabic lettering proof. None has been installed
+          as the final identity.
         </p>
         <p>
-          The woven border is an original interpretation, not a copied textile.
-          Its craft reference is{" "}
-          <a href="https://ich.unesco.org/en/RL/songket-01505">
-            Malaysian songket and its geometric and nature-inspired patterns
+          The reference is the interplay of{" "}
+          <a href="https://www.metmuseum.org/fr/essays/geometric-patterns-in-islamic-art">
+            geometric
+          </a>{" "}
+          and{" "}
+          <a href="https://www.metmuseum.org/es/essays/vegetal-patterns-in-islamic-art">
+            vegetal ornament in Islamic art
           </a>
-          .
+          . All five are original interpretations. No artwork or inscription
+          from the supplied search screenshot was copied.
         </p>
         <Link to="/music/">See the updated Music Portrait ↗</Link>
       </aside>

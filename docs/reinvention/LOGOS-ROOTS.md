@@ -1,4 +1,6 @@
-# Logo round two: Arabic name and Malaysian roots
+# Superseded logo round two: Arabic name and Malaysian roots
+
+Hakim rejected this round. The five current directions are documented in [LOGOS-ART.md](LOGOS-ART.md) and shown at `/review/logos/`. The recommendations below are historical.
 
 Status: concepts ready for selection. These replace the rejected first-round monogram, ligature and flower. Hakim explicitly confirmed the personal-name spelling **حكيم**. No final logo is installed.
 
