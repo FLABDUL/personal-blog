@@ -8,6 +8,13 @@ on:
         description: Preview or production URL to verify
         required: true
         type: string
+      environment:
+        description: Environment of the deployment being verified
+        required: true
+        type: choice
+        options:
+          - preview
+          - production
 
 permissions:
   contents: read
@@ -20,6 +27,7 @@ jobs:
     timeout-minutes: 15
     env:
       BASE_URL: ${{ github.event.deployment_status.environment_url || github.event.deployment_status.target_url || inputs.base_url }}
+      SMOKE_ENV: ${{ inputs.environment || github.event.deployment.environment }}
       VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
     steps:
       - uses: actions/checkout@v6

@@ -10,6 +10,8 @@ const evidence = [
     title: "Compare against the matched baseline",
     body: "The three-stock fundamental portfolio and its equal-weight comparator used the same dates, decision schedule and starting capital. The fundamental rule returned 157.80% with a 0.67 Sharpe ratio; the comparator returned 166.27% with a 0.82 Sharpe ratio.",
     image: "/projects/backtest-library/nav-comparison.svg",
+    width: 932,
+    height: 498,
     alt: "NAV comparison between the point-in-time fundamental strategy and its equal-weight comparator",
     caption:
       "Derived live result: the comparator finished ahead, so the evidence is retained without an alpha claim.",
@@ -20,6 +22,8 @@ const evidence = [
     title: "Audit the inputs before trusting the output",
     body: "A frozen twelve-company cohort was assessed against predeclared coverage, completeness, filing-timing and provenance checks. Nine companies passed; JPM, BAC and XOM failed narrow checks in the returned trial data.",
     image: "/projects/backtest-library/data-quality.svg",
+    width: 668,
+    height: 561,
     alt: "Data-quality audit showing pass and fail checks across a twelve-company cohort",
     caption:
       "Derived live audit: nine companies passed and three failed, exposing where broader research would need stronger controls.",
@@ -50,14 +54,18 @@ const metrics = [
 
 export default function BacktestLibraryPage() {
   return (
-    <Layout wide>
-      <article className="budget-case-study stockfit-case-study">
-        <header className="budget-case-study__hero">
-          <p className="budget-case-study__eyebrow">
+    <Layout wide world="projects">
+      <article className="engineering-study engineering-study--research">
+        <div className="study-mastline">
+          <Link to="/projects/">← All projects</Link>
+          <span>Backtest Library / Research study</span>
+        </div>
+        <header className="engineering-study__hero">
+          <p className="engineering-study__eyebrow">
             Engineering case study · Point-in-time research
           </p>
           <h1>Testing a point-in-time fundamental strategy</h1>
-          <p className="budget-case-study__disclosure">
+          <p className="engineering-study__disclosure">
             Derived live results · Raw provider data not redistributed
           </p>
           <p>
@@ -69,7 +77,22 @@ export default function BacktestLibraryPage() {
           </p>
         </header>
 
-        <section className="budget-case-study__intro">
+        <nav className="study-index" aria-label="In this study">
+          <a href="#context">
+            <span>01</span> The question
+          </a>
+          <a href="#method">
+            <span>02</span> The method
+          </a>
+          <a href="#backtest">
+            <span>03</span> The evidence
+          </a>
+          <a href="#limitations">
+            <span>04</span> The boundaries
+          </a>
+        </nav>
+
+        <section className="engineering-study__intro" id="context">
           <div>
             <h2>Timing is part of the strategy</h2>
             <p>
@@ -90,9 +113,14 @@ export default function BacktestLibraryPage() {
           </div>
         </section>
 
-        <section aria-label="Architecture and engineering decisions">
+        <section
+          className="study-method"
+          id="method"
+          aria-label="Architecture and engineering decisions"
+        >
+          <p className="eyebrow">System / From source to evidence</p>
           <ol
-            className="budget-case-study__architecture"
+            className="engineering-study__architecture"
             aria-label="Architecture flow"
           >
             {architecture.map(item => (
@@ -100,7 +128,7 @@ export default function BacktestLibraryPage() {
             ))}
           </ol>
           <ul
-            className="budget-case-study__decisions"
+            className="engineering-study__decisions"
             aria-label="Engineering decisions"
           >
             {decisions.map(item => (
@@ -109,31 +137,42 @@ export default function BacktestLibraryPage() {
           </ul>
         </section>
 
-        <section className="stockfit-case-study__metrics" aria-label="Results">
+        <dl className="study-results" aria-label="Results">
           {metrics.map(metric => (
             <div key={metric.label}>
-              <span>{metric.label}</span>
-              <strong>{metric.value}</strong>
+              <dt>{metric.label}</dt>
+              <dd>{metric.value}</dd>
             </div>
           ))}
-        </section>
+        </dl>
 
         <section
-          className="budget-case-study__evidence"
+          className="engineering-study__evidence"
           aria-label="Research evidence"
         >
           {evidence.map(item => (
-            <section className="budget-case-study__evidence-item" key={item.id}>
+            <section
+              className="engineering-study__evidence-item"
+              key={item.id}
+              id={item.id}
+            >
               <div>
-                <p className="budget-case-study__label">{item.eyebrow}</p>
+                <p className="engineering-study__label">{item.eyebrow}</p>
                 <h2>{item.title}</h2>
                 <p>{item.body}</p>
               </div>
               <figure>
-                <img src={item.image} alt={item.alt} />
+                <img
+                  src={item.image}
+                  alt={item.alt}
+                  width={item.width}
+                  height={item.height}
+                  loading="lazy"
+                  decoding="async"
+                />
                 <figcaption>{item.caption}</figcaption>
                 <a
-                  className="budget-case-study__evidence-link"
+                  className="engineering-study__evidence-link"
                   href={item.image}
                   aria-label={`Open full-size evidence: ${item.title}`}
                   target="_blank"
@@ -146,7 +185,7 @@ export default function BacktestLibraryPage() {
           ))}
         </section>
 
-        <section className="budget-case-study__limitations">
+        <section className="engineering-study__limitations" id="limitations">
           <h2>What this does not claim</h2>
           <p>
             This is not evidence of investment alpha. The backtest uses three
@@ -167,7 +206,7 @@ export default function BacktestLibraryPage() {
           </p>
         </section>
 
-        <section className="budget-case-study__closing">
+        <section className="engineering-study__closing">
           <h2>Research credibility starts with visible constraints.</h2>
           <div>
             <a

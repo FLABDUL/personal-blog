@@ -9,7 +9,7 @@ export const query = graphql`
       nodes {
         frontmatter {
           title
-          date(formatString: "MMMM D, YYYY")
+          date(formatString: "D MMMM YYYY")
           slug
           description
         }
@@ -25,7 +25,7 @@ export default function BlogPage({ data }) {
   const externalPosts = [
     {
       title: "Working with Traders in London",
-      date: "May 20, 2024",
+      date: "20 May 2024",
       source: "LinkedIn",
       description:
         "What I learned from working closely with traders and navigating the pace, pressure, and communication of a London trading floor.",
@@ -33,7 +33,7 @@ export default function BlogPage({ data }) {
     },
     {
       title: "Nurturing the New Joiner",
-      date: "April 15, 2024",
+      date: "15 April 2024",
       source: "LinkedIn",
       description:
         "A reflection on helping new colleagues find their feet and the small actions that make an unfamiliar team feel welcoming.",
@@ -41,7 +41,7 @@ export default function BlogPage({ data }) {
     },
     {
       title: "Greenhorn Software Engineer",
-      date: "March 10, 2024",
+      date: "10 March 2024",
       source: "LinkedIn",
       description:
         "Thoughts from the early stages of becoming a software engineer: learning in public, asking questions, and growing through the work.",
@@ -49,7 +49,7 @@ export default function BlogPage({ data }) {
     },
     {
       title: "Meet the Makers – University of Edinburgh Bulletin",
-      date: "November 2, 2021",
+      date: "2 November 2021",
       source: "University of Edinburgh",
       description:
         "A conversation about making, engineering, and the experiences that shaped my path through university.",
@@ -66,7 +66,7 @@ export default function BlogPage({ data }) {
   ]
 
   return (
-    <Layout wide>
+    <Layout wide world="blog">
       <div className="blog-page">
         <header className="blog-hero">
           <p className="blog-eyebrow">Notes, projects, and observations</p>

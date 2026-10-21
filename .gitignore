@@ -89,3 +89,6 @@ tmp/pdfs/
 # Playwright test artefacts
 playwright-report/
 test-results/
+
+# Local redesign review evidence
+output/reinvention/

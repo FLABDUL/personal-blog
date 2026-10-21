@@ -11,7 +11,7 @@ export default function ProjectsPage() {
   ).items
 
   return (
-    <Layout wide>
+    <Layout wide world="projects">
       <article className="projects-showcase">
         <header className="projects-hero">
           <p className="projects-eyebrow">Selected independent work</p>

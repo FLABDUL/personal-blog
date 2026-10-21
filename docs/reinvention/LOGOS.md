@@ -1,0 +1,29 @@
+# Superseded logo concepts: first-round provenance and prompts
+
+Latest feedback: Hakim now prefers this round's editorial monogram alongside Night Garden from round three. They are the two references for the current permutations in [LOGOS-BLENDS.md](LOGOS-BLENDS.md), shown at `/review/logos/`. The original recommendation and prompts below remain historical; no final identity is selected.
+
+Status: three concepts created; final identity not selected or installed. Review at `/review/logos/`. These are AI-generated proposals made with the built-in image-generation tool, not externally sourced artwork. Each was generated independently, inspected, then resized and encoded to WebP for the review page. No CLI/API fallback was used.
+
+| Concept               | Project asset                                 | Size                     | Recommendation                                                       |
+| --------------------- | --------------------------------------------- | ------------------------ | -------------------------------------------------------------------- |
+| A: Editorial monogram | `static/review/logos/editorial-monogram.webp` | 1280 × 853, 26,978 bytes | Recommended for continuity; simplify fine strokes in a final favicon |
+| B: Maker’s ligature   | `static/review/logos/makers-ligature.webp`    | 1280 × 720, 16,018 bytes | Strongest compact silhouette; more abstract lettering                |
+| C: Printer’s flower   | `static/review/logos/printers-flower.webp`    | 1280 × 853, 21,738 bytes | Most artistic; less immediately tied to the name                     |
+
+Original generated PNGs are preserved locally in `output/reinvention/logos/` (ignored by Git) and in the tool's original generated-images directory. The three web assets total 64,734 bytes and are loaded only on the logo review page. Production builds and builds with the review switch disabled remove the entire generated `public/review/` directory, including these assets. The existing masthead and favicon remain in place until Hakim chooses a direction.
+
+The next identity step after a choice is a deliberate vector redraw with actual masthead and favicon proofs in both themes. These presentation sheets are not final SVG logo files. No trademark clearance was performed.
+
+## Exact generation prompts
+
+### A: Editorial monogram
+
+Use case: logo-brand. Create ONE polished logo concept presentation for the personal portfolio website 'Made by Hakim', concept A: THE EDITORIAL MONOGRAM. Wide landscape composition, generous warm ivory blank background. Flat single-colour deep charcoal/forest ink, no texture or shadow, no mockup objects. Main logo centred horizontally: bespoke compact lowercase 'm/h' monogram with an elegant fine serif, a confident diagonal slash and a very fine open circular outline; to its right an exquisitely spaced two-line wordmark, exact text 'Made by' (small understated sans serif), 'Hakim' (larger refined editorial serif). Make the monogram distinctive but very legible at small sizes. Mature independent designer/engineer/artist, combines literary warmth with precise craft. In the lower third show the identical monogram alone at three diminishing sizes with generous spacing, like a small-use proof. No other words, annotations, titles, symbols, gradients, photographs, extraneous decoration or multiple competing logos. Typography and balanced proportions are the substance. It should look like a finished identity proposal for an editorial portfolio, not a corporate tech logo. Output landscape.
+
+### B: Maker’s ligature
+
+Use case: logo-brand. Create ONE finished logo proposal for a personal portfolio named 'Made by Hakim'. Concept B: THE MAKER'S LIGATURE. Wide landscape, generous pure warm ivory space. A bespoke bold, compact lowercase 'mh' ligature, drawn as ONE continuous architectural ribbon/monoline with two beautifully proportioned arches and a tall h stem, softly square ends; intelligent negative space, an immediately recognisable m joined to an h. No enclosing circle or badge. Ink charcoal/deep forest, perfectly flat vector-like graphics. Main logo arrangement across the centre: mark on the left, exact text 'Made by Hakim' to its right in a warm modern humanist sans serif, medium weight, generous spacing, all on one line. Quiet contemporary maker identity joining software and handcraft, not futuristic, not generic AI logo. Lower third: repeat the same mark alone at three diminishing sizes with good spacing. It must remain legible at tiny favicon scale. Avoid initials that could read as w, mountains or a waveform; make lower-case m then h identifiable. No other text, captions, labels, drop shadows, mockup objects, paper textures, gradients or decoration.
+
+### C: Printer’s flower
+
+Use case: logo-brand. ONE original polished identity concept for personal portfolio 'Made by Hakim'. Concept C: THE PRINTER'S FLOWER. Landscape white-warm ivory presentation with ample margins. A simple memorable four-petal printer's fleuron: four soft asymmetric ink-black leaves meeting at a tiny square of negative space, rotated into an elegant diagonal cross, suggesting four creative disciplines collected around one centre. A small balanced organic symbol, not a starburst, not a cannabis leaf, no circles, not ornate, feels like a maker's imprint from an independent art book. Main horizontal logo: symbol on left, exact text 'made by hakim' on right, all lowercase, beautiful calm slightly rounded literary serif with moderately thick strokes and unusually thoughtful letter spacing. Flat deep forest charcoal ink. Underneath in lower third repeat same symbol alone at three diminishing sizes as small-use proofs. No other words, captions or titles, no mockup objects, shadows, gradients, 3D, illustration, multiple competing concepts, decorative borders or extra leaves. Make this feel personal, literary, artistic and lasting.

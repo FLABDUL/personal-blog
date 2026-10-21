@@ -8,7 +8,7 @@ export default function BlogPost({ data }) {
   const { title, date, dateRaw } = post.frontmatter
 
   return (
-    <Layout>
+    <Layout world="blog">
       <article className="blog-post">
         <header className="blog-post__header">
           <Link className="blog-post__back" to="/blog/">
@@ -39,7 +39,7 @@ export const query = graphql`
       html
       frontmatter {
         title
-        date(formatString: "MMMM D, YYYY")
+        date(formatString: "D MMMM YYYY")
         dateRaw: date
       }
     }

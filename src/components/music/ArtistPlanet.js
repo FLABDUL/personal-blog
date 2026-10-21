@@ -69,12 +69,6 @@ export default function ArtistPlanet({
           data-planet-body
           r={planet.radius}
         />
-        <PlanetArtwork
-          variant="catalogue"
-          imageUrl={planet.imageUrl}
-          initials={initialsFor(planet.name)}
-          size={planet.radius * 2}
-        />
         {planet.chapters.length > 1 ? (
           <g
             className={styles.regionMembershipMarker}
@@ -103,6 +97,18 @@ export default function ArtistPlanet({
         >
           {planet.name}
         </text>
+      </g>
+      <g
+        pointerEvents="none"
+        aria-hidden="true"
+        opacity={regionQuiet ? 0.24 : 1}
+      >
+        <PlanetArtwork
+          variant="catalogue"
+          imageUrl={planet.imageUrl}
+          initials={initialsFor(planet.name)}
+          size={planet.radius * 2}
+        />
       </g>
     </g>
   )

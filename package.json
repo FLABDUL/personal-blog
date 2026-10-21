@@ -8,10 +8,10 @@
     "node": ">=24 <25"
   },
   "scripts": {
-    "predevelop": "node scripts/cv/validate.js && node scripts/books/validate.js && npm run music:validate && npm run music:prepare-preview",
+    "predevelop": "npm run studio:validate && node scripts/cv/validate.js && node scripts/books/validate.js && npm run music:validate && npm run music:prepare-preview",
     "develop": "gatsby develop",
-    "prebuild": "node scripts/cv/validate.js && node scripts/books/validate.js && npm run music:validate && npm run music:prepare-preview && node scripts/cv/generate.js",
-    "build": "gatsby build",
+    "prebuild": "npm run studio:validate && node scripts/cv/validate.js && node scripts/books/validate.js && npm run music:validate && npm run music:prepare-preview && node scripts/cv/generate.js",
+    "build": "gatsby clean && gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "cv:validate": "node scripts/cv/validate.js",
@@ -29,7 +29,8 @@
     "test:cv": "node --test tests/cv/*.test.js",
     "test:smoke": "playwright test",
     "test:smoke:local": "npm run build && playwright test",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\""
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\"",
+    "studio:validate": "node scripts/studio/validate.js"
   },
   "dependencies": {
     "@vercel/blob": "^2.8.1",
@@ -49,6 +50,7 @@
     "react-icons": "^5.7.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
     "@babel/core": "^7.29.7",
     "@playwright/test": "^1.62.1",
     "mammoth": "^1.12.2",

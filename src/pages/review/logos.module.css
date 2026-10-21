@@ -1,0 +1,162 @@
+.index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+.index a {
+  padding-block: 0.7rem;
+}
+
+.nameProof {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+}
+
+.nameProof [lang="ar"] {
+  font:
+    2.5rem / 1.5 Tahoma,
+    "Segoe UI",
+    serif;
+  letter-spacing: normal;
+}
+
+.nameProof span:last-child {
+  font-size: 0.9rem;
+}
+
+.concept {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  padding-block: clamp(2rem, 6vw, 5rem);
+  border-top: 1px solid var(--rule);
+  scroll-margin-top: 2rem;
+}
+
+.concept h2,
+.selected h2,
+.note h2 {
+  color: var(--fg);
+  font:
+    400 clamp(1.8rem, 3vw, 3rem) / 1.08 Georgia,
+    serif;
+  letter-spacing: -0.035em;
+}
+.selected {
+  border-top: 1px solid var(--rule);
+  padding-block: 3rem;
+}
+.selected > p {
+  max-width: 65ch;
+}
+.identityProofs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-block: 2rem;
+}
+.identitySample {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 3rem 1rem 1.5rem;
+}
+.identitySample a {
+  color: var(--brand-ink);
+  font-size: 0.8rem;
+}
+.identitySample :global(.brand-mark) {
+  width: 104px;
+  height: 104px;
+}
+.identitySample :global(.wordmark) {
+  gap: 1rem;
+}
+.identitySample :global(.wordmark strong) {
+  font-size: 3.25rem;
+}
+.identitySample :global(.wordmark__name > span) {
+  font-size: 0.8rem;
+}
+.light {
+  --brand-ink: #123e30;
+  --brand-light: block;
+  --brand-dark: none;
+  background: #f3f0e8;
+}
+.dark {
+  --brand-ink: #f5efde;
+  --brand-light: none;
+  --brand-dark: block;
+  background: #123e30;
+}
+.smallProof {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.smallProof img {
+  margin: 0;
+}
+
+.concept p {
+  color: var(--soft);
+  line-height: 1.7;
+}
+.concept .tradeoff {
+  font-size: 0.9rem;
+}
+.concept figure {
+  margin: 0;
+}
+.concept img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.concept figcaption {
+  color: var(--soft);
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+}
+.note {
+  border-top: 1px solid var(--rule);
+  padding-block: 2rem 4rem;
+}
+.note p {
+  max-width: 65ch;
+  color: var(--soft);
+}
+
+@media (max-width: 48rem) {
+  .identityProofs {
+    grid-template-columns: 1fr;
+  }
+  .concept {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .index {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+@media (max-width: 480px) {
+  .identitySample :global(.brand-mark) {
+    width: 80px;
+    height: 80px;
+  }
+  .identitySample :global(.wordmark) {
+    gap: 0.75rem;
+  }
+  .identitySample :global(.wordmark strong) {
+    font-size: 2.75rem;
+  }
+}
