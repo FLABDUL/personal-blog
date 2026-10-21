@@ -214,6 +214,21 @@ for (const route of [
     await work.focus()
     await page.keyboard.press("Enter")
     await expect(page.getByRole("dialog", { name: "inferno" })).toBeVisible()
+    const close = page.getByRole("button", { name: "Close details" })
+    await expect(close).toBeFocused()
+    await page.keyboard.press("ArrowRight")
+    await expect(
+      page.getByRole("dialog", { name: "pulse", exact: true }),
+    ).toBeVisible()
+    await expect(close).toBeFocused()
+    await page.keyboard.press("ArrowLeft")
+    await expect(page.getByRole("dialog", { name: "inferno" })).toBeVisible()
+    await page.keyboard.press("Shift+Tab")
+    await expect(
+      page.getByRole("button", { name: "Next painting" }),
+    ).toBeFocused()
+    await page.keyboard.press("Tab")
+    await expect(close).toBeFocused()
     await page.getByRole("button", { name: "Next painting" }).click()
     await expect(
       page

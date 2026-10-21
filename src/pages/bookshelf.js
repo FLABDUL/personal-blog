@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react"
 import Layout from "../components/Layout"
 import Seo from "../components/Seo"
 import Modal from "../components/Modal"
+import BookCover from "../components/BookCover"
 import books from "../../content/books.json"
 
 const booksByNewest = [...books].sort((a, b) => b.added.localeCompare(a.added))
@@ -140,14 +141,7 @@ export default function BookshelfPage() {
                 {String(index + 1).padStart(2, "0")}
               </span>
               <span className="library-book__cover">
-                <img
-                  src={book.cover}
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                  width="280"
-                  height="420"
-                />
+                <BookCover book={book} />
               </span>
               <span className="library-book__text">
                 <strong>{book.title}</strong> <span>{book.author}</span>{" "}
@@ -182,12 +176,7 @@ export default function BookshelfPage() {
           className="book-dialog"
         >
           <div className="book-dialog__content">
-            <img
-              src={selectedBook.cover}
-              alt={`Cover of ${selectedBook.title}`}
-              width="420"
-              height="630"
-            />
+            <BookCover book={selectedBook} detail />
             <div>
               <p className="eyebrow">From the shelf</p>
               <h2 id="book-detail-title">{selectedBook.title}</h2>

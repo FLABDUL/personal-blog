@@ -15,6 +15,11 @@ async function prepare() {
         .resize({ width, withoutEnlargement: true })
         .webp({ quality: 78 })
         .toFile(path.join(target, "art", item.title + suffix + ".webp"))
+      await sharp(path.join("static", item.media.path))
+        .rotate()
+        .resize({ width, withoutEnlargement: true })
+        .avif({ quality: 40, effort: 6 })
+        .toFile(path.join(target, "art", item.title + suffix + ".avif"))
     }
   }
   await sharp("static/profile.jpg")

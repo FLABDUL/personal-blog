@@ -1202,6 +1202,44 @@ input:focus-visible {
 .library-book:hover .library-book__cover img {
   transform: translateY(-6px) rotate(-2deg);
 }
+.book-cover-fallback {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.65rem;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  border: 1px solid var(--rule);
+  color: var(--fg);
+  background: var(--bg);
+  text-align: center;
+  overflow-wrap: anywhere;
+  font-size: 0.8rem;
+}
+.book-cover-fallback small {
+  color: var(--soft);
+  font-size: 0.65rem;
+}
+.book-cover-fallback strong {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  line-height: 1.25;
+}
+.library-books--index .book-cover-fallback {
+  padding: 0;
+}
+.library-books--index .book-cover-fallback > * {
+  display: none;
+}
+.library-books--index .book-cover-fallback::before {
+  content: "—";
+}
+.book-dialog__content > .book-cover-fallback {
+  min-height: 220px;
+  height: auto;
+  align-self: stretch;
+}
 .library-book__text {
   display: grid;
   gap: 0.25rem;

@@ -38,6 +38,12 @@ Budget V2 and Backtest Library now use a continuous editorial study layout: larg
 
 All source artwork, portrait, project screenshots and book covers already existed in this repository. Optimised derivatives in static/design were generated from those public files with scripts/design/prepare-assets.js. Regenerate with node scripts/design/prepare-assets.js. The paintings retain their composition and attribution.
 
+The Studio follow-up adds responsive AVIF gallery images at the existing 480/720/1000px widths, with WebP fallbacks. The 720px opening painting is 94,186 bytes instead of 177,172 bytes; the nine 720px gallery images together are about 54% smaller. Representative paintings were compared visually at the intended display sizes. Opening a painting retains the existing higher-detail 1000px WebP; originals are unchanged.
+
+On the same local Lighthouse 13.5 mobile profile, Studio transfer fell from 955,209 to 503,797 bytes and LCP from 4.51 seconds to 3.13/2.84 seconds in two subsequent runs, with zero layout shift. Overall scores varied from 94 to 72 because CPU blocking varied substantially (9.5/1165ms); do not present 94 as a stable score or these local measurements as field performance. The image-transfer reduction is deterministic; broader CPU performance remains a separate measurement concern.
+
+Books without cover artwork now show an explicit title/author fallback in the shelf and detail view. The same fallback handles failed image requests, including failures before hydration. Studio arrow keys are handled at the dialog scope, so they work immediately from the initial Close-button focus while Tab containment, Escape and focus return remain intact.
+
 Only published Studio manifest entries were adopted from the unfinished foundation worktree. No private photo intake, draft metadata, application material or new personal experience was imported. The build removes two legacy draft-candidate files, fox.jpg and pottery.jpg, from generated public output while preserving their source files. The published-only manifest and output exclusions have regression checks.
 
 The bookshelf incorporates interaction ideas from the unfinished September worktree but preserves the newer production dataset. Front covers remain recognisable front covers.
@@ -70,4 +76,4 @@ Deployment smoke runs have BASE_URL but no local build output. Keep output check
 
 Keep the integrated identity, selected editorial About and exhibition Studio, unboxed sections and engineering studies. Light Studio uses the selected exhibition composition; it does not switch to the unselected salon concept. Discard simulated book spines and additional decorative room metaphors unless real assets or a clear interaction need justify them.
 
-The separate release review is complete. Its three priority findings were focus contrast, production-aware deployment verification and carrying forward main's follow-redirects 1.16.1 patch from ca57ab5. The correction pass addresses those findings; Studio performance, the optional book-cover fallback and initial-focus Studio arrow navigation remain follow-ups. This branch does not authorise a production flip.
+The separate release review is complete. Its three priority findings were focus contrast, production-aware deployment verification and carrying forward main's follow-redirects 1.16.1 patch from ca57ab5. The correction pass addresses those findings. The subsequent refinement addresses Studio image delivery, the optional book-cover fallback and initial-focus Studio arrow navigation. Local performance measurements and verification evidence are kept in output/reinvention/followups. This branch does not authorise a production flip.

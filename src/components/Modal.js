@@ -1,5 +1,11 @@
 import React, { useEffect, useRef } from "react"
-export default function Modal({ children, labelId, onClose, className = "" }) {
+export default function Modal({
+  children,
+  labelId,
+  onClose,
+  onKeyDown,
+  className = "",
+}) {
   const dialog = useRef(null)
   const opener = useRef(
     typeof document === "undefined" ? null : document.activeElement,
@@ -25,7 +31,8 @@ export default function Modal({ children, labelId, onClose, className = "" }) {
       aria-labelledby={labelId}
       aria-modal="true"
       onKeyDown={event => {
-        if (event.key !== "Tab") return
+        onKeyDown?.(event)
+        if (event.defaultPrevented || event.key !== "Tab") return
         const controls = [
           ...dialog.current.querySelectorAll(
             'button, a[href], input, select, textarea, [tabindex="0"]',

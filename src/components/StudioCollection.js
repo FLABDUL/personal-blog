@@ -6,12 +6,17 @@ export const publishedArt = manifest.items.filter(
   item => item.status === "published",
 )
 
-export function ArtImage({ item, priority = false }) {
-  return (
+export function ArtImage({ item, priority = false, detail = false }) {
+  const sizes = "(max-width: 480px) 90vw, (max-width: 760px) 45vw, 600px"
+  const image = (
     <img
       src={`/design/art/${item.title}.webp`}
-      srcSet={`/design/art/${item.title}-480.webp 480w, /design/art/${item.title}-720.webp 720w, /design/art/${item.title}.webp 1000w`}
-      sizes="(max-width: 480px) 90vw, (max-width: 760px) 45vw, 600px"
+      srcSet={
+        detail
+          ? undefined
+          : `/design/art/${item.title}-480.webp 480w, /design/art/${item.title}-720.webp 720w, /design/art/${item.title}.webp 1000w`
+      }
+      sizes={detail ? undefined : sizes}
       width={item.media.width}
       height={item.media.height}
       alt={item.alt}
@@ -19,6 +24,19 @@ export function ArtImage({ item, priority = false }) {
       fetchPriority={priority ? "high" : "auto"}
       decoding="async"
     />
+  )
+  // Keep the higher-detail WebP in the viewer; AVIF reduces gallery downloads.
+  return detail ? (
+    image
+  ) : (
+    <picture>
+      <source
+        type="image/avif"
+        srcSet={`/design/art/${item.title}-480.avif 480w, /design/art/${item.title}-720.avif 720w, /design/art/${item.title}.avif 1000w`}
+        sizes={sizes}
+      />
+      {image}
+    </picture>
   )
 }
 
@@ -106,17 +124,15 @@ export default function StudioCollection({ variant = "exhibition" }) {
           labelId="art-detail-title"
           onClose={() => setSelected(null)}
           className="art-dialog"
+          onKeyDown={event => {
+            if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+              event.preventDefault()
+              move(event.key === "ArrowLeft" ? -1 : 1)
+            }
+          }}
         >
-          <div
-            className="art-dialog__content"
-            onKeyDown={event => {
-              if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
-                event.preventDefault()
-                move(event.key === "ArrowLeft" ? -1 : 1)
-              }
-            }}
-          >
-            <ArtImage item={selectedItem} priority />
+          <div className="art-dialog__content">
+            <ArtImage item={selectedItem} priority detail />
             <div className="art-dialog__caption" aria-live="polite">
               <div>
                 <p className="eyebrow">
