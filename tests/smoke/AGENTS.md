@@ -4,3 +4,4 @@
 - Before programmatic focus and keyboard activation of a JavaScript-dependent control, assert that it is enabled. `locator.focus()` does not wait for hydration. Do not replace readiness checks with fixed sleeps or extra retries.
 - Controls requiring JavaScript should remain disabled until their handlers are ready. Keep the delayed-script tests for theme and print controls to exercise this loading boundary.
 - Report locally stubbed API checks separately from live deployment checks. Never weaken Preview protection to make a test pass.
+- Image-loading sweeps that scroll images must select visible images. Theme and responsive variants can deliberately hide their counterparts; verify those variants by activating each theme/viewport in a dedicated check, rather than trying to scroll hidden elements.

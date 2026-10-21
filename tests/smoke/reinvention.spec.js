@@ -68,7 +68,7 @@ for (const width of [390, 1440]) {
         `${route.replaceAll("/", "-") || "home"}-${width}.png`,
       )
       fs.mkdirSync(path.dirname(destination), { recursive: true })
-      for (const img of await page.locator("main img").all()) {
+      for (const img of await page.locator("main img:visible").all()) {
         await img.scrollIntoViewIfNeeded()
         await expect
           .poll(() => img.evaluate(el => el.complete && el.naturalWidth > 0))

@@ -203,7 +203,7 @@ test("visible site images load successfully", async ({ page }) => {
     "/projects/backtest-library/",
   ]) {
     await page.goto(path, { waitUntil: "domcontentloaded" })
-    const images = page.locator("img")
+    const images = page.locator("img:visible")
 
     for (let index = 0; index < (await images.count()); index += 1) {
       const image = images.nth(index)
