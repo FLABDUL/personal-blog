@@ -144,8 +144,9 @@ export default function ReviewPage() {
         </p>
         <p>
           The alternatives and this review ribbon are controlled by one review
-          switch and are excluded from production builds. This remains a preview
-          for a separate release review, which has not started.
+          switch and are excluded from production builds. The separate release
+          review is complete and its priority fixes are included. This remains a
+          preview; a production release is a separate decision.
         </p>
         <div className="text-actions">
           <Link to="/studio/">Compare the selected Studio ↗</Link>
