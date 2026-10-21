@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import Layout from "../../components/Layout"
 import Seo from "../../components/Seo"
+import BrandIdentity from "../../components/BrandIdentity"
 import * as styles from "./logos.module.css"
 
 const concepts = [
@@ -9,11 +10,11 @@ const concepts = [
     id: "botanical-seal",
     letter: "A",
     title: "Botanical Seal",
-    verdict: "Restrained / Closest to the original monogram",
+    verdict: "Selected / Everyday identity",
     description:
       "The familiar circular m/h gains a small gold-and-green branch along its edge. The open space, slash and calm English typography remain the focus.",
     tradeoff:
-      "My first choice for everyday website use. Keep the full branch at larger sizes and use the plain monogram where the finer leaves would disappear.",
+      "Your chosen direction, now redrawn as vectors and installed on this Preview. The branch appears in the desktop masthead; the plain monogram takes over on phones and favicons.",
     alt: "A: a green circular m slash h monogram with a small gold and jade flowering branch, beside Made by Hakim",
     height: 853,
   },
@@ -21,11 +22,11 @@ const concepts = [
     id: "illuminated-monogram",
     letter: "B",
     title: "Illuminated Monogram",
-    verdict: "Rich / The two favourites combined directly",
+    verdict: "Also liked / Retained for richer applications",
     description:
       "The m/h sits inside Night Garden’s floral language, with ivory lettering on deep green. Four tulips and a lighter leaf ring connect the ornate emblem to the editorial name.",
     tradeoff:
-      "The richest fusion of your two references. It works as a larger signature; the plain circle or simplified outline should take over in a small masthead or favicon.",
+      "You also like B. That preference is saved: this remains the richer alternative for a larger signature, while A is the everyday website identity.",
     alt: "B: an ivory m slash h monogram surrounded by gold and jade tulips on deep green beside Made by Hakim",
     height: 853,
   },
@@ -75,16 +76,16 @@ export default function LogosPage() {
       </Link>
       <header className="review-heading">
         <p className="eyebrow">
-          Identity study / Combining your favourites / Preview only
+          Identity study / A selected, B remembered / Preview only
         </p>
         <h1>
           A little ornament. <br />A familiar signature.
         </h1>
         <p>
-          Five permutations of the two directions you prefer: the restrained
-          editorial monogram and the green-and-gold Night Garden. Each keeps the
-          calm typography and explores a different amount of floral detail. The
-          current site logo stays in place while you choose.
+          Botanical Seal is your selected identity. Its new vector mark is now
+          in the Preview masthead, with dedicated light, dark and small-size
+          versions. Illuminated Monogram is saved as another favourite. The five
+          original concepts remain below for reference.
         </p>
         <p>
           Your references:{" "}
@@ -109,6 +110,45 @@ export default function LogosPage() {
           ))}
         </nav>
       </header>
+      <section className={styles.selected} aria-labelledby="selected-identity">
+        <p className="eyebrow">A / Selected / Refined for the website</p>
+        <h2 id="selected-identity">The Botanical Seal, in use.</h2>
+        <div className={styles.identityProofs}>
+          {["light", "dark"].map(tone => (
+            <div
+              className={`${styles.identitySample} ${styles[tone]}`}
+              key={tone}
+            >
+              <div className="wordmark">
+                <BrandIdentity />
+              </div>
+              <a href={`/identity/botanical-seal-${tone}.svg`}>
+                Open {tone} vector mark ↗
+              </a>
+            </div>
+          ))}
+        </div>
+        <p>
+          The serif wordmark stays live text. Original vector letterforms,
+          simpler leaves and a single tulip replace the generated shading. Under
+          481px, the ornament gives way to the plain circle and m/h.
+        </p>
+        <div className={styles.smallProof}>
+          <img
+            src="/favicon.svg"
+            width="16"
+            height="16"
+            alt="Favicon at 16 pixels"
+          />
+          <img
+            src="/favicon-32.png"
+            width="32"
+            height="32"
+            alt="Favicon at 32 pixels"
+          />
+          <a href="/favicon.svg">Open the simplified favicon ↗</a>
+        </div>
+      </section>
       <div>
         {concepts.map((concept, index) => (
           <section
@@ -144,13 +184,14 @@ export default function LogosPage() {
         ))}
       </div>
       <aside className={styles.note}>
-        <h2>A direction to choose, then refine.</h2>
+        <h2>From concept to identity.</h2>
         <p>
           These are AI-generated identity concepts, created for this review. The
-          chosen direction would next receive a crisp vector redraw, small-size
-          simplification and dedicated light, dark and favicon versions. Concept
-          D also needs a final Arabic lettering proof. None has been installed
-          as the final identity.
+          selected A has since received a deliberate vector redraw, small-size
+          simplification and light, dark and favicon versions. The other sheets
+          remain concepts; D would need a final Arabic lettering proof if
+          revisited. The separate release review has not started, and the live
+          site has not changed.
         </p>
         <p>
           These variations were generated from your two preferred concepts, both

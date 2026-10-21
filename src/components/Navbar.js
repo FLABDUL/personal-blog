@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import ThemeControls from "./ThemeControls"
+import BrandIdentity from "./BrandIdentity"
 
 const links = [
   ["/", "About"],
@@ -15,14 +16,8 @@ const links = [
 export default function Navbar({ defaultTheme = "light" }) {
   return (
     <header className="masthead">
-      <Link to="/" className="wordmark">
-        <span className="wordmark__symbol" aria-hidden="true">
-          m/h
-        </span>
-        <span>
-          Made by <br />
-          <strong>Hakim.</strong>
-        </span>
+      <Link to="/" className="wordmark" aria-label="Made by Hakim — home">
+        <BrandIdentity />
       </Link>
       <nav className="site-nav" aria-label="Primary navigation">
         {links.map(([to, label]) => (

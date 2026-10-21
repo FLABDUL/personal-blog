@@ -1,4 +1,15 @@
 /* The authored palettes remain the default. An explicit choice follows the reader. */
+.site-shell:is(.world-projects, .world-studio, .world-music),
+html[data-theme="dark"] .site-shell {
+  --brand-ink: #f5efde;
+  --brand-light: none;
+  --brand-dark: block;
+}
+html[data-theme="light"] .site-shell {
+  --brand-ink: #123e30;
+  --brand-light: block;
+  --brand-dark: none;
+}
 .masthead {
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -58,6 +69,20 @@
   }
 }
 @media (max-width: 480px) {
+  .wordmark {
+    gap: 0.45rem;
+  }
+  .brand-mark {
+    width: 48px;
+    height: 48px;
+  }
+  .wordmark strong {
+    font-size: 1.65rem;
+  }
+  .wordmark__name > span {
+    font-size: 0.53rem;
+    letter-spacing: 0.19em;
+  }
   .masthead {
     gap: 0.75rem 0.5rem;
   }

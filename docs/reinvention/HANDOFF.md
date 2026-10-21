@@ -2,7 +2,17 @@
 
 All four requested stages are done: audit and competing directions; selected site-wide direction; integrated implementation; desktop/mobile critique and refinement. Production release is not started and requires Hakim's separate decision.
 
-## Latest follow-up: combining the two preferred references
+## Latest follow-up: A selected, B remembered — 21 October 2026
+
+- Done: A — Botanical Seal is the selected everyday identity. Four small native SVG files provide light/dark desktop marks and plain compact marks for phones. The masthead uses the existing serif stack for live text, with an accessible home link and no added motion or dependencies.
+- Done: matching SVG favicon, 32px PNG fallback and 180px touch icon. Shared server-rendered metadata includes them on every route. Identity assets are separate from the removable concept gallery.
+- Done: the logo review now shows the selected vector identity, light/dark proofs and actual small favicon samples. All five original concepts remain available. B — Illuminated Monogram is explicitly marked as also liked, and that preference was saved in the user-authorised memory note.
+- Done: clean Gatsby build; 20 focused Chromium checks, including 16 axe scans on About, Studio, Music and the logo review in both themes at 390/1440px. The identity-specific check covers 320/1440px, correct responsive images, asset responses, favicon metadata, non-overlapping theme controls and keyboard navigation home. Screenshots were inspected at desktop/mobile sizes. The first run caught a missing text space in the accessible name; this was corrected. Image checks now scroll only visible images, because each theme intentionally hides its counterpart.
+- Not started: separate release review or any production release. Hakim will change model intelligence before requesting that review. Firefox, Safari and native mobile browser rendering have not been separately checked.
+
+The exact Preview URL, commit and deployment-CI result are recorded in the delivery hand-off. Git/Vercel preflight confirmed `FLABDUL/personal-blog`, production branch `main` at `df581f093488c90fe6e79f3a5d8cd00c5befb48c`, the expected personal-blog project/team and unchanged `prod_deployment_urls_and_all_previews` protection. The dirty primary checkout remains untouched. Recommendation: keep the selected identity; next inspect its masthead and small-size treatment on Preview. Asset details and provenance are in LOGOS-BLENDS.md.
+
+## Previous follow-up: combining the two preferred references
 
 - Done: five new permutations of the editorial m/h monogram and Night Garden: Botanical Seal, Illuminated Monogram, Garden Slash, Twin Script and Floral Initial. Both source concepts are linked on the review page.
 - Done: originals and web assets saved in the worktree; all exact prompts, reference roles, trade-offs and asset paths recorded in LOGOS-BLENDS.md. Only D contains Arabic, strictly حكيم.

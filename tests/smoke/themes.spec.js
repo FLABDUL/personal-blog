@@ -83,7 +83,7 @@ for (const theme of ["light", "dark"]) {
             "/projects/backtest-library/",
           ].includes(route)
         ) {
-          for (const img of await page.locator("main img").all()) {
+          for (const img of await page.locator("main img:visible").all()) {
             await img.scrollIntoViewIfNeeded()
             await expect
               .poll(() =>

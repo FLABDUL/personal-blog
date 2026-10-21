@@ -19,7 +19,7 @@ export default function ReviewPage() {
           changes the live site.
         </p>
         <p className="text-actions">
-          <Link to="/review/logos/">New: compare five logo concepts ↗</Link>
+          <Link to="/review/logos/">Selected logo: Botanical Seal ↗</Link>
           <Link to="/music/">Explore the updated Music Portrait ↗</Link>
         </p>
       </header>

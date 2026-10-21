@@ -1,6 +1,14 @@
 # Logo round four: permutations of the two preferred references
 
-Status: five concepts created with the built-in image-generation skill; final identity not selected or installed. Hakim's latest feedback identifies the first-round editorial m/h monogram and third-round Night Garden as preferred references. This supersedes earlier rejection notes for those two concepts.
+Status, 21 October 2026: Hakim selected A — Botanical Seal for the everyday identity and explicitly asked to remember that B — Illuminated Monogram is also liked. A has now been redrawn as native SVG and installed on the isolated Preview. B remains the preferred richer alternative, without being installed. The separate release review remains unstarted.
+
+## Selected identity implementation
+
+The source SVG files are in `static/identity/`: `botanical-seal-light.svg`, `botanical-seal-dark.svg` and their `-compact.svg` companions. Letterforms, circle, slash and botanical paths were deliberately drawn in code from the selected concept; no raster tracing, external artwork, new font or package was introduced. These source files are directly editable, contain no remote resources and total 5,826 bytes. The gold outline, two large leaves, smaller leaf and tulip replace the generated shading. At 480px and below, the plain circle and m/h take over to preserve clarity.
+
+`BrandIdentity.js` pairs those marks with live English text in the site's existing Georgia/system serif stack. The masthead home link has one accessible name. Theme colours apply before hydration through the existing authored-world and explicit-theme rules. The mark adds no animation, scripts or focus targets. The chosen identity's assets live outside the removable review folder so they survive a future authorised production build; the concept gallery remains excluded by the existing guard.
+
+The favicon is `static/favicon.svg`, with a stable forest background and ivory compact monogram. `favicon-32.png` and `apple-touch-icon.png` are 32px/180px Sharp exports of that vector, not generated artwork. Gatsby's shared SSR head includes all three. The review page now shows the finished light/dark identity and actual 16px/32px favicon samples above the five historical concepts. Ordinary implementation checks are recorded in HANDOFF.md; this is not a release review.
 
 ## References and method
 
@@ -8,7 +16,7 @@ Both supplied screenshots depict original AI-generated proposals from this same 
 
 Each new image was generated separately, visually inspected for the intended combination, name spelling and absence of screenshot UI. No CLI/API fallback or external artwork was used. Sharp only resized and encoded the sheets. Only D uses Arabic: the confirmed personal name حكيم, without a prefix or sacred inscription. Its four letters and paired ya dots were visually checked; final professional lettering proof remains pending.
 
-These are raster concept sheets. Fine details, stroke weights, spacing and colour need a deliberate vector redraw after selection. The smaller studies are proposals, not evidence of favicon legibility. Some generated leaves retain tonal shading despite the flat-ink brief; simplify that shading for final logo files. No trademark clearance was performed.
+The five sheets below are historical raster concepts. A has now received the vector refinement described above; the other four still require it if revisited. Their smaller generated studies are proposals, not evidence of favicon legibility. No trademark clearance was performed.
 
 All five web assets are 1280 × 853. Sizes: A 36,998; B 56,236; C 30,138; D 41,252; E 33,712 bytes; total 198,336 bytes. Only A is eager-loaded. All review assets remain covered by the existing production exclusion. Originals are preserved in ignored `output/reinvention/logos/`.
 
@@ -16,7 +24,7 @@ All five web assets are 1280 × 853. Sizes: A 36,998; B 56,236; C 30,138; D 41,2
 
 The familiar circular m/h gains a small gold-and-green branch along its edge. The open space, slash and calm English typography remain the focus.
 
-My first choice for everyday website use. Keep the full branch at larger sizes and use the plain monogram where the finer leaves would disappear.
+Selected by Hakim for everyday website use. The vector implementation keeps the branch at desktop sizes and uses the plain monogram on phones and favicons.
 
 Web asset: `static/review/logos/botanical-seal.webp`. Original: `output/reinvention/logos/botanical-seal.png`.
 
@@ -28,7 +36,7 @@ Use case: logo-brand. Create a NEW original logo permutation A: BOTANICAL SEAL, 
 
 The m/h sits inside Night Garden’s floral language, with ivory lettering on deep green. Four tulips and a lighter leaf ring connect the ornate emblem to the editorial name.
 
-The richest fusion of your two references. It works as a larger signature; the plain circle or simplified outline should take over in a small masthead or favicon.
+Also liked by Hakim, and explicitly retained as a preference. Keep it as the richer alternative for a larger signature; A remains the selected everyday identity.
 
 Web asset: `static/review/logos/illuminated-monogram.webp`. Original: `output/reinvention/logos/illuminated-monogram.png`.
 

@@ -30,7 +30,7 @@ The masthead now has explicit Light and Dark buttons. Before a preference is cho
 
 The Music follow-up replaces the heavy outer box with a fine rule, simpler region controls and a lightly framed chart. Ninety-six fixed decorative points and eight slow twinkles sit behind the existing interactive map. The decoration is hidden from assistive technology and cannot capture pointer or keyboard input. Twinkles share the map's pause state and are static with reduced motion; forced-colour mode removes them. No new controls or data claims were added.
 
-The current logo review at `/review/logos/` combines Hakim’s two preferred references: the editorial m/h monogram and Night Garden. Five permutations explore that pairing: Botanical Seal, Illuminated Monogram, Garden Slash, Twin Script and Floral Initial. Only D uses the confirmed Arabic name حكيم without a prefix. LOGOS-BLENDS.md records exact prompts, reference roles, assets and the remaining small-size and lettering work. The current masthead remains installed pending a choice.
+Hakim selected A — Botanical Seal from the five logo permutations. The Preview now uses its native vector mark, theme-aware live wordmark, compact phone version and favicon. B — Illuminated Monogram is also liked and retained as a richer alternative. `/review/logos/` shows the implemented light/dark identity and small icons above all five historical concepts. Only the unselected D uses the confirmed Arabic name حكيم. LOGOS-BLENDS.md records the selection, vector source files, original prompts and provenance.
 
 Budget V2 and Backtest Library now use a continuous editorial study layout: large serif introductions, numbered section links, connected architecture steps, open evidence rows and visible limitations. Evidence images retain their original files, captions and full-size links, with intrinsic dimensions and lazy loading. All engineering claims and result values are preserved. The obsolete shared card stylesheet was removed.
 
@@ -66,4 +66,4 @@ Deployment smoke runs have BASE_URL but no local build output. Keep output check
 
 Keep the integrated identity, selected editorial About and exhibition Studio, unboxed sections and engineering studies. Light Studio uses the selected exhibition composition; it does not switch to the unselected salon concept. Discard simulated book spines and additional decorative room metaphors unless real assets or a clear interaction need justify them.
 
-The next action is for Hakim to choose among the revised logo directions. Change model intelligence before requesting the later separate release review; that review has not started. This branch does not authorise a production flip.
+The next action is for Hakim to inspect the selected Botanical Seal on the Preview. Change model intelligence before requesting the later separate release review; that review has not started. This branch does not authorise a production flip.

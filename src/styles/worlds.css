@@ -42,6 +42,9 @@ input:focus-visible {
   background: var(--accent);
 }
 .site-shell {
+  --brand-ink: #123e30;
+  --brand-light: block;
+  --brand-dark: none;
   --bg: var(--paper);
   --fg: var(--ink);
   --soft: var(--muted);
@@ -85,28 +88,40 @@ input:focus-visible {
 .wordmark {
   display: inline-flex;
   align-items: center;
-  gap: 0.85rem;
-  color: var(--fg);
-  font-size: 0.83rem;
-  line-height: 1.18;
+  gap: 0.7rem;
+  color: var(--brand-ink);
+  line-height: 1;
   text-decoration: none;
   flex-shrink: 0;
 }
 .wordmark strong {
-  font-size: 1.18rem;
-  font-weight: 650;
-  letter-spacing: -0.05em;
+  display: block;
+  margin-top: 0.15rem;
+  font: 400 2rem/1 var(--serif);
+  letter-spacing: -0.045em;
 }
-.wordmark__symbol {
-  display: grid;
-  place-items: center;
-  font: italic 1.45rem var(--serif);
-  width: 44px;
-  height: 44px;
-  border: 1px solid var(--fg);
-  border-radius: 50%;
-  letter-spacing: -0.08em;
-  padding-right: 0.12em;
+.wordmark__name > span {
+  font: 500 0.6rem/1 var(--sans);
+  letter-spacing: 0.24em;
+}
+.brand-mark {
+  flex: none;
+  width: 64px;
+  height: 64px;
+}
+.brand-mark--light {
+  display: var(--brand-light);
+}
+.brand-mark--dark {
+  display: var(--brand-dark);
+}
+.brand-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 .site-nav {
   position: static;

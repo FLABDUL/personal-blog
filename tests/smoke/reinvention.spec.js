@@ -300,12 +300,74 @@ test("review pages are labelled, clickable and noindexed", async ({ page }) => {
   await expect(page).toHaveURL(/\/review\/studio-daylight\/$/)
 })
 
+test("selected identity loads at small and large sizes, follows themes and links home by keyboard", async ({
+  page,
+  request,
+}) => {
+  await page.goto("/studio/")
+  const brand = page.getByRole("link", { name: "Made by Hakim — home" })
+  await expect(page.locator(".masthead .brand-mark--dark")).toBeVisible()
+  await brand.focus()
+  await page.keyboard.press("Enter")
+  await expect(page).toHaveURL(/\/$/)
+  await expect(page.getByRole("heading", { level: 1 })).toContainText(
+    "Software",
+  )
+  for (const width of [320, 1440]) {
+    await page.setViewportSize({ width, height: 900 })
+    for (const theme of ["light", "dark"]) {
+      const button = page.getByRole("button", {
+        name: theme === "light" ? "Light" : "Dark",
+        exact: true,
+      })
+      await expect(button).toBeEnabled()
+      await button.click()
+      const mark = page.locator(".masthead .brand-mark:visible img")
+      await expect(mark).toHaveCount(1)
+      await expect
+        .poll(() => mark.evaluate(img => img.complete && img.naturalWidth > 0))
+        .toBe(true)
+      const src = await mark.evaluate(img => img.currentSrc)
+      expect(src).toContain(
+        `botanical-seal-${theme}${width === 320 ? "-compact" : ""}.svg`,
+      )
+      const response = await request.get(src)
+      expect(response.status()).toBe(200)
+      expect(response.headers()["content-type"]).toContain("image/svg+xml")
+      expect(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth <= innerWidth,
+        ),
+      ).toBe(true)
+      const logoBox = await brand.boundingBox()
+      const buttonBox = await button.boundingBox()
+      expect(logoBox.height).toBeGreaterThanOrEqual(44)
+      expect(logoBox.x + logoBox.width).toBeLessThanOrEqual(buttonBox.x)
+      await page.locator(".masthead").screenshot({
+        path: `output/reinvention/selected-logo-${theme}-${width}.png`,
+      })
+    }
+  }
+  for (const icon of await page
+    .locator('link[rel="icon"], link[rel="apple-touch-icon"]')
+    .all()) {
+    const response = await request.get(await icon.getAttribute("href"))
+    expect(response.status()).toBe(200)
+    expect(response.headers()["content-type"]).toMatch(/^image\//)
+  }
+  await expect(
+    page.locator('link[rel="icon"][type="image/svg+xml"]'),
+  ).toHaveAttribute("href", "/favicon.svg")
+})
+
 test("logo review is linked, transparent about provenance and offers five working concepts", async ({
   page,
   request,
 }) => {
   await page.goto("/review/")
-  await page.getByRole("link", { name: /compare five logo concepts/ }).click()
+  await page
+    .getByRole("link", { name: /Selected logo: Botanical Seal/ })
+    .click()
   await expect(page).toHaveURL(/\/review\/logos\/$/)
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
     "content",
