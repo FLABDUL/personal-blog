@@ -375,11 +375,6 @@ img {
   border-color: #5a6877;
 }
 
-.bookshelf-filter:focus-visible {
-  outline: 3px solid rgba(88, 166, 255, 0.38);
-  outline-offset: 2px;
-}
-
 .bookshelf-filter[aria-pressed="true"] {
   color: #08111a;
   background: #77bdfb;
@@ -817,13 +812,6 @@ img {
   transform: translateY(-1px);
 }
 
-.project-button:focus-visible,
-.project-card__media:focus-visible,
-.project-card h4 a:focus-visible {
-  outline: 3px solid rgba(88, 166, 255, 0.42);
-  outline-offset: 3px;
-}
-
 .project-button--primary {
   color: #08111a;
   background: #77bdfb;
@@ -1170,12 +1158,6 @@ img {
   border-color: #607083;
   box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.2);
   transform: translateY(-2px);
-}
-
-.blog-card:focus-visible,
-.blog-post__back:focus-visible {
-  outline: 3px solid rgba(119, 189, 251, 0.45);
-  outline-offset: 3px;
 }
 
 .blog-card time,

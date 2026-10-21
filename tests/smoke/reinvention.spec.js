@@ -3,6 +3,7 @@ const fs = require("node:fs")
 const path = require("node:path")
 const books = require("../../content/books.json")
 const studio = require("../../content/studio/items.json")
+const { reviewEnabled, reviewPaths } = require("./helpers/environment")
 
 test.beforeEach(async ({ page }) => {
   if (!process.env.BASE_URL) {
@@ -33,15 +34,14 @@ for (const width of [390, 1440]) {
     "/studio/",
     "/bookshelf/",
     "/music/",
-    "/review/",
-    "/review/about-table/",
-    "/review/studio-daylight/",
+    ...(reviewEnabled ? reviewPaths : []),
   ]) {
     test(`${route} fits ${width}px and exposes navigation`, async ({
       page,
     }) => {
       await page.setViewportSize({ width, height: 960 })
-      await page.goto(route)
+      const response = await page.goto(route)
+      expect(response.status(), route).toBe(200)
       await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1)
       await expect(
         page
@@ -197,7 +197,10 @@ for (const width of [320, 768]) {
   })
 }
 
-for (const route of ["/studio/", "/review/studio-daylight/"]) {
+for (const route of [
+  "/studio/",
+  ...(reviewEnabled ? ["/review/studio-daylight/"] : []),
+]) {
   test(`${route} shows only published art and provides a keyboard lightbox`, async ({
     page,
   }) => {
@@ -288,6 +291,7 @@ test("Experience retains its print action and readable print styling", async ({
 })
 
 test("review pages are labelled, clickable and noindexed", async ({ page }) => {
+  test.skip(!reviewEnabled, "Review pages are excluded from this build.")
   await page.goto("/review/")
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
     "content",
@@ -364,6 +368,7 @@ test("logo review is linked, transparent about provenance and offers five workin
   page,
   request,
 }) => {
+  test.skip(!reviewEnabled, "Review pages are excluded from this build.")
   await page.goto("/review/")
   await page
     .getByRole("link", { name: /Selected logo: Botanical Seal/ })
@@ -396,6 +401,37 @@ test("logo review is linked, transparent about provenance and offers five workin
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBe(true)
+})
+
+test("review exposure matches the deployment environment", async ({
+  page,
+  request,
+}) => {
+  await page.goto("/")
+  if (reviewEnabled) {
+    await expect(page.locator(".review-ribbon")).toBeVisible()
+    for (const route of reviewPaths) {
+      expect((await request.get(route)).status(), route).toBe(200)
+    }
+    return
+  }
+
+  await expect(page.locator(".review-ribbon")).toHaveCount(0)
+  await expect(page.locator('a[href^="/review"]')).toHaveCount(0)
+  for (const route of reviewPaths) {
+    expect((await request.get(route)).status(), route).toBe(404)
+    const data = `/page-data${route}page-data.json`
+    expect((await request.get(data)).status(), data).toBe(404)
+  }
+  for (const file of fs.readdirSync("static/review/logos")) {
+    const asset = `/review/logos/${file}`
+    expect((await request.get(asset)).status(), asset).toBe(404)
+  }
+  await page.goto("/review/")
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "Page not found",
+  )
+  await expect(page.locator(".review-ribbon")).toHaveCount(0)
 })
 
 test("built output excludes draft art and contains only published Studio metadata", async ({

@@ -2,6 +2,7 @@ const { test, expect } = require("@playwright/test")
 const AxeBuilder = require("@axe-core/playwright").default
 const fs = require("node:fs")
 const path = require("node:path")
+const { reviewEnabled, reviewPaths } = require("./helpers/environment")
 
 test.beforeEach(async ({ page }) => {
   const leetcode = require("../../content/leetcode.json")
@@ -34,10 +35,7 @@ for (const theme of ["light", "dark"]) {
       "/music/",
       "/projects/budget-v2/",
       "/projects/backtest-library/",
-      "/review/",
-      "/review/logos/",
-      "/review/about-table/",
-      "/review/studio-daylight/",
+      ...(reviewEnabled ? reviewPaths : []),
       "/music/case-study/",
       "/blog/how-i-built-this-blog/",
     ]) {
@@ -49,7 +47,8 @@ for (const theme of ["light", "dark"]) {
           value => localStorage.setItem("madebyhakim-theme", value),
           theme,
         )
-        await page.goto(route)
+        const response = await page.goto(route)
+        expect(response.status(), route).toBe(200)
         await expect(
           page.getByRole("button", {
             name: theme === "light" ? "Light" : "Dark",
@@ -103,6 +102,97 @@ for (const theme of ["light", "dark"]) {
       })
     }
   }
+}
+
+for (const theme of ["light", "dark"]) {
+  test(`${theme} keyboard focus stays visible on collection controls`, async ({
+    page,
+  }) => {
+    await page.addInitScript(
+      value => localStorage.setItem("madebyhakim-theme", value),
+      theme,
+    )
+    for (const [route, selector] of [
+      ["/bookshelf/", ".bookshelf-filter"],
+      ["/blog/", ".blog-card"],
+      ["/blog/how-i-built-this-blog/", ".blog-post__back"],
+      [
+        "/projects/",
+        ".project-button, .project-card__media, .project-card h2 a",
+      ],
+    ]) {
+      await page.goto(route)
+      await expect(
+        page.getByRole("button", { name: "Light", exact: true }),
+      ).toBeEnabled()
+      await page.keyboard.press("Tab")
+      for (const control of await page.locator(selector).all()) {
+        await expect(control).toBeEnabled()
+        await control.focus()
+        await expect(control).toBeFocused()
+        const focus = await control.evaluate(element => {
+          const rgba = value => {
+            const channels = value.match(/[\d.]+/g).map(Number)
+            return [...channels.slice(0, 3), channels[3] ?? 1]
+          }
+          const over = (foreground, background) =>
+            foreground
+              .slice(0, 3)
+              .map(
+                (channel, index) =>
+                  channel * foreground[3] +
+                  background[index] * (1 - foreground[3]),
+              )
+          const luminance = colour =>
+            colour
+              .map(channel => {
+                const value = channel / 255
+                return value <= 0.04045
+                  ? value / 12.92
+                  : ((value + 0.055) / 1.055) ** 2.4
+              })
+              .reduce(
+                (sum, value, index) =>
+                  sum + value * [0.2126, 0.7152, 0.0722][index],
+                0,
+              )
+          const ancestors = []
+          for (
+            let parent = element.parentElement;
+            parent;
+            parent = parent.parentElement
+          ) {
+            ancestors.unshift(parent)
+          }
+          const background = ancestors.reduce(
+            (colour, parent) =>
+              over(rgba(getComputedStyle(parent).backgroundColor), colour),
+            [255, 255, 255],
+          )
+          const style = getComputedStyle(element)
+          const light = [
+            luminance(background),
+            luminance(over(rgba(style.outlineColor), background)),
+          ]
+          return {
+            visible:
+              element.matches(":focus-visible") &&
+              style.outlineStyle !== "none",
+            width: parseFloat(style.outlineWidth),
+            contrast: (Math.max(...light) + 0.05) / (Math.min(...light) + 0.05),
+          }
+        })
+        expect(focus.visible, `${route} ${selector}`).toBe(true)
+        expect(focus.width).toBeGreaterThanOrEqual(2)
+        expect(focus.contrast, `${route} ${selector}`).toBeGreaterThanOrEqual(3)
+      }
+      if (route === "/bookshelf/") {
+        await page.screenshot({
+          path: `output/reinvention/release-fixes/focus-${theme}.png`,
+        })
+      }
+    }
+  })
 }
 
 test("theme choice works by keyboard, follows navigation and survives reload", async ({

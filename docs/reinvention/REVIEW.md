@@ -48,6 +48,8 @@ Set config/design-review.json enabled to false and perform a clean build. This r
 
 Before any later release, run npm run clean, npm run build, npm run cv:check, npm run test:cv, npm run test:music and npm run test:smoke. Decide separately whether to integrate the main checkout's unpublished work.
 
+Match the build and smoke environments: use VERCEL_ENV=preview with SMOKE_ENV=preview, or VERCEL_ENV=production with SMOKE_ENV=production. CI builds and checks both modes. A deployed BASE_URL requires an explicit SMOKE_ENV; the deployment workflow supplies its environment name and manual runs ask for Preview or production. Production checks require the review routes, page data, artwork and navigation to be absent. Preview checks require real 200 responses so a themed 404 cannot pass as a working concept page.
+
 ## Verification approach
 
 Playwright checks routes and existing interactions, all seven sections at 320/768px, ten candidate/review routes at 390/1440px, real pointer and keyboard controls, emulated touch, native dialogs, focus return, history, reduced motion, skip navigation and unpublished-output exclusions. Axe scans those ten routes at two sizes and both detail dialogs. These are automated checks, not a substitute for assistive-technology and real-device review.
@@ -58,6 +60,8 @@ Stop gatsby serve before rebuilding, then start it again for final browser check
 
 Accessibility checks exposed repeated mismatches between visible text and explicit ARIA labels. The added axe suite is the focused workflow improvement: keep it in the normal smoke run so future labels and colour changes are checked automatically.
 
+The separate release review also found old focus styles overriding the shared theme-aware outline. Those overrides have been removed. Focused-state checks now measure the visible outline against its surrounding background in both themes; unfocused Axe scans do not cover this state.
+
 The theme follow-up extends this coverage to fourteen routes, including a technical article with code blocks, in both themes at mobile and desktop sizes. Keep this article coverage in the smoke run: it caught an existing keyboard-inaccessible scroll region that index-page scans could not detect. Code now wraps without changing article content.
 
 Deployment smoke runs have BASE_URL but no local build output. Keep output checks dual-mode: inspect files after a local build, and request the actual deployed HTML, stylesheet and excluded asset URLs in deployment mode. Both modes have been exercised. Do not hide a missing deployed asset or authentication failure by skipping the assertion.
@@ -66,4 +70,4 @@ Deployment smoke runs have BASE_URL but no local build output. Keep output check
 
 Keep the integrated identity, selected editorial About and exhibition Studio, unboxed sections and engineering studies. Light Studio uses the selected exhibition composition; it does not switch to the unselected salon concept. Discard simulated book spines and additional decorative room metaphors unless real assets or a clear interaction need justify them.
 
-The next action is for Hakim to inspect the selected Botanical Seal on the Preview. Change model intelligence before requesting the later separate release review; that review has not started. This branch does not authorise a production flip.
+The separate release review is complete. Its three priority findings were focus contrast, production-aware deployment verification and carrying forward main's follow-redirects 1.16.1 patch from ca57ab5. The correction pass addresses those findings; Studio performance, the optional book-cover fallback and initial-focus Studio arrow navigation remain follow-ups. This branch does not authorise a production flip.

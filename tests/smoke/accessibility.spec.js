@@ -1,5 +1,6 @@
 const { test, expect } = require("@playwright/test")
 const AxeBuilder = require("@axe-core/playwright").default
+const { reviewEnabled, reviewPaths } = require("./helpers/environment")
 
 test.beforeEach(async ({ page }) => {
   const leetcode = require("../../content/leetcode.json")
@@ -28,9 +29,7 @@ const routes = [
   "/studio/",
   "/bookshelf/",
   "/music/",
-  "/review/",
-  "/review/about-table/",
-  "/review/studio-daylight/",
+  ...(reviewEnabled ? reviewPaths : []),
 ]
 for (const width of [390, 1440]) {
   for (const route of routes) {
@@ -38,7 +37,8 @@ for (const width of [390, 1440]) {
       page,
     }) => {
       await page.setViewportSize({ width, height: 900 })
-      await page.goto(route)
+      const response = await page.goto(route)
+      expect(response.status(), route).toBe(200)
       const scan = await new AxeBuilder({ page })
         .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])
         .analyze()
