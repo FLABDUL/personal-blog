@@ -38,6 +38,10 @@ const routes = [
     heading: "Building a trustworthy personal-finance data pipeline",
   },
   {
+    path: "/projects/period-place/",
+    heading: "Building—and responsibly closing—a UK period-product finder",
+  },
+  {
     path: "/projects/backtest-library/",
     heading: "Testing a point-in-time fundamental strategy",
   },
@@ -169,10 +173,10 @@ test("selected products lead the project collection and remain curated on Experi
   const periodPlaceCard = projectCards.filter({ hasText: "Period Place" })
   await expect(
     periodPlaceCard.getByRole("link", {
-      name: "Visit product",
+      name: "Read case study",
       exact: true,
     }),
-  ).toHaveAttribute("href", "https://periodplace.org/")
+  ).toHaveAttribute("href", "/projects/period-place/")
 
   await expect(
     page.getByText("live products & demos", { exact: true }),
@@ -207,6 +211,7 @@ test("visible site images load successfully", async ({ page }) => {
     "/projects/",
     "/projects/residue-lens/",
     "/projects/budget-v2/",
+    "/projects/period-place/",
     "/projects/backtest-library/",
   ]) {
     await page.goto(path, { waitUntil: "domcontentloaded" })
@@ -295,6 +300,32 @@ test("Residue Lens case study remains readable on mobile", async ({ page }) => {
       name: "Open full-size evidence: Keep context attached to every number",
     }),
   ).toBeVisible()
+  expect(errors).toEqual([])
+})
+
+test("Period Place preserves the archived product as an internal case study", async ({
+  page,
+}) => {
+  const errors = monitorPage(page)
+  await page.goto("/projects/period-place/", {
+    waitUntil: "domcontentloaded",
+  })
+
+  await expect(
+    page.getByText(
+      "Shipped product · Measured launch · Archived after limited adoption",
+      { exact: true },
+    ),
+  ).toBeVisible()
+  await expect(page.getByText("48 visitors", { exact: false })).toBeVisible()
+  await expect(page.getByText("6 impressions", { exact: false })).toBeVisible()
+  await expect(page.getByRole("figure")).toHaveCount(1)
+  await expect(
+    page.getByRole("heading", { name: "What the numbers do not prove" }),
+  ).toBeVisible()
+  await expect(
+    page.getByRole("link", { name: "View experience" }),
+  ).toHaveAttribute("href", "/experience/")
   expect(errors).toEqual([])
 })
 

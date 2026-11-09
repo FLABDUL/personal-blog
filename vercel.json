@@ -12,6 +12,26 @@
       "has": [{ "type": "host", "value": "www.residuelens.com" }],
       "destination": "https://www.madebyhakim.com/projects/residue-lens/",
       "statusCode": 301
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "periodplace.org" }],
+      "destination": "https://www.madebyhakim.com/projects/period-place/",
+      "statusCode": 301
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.periodplace.org" }],
+      "destination": "https://www.madebyhakim.com/projects/period-place/",
+      "statusCode": 301
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        { "type": "host", "value": "periodplace.madebyhakim.com" }
+      ],
+      "destination": "https://www.madebyhakim.com/projects/period-place/",
+      "statusCode": 301
     }
   ],
   "crons": [{ "path": "/api/spotify-refresh/", "schedule": "0 6 * * *" }]
