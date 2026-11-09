@@ -18,8 +18,8 @@ export default function ProjectsPage() {
           <h1>Projects built to be explored.</h1>
           <p>
             Public tools, technical experiments and open-source contributions.
-            The visuals below come from the working demos themselves—open one to
-            try the product, or inspect the source where it is available.
+            The visuals come from the work itself—open a live product, read a
+            case study, or inspect the source where it is available.
           </p>
           <dl className="projects-summary" aria-label="Project collection">
             <div>

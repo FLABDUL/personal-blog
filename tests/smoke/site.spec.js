@@ -136,7 +136,7 @@ test("music navigation and privacy disclosure remain reachable on mobile", async
   ).toBeVisible()
 })
 
-test("live products lead the project collection and remain curated on Experience", async ({
+test("selected products lead the project collection and remain curated on Experience", async ({
   page,
 }) => {
   const errors = monitorPage(page)
@@ -155,10 +155,16 @@ test("live products lead the project collection and remain curated on Experience
   const residueLensCard = projectCards.filter({ hasText: "Residue Lens" })
   await expect(
     residueLensCard.getByRole("link", {
-      name: "Visit product",
+      name: "Read case study",
       exact: true,
     }),
-  ).toHaveAttribute("href", "https://residuelens.com/")
+  ).toHaveAttribute("href", "/projects/residue-lens/")
+  await expect(
+    residueLensCard.getByRole("link", {
+      name: "Read case study",
+      exact: true,
+    }),
+  ).not.toHaveAttribute("target", "_blank")
 
   const periodPlaceCard = projectCards.filter({ hasText: "Period Place" })
   await expect(
@@ -199,6 +205,7 @@ test("visible site images load successfully", async ({ page }) => {
     "/bookshelf/",
     "/studio/",
     "/projects/",
+    "/projects/residue-lens/",
     "/projects/budget-v2/",
     "/projects/backtest-library/",
   ]) {
@@ -242,6 +249,52 @@ test("Budget V2 is linked as an internal case study", async ({ page }) => {
   const link = card.getByRole("link", { name: "Read case study", exact: true })
   await expect(link).toHaveAttribute("href", "/projects/budget-v2/")
   await expect(link).not.toHaveAttribute("target", "_blank")
+  expect(errors).toEqual([])
+})
+
+test("Residue Lens preserves the product as an honest archived case study", async ({
+  page,
+}) => {
+  const errors = monitorPage(page)
+  await page.goto("/projects/residue-lens/", {
+    waitUntil: "domcontentloaded",
+  })
+
+  await expect(
+    page.getByRole("heading", {
+      level: 1,
+      name: "Turning pesticide monitoring into a careful shopping comparison",
+    }),
+  ).toBeVisible()
+  await expect(
+    page.getByText("Validation concluded · November 2026"),
+  ).toBeVisible()
+  await expect(page.getByText("0", { exact: true })).toHaveCount(2)
+  await expect(
+    page.getByRole("img", {
+      name: "Residue Lens comparison showing grapes, broccoli and garlic alongside sample-aware monitoring results",
+    }),
+  ).toBeVisible()
+  expect(errors).toEqual([])
+})
+
+test("Residue Lens case study remains readable on mobile", async ({ page }) => {
+  const errors = monitorPage(page)
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto("/projects/residue-lens/", {
+    waitUntil: "domcontentloaded",
+  })
+
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= window.innerWidth,
+    ),
+  ).toBe(true)
+  await expect(
+    page.getByRole("link", {
+      name: "Open full-size evidence: Keep context attached to every number",
+    }),
+  ).toBeVisible()
   expect(errors).toEqual([])
 })
 
