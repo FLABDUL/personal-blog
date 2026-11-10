@@ -1,5 +1,8 @@
 # madebyhakim.com
 
+For laptop-independent development and context recovery, see
+[Cloud setup](docs/cloud.md).
+
 Abdul Hakim Norazman's Gatsby website, deployed to Vercel from this GitHub
 repository.
 
