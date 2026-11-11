@@ -164,7 +164,9 @@ export default function PeriodPlacePage() {
             <p>
               Google Search Console recorded 6 impressions and no clicks.
               Outreach produced useful data-source conversations, but no
-              verified durable referral placement or genuine user feedback.
+              verified durable referral placement. One unverified feedback
+              submission asked how the information was gathered; it did not
+              establish repeat use.
             </p>
           </div>
         </section>
