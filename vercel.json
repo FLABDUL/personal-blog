@@ -2,37 +2,87 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "residuelens.com" }],
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "residuelens.com"
+        }
+      ],
+      "destination": "https://www.madebyhakim.com/projects/residue-lens/",
+      "statusCode": 301
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.residuelens.com"
+        }
+      ],
       "destination": "https://www.madebyhakim.com/projects/residue-lens/",
       "statusCode": 301
     },
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.residuelens.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "residuelens.com"
+        }
+      ],
       "destination": "https://www.madebyhakim.com/projects/residue-lens/",
       "statusCode": 301
     },
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "periodplace.org" }],
-      "destination": "https://www.madebyhakim.com/projects/period-place/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.residuelens.com"
+        }
+      ],
+      "destination": "https://www.madebyhakim.com/projects/residue-lens/",
       "statusCode": 301
     },
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.periodplace.org" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "periodplace.org"
+        }
+      ],
       "destination": "https://www.madebyhakim.com/projects/period-place/",
       "statusCode": 301
     },
     {
       "source": "/:path*",
       "has": [
-        { "type": "host", "value": "periodplace.madebyhakim.com" }
+        {
+          "type": "host",
+          "value": "www.periodplace.org"
+        }
+      ],
+      "destination": "https://www.madebyhakim.com/projects/period-place/",
+      "statusCode": 301
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "periodplace.madebyhakim.com"
+        }
       ],
       "destination": "https://www.madebyhakim.com/projects/period-place/",
       "statusCode": 301
     }
   ],
-  "crons": [{ "path": "/api/spotify-refresh/", "schedule": "0 6 * * *" }]
+  "crons": [
+    {
+      "path": "/api/spotify-refresh/",
+      "schedule": "0 6 * * *"
+    }
+  ]
 }
