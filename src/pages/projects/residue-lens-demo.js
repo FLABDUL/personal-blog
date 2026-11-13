@@ -203,15 +203,14 @@ export default function ResidueDemo() {
                     disabled={!ready}
                     className="residue-demo__row"
                     aria-pressed={detail?.id === food.id}
-                    aria-labelledby={`residue-${food.id}-name residue-${food.id}-samples residue-${food.id}-value`}
                     onClick={() => setFocused(food.id)}
                   >
                     <span className="residue-demo__food">
                       <span>
                         {artwork(food)}
-                        <strong id={`residue-${food.id}-name`}>{food.name}</strong>
+                        <strong>{food.name}</strong>
                       </span>
-                      <small id={`residue-${food.id}-samples`}>
+                      <small>
                         United Kingdom · {food.year} · n={result.samples}
                       </small>
                     </span>
@@ -228,10 +227,7 @@ export default function ResidueDemo() {
                             }}
                           />
                         </span>
-                        <span
-                          className="residue-demo__value"
-                          id={`residue-${food.id}-value`}
-                        >
+                        <span className="residue-demo__value">
                           <strong>{format(result[metric])}</strong>
                           <small>
                             {cohort === "conventional"
@@ -241,10 +237,7 @@ export default function ResidueDemo() {
                         </span>
                       </>
                     ) : (
-                      <span
-                        className="residue-demo__unavailable"
-                        id={`residue-${food.id}-value`}
-                      >
+                      <span className="residue-demo__unavailable">
                         No samples in this cohort. A value is not available.
                       </span>
                     )}

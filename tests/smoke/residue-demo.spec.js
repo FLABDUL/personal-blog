@@ -39,14 +39,14 @@ test("archive demo preserves the original artwork, colours and selectable eviden
   page,
 }) => {
   await page.goto("/projects/residue-lens-demo/")
-  const grapes = page.getByRole("button", { name: /^Grapes United Kingdom/ })
+  const grapes = page.getByRole("button", { name: /^Grapes/ })
   await expect(grapes).toBeEnabled()
   await expect(grapes.locator(".residue-demo__track > span")).toHaveCSS(
     "background-color",
     "rgb(195, 79, 69)",
   )
   const broccoli = page.getByRole("button", {
-    name: /^Broccoli United Kingdom/,
+    name: /^Broccoli/,
   })
   await expect(broccoli.locator(".residue-demo__track > span")).toHaveCSS(
     "background-color",
@@ -54,7 +54,7 @@ test("archive demo preserves the original artwork, colours and selectable eviden
   )
   await expect(
     page
-      .getByRole("button", { name: /^Garlic United Kingdom/ })
+      .getByRole("button", { name: /^Garlic/ })
       .locator(".residue-demo__track > span"),
   ).toHaveCSS("background-color", "rgb(36, 134, 95)")
   await page.getByRole("checkbox", { name: "Grapes", exact: true }).uncheck()
