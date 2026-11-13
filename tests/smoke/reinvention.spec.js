@@ -514,6 +514,8 @@ test("generated pages reference one current shared stylesheet", async ({
   const pages = fs
     .readdirSync(output, { recursive: true })
     .filter(name => name.endsWith("index.html"))
+    // The standalone demo owns its CSS, checked by period-place-demo.spec.js.
+    .filter(name => name.replaceAll('\\', '/') !== 'demos/period-place/index.html')
   expect(pages.length).toBeGreaterThan(10)
   for (const name of pages) {
     const html = fs.readFileSync(path.join(output, name), "utf8")

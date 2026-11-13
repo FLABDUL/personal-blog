@@ -2,12 +2,19 @@ const { test, expect } = require("@playwright/test")
 
 test("Period Place demo filters, explains evidence and simulates moderation", async ({
   page,
+  request,
 }) => {
   const posts = []
   page.on("request", request => {
-    if (request.method() === "POST") posts.push(request.url())
+    const url = new URL(request.url())
+    // Vercel injects preview-toolbar authentication independently of this demo.
+    const previewLogin = process.env.SMOKE_ENV === "preview" && url.origin === "https://vercel.live" && url.pathname === "/login/validate"
+    if (request.method() === "POST" && !previewLogin) posts.push(request.url())
   })
   await page.goto("/demos/period-place/")
+  const css = await request.get('/demos/period-place/demo.css')
+  expect(css.status()).toBe(200)
+  expect(css.headers()['content-type']).toContain('text/css')
   const search = page.getByLabel("Place, venue or product")
   await expect(search).toBeEnabled()
   await expect(page.locator("#count")).toHaveText("4 matching sample venues")
