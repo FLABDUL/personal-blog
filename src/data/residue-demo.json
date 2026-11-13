@@ -1,0 +1,252 @@
+[
+  {
+    "id": "apples",
+    "name": "Apples",
+    "year": 2025,
+    "period": "Quarterly Q1–Q4",
+    "sourceUrl": "https://s3.eu-west-1.amazonaws.com/data.defra.gov.uk/PRIF/Q4+ODS+Data+Table+2025.ods",
+    "conventional": {
+      "samples": 51,
+      "detectedPct": 96.1,
+      "residueFreePct": 3.9,
+      "multiplePct": 90.2,
+      "aboveMrlPct": 0,
+      "medianResidues": 3,
+      "maxResidues": 8
+    },
+    "organic": {
+      "samples": 24,
+      "detectedPct": 4.2,
+      "residueFreePct": 95.8,
+      "multiplePct": 0,
+      "aboveMrlPct": 0,
+      "medianResidues": 0,
+      "maxResidues": 1
+    }
+  },
+  {
+    "id": "bananas",
+    "name": "Bananas",
+    "year": 2024,
+    "period": "Annual",
+    "sourceUrl": "https://s3.eu-west-1.amazonaws.com/data.defra.gov.uk/PRIF/2024+GB+ODS.ods",
+    "conventional": {
+      "samples": 53,
+      "detectedPct": 98.1,
+      "residueFreePct": 1.9,
+      "multiplePct": 92.5,
+      "aboveMrlPct": 1.9,
+      "medianResidues": 4,
+      "maxResidues": 5
+    },
+    "organic": {
+      "samples": 20,
+      "detectedPct": 5,
+      "residueFreePct": 95,
+      "multiplePct": 0,
+      "aboveMrlPct": 0,
+      "medianResidues": 0,
+      "maxResidues": 1
+    }
+  },
+  {
+    "id": "grapes",
+    "name": "Grapes",
+    "year": 2026,
+    "period": "Quarterly Q1",
+    "sourceUrl": "https://s3.eu-west-1.amazonaws.com/data.defra.gov.uk/PRIF/Q1+2026+ODS+Data+updated.ods",
+    "conventional": {
+      "samples": 22,
+      "detectedPct": 100,
+      "residueFreePct": 0,
+      "multiplePct": 86.4,
+      "aboveMrlPct": 0,
+      "medianResidues": 2,
+      "maxResidues": 8
+    },
+    "organic": {
+      "samples": 0,
+      "detectedPct": 0,
+      "residueFreePct": 0,
+      "multiplePct": 0,
+      "aboveMrlPct": 0,
+      "medianResidues": 0,
+      "maxResidues": 0
+    }
+  },
+  {
+    "id": "pears",
+    "name": "Pears",
+    "year": 2026,
+    "period": "Quarterly Q1",
+    "sourceUrl": "https://s3.eu-west-1.amazonaws.com/data.defra.gov.uk/PRIF/Q1+2026+ODS+Data+updated.ods",
+    "conventional": {
+      "samples": 17,
+      "detectedPct": 100,
+      "residueFreePct": 0,
+      "multiplePct": 88.2,
+      "aboveMrlPct": 5.9,
+      "medianResidues": 4,
+      "maxResidues": 7
+    },
+    "organic": {
+      "samples": 0,
+      "detectedPct": 0,
+      "residueFreePct": 0,
+      "multiplePct": 0,
+      "aboveMrlPct": 0,
+      "medianResidues": 0,
+      "maxResidues": 0
+    }
+  },
+  {
+    "id": "strawberries",
+    "name": "Strawberries",
+    "year": 2025,
+    "period": "Quarterly Q1–Q4",
+    "sourceUrl": "https://s3.eu-west-1.amazonaws.com/data.defra.gov.uk/PRIF/Q4+ODS+Data+Table+2025.ods",
+    "conventional": {
+      "samples": 120,
+      "detectedPct": 96.7,
+      "residueFreePct": 3.3,
+      "multiplePct": 90.8,
+      "aboveMrlPct": 5,
+      "medianResidues": 4,
+      "maxResidues": 15
+    },
+    "organic": {
+      "samples": 1,
+      "detectedPct": 0,
+      "residueFreePct": 100,
+      "multiplePct": 0,
+      "aboveMrlPct": 0,
+      "medianResidues": 0,
+      "maxResidues": 0
+    }
+  },
+  {
+    "id": "tomatoes",
+    "name": "Tomatoes",
+    "year": 2025,
+    "period": "Quarterly Q1–Q4",
+    "sourceUrl": "https://s3.eu-west-1.amazonaws.com/data.defra.gov.uk/PRIF/Q4+ODS+Data+Table+2025.ods",
+    "conventional": {
+      "samples": 72,
+      "detectedPct": 76.4,
+      "residueFreePct": 23.6,
+      "multiplePct": 58.3,
+      "aboveMrlPct": 4.2,
+      "medianResidues": 2,
+      "maxResidues": 9
+    },
+    "organic": {
+      "samples": 6,
+      "detectedPct": 0,
+      "residueFreePct": 100,
+      "multiplePct": 0,
+      "aboveMrlPct": 0,
+      "medianResidues": 0,
+      "maxResidues": 0
+    }
+  },
+  {
+    "id": "broccoli",
+    "name": "Broccoli",
+    "year": 2024,
+    "period": "Annual",
+    "sourceUrl": "https://s3.eu-west-1.amazonaws.com/data.defra.gov.uk/PRIF/2024+GB+ODS.ods",
+    "conventional": {
+      "samples": 96,
+      "detectedPct": 64.6,
+      "residueFreePct": 35.4,
+      "multiplePct": 33.3,
+      "aboveMrlPct": 0,
+      "medianResidues": 1,
+      "maxResidues": 8
+    },
+    "organic": {
+      "samples": 25,
+      "detectedPct": 12,
+      "residueFreePct": 88,
+      "multiplePct": 0,
+      "aboveMrlPct": 0,
+      "medianResidues": 0,
+      "maxResidues": 1
+    }
+  },
+  {
+    "id": "carrots",
+    "name": "Carrots",
+    "year": 2026,
+    "period": "Quarterly Q1",
+    "sourceUrl": "https://s3.eu-west-1.amazonaws.com/data.defra.gov.uk/PRIF/Q1+2026+ODS+Data+updated.ods",
+    "conventional": {
+      "samples": 22,
+      "detectedPct": 81.8,
+      "residueFreePct": 18.2,
+      "multiplePct": 54.5,
+      "aboveMrlPct": 4.5,
+      "medianResidues": 2,
+      "maxResidues": 5
+    },
+    "organic": {
+      "samples": 3,
+      "detectedPct": 0,
+      "residueFreePct": 100,
+      "multiplePct": 0,
+      "aboveMrlPct": 0,
+      "medianResidues": 0,
+      "maxResidues": 0
+    }
+  },
+  {
+    "id": "garlic",
+    "name": "Garlic",
+    "year": 2024,
+    "period": "Annual",
+    "sourceUrl": "https://s3.eu-west-1.amazonaws.com/data.defra.gov.uk/PRIF/2024+GB+ODS.ods",
+    "conventional": {
+      "samples": 44,
+      "detectedPct": 18.2,
+      "residueFreePct": 81.8,
+      "multiplePct": 4.5,
+      "aboveMrlPct": 0,
+      "medianResidues": 0,
+      "maxResidues": 3
+    },
+    "organic": {
+      "samples": 28,
+      "detectedPct": 0,
+      "residueFreePct": 100,
+      "multiplePct": 0,
+      "aboveMrlPct": 0,
+      "medianResidues": 0,
+      "maxResidues": 0
+    }
+  },
+  {
+    "id": "potatoes",
+    "name": "Potatoes",
+    "year": 2026,
+    "period": "Quarterly Q1",
+    "sourceUrl": "https://s3.eu-west-1.amazonaws.com/data.defra.gov.uk/PRIF/Q1+2026+ODS+Data+updated.ods",
+    "conventional": {
+      "samples": 32,
+      "detectedPct": 78.1,
+      "residueFreePct": 21.9,
+      "multiplePct": 56.2,
+      "aboveMrlPct": 0,
+      "medianResidues": 2,
+      "maxResidues": 4
+    },
+    "organic": {
+      "samples": 0,
+      "detectedPct": 0,
+      "residueFreePct": 0,
+      "multiplePct": 0,
+      "aboveMrlPct": 0,
+      "medianResidues": 0,
+      "maxResidues": 0
+    }
+  }
+]
