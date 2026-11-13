@@ -1,0 +1,16 @@
+.residue-demo { background: #faf7ed; color: #163d33; padding: clamp(1rem, 4vw, 3rem); border-radius: 1rem; }
+.residue-demo a { color: #175447; text-decoration: underline; }
+.residue-demo h1 { font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1.1; }
+.residue-demo h2, .residue-demo h3, .residue-demo p, .residue-demo legend { color: #163d33; }
+.residue-demo fieldset { border: 1px solid #637e70; margin: 2rem 0; padding: 1rem; min-width: 0; }
+.residue-demo__choices { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; }
+.residue-demo__choices label { padding: .4rem 0; }
+.residue-demo__controls, .residue-demo__actions { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; }
+.residue-demo select { display: block; max-width: 100%; padding: .7rem; background: white; color: #163d33; border: 1px solid #637e70; border-radius: .4rem; font: inherit; }
+.residue-demo__row { border: 1px solid #bcc9be; border-radius: .7rem; padding: 1rem; margin: 1rem 0; background: #fffef9; }
+.residue-demo__row h3 { margin: 0; }
+.residue-demo__track { background: #e0e8df; height: 1rem; border-radius: .2rem; overflow: hidden; margin-bottom: .5rem; }
+.residue-demo__track span { display: block; background: #32735f; height: 100%; }
+.residue-demo button { background: #174b3b; color: white; border: 0; border-radius: .4rem; padding: .75rem 1rem; font: inherit; cursor: pointer; }
+.residue-demo :is(a, button, select, input):focus-visible { outline: 3px solid #9d4900; outline-offset: 4px; }
+.residue-demo aside, .residue-demo footer { border-top: 1px solid #637e70; margin-top: 2rem; padding-top: 1rem; }

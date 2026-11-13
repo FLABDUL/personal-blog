@@ -78,6 +78,11 @@ export default function ResidueLensPage() {
           </p>
         </header>
 
+        <div className="project-actions">
+          <Link className="project-button project-button--primary" to="/projects/residue-lens-demo/">Try the live demo</Link>{" "}
+          <a className="project-button project-button--secondary" href="https://github.com/FLABDUL/residue-lens">View source on GitHub</a>
+        </div>
+
         <nav className="study-index" aria-label="In this study">
           <a href="#context">
             <span>01</span> The problem

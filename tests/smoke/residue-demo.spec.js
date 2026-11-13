@@ -1,0 +1,18 @@
+const { test, expect } = require("@playwright/test")
+
+test("archive demo changes cohorts, handles missing samples and saves a shortlist", async ({ page }) => {
+  await page.goto("/projects/residue-lens-demo/")
+  const cohort = page.getByLabel("Growing method")
+  await expect(cohort).toBeEnabled()
+  await expect(page.getByRole("region", { name: "Comparison results" })).toContainText("100%")
+  await cohort.selectOption("organic")
+  await expect(page.getByRole("region", { name: "Comparison results" })).toContainText("No samples in this cohort")
+  await page.getByRole("button", { name: "Save to shortlist" }).first().click()
+  await expect(page.getByRole("complementary", { name: "Demo shortlist" })).toContainText("Grapes")
+  await page.getByLabel("Compare by").selectOption("aboveMrlPct")
+  await expect(page.getByRole("heading", { name: "Above MRL", exact: true })).toBeVisible()
+  for (const checkbox of await page.getByRole("checkbox").all()) await checkbox.uncheck()
+  await expect(page.getByText("Choose a food above to see its monitoring results.")).toBeVisible()
+  await page.setViewportSize({ width: 390, height: 844 })
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true)
+})
