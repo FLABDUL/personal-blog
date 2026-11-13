@@ -8,7 +8,7 @@ test("Period Place demo filters, explains evidence and simulates moderation", as
   page.on("request", request => {
     const url = new URL(request.url())
     // Vercel injects preview-toolbar authentication independently of this demo.
-    const previewLogin = process.env.SMOKE_ENV === "preview" && url.origin === "https://vercel.live" && url.pathname === "/login/validate"
+    const previewLogin = process.env.SMOKE_ENV?.toLowerCase() === "preview" && url.origin === "https://vercel.live" && url.pathname === "/login/validate"
     if (request.method() === "POST" && !previewLogin) posts.push(request.url())
   })
   await page.goto("/demos/period-place/")
