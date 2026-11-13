@@ -30,6 +30,7 @@ for (const width of [390, 1440]) {
     "/",
     "/blog/",
     "/projects/",
+    "/projects/windows-observability-lab/",
     "/experience/",
     "/studio/",
     "/bookshelf/",
@@ -447,6 +448,47 @@ test("review exposure matches the deployment environment", async ({
     "Page not found",
   )
   await expect(page.locator(".review-ribbon")).toHaveCount(0)
+})
+
+test("published observability retrospective links to original dashboard captures", async ({
+  page,
+  request,
+}) => {
+  const files = [
+    "pc-overview",
+    "workload-explorer",
+    "incident-experiment-review",
+    "observability-concepts",
+  ]
+  for (const file of files) {
+    const response = await request.get(
+      `/projects/windows-observability-lab/${file}.png`,
+    )
+    expect(response.status(), file).toBe(200)
+    expect(response.headers()["content-type"]).toContain("image/png")
+  }
+
+  await page.goto("/projects/")
+  await page
+    .getByRole("link", { name: "Windows Observability Lab", exact: true })
+    .click()
+  await expect(page).toHaveURL(/\/projects\/windows-observability-lab\/$/)
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "Building—and retiring—a Windows observability lab",
+  )
+  await expect(
+    page.locator('meta[name="robots"][content*="noindex"]'),
+  ).toHaveCount(0)
+  const images = page.locator("#dashboards figure img")
+  await expect(images).toHaveCount(4)
+  for (const image of await images.all()) {
+    await image.scrollIntoViewIfNeeded()
+    await expect(image).toBeVisible()
+    await expect(image).toHaveJSProperty("naturalWidth", 1600)
+  }
+  await expect(page.locator("#dashboards figcaption")).toContainText(
+    files.map(() => "Synthetic demonstration data"),
+  )
 })
 
 test("built output excludes draft art and contains only published Studio metadata", async ({

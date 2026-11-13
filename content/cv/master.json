@@ -338,6 +338,20 @@
           "tags": ["Python", "PostgreSQL", "Data engineering", "Excel"]
         },
         {
+          "id": "windows-observability-lab",
+          "includeInBrief": false,
+          "name": "Windows Observability Lab",
+          "context": "Retired local monitoring experiment",
+          "description": "Built a local Grafana, Prometheus and PowerShell monitoring lab to investigate laptop startup, repaired a gap in resume capture, then retired it without claiming an unproven performance improvement.",
+          "href": "/projects/windows-observability-lab/",
+          "actionLabel": "Read retrospective",
+          "image": "/projects/windows-observability-lab/pc-overview.png",
+          "imageAlt": "Original Grafana PC Overview dashboard displaying synthetic demonstration data",
+          "featured": false,
+          "showcaseLabel": "Retired project · Retrospective",
+          "tags": ["Grafana", "Prometheus", "PowerShell", "Observability"]
+        },
+        {
           "id": "backtest-library",
           "includeInBrief": true,
           "name": "Backtest Library",
