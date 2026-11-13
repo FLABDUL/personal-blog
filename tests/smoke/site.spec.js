@@ -148,7 +148,7 @@ test("selected products lead the project collection and remain curated on Experi
   await page.goto("/projects/", { waitUntil: "domcontentloaded" })
 
   const projectCards = page.locator(".projects-grid .project-card")
-  await expect(projectCards).toHaveCount(8)
+  await expect(projectCards).toHaveCount(9)
   await expect(
     projectCards.nth(0).getByRole("heading", { level: 2 }),
   ).toHaveText("Residue Lens")
