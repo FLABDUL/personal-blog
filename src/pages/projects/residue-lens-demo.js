@@ -203,14 +203,13 @@ export default function ResidueDemo() {
                     disabled={!ready}
                     className="residue-demo__row"
                     aria-pressed={detail?.id === food.id}
-                    aria-label={`Show ${food.name} evidence`}
-                    aria-describedby={`residue-${food.id}-samples residue-${food.id}-value`}
+                    aria-labelledby={`residue-${food.id}-name residue-${food.id}-samples residue-${food.id}-value`}
                     onClick={() => setFocused(food.id)}
                   >
                     <span className="residue-demo__food">
                       <span>
                         {artwork(food)}
-                        <strong>{food.name}</strong>
+                        <strong id={`residue-${food.id}-name`}>{food.name}</strong>
                       </span>
                       <small id={`residue-${food.id}-samples`}>
                         United Kingdom · {food.year} · n={result.samples}

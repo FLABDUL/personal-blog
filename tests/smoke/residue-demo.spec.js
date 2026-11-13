@@ -1,4 +1,5 @@
 const { test, expect } = require("@playwright/test")
+const AxeBuilder = require("@axe-core/playwright").default
 
 test("archive demo changes cohorts, handles missing samples and saves a shortlist", async ({
   page,
@@ -38,20 +39,22 @@ test("archive demo preserves the original artwork, colours and selectable eviden
   page,
 }) => {
   await page.goto("/projects/residue-lens-demo/")
-  const grapes = page.getByRole("button", { name: "Show Grapes evidence" })
+  const grapes = page.getByRole("button", { name: /^Grapes United Kingdom/ })
   await expect(grapes).toBeEnabled()
   await expect(grapes.locator(".residue-demo__track > span")).toHaveCSS(
     "background-color",
     "rgb(195, 79, 69)",
   )
-  const broccoli = page.getByRole("button", { name: "Show Broccoli evidence" })
+  const broccoli = page.getByRole("button", {
+    name: /^Broccoli United Kingdom/,
+  })
   await expect(broccoli.locator(".residue-demo__track > span")).toHaveCSS(
     "background-color",
     "rgb(214, 154, 39)",
   )
   await expect(
     page
-      .getByRole("button", { name: "Show Garlic evidence" })
+      .getByRole("button", { name: /^Garlic United Kingdom/ })
       .locator(".residue-demo__track > span"),
   ).toHaveCSS("background-color", "rgb(36, 134, 95)")
   await page.getByRole("checkbox", { name: "Grapes", exact: true }).uncheck()
@@ -81,6 +84,13 @@ test("archive demo preserves the original artwork, colours and selectable eviden
     for (const image of await images.all()) {
       await expect(image).toHaveJSProperty("complete", true)
       expect(await image.evaluate(img => img.naturalWidth)).toBeGreaterThan(0)
+      await expect(image).toHaveCSS("margin-top", "0px")
+    }
+    if (width !== 320) {
+      const audit = await new AxeBuilder({ page })
+        .include(".residue-demo")
+        .analyze()
+      expect(audit.violations).toEqual([])
     }
   }
 })
