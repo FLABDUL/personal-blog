@@ -19,6 +19,9 @@ export default function ReviewPage() {
           changes the live site.
         </p>
         <p className="text-actions">
+          <Link to="/review/windows-observability-lab/">
+            Draft: retiring an observability lab ↗
+          </Link>
           <Link to="/review/logos/">Selected logo: Botanical Seal ↗</Link>
           <Link to="/music/">Explore the updated Music Portrait ↗</Link>
         </p>
