@@ -96,6 +96,12 @@ test("Period Place restores the original interface and combined evidence filters
     path: "test-results/period-place-finder-light.png",
     fullPage: true,
   })
+  for (const unknownView of ["constructor", "__proto__", "missing"]) {
+    await page.goto(`/demos/period-place/#${unknownView}`)
+    await expect(
+      page.getByRole("heading", { name: "Find free period products near you" }),
+    ).toBeVisible()
+  }
   expect(errors).toEqual([])
 })
 
