@@ -159,13 +159,13 @@ test("selected products lead the project collection and remain curated on Experi
   const residueLensCard = projectCards.filter({ hasText: "Residue Lens" })
   await expect(
     residueLensCard.getByRole("link", {
-      name: "Read case study",
+      name: "Try live demo",
       exact: true,
     }),
-  ).toHaveAttribute("href", "/projects/residue-lens/")
+  ).toHaveAttribute("href", "/projects/residue-lens-demo/")
   await expect(
     residueLensCard.getByRole("link", {
-      name: "Read case study",
+      name: "Try live demo",
       exact: true,
     }),
   ).not.toHaveAttribute("target", "_blank")
