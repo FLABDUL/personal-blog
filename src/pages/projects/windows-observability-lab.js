@@ -39,12 +39,12 @@ export default function ObservabilityRetrospective() {
     <Layout wide world="projects">
       <article className="engineering-study">
         <div className="study-mastline">
-          <Link to="/review/">← Review drafts</Link>
+          <Link to="/projects/">← All projects</Link>
           <span>Windows Observability Lab / Retired project</span>
         </div>
         <header className="engineering-study__hero">
           <p className="engineering-study__eyebrow">
-            Draft for review · Engineering retrospective
+            Engineering retrospective · Retired project
           </p>
           <h1>Building—and retiring—a Windows observability lab</h1>
           <p className="engineering-study__disclosure">
@@ -152,7 +152,7 @@ export default function ObservabilityRetrospective() {
             captures, not a live dashboard.
           </p>
           {dashboards.map((dashboard, index) => {
-            const src = `/review/windows-observability-lab/${dashboard.file}.png`
+            const src = `/projects/windows-observability-lab/${dashboard.file}.png`
             return (
               <section
                 className="engineering-study__evidence-item"
@@ -273,9 +273,8 @@ export default function ObservabilityRetrospective() {
 
 export const Head = () => (
   <Seo
-    title="Draft: Building—and retiring—a Windows observability lab"
+    title="Building—and retiring—a Windows observability lab"
     description="A retrospective on a local monitoring project: privacy, resume capture, unproven performance gains and the decision to retire it."
-    pathname="/review/windows-observability-lab/"
-    noIndex
+    pathname="/projects/windows-observability-lab/"
   />
 )

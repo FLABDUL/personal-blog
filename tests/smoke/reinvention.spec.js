@@ -30,6 +30,7 @@ for (const width of [390, 1440]) {
     "/",
     "/blog/",
     "/projects/",
+    "/projects/windows-observability-lab/",
     "/experience/",
     "/studio/",
     "/bookshelf/",
@@ -449,7 +450,7 @@ test("review exposure matches the deployment environment", async ({
   await expect(page.locator(".review-ribbon")).toHaveCount(0)
 })
 
-test("observability screenshots remain preview-only and load in the draft", async ({
+test("published observability retrospective links to original dashboard captures", async ({
   page,
   request,
 }) => {
@@ -461,16 +462,23 @@ test("observability screenshots remain preview-only and load in the draft", asyn
   ]
   for (const file of files) {
     const response = await request.get(
-      `/review/windows-observability-lab/${file}.png`,
+      `/projects/windows-observability-lab/${file}.png`,
     )
-    expect(response.status(), file).toBe(reviewEnabled ? 200 : 404)
-    if (reviewEnabled) {
-      expect(response.headers()["content-type"]).toContain("image/png")
-    }
+    expect(response.status(), file).toBe(200)
+    expect(response.headers()["content-type"]).toContain("image/png")
   }
-  if (!reviewEnabled) return
 
-  await page.goto("/review/windows-observability-lab/")
+  await page.goto("/projects/")
+  await page
+    .getByRole("link", { name: "Windows Observability Lab", exact: true })
+    .click()
+  await expect(page).toHaveURL(/\/projects\/windows-observability-lab\/$/)
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "Building—and retiring—a Windows observability lab",
+  )
+  await expect(
+    page.locator('meta[name="robots"][content*="noindex"]'),
+  ).toHaveCount(0)
   const images = page.locator("#dashboards figure img")
   await expect(images).toHaveCount(4)
   for (const image of await images.all()) {

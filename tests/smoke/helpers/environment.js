@@ -18,7 +18,6 @@ const reviewPaths = [
   "/review/logos/",
   "/review/about-table/",
   "/review/studio-daylight/",
-  "/review/windows-observability-lab/",
 ]
 
 module.exports = { reviewEnabled, reviewPaths }
