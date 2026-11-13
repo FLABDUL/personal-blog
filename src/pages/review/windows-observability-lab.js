@@ -3,6 +3,37 @@ import { Link } from "gatsby"
 import Layout from "../../components/Layout"
 import Seo from "../../components/Seo"
 
+const dashboards = [
+  {
+    file: "pc-overview",
+    title: "PC Overview",
+    description:
+      "A view of the whole machine: CPU activity alongside the processor queue, available memory, committed memory, paging and disk behaviour. The aim was to read related signals together before choosing where to investigate.",
+    alt: "Grafana PC Overview showing synthetic CPU bursts, processor queues, memory pressure and disk activity",
+  },
+  {
+    file: "workload-explorer",
+    title: "Workload Explorer",
+    description:
+      "A closer look at application families. CPU, memory and I/O were grouped into categories such as browser, notes, virtual desktop and monitoring, without exposing individual process command lines.",
+    alt: "Grafana Workload Explorer comparing synthetic CPU, memory and I/O across four application families",
+  },
+  {
+    file: "incident-experiment-review",
+    title: "Incident and Experiment Review",
+    description:
+      "A workspace for comparing a selected time window: pressure on the machine, application activity and the monitoring system's own overhead. This was intended to support experiments; the demonstration shown here does not establish a performance improvement.",
+    alt: "Grafana incident review with synthetic pressure timelines, application activity, monitoring overhead and summary statistics",
+  },
+  {
+    file: "observability-concepts",
+    title: "Observability Concepts",
+    description:
+      "Learning notes beside working charts: gauges, counters, rates, sampling and the difference between symptoms and causes. It also made the limits explicit, including short spikes missed between samples and the cost of monitoring itself.",
+    alt: "Grafana learning dashboard pairing explanations of observability concepts with synthetic charts",
+  },
+]
+
 export default function ObservabilityRetrospective() {
   return (
     <Layout wide world="projects">
@@ -36,11 +67,14 @@ export default function ObservabilityRetrospective() {
           <a href="#system">
             <span>02</span> What I built
           </a>
+          <a href="#dashboards">
+            <span>03</span> The dashboards
+          </a>
           <a href="#findings">
-            <span>03</span> What it showed
+            <span>04</span> What it showed
           </a>
           <a href="#retirement">
-            <span>04</span> Why I stopped
+            <span>05</span> Why I stopped
           </a>
         </nav>
         <section className="engineering-study__intro" id="problem">
@@ -104,6 +138,60 @@ export default function ObservabilityRetrospective() {
             not evidence about my laptop.
           </p>
         </section>
+        <section
+          className="engineering-study__evidence"
+          id="dashboards"
+          aria-labelledby="dashboards-heading"
+        >
+          <h2 id="dashboards-heading">The dashboards I built</h2>
+          <p>
+            These are original screenshots from the project's October 2026
+            demonstration, recovered from the retained project discussion. They
+            show the actual Grafana boards with synthetic data: the values are
+            fictional, not measurements from my laptop. The images are archived
+            captures, not a live dashboard.
+          </p>
+          {dashboards.map((dashboard, index) => {
+            const src = `/review/windows-observability-lab/${dashboard.file}.png`
+            return (
+              <section
+                className="engineering-study__evidence-item"
+                key={dashboard.file}
+              >
+                <div>
+                  <p className="engineering-study__label">
+                    Dashboard {String(index + 1).padStart(2, "0")}
+                  </p>
+                  <h3>{dashboard.title}</h3>
+                  <p>{dashboard.description}</p>
+                </div>
+                <figure>
+                  <img
+                    src={src}
+                    alt={dashboard.alt}
+                    width="1600"
+                    height="1000"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>
+                    {dashboard.title} · Original Grafana capture · Synthetic
+                    demonstration data · October 2026
+                  </figcaption>
+                  <a
+                    className="engineering-study__evidence-link"
+                    href={src}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Open full-size screenshot: ${dashboard.title}`}
+                  >
+                    Open full-size screenshot
+                  </a>
+                </figure>
+              </section>
+            )
+          })}
+        </section>
         <section className="engineering-study__intro" id="findings">
           <div>
             <h2>Capturing the right event</h2>
@@ -163,7 +251,8 @@ export default function ObservabilityRetrospective() {
             repaired resume-capture workflow. It cannot claim improved startup
             performance or a confirmed cause for the original delay. This
             account is based on the retained project discussion; the original
-            source and telemetry were deleted during retirement. There is no
+            source and telemetry were deleted during retirement. The screenshots
+            above preserve the demonstration boards only. There is no
             live lab or runnable source release behind this page.
           </p>
         </section>

@@ -449,6 +449,40 @@ test("review exposure matches the deployment environment", async ({
   await expect(page.locator(".review-ribbon")).toHaveCount(0)
 })
 
+test("observability screenshots remain preview-only and load in the draft", async ({
+  page,
+  request,
+}) => {
+  const files = [
+    "pc-overview",
+    "workload-explorer",
+    "incident-experiment-review",
+    "observability-concepts",
+  ]
+  for (const file of files) {
+    const response = await request.get(
+      `/review/windows-observability-lab/${file}.png`,
+    )
+    expect(response.status(), file).toBe(reviewEnabled ? 200 : 404)
+    if (reviewEnabled) {
+      expect(response.headers()["content-type"]).toContain("image/png")
+    }
+  }
+  if (!reviewEnabled) return
+
+  await page.goto("/review/windows-observability-lab/")
+  const images = page.locator("#dashboards figure img")
+  await expect(images).toHaveCount(4)
+  for (const image of await images.all()) {
+    await image.scrollIntoViewIfNeeded()
+    await expect(image).toBeVisible()
+    await expect(image).toHaveJSProperty("naturalWidth", 1600)
+  }
+  await expect(page.locator("#dashboards figcaption")).toContainText(
+    files.map(() => "Synthetic demonstration data"),
+  )
+})
+
 test("built output excludes draft art and contains only published Studio metadata", async ({
   request,
 }) => {
