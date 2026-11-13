@@ -360,6 +360,8 @@
 }
 .residue-demo__tabs button:focus-visible {
   outline-offset: -4px;
+}
+.residue-demo__tabs button[aria-pressed="true"]:focus-visible {
   outline-color: #e1a33d;
 }
 .residue-demo > aside,
