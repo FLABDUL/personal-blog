@@ -7,6 +7,7 @@
 - Image-loading sweeps that scroll images must select visible images. Theme and responsive variants can deliberately hide their counterparts; verify those variants by activating each theme/viewport in a dedicated check, rather than trying to scroll hidden elements.
 - Set `SMOKE_ENV=preview` or `SMOKE_ENV=production` explicitly when testing a deployed `BASE_URL`. Use the deployment environment name; Vercel's GitHub `production_environment` boolean has been false even for Production. Local checks may inherit `VERCEL_ENV` from the build command.
 - Keep shared-route tests in both modes. Preview checks require real 200 responses; production checks must verify review routes, page data, artwork and navigation are absent. Never count a styled 404 as a passing page check.
+- Normalise `SMOKE_ENV` to lower case before comparing it: Vercel deployment events supply `Preview` and `Production`, while local CI uses lower case.
 - Check contrast on actual keyboard-focused controls in both themes; an unfocused Axe scan does not cover authored focus outlines.
 - Exercise dialog shortcuts immediately after keyboard opening, before clicking another control; the Close button owns the initial focus.
 - Cover optional content fields and failed images as well as the current complete dataset. An SSR image can fail before hydration, so a client-side error handler alone is not sufficient.

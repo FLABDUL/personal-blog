@@ -173,10 +173,10 @@ test("selected products lead the project collection and remain curated on Experi
   const periodPlaceCard = projectCards.filter({ hasText: "Period Place" })
   await expect(
     periodPlaceCard.getByRole("link", {
-      name: "Read case study",
+      name: "Try live demo",
       exact: true,
     }),
-  ).toHaveAttribute("href", "/projects/period-place/")
+  ).toHaveAttribute("href", "/demos/period-place/")
 
   await expect(
     page.getByText("live products & demos", { exact: true }),

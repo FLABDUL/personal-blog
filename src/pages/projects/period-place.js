@@ -48,6 +48,24 @@ export default function PeriodPlacePage() {
           </p>
         </header>
 
+        <p>
+          <a
+            className="project-button project-button--primary"
+            href="/demos/period-place/"
+          >
+            Try the interactive demo
+          </a>{" "}
+          <a
+            className="project-button project-button--secondary"
+            href="https://github.com/FLABDUL/period-place"
+          >
+            View public source
+          </a>
+        </p>
+        <p>
+          The demo uses fictional venues and sample evidence. The original
+          public service remains retired.
+        </p>
         <nav className="study-index" aria-label="In this study">
           <a href="#context">
             <span>01</span> The problem
