@@ -2,6 +2,16 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
+      "source": "/demos/period-place/",
+      "destination": "https://periodplace.org/",
+      "statusCode": 302
+    },
+    {
+      "source": "/projects/residue-lens-demo/",
+      "destination": "https://residuelens.com/",
+      "statusCode": 302
+    },
+    {
       "source": "/demos/period-place/:path*",
       "destination": "https://periodplace.org/:path*",
       "statusCode": 302
