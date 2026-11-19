@@ -2,70 +2,14 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "residuelens.com"
-        }
-      ],
-      "destination": "https://www.madebyhakim.com/projects/residue-lens/",
-      "statusCode": 301
+      "source": "/demos/period-place/:path*",
+      "destination": "https://periodplace.org/:path*",
+      "statusCode": 302
     },
     {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.residuelens.com"
-        }
-      ],
-      "destination": "https://www.madebyhakim.com/projects/residue-lens/",
-      "statusCode": 301
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "residuelens.com"
-        }
-      ],
-      "destination": "https://www.madebyhakim.com/projects/residue-lens/",
-      "statusCode": 301
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.residuelens.com"
-        }
-      ],
-      "destination": "https://www.madebyhakim.com/projects/residue-lens/",
-      "statusCode": 301
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "periodplace.org"
-        }
-      ],
-      "destination": "https://www.madebyhakim.com/projects/period-place/",
-      "statusCode": 301
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.periodplace.org"
-        }
-      ],
-      "destination": "https://www.madebyhakim.com/projects/period-place/",
-      "statusCode": 301
+      "source": "/projects/residue-lens-demo/:path*",
+      "destination": "https://residuelens.com/:path*",
+      "statusCode": 302
     },
     {
       "source": "/:path*",

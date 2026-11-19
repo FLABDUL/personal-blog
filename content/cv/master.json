@@ -72,7 +72,12 @@
       "ownership": "confirmed",
       "validation": "production",
       "scope": "Per request and per business day",
-      "tags": ["Java", "Spring", "Database", "Performance"]
+      "tags": [
+        "Java",
+        "Spring",
+        "Database",
+        "Performance"
+      ]
     },
     {
       "id": "ms-upstream-allocation-fetch",
@@ -82,7 +87,12 @@
       "ownership": "confirmed",
       "validation": "production",
       "scope": "Fetch step across all funds",
-      "tags": ["Java", "API", "Distributed systems", "Performance"]
+      "tags": [
+        "Java",
+        "API",
+        "Distributed systems",
+        "Performance"
+      ]
     },
     {
       "id": "ms-right-sized-data-fetches",
@@ -92,7 +102,12 @@
       "ownership": "confirmed",
       "validation": "uat",
       "scope": "Largest-fund data fetches",
-      "tags": ["Java", "JVM", "Memory", "Reliability"]
+      "tags": [
+        "Java",
+        "JVM",
+        "Memory",
+        "Reliability"
+      ]
     },
     {
       "id": "ms-lean-stored-procedure-adoption",
@@ -102,7 +117,12 @@
       "ownership": "confirmed",
       "validation": "uat",
       "scope": "Allocation data-fetch path",
-      "tags": ["SQL", "Database", "Leadership", "Performance"]
+      "tags": [
+        "SQL",
+        "Database",
+        "Leadership",
+        "Performance"
+      ]
     },
     {
       "id": "ms-parallel-call-deduplication",
@@ -112,7 +132,11 @@
       "ownership": "confirmed",
       "validation": "production",
       "scope": "Parallel calculation branches",
-      "tags": ["Distributed systems", "Concurrency", "Performance"]
+      "tags": [
+        "Distributed systems",
+        "Concurrency",
+        "Performance"
+      ]
     },
     {
       "id": "ms-dag-failure-isolation",
@@ -122,7 +146,11 @@
       "ownership": "confirmed",
       "validation": "uat",
       "scope": "Workflow dependency graph",
-      "tags": ["Architecture", "Distributed systems", "Reliability"]
+      "tags": [
+        "Architecture",
+        "Distributed systems",
+        "Reliability"
+      ]
     },
     {
       "id": "ms-jvm-container-sizing",
@@ -132,7 +160,12 @@
       "ownership": "confirmed",
       "validation": "production",
       "scope": "Four-service JVM fleet",
-      "tags": ["Java", "JVM", "Containers", "Reliability"]
+      "tags": [
+        "Java",
+        "JVM",
+        "Containers",
+        "Reliability"
+      ]
     },
     {
       "id": "ms-minimal-reference-data-mode",
@@ -142,7 +175,12 @@
       "ownership": "confirmed",
       "validation": "uat",
       "scope": "Opt-in API request mode",
-      "tags": ["API", "Architecture", "Database", "Performance"]
+      "tags": [
+        "API",
+        "Architecture",
+        "Database",
+        "Performance"
+      ]
     },
     {
       "id": "ms-prometheus-onboarding",
@@ -152,7 +190,11 @@
       "ownership": "confirmed",
       "validation": "production",
       "scope": "API gateway and service fleet telemetry",
-      "tags": ["Prometheus", "Observability", "Reliability"]
+      "tags": [
+        "Prometheus",
+        "Observability",
+        "Reliability"
+      ]
     },
     {
       "id": "ms-recurring-database-failure",
@@ -162,7 +204,12 @@
       "ownership": "confirmed",
       "validation": "production",
       "scope": "Recurring concurrency failure",
-      "tags": ["Database", "Concurrency", "Reliability", "Production"]
+      "tags": [
+        "Database",
+        "Concurrency",
+        "Reliability",
+        "Production"
+      ]
     },
     {
       "id": "ms-parallel-returns-calculation",
@@ -172,7 +219,11 @@
       "ownership": "confirmed",
       "validation": "production",
       "scope": "Returns-calculation step only",
-      "tags": ["Java", "Concurrency", "Performance"]
+      "tags": [
+        "Java",
+        "Concurrency",
+        "Performance"
+      ]
     },
     {
       "id": "ms-connection-pool-leak",
@@ -182,7 +233,12 @@
       "ownership": "confirmed",
       "validation": "load-tested",
       "scope": "Database connection pool under load",
-      "tags": ["Database", "Reliability", "Observability", "Load testing"]
+      "tags": [
+        "Database",
+        "Reliability",
+        "Observability",
+        "Load testing"
+      ]
     },
     {
       "id": "ms-returns-initialisation-lookups",
@@ -192,7 +248,11 @@
       "ownership": "confirmed",
       "validation": "not-production",
       "scope": "Returns-initialisation phase and one large-fund UAT run",
-      "tags": ["Database", "Performance", "UAT"]
+      "tags": [
+        "Database",
+        "Performance",
+        "UAT"
+      ]
     }
   ],
   "professionalExperience": [
@@ -288,8 +348,8 @@
           "name": "Residue Lens",
           "context": "Evidence-led consumer product",
           "description": "Designed, built and validated a Next.js/TypeScript product that made official pesticide-monitoring evidence easier to compare, then concluded active development when public use did not justify operating the full service.",
-          "href": "/projects/residue-lens-demo/",
-          "actionLabel": "Try live demo",
+          "href": "https://residuelens.com/",
+          "actionLabel": "Open interactive demo",
           "sourceHref": "https://github.com/FLABDUL/residue-lens",
           "image": "/projects/residue-lens.webp",
           "imageAlt": "Residue Lens homepage introducing its evidence-led food comparison product",
@@ -308,8 +368,8 @@
           "name": "Period Place",
           "context": "Interactive public-service demo and case study",
           "description": "Built, launched and measured a Next.js/TypeScript UK finder backed by libSQL/Turso, with MapLibre search, moderated community reports and explicit evidence gaps; archived it after limited adoption rather than expanding without evidence.",
-          "href": "/demos/period-place/",
-          "actionLabel": "Try live demo",
+          "href": "https://periodplace.org/",
+          "actionLabel": "Open interactive demo",
           "linkType": "demo",
           "sourceHref": "https://github.com/FLABDUL/period-place",
           "image": "/projects/period-place.webp",
@@ -335,7 +395,12 @@
           "imageAlt": "Synthetic Budget V2 workbook dashboard showing a fictional plan and operational checks",
           "featured": true,
           "showcaseLabel": "Synthetic case study",
-          "tags": ["Python", "PostgreSQL", "Data engineering", "Excel"]
+          "tags": [
+            "Python",
+            "PostgreSQL",
+            "Data engineering",
+            "Excel"
+          ]
         },
         {
           "id": "windows-observability-lab",
@@ -349,7 +414,12 @@
           "imageAlt": "Original Grafana PC Overview dashboard displaying synthetic demonstration data",
           "featured": false,
           "showcaseLabel": "Retired project · Retrospective",
-          "tags": ["Grafana", "Prometheus", "PowerShell", "Observability"]
+          "tags": [
+            "Grafana",
+            "Prometheus",
+            "PowerShell",
+            "Observability"
+          ]
         },
         {
           "id": "backtest-library",
@@ -461,7 +531,7 @@
           "includeInBrief": true,
           "name": "Fund-reporting workflow performance",
           "context": "Morgan Stanley Fund Services Technology",
-        "description": "Drove measured Java/Spring scalability and reliability improvements spanning database access, distributed calls, workflow dependencies, JVM/container sizing and production observability.",
+          "description": "Drove measured Java/Spring scalability and reliability improvements spanning database access, distributed calls, workflow dependencies, JVM/container sizing and production observability.",
           "tags": [
             "Java",
             "Spring Boot",
