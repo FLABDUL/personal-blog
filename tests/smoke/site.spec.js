@@ -451,7 +451,7 @@ test("legacy demo routes redirect to standalone archives on deployed portfolios"
     ["/projects/residue-lens-demo/", "https://residuelens.com/"]
   ]
   for (const [oldUrl, canonical] of routes) {
-    const response = await request.get(oldUrl, { maxRedirects: 0 })
+    const response = await request.get(`https://www.madebyhakim.com${oldUrl}`, { maxRedirects: 0 })
     expect(response.status()).toBe(302)
     expect(response.headers().location).toBe(canonical)
   }
