@@ -1,6 +1,10 @@
 const { test, expect } = require("@playwright/test")
 const AxeBuilder = require("@axe-core/playwright").default
 
+// The embedded portfolio fallback remains independently smoke-tested locally.
+// Hosted demos have dedicated repositories; portfolio deployments redirect these URLs.
+test.skip(Boolean(process.env.BASE_URL), "Hosted demo lives at residuelens.com; tested in standalone repository")
+
 test("archive demo changes cohorts, handles missing samples and saves a shortlist", async ({
   page,
 }) => {

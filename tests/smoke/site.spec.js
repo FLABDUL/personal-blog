@@ -159,24 +159,24 @@ test("selected products lead the project collection and remain curated on Experi
   const residueLensCard = projectCards.filter({ hasText: "Residue Lens" })
   await expect(
     residueLensCard.getByRole("link", {
-      name: "Try live demo",
+      name: "Open interactive demo",
       exact: true,
     }),
-  ).toHaveAttribute("href", "/projects/residue-lens-demo/")
+  ).toHaveAttribute("href", "https://residuelens.com/")
   await expect(
     residueLensCard.getByRole("link", {
-      name: "Try live demo",
+      name: "Open interactive demo",
       exact: true,
     }),
-  ).not.toHaveAttribute("target", "_blank")
+  ).toHaveAttribute("target", "_blank")
 
   const periodPlaceCard = projectCards.filter({ hasText: "Period Place" })
   await expect(
     periodPlaceCard.getByRole("link", {
-      name: "Try live demo",
+      name: "Open interactive demo",
       exact: true,
     }),
-  ).toHaveAttribute("href", "/demos/period-place/")
+  ).toHaveAttribute("href", "https://periodplace.org/")
 
   await expect(
     page.getByText("live products & demos", { exact: true }),
@@ -441,4 +441,18 @@ test("Backtest Library presents verified results without an alpha claim", async 
     page.getByRole("link", { name: "View experience" }),
   ).toHaveAttribute("href", "/experience/")
   expect(errors).toEqual([])
+})
+
+
+test("legacy demo routes redirect to standalone archives on deployed portfolios", async ({ request }) => {
+  test.skip(!process.env.BASE_URL, "Local Gatsby keeps embedded fallback copies for regression testing")
+  const routes = [
+    ["/demos/period-place/", "https://periodplace.org/"],
+    ["/projects/residue-lens-demo/", "https://residuelens.com/"]
+  ]
+  for (const [oldUrl, canonical] of routes) {
+    const response = await request.get(oldUrl, { maxRedirects: 0 })
+    expect(response.status()).toBe(302)
+    expect(response.headers().location).toBe(canonical)
+  }
 })

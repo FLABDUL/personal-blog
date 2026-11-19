@@ -1,6 +1,10 @@
 const { test, expect } = require("@playwright/test")
 const AxeBuilder = require("@axe-core/playwright").default
 
+// The embedded portfolio fallback remains independently smoke-tested locally.
+// Hosted demos have dedicated repositories; portfolio deployments redirect these URLs.
+test.skip(Boolean(process.env.BASE_URL), "Hosted demo lives at periodplace.org; tested in standalone repository")
+
 test.beforeEach(async ({ page }) => {
   // Do not download public map tiles during automated browser tests.
   await page.route("https://tile.openstreetmap.org/**", route =>
