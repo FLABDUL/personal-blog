@@ -445,7 +445,7 @@ test("Backtest Library presents verified results without an alpha claim", async 
 
 
 test("legacy demo routes redirect to standalone archives on deployed portfolios", async ({ request }) => {
-  test.skip(!process.env.BASE_URL, "Local Gatsby keeps embedded fallback copies for regression testing")
+  test.skip(!process.env.BASE_URL || (process.env.SMOKE_ENV || "").toLowerCase() !== "production", "Redirect verification only applies to unprotected production host; preview uses Vercel Authentication")
   const routes = [
     ["/demos/period-place/", "https://periodplace.org/"],
     ["/projects/residue-lens-demo/", "https://residuelens.com/"]
