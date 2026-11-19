@@ -11,6 +11,15 @@ The original Period Place and Residue Lens production services were retired in N
 
 Both are `noindex` and display archive disclosures. Period Place data is fictional, submitted reports are in page memory only, and Residue Lens data is frozen (not a current shopping or health service).
 
+## Cutover checkpoint — 19 November 2026
+
+- Both standalone GitHub Pages deployments and their local/live Playwright suites passed.
+- DNS records on both apex hosts now have all four GitHub Pages IPv4 addresses; `www` CNAME targets `flabdul.github.io`. The original Google-verification TXT and CAA records remain. Registration and nameservers are unchanged on Vercel.
+- Verified through a GitHub-hosted DNS/HTTP diagnostic: the correct demo HTML responds with 200 at the branded hostnames **only with TLS verification disabled**. This is not a launch-ready state.
+- Authenticated GitHub Pages API reports both `cname` entries set correctly, `https_enforced: false`, and `https_certificate: null`. Do not merge the portfolio PR or advertise the branded HTTPS URLs until a correctly issued certificate is present on both apex and `www`.
+- Vercel's DNS record-update API rejected changes to its ALIAS type; the previous apex ALIAS entries were displaced to inactive `legacy-vercel-apex` DNS names. The Residue Lens import added duplicate CAA entries and a wildcard CNAME; the legacy wildcard ALIAS was isolated at `legacy-vercel-wildcard`. These stale legacy records require a later DNS clean-up via the Vercel dashboard/CLI once the migration is stable; do not remove unrelated records.
+- A quiet hourly conditional check, **Archive Demo HTTPS Watch**, was created for both public URLs. The release remains manual and gated. All unrelated portfolio and Strava production routing stays unchanged.
+
 ## Release gates
 
 1. Both GitHub Pages repositories set **Settings → Pages → Source: GitHub Actions**.
