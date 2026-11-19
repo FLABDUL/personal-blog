@@ -51,9 +51,9 @@ export default function PeriodPlacePage() {
         <p>
           <a
             className="project-button project-button--primary"
-            href="/demos/period-place/"
+            href="https://periodplace.org/"
           >
-            Try the interactive demo
+            Open interactive demo
           </a>{" "}
           <a
             className="project-button project-button--secondary"
